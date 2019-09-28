@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - 10.16.3
+before_install:
+  - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.12.9/terraform_0.12.9_linux_amd64.zip
+  - unzip /tmp/terraform.zip -d /opt/terraform
+  - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
+  - rm -f /tmp/terraform.zip
+install:
+  - pushd src && npm install && popd
+jobs:
+  include:
+    - stage: test
+      script: ./test.sh
+      env:
+        - NODE_ENV=test
+        - APP_PORT=8080
+    - stage: deploy
+      script: ./deploy.sh
+      if: branch = master
