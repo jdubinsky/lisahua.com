@@ -24,7 +24,7 @@ resource "aws_acm_certificate_validation" "cert" {
 }
 
 resource "aws_route53_zone" "root_domain" {
-  name = "lisahua.dev"
+  name = "lisahua.com"
 }
 
 # The domain name to use with api-gateway
@@ -34,10 +34,16 @@ resource "aws_api_gateway_domain_name" "apigw_domain_name" {
 
 }
 
+resource "aws_api_gateway_stage" "api_prod_stage" {
+  stage_name    = "prod"
+  rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
+  deployment_id = "${aws_api_gateway_deployment.apigw_prod_deploy.id}"
+}
+
 resource "aws_api_gateway_base_path_mapping" "apigw_path_map" {
   api_id      = "${aws_api_gateway_rest_api.api.id}"
   domain_name = "${aws_api_gateway_domain_name.apigw_domain_name.domain_name}"
-  stage_name  = "prod"
+  stage_name  = "${aws_api_gateway_stage.api_prod_stage.stage_name}"
 }
 
 resource "aws_route53_record" "r53rec" {
@@ -79,7 +85,7 @@ data "aws_iam_policy_document" "policy" {
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
-  name               = "iam_for_lambda"
+  name               = "iam_for_lambda_lhua"
   assume_role_policy = "${data.aws_iam_policy_document.policy.json}"
 }
 
@@ -89,9 +95,9 @@ resource "aws_api_gateway_rest_api" "api" {
 }
 
 resource "aws_api_gateway_resource" "resource" {
-  path_part   = "resource"
   parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  path_part   = "resource"
 }
 
 resource "aws_api_gateway_method" "method" {
@@ -99,18 +105,13 @@ resource "aws_api_gateway_method" "method" {
   resource_id   = "${aws_api_gateway_resource.resource.id}"
   http_method   = "GET"
   authorization = "NONE"
+
 }
 
 resource "aws_api_gateway_deployment" "apigw_prod_deploy" {
-  depends_on  = ["aws_api_gateway_integration.integration"]
-  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  stage_name  = "prod"
-}
-
-resource "aws_api_gateway_stage" "api_prod_stage" {
-  stage_name    = "prod"
-  rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
-  deployment_id = "${aws_api_gateway_deployment.apigw_prod_deploy.id}"
+  depends_on        = ["aws_api_gateway_integration.integration"]
+  rest_api_id       = "${aws_api_gateway_rest_api.api.id}"
+  stage_name        = "prod"
 }
 
 resource "aws_api_gateway_integration" "integration" {
