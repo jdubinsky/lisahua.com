@@ -2,4 +2,4 @@
 
 www.lisahua.com
 
-"Forked" from jdubinsky/jdubinsky.dev
+"Forked" from https://github.com/jdubinsky/jdubinsky.dev
