@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
-const MarginDiv = styled.div`
-  margin-top: ${(props: { marginTop?: string }) => props.marginTop || "0px"};
-  margin-left: ${(props: { marginLeft?: string }) => props.marginLeft || "0px"};
+interface MarginProps {
+  marginLeft?: string;
+  marginTop?: string;
+}
+
+const MarginDiv = styled.div<MarginProps>`
+  margin-top: ${props => props.marginTop || "0px"};
+  margin-left: ${props => props.marginLeft || "0px"};
 `;
 
 export const Content = styled(MarginDiv)`
