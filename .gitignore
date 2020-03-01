@@ -69,3 +69,6 @@ terraform.tfstate*
 
 # build
 build/
+dist/
+
+.DS_store

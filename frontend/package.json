@@ -1,0 +1,40 @@
+{
+  "name": "lisahua-fe",
+  "version": "1.0.0",
+  "description": "lisahua.com FE",
+  "main": "app.tsx",
+  "scripts": {
+    "dev": "npx webpack-dev-server --open --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdubinsky/lisahua.com.git"
+  },
+  "author": "Jacob Dubinsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdubinsky/lisahua.com/issues"
+  },
+  "homepage": "https://github.com/jdubinsky/lisahua.com#readme",
+  "dependencies": {
+    "preact": "^10.3.3",
+    "styled-components": "^5.0.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.41.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-react-jsx": "^7.8.3",
+    "@babel/preset-env": "^7.8.6",
+    "@babel/preset-typescript": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "file-loader": "^5.1.0",
+    "fork-ts-checker-webpack-plugin": "^4.0.5",
+    "html-webpack-plugin": "^3.2.0",
+    "raw-loader": "^4.0.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
