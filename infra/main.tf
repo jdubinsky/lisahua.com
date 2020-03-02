@@ -47,7 +47,7 @@ resource "aws_api_gateway_base_path_mapping" "apigw_path_map" {
 }
 
 resource "aws_route53_record" "r53rec" {
-  name    = "www.lisahua.com"
+  name    = "*.lisahua.com"
   type    = "A"
   zone_id = "${aws_route53_zone.root_domain.id}"
 
@@ -55,18 +55,6 @@ resource "aws_route53_record" "r53rec" {
     evaluate_target_health = true
     name                   = "${aws_api_gateway_domain_name.apigw_domain_name.cloudfront_domain_name}"
     zone_id                = "${aws_api_gateway_domain_name.apigw_domain_name.cloudfront_zone_id}"
-  }
-}
-
-resource "aws_route53_record" "r53rec2" {
-  name    = "lisahua.com"
-  type    = "A"
-  zone_id = "${aws_route53_zone.root_domain.id}"
-
-  alias {
-    evaluate_target_health = true
-    name                   = "www.lisahua.com"
-    zone_id                = "${aws_route53_zone.root_domain.id}"
   }
 }
 
