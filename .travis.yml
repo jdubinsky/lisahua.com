@@ -7,7 +7,7 @@ before_install:
   - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
   - rm -f /tmp/terraform.zip
 install:
-  - pushd src && npm install && popd
+  - pushd backend && npm install && popd
 jobs:
   include:
     - stage: test
