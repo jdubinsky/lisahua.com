@@ -10,4 +10,9 @@ app.get("/", (request: express.Request, response: express.Response) => {
   return response.sendFile(indexPath);
 });
 
+app.get("/app.bundle.js", (request: express.Request, response: express.Response) => {
+  const jsPath = path.join(__dirname, "/app.bundle.js");
+  return response.sendFile(jsPath);
+});
+
 export = app;

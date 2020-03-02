@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd src
+pushd backend
 
 echo "Running tests!"
 npm run test
