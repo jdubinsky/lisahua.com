@@ -29,7 +29,10 @@ module.exports = {
         },
         {
           test: /\.(jpe?g|gif|png|wav|mp3)$/,
-          loader: "file-loader"
+          loader: "file-loader",
+          options: {
+            outputPath: "static"
+          }
         },
         {
           test: /\.(ttf|eot|woff|woff2|otf)$/,
