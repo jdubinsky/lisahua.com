@@ -1,14 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: './app.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.dev.bundle.js'
+        filename: 'app.bundle.js'
     },
-    mode: "development",
+    mode: "production",
+    optimization: {
+      minimizer: [new UglifyJsPlugin()],
+    },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],
         alias: {
@@ -18,12 +21,6 @@ module.exports = {
         }
     },
     devtool: "inline-source-map",
-    devServer: {
-      contentBase: path.join(__dirname, 'dist'),
-      inline: true,
-      compress: true,
-      port: 9000
-    },
     module: {
       rules: [
         {
@@ -46,7 +43,6 @@ module.exports = {
       ],
     },
     plugins: [
-      new ForkTsCheckerWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: "./base.html"
       })
