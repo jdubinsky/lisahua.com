@@ -17,7 +17,7 @@ export default class Content extends Component {
                         explore case study
                     </styles.CallToActionText>
                     <styles.ImageWrapper>
-                        <img src="/magnet.png" />
+                        <img src="magnet.png" />
                     </styles.ImageWrapper>
                 </styles.CaseStudyContainer>
             </styles.Content>
