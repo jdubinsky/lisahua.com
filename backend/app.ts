@@ -6,15 +6,14 @@ const app = express();
 const s3 = new S3();
 const bucketName = process.env.BUCKET_NAME;
 
-async function getImageFromS3(key: string) {
+async function getStaticObject(key: string) {
   if (!bucketName) {
     return;
   }
 
-  const keyPath = `images${key}`;
   const params: S3.Types.GetObjectRequest = {
     Bucket: bucketName,
-    Key: keyPath
+    Key: key
   };
 
   return await s3.getObject(params).promise();
@@ -38,7 +37,8 @@ app.get("/*", async (request: express.Request, response: express.Response) => {
     return response.sendStatus(404);
   }
 
-  const imgResponse = await getImageFromS3(request.path);
+  const keyPath = `images${request.path}`;
+  const imgResponse = await getStaticObject(keyPath);
 
   if (!(imgResponse instanceof Error) && imgResponse) {
     const { ContentLength: imgLength, Body: imgData } = imgResponse;

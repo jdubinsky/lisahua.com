@@ -1,12 +1,9 @@
 import { h, Component } from "preact";
 
-import magnetImg from "../assets/images/magnet.png";
-
 import * as styles from "./styles";
 
 export default class Content extends Component {
     render() {
-        console.log(magnetImg)
         return (
             <styles.Content>
                 <styles.CaseStudyContainer>
@@ -20,7 +17,7 @@ export default class Content extends Component {
                         explore case study
                     </styles.CallToActionText>
                     <styles.ImageWrapper>
-                        <img src={magnetImg} />
+                        <img src="/magnet.png" />
                     </styles.ImageWrapper>
                 </styles.CaseStudyContainer>
             </styles.Content>
