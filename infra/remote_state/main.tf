@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "tfstate" {
 }
 
 resource "aws_s3_bucket_policy" "tfstate_policy" {
-  bucket = "${aws_s3_bucket.tfstate.id}"
+  bucket = aws_s3_bucket.tfstate.id
 
   policy = <<POLICY
 {

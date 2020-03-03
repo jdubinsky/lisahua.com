@@ -15,4 +15,15 @@ app.get("/app.bundle.js", (request: express.Request, response: express.Response)
   return response.sendFile(jsPath);
 });
 
+app.get("/*", (request: express.Request, response: express.Response) => {
+  const isImg = request.path.endsWith(".png");
+  if (isImg) {
+    const imgPath = path.join(__dirname, request.path);
+    response.set({'Content-Type': 'image/png'});
+    return response.sendFile(imgPath);
+  }
+
+  return response.sendStatus(404);
+});
+
 export = app;

@@ -63,6 +63,7 @@ typings/
 # terraform state
 */.terraform*
 terraform.tfstate*
+infra/tfplan
 
 # lamba builds
 *lambda*.zip
@@ -71,4 +72,5 @@ terraform.tfstate*
 build/
 dist/
 
+# misc
 .DS_store
