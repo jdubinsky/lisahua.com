@@ -36,10 +36,12 @@ app.get("/app.bundle.js", async (request: express.Request, response: express.Res
 
   if (!(bundleResponse instanceof Error) && bundleResponse) {
     const { ContentLength: bundleLength, Body: bundle } = bundleResponse;
+    console.log("1")
     response.writeHead(200, {
       "Content-Type": "application/javascript",
       "Content-Length": bundleLength
     });
+    console.log("send")
     return response.end(bundle);
   }
 
@@ -58,11 +60,17 @@ app.get("/*", async (request: express.Request, response: express.Response) => {
 
   if (!(imgResponse instanceof Error) && imgResponse) {
     const { ContentLength: imgLength, Body: imgData } = imgResponse;
+    if (!imgData) {
+      return response.sendStatus(404);
+    }
+
+    const img = Buffer.from(imgData.toString(), "base64");
+
     response.writeHead(200, {
       "Content-Type": "image/png",
       "Content-Length": imgLength
     });
-    return response.end(imgData);
+    return response.end(img);
   }
 
   return response.sendStatus(404);
