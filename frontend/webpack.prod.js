@@ -10,7 +10,6 @@ module.exports = {
     },
     mode: "production",
     optimization: {
-      minimze: true,
       minimizer: [new TerserPlugin()]
     },
     resolve: {
@@ -27,10 +26,6 @@ module.exports = {
         {
           test: /\.txt$/i,
           use: 'raw-loader',
-        },
-        {
-          test: /\.(jpe?g|gif|png|wav|mp3)$/,
-          loader: "file-loader",
         },
         {
           test: /\.(ttf|eot|woff|woff2|otf)$/,
