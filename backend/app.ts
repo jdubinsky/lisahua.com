@@ -28,9 +28,22 @@ app.get("/", (request: express.Request, response: express.Response) => {
   return response.sendFile(indexPath);
 });
 
-app.get("/app.bundle.js", (request: express.Request, response: express.Response) => {
-  const jsPath = path.join(__dirname, "/app.bundle.js");
-  return response.sendFile(jsPath);
+app.get("/app.bundle.js", async (request: express.Request, response: express.Response) => {
+  // const jsPath = path.join(__dirname, "/app.bundle.js");
+  // return response.sendFile(jsPath);
+  const keyPath = "app.bundle.js"
+  const bundleResponse = await getStaticObject(keyPath);
+
+  if (!(bundleResponse instanceof Error) && bundleResponse) {
+    const { ContentLength: bundleLength, Body: bundle } = bundleResponse;
+    response.writeHead(200, {
+      "Content-Type": "application/javascript",
+      "Content-Length": bundleLength
+    });
+    return response.end(bundle);
+  }
+
+  return response.sendStatus(404);
 });
 
 app.get("/*", async (request: express.Request, response: express.Response) => {

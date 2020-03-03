@@ -23,7 +23,6 @@ npx tsc
 # install dependencies (prod only)
 echo "Copying files..."
 cp package*.json build/
-cp ../frontend/dist/* build/
 
 pushd build
 echo "Installing prod packages..."
