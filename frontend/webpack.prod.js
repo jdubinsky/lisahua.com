@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './app.tsx',
@@ -10,7 +10,8 @@ module.exports = {
     },
     mode: "production",
     optimization: {
-      minimizer: [new UglifyJsPlugin()],
+      minimze: true,
+      minimizer: [new TerserPlugin()]
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],

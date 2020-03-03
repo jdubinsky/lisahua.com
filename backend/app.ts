@@ -1,7 +1,24 @@
 import express = require("express");
 import path = require("path");
+import S3 = require('aws-sdk/clients/s3');
 
-let app = express();
+const app = express();
+const s3 = new S3();
+const bucketName = process.env.BUCKET_NAME;
+
+async function getImageFromS3(key: string) {
+  if (!bucketName) {
+    return;
+  }
+
+  const keyPath = `images${key}`;
+  const params: S3.Types.GetObjectRequest = {
+    Bucket: bucketName,
+    Key: keyPath
+  };
+
+  return await s3.getObject(params).promise();
+}
 
 app.use("/static", express.static(path.join(__dirname, "static")));
 
@@ -15,12 +32,21 @@ app.get("/app.bundle.js", (request: express.Request, response: express.Response)
   return response.sendFile(jsPath);
 });
 
-app.get("/*", (request: express.Request, response: express.Response) => {
+app.get("/*", async (request: express.Request, response: express.Response) => {
   const isImg = request.path.endsWith(".png");
-  if (isImg) {
-    const imgPath = path.join(__dirname, request.path);
-    response.set({'Content-Type': 'image/png'});
-    return response.sendFile(imgPath);
+  if (!isImg || !bucketName) {
+    return response.sendStatus(404);
+  }
+
+  const imgResponse = await getImageFromS3(request.path);
+
+  if (!(imgResponse instanceof Error) && imgResponse) {
+    const { ContentLength: imgLength, Body: imgData } = imgResponse;
+    response.writeHead(200, {
+      "Content-Type": "image/png",
+      "Content-Length": imgLength
+    });
+    return response.end(imgData);
   }
 
   return response.sendStatus(404);

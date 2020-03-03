@@ -156,6 +156,7 @@ resource "aws_lambda_function" "lambda" {
   environment {
     variables = {
       APP_PORT = 8080
+      BUCKET_NAME = aws_s3_bucket.static.id
       NODE_ENV = "production"
     }
   }
