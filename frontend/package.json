@@ -4,7 +4,7 @@
   "description": "lisahua.com FE",
   "main": "app.tsx",
   "scripts": {
-    "dev": "npx webpack-dev-server --open --hot",
+    "dev": "npx webpack-dev-server --hot",
     "prod": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/jdubinsky/lisahua.com#readme",
   "dependencies": {
+    "core-js": "^3.6.4",
     "preact": "^10.3.3",
+    "regenerator-runtime": "^0.13.3",
     "styled-components": "^5.0.1",
     "typescript": "^3.8.3",
     "webpack": "^4.41.6"

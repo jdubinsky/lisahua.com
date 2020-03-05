@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
@@ -39,6 +40,12 @@ module.exports = {
       ],
     },
     plugins: [
+      new webpack.DefinePlugin({
+        "process.env": {
+          "API_HOST": JSON.stringify("https://www.lisahua.com/"),
+          "STATIC_URL": JSON.stringify("https://lhua-static.s3.amazonaws.com/")
+        }
+      }),
       new HtmlWebpackPlugin({
         template: "./base.html"
       })

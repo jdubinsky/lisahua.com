@@ -3,6 +3,7 @@ import { h, Component } from "preact";
 import * as styles from "./styles";
 
 export default class Content extends Component {
+
     render() {
         return (
             <styles.Content>
@@ -17,7 +18,7 @@ export default class Content extends Component {
                         explore case study
                     </styles.CallToActionText>
                     <styles.ImageWrapper>
-                        <img src="magnet.png" />
+                        <img src={`${process.env.STATIC_URL}images/magnet.png`} />
                     </styles.ImageWrapper>
                 </styles.CaseStudyContainer>
             </styles.Content>

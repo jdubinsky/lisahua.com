@@ -80,6 +80,8 @@ resource "aws_iam_role" "iam_for_lambda" {
 resource "aws_api_gateway_rest_api" "api" {
   name        = "LHuaAPI"
   description = "API GW for lisahua.com personal site"
+
+  binary_media_types = ["*/*"]
 }
 
  resource "aws_api_gateway_method" "proxy_root" {
@@ -153,11 +155,16 @@ resource "aws_lambda_function" "lambda" {
   handler = "index.handler"
   runtime = "nodejs10.x"
 
+  memory_size = 256
+  timeout = 60
+
   environment {
     variables = {
       APP_PORT = 8080
       BUCKET_NAME = aws_s3_bucket.static.id
       NODE_ENV = "production"
+      API_HOST = "https://www.lisahua.com/"
+      STATIC_URL = "https://lhua-static.s3.amazonaws.com/"
     }
   }
 }
