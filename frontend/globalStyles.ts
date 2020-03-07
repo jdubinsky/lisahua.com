@@ -1,11 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 import Avenir from "./assets/fonts/AvenirRoman.otf";
-// import Beau from "./assets/fonts/BeauRegular.ttf";
 
 const beauFontUrl = `${process.env.STATIC_URL}fonts/BeauRegular.ttf`;
-// const beauFontUrl = `fonts/BeauRegular.ttf`;
-console.log("load font", beauFontUrl)
 
 export default createGlobalStyle`
   @font-face {
