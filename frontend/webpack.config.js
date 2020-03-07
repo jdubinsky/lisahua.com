@@ -1,4 +1,5 @@
-const path = require('path');
+const webpack = require("webpack");
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
@@ -46,6 +47,12 @@ module.exports = {
       ],
     },
     plugins: [
+      new webpack.DefinePlugin({
+        "process.env": {
+          "API_HOST": JSON.stringify("http://localhost:9001/"),
+          "STATIC_URL": JSON.stringify("https://lhua-static.s3.amazonaws.com/")
+        }
+      }),
       new ForkTsCheckerWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: "./base.html"

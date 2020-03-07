@@ -1,6 +1,7 @@
+const webpack = require("webpack");
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './app.tsx',
@@ -10,7 +11,7 @@ module.exports = {
     },
     mode: "production",
     optimization: {
-      minimizer: [new UglifyJsPlugin()],
+      minimizer: [new TerserPlugin()]
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -28,13 +29,6 @@ module.exports = {
           use: 'raw-loader',
         },
         {
-          test: /\.(jpe?g|gif|png|wav|mp3)$/,
-          loader: "file-loader",
-          options: {
-            outputPath: "static"
-          }
-        },
-        {
           test: /\.(ttf|eot|woff|woff2|otf)$/,
           loader: "file-loader"
         },
@@ -46,6 +40,12 @@ module.exports = {
       ],
     },
     plugins: [
+      new webpack.DefinePlugin({
+        "process.env": {
+          "API_HOST": JSON.stringify("https://www.lisahua.com/"),
+          "STATIC_URL": JSON.stringify("https://lhua-static.s3.amazonaws.com/")
+        }
+      }),
       new HtmlWebpackPlugin({
         template: "./base.html"
       })

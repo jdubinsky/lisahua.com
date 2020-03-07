@@ -73,8 +73,12 @@ export const Header = styled(AvenirFontDiv)`
   font-size: 16px;
 `;
 
+export const TextWithIcon = styled(MarginDiv)`
+  display: flex;
+  align-items: center;
+`;
+
 export const Subtext = styled(AvenirFontDiv)`
-  margin-top: 30px;
   font-size: 16px;
 `;
 

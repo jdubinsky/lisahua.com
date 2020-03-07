@@ -1,20 +1,23 @@
-import { h, render } from "preact";
+import "core-js";
+import "regenerator-runtime/runtime";
+
+import { h, render, Fragment } from "preact";
 
 import Container from "./Container";
 
 import GlobalFonts from "./globalStyles";
 
 let appEl = document.getElementById("app");
-console.log(appEl)
 if (!appEl) {
     appEl = document.createElement("app");
 }
 
 render(
     (
-        <Container>
+        <Fragment>
             <GlobalFonts />
-        </Container>
+            <Container />
+        </Fragment>
     ),
     appEl
 );

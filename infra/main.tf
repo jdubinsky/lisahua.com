@@ -14,13 +14,13 @@ data "archive_file" "zip" {
 }
 
 resource "aws_acm_certificate" "cert" {
-  provider          = "aws.cloudfront-acm-certs"
+  provider          = aws.cloudfront-acm-certs
   domain_name       = "*.lisahua.com"
   validation_method = "EMAIL"
 }
 
 resource "aws_acm_certificate_validation" "cert" {
-  certificate_arn = "${aws_acm_certificate.cert.arn}"
+  certificate_arn = aws_acm_certificate.cert.arn
 }
 
 resource "aws_route53_zone" "root_domain" {
@@ -30,31 +30,31 @@ resource "aws_route53_zone" "root_domain" {
 # The domain name to use with api-gateway
 resource "aws_api_gateway_domain_name" "apigw_domain_name" {
   domain_name     = "www.lisahua.com"
-  certificate_arn = "${aws_acm_certificate.cert.arn}"
+  certificate_arn = aws_acm_certificate.cert.arn
 
 }
 
 resource "aws_api_gateway_stage" "api_prod_stage" {
   stage_name    = "prod"
-  rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
-  deployment_id = "${aws_api_gateway_deployment.prod_deploy.id}"
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  deployment_id = aws_api_gateway_deployment.prod_deploy.id
 }
 
 resource "aws_api_gateway_base_path_mapping" "apigw_path_map" {
-  api_id      = "${aws_api_gateway_rest_api.api.id}"
-  domain_name = "${aws_api_gateway_domain_name.apigw_domain_name.domain_name}"
-  stage_name  = "${aws_api_gateway_stage.api_prod_stage.stage_name}"
+  api_id      = aws_api_gateway_rest_api.api.id
+  domain_name = aws_api_gateway_domain_name.apigw_domain_name.domain_name
+  stage_name  = aws_api_gateway_stage.api_prod_stage.stage_name
 }
 
 resource "aws_route53_record" "r53rec" {
   name    = "*.lisahua.com"
   type    = "A"
-  zone_id = "${aws_route53_zone.root_domain.id}"
+  zone_id = aws_route53_zone.root_domain.id
 
   alias {
     evaluate_target_health = true
-    name                   = "${aws_api_gateway_domain_name.apigw_domain_name.cloudfront_domain_name}"
-    zone_id                = "${aws_api_gateway_domain_name.apigw_domain_name.cloudfront_zone_id}"
+    name                   = aws_api_gateway_domain_name.apigw_domain_name.cloudfront_domain_name
+    zone_id                = aws_api_gateway_domain_name.apigw_domain_name.cloudfront_zone_id
   }
 }
 
@@ -74,12 +74,14 @@ data "aws_iam_policy_document" "policy" {
 
 resource "aws_iam_role" "iam_for_lambda" {
   name               = "iam_for_lambda_lhua"
-  assume_role_policy = "${data.aws_iam_policy_document.policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.policy.json
 }
 
 resource "aws_api_gateway_rest_api" "api" {
   name        = "LHuaAPI"
   description = "API GW for lisahua.com personal site"
+
+  binary_media_types = ["*/*"]
 }
 
  resource "aws_api_gateway_method" "proxy_root" {
@@ -136,7 +138,7 @@ resource "aws_api_gateway_method" "proxy" {
 resource "aws_lambda_permission" "apigw_lambda" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
-  function_name = "${aws_lambda_function.lambda.function_name}"
+  function_name = aws_lambda_function.lambda.function_name
   principal     = "apigateway.amazonaws.com"
 
   # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
@@ -146,17 +148,23 @@ resource "aws_lambda_permission" "apigw_lambda" {
 resource "aws_lambda_function" "lambda" {
   function_name = "lisahua-domain"
 
-  filename         = "${data.archive_file.zip.output_path}"
-  source_code_hash = "${data.archive_file.zip.output_base64sha256}"
+  filename         = data.archive_file.zip.output_path
+  source_code_hash = data.archive_file.zip.output_base64sha256
 
-  role    = "${aws_iam_role.iam_for_lambda.arn}"
+  role    = aws_iam_role.iam_for_lambda.arn
   handler = "index.handler"
   runtime = "nodejs10.x"
+
+  memory_size = 256
+  timeout = 60
 
   environment {
     variables = {
       APP_PORT = 8080
+      BUCKET_NAME = aws_s3_bucket.static.id
       NODE_ENV = "production"
+      API_HOST = "https://www.lisahua.com/"
+      STATIC_URL = "https://lhua-static.s3.amazonaws.com/"
     }
   }
 }
