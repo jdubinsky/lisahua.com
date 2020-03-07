@@ -14,16 +14,22 @@ const MarginDiv = styled.div<MarginProps>`
 
 export const Sidebar = styled(MarginDiv)`
   height: 100%;
-  width: 35%;
+  width: 100%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   overflow: auto;
-  left: 0px;
-  top: 0px;
-  margin-left: 54px;
-  margin-top: 65px;
-  margin-right: 60px;
   background: #FFFFFF;
+
+  @media only screen and (min-width: 768px) {
+    width: 35%;
+    left: 0px;
+    top: 0px;
+    margin-top: 65px;
+    margin-left: 54px;
+    margin-right: 60px;
+    overflow: auto;
+  }
 `;
 
 const BeauFontDiv = styled(MarginDiv)`
