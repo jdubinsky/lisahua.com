@@ -1,5 +1,7 @@
 import { h, Component } from "preact";
 
+import DownArrowIcon from "../icons/DownArrow";
+
 import * as styles from "./styles";
 import description from "./content.txt";
 
@@ -16,9 +18,12 @@ export default class Sidebar extends Component {
                 <styles.Text>
                     { description }
                 </styles.Text>
-                <styles.Subtext>
-                    scroll
-                </styles.Subtext>
+                <styles.TextWithIcon marginTop="34px">
+                    <DownArrowIcon />
+                    <styles.Subtext marginLeft="13px">
+                        scroll
+                    </styles.Subtext>
+                </styles.TextWithIcon>
                 <styles.Header marginTop="150px">
                     experience & education
                 </styles.Header>

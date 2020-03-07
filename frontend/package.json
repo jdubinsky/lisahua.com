@@ -4,7 +4,7 @@
   "description": "lisahua.com FE",
   "main": "app.tsx",
   "scripts": {
-    "dev": "npx webpack-dev-server --hot",
+    "dev": "npx webpack-dev-server --hot --watch",
     "prod": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

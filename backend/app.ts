@@ -7,7 +7,6 @@ const s3 = new S3();
 const bucketName = process.env.BUCKET_NAME;
 
 async function getStaticObject(key: string) {
-  console.log("bucket", bucketName);
   if (!bucketName) {
     return;
   }
@@ -23,12 +22,12 @@ async function getStaticObject(key: string) {
 
 app.use("/static", express.static(__dirname));
 
-app.get("/", (response: express.Response) => {
+app.get("/", (request: express.Request, response: express.Response) => {
   const indexPath = path.join(__dirname, "/index.html");
   return response.sendFile(indexPath);
 });
 
-app.get("/app.bundle.js", async (response: express.Response) => {
+app.get("/app.bundle.js", async (request: express.Request, response: express.Response) => {
   const bundlePath = path.join(__dirname, "/app.bundle.js");
   return response.sendFile(bundlePath);
 });

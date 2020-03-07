@@ -1,7 +1,7 @@
 import "core-js";
 import "regenerator-runtime/runtime";
 
-import { h, render } from "preact";
+import { h, render, Fragment } from "preact";
 
 import Container from "./Container";
 
@@ -14,9 +14,10 @@ if (!appEl) {
 
 render(
     (
-        <Container>
+        <Fragment>
             <GlobalFonts />
-        </Container>
+            <Container />
+        </Fragment>
     ),
     appEl
 );

@@ -1,5 +1,13 @@
 resource "aws_s3_bucket" "static" {
     bucket = "lhua-static"
+
+    cors_rule {
+      allowed_headers = ["*"]
+      allowed_methods = ["GET"]
+      allowed_origins = ["https://www.lisahua.com"]
+      expose_headers  = ["ETag"]
+      max_age_seconds = 3000
+    }
 }
 
 resource "aws_s3_bucket_policy" "static_policy" {
@@ -33,6 +41,15 @@ resource "aws_s3_bucket_object" "static_images" {
     key = "images/${each.value}"
     source = "../frontend/assets/images/${each.value}"
     etag = filemd5("../frontend/assets/images/${each.value}")
+}
+
+resource "aws_s3_bucket_object" "static_fonts" {
+    for_each = fileset("../frontend/assets/fonts/", "*")
+
+    bucket = aws_s3_bucket.static.id
+    key = "fonts/${each.value}"
+    source = "../frontend/assets/fonts/${each.value}"
+    etag = filemd5("../frontend/assets/fonts/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_js" {

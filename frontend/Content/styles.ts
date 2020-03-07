@@ -7,7 +7,9 @@ interface MarginProps {
 
 const MarginDiv = styled.div<MarginProps>`
   margin-top: ${props => props.marginTop || "0px"};
+  margin-bottom: ${props => props.marginBottom || "0px"};
   margin-left: ${props => props.marginLeft || "0px"};
+  margin-right: ${props => props.marginRight || "0px"};
 `;
 
 export const Content = styled(MarginDiv)`
@@ -48,6 +50,11 @@ const AvenirFontBase = styled(MarginDiv)`
   font-weight: normal;
 `;
 
+export const CallToActionContainer = styled(MarginDiv)`
+  display: flex;
+  align-items: center;
+`;
+
 export const CallToActionText = styled(AvenirFontBase)`
   font-weight: 800;
   font-size: 18px;
@@ -57,6 +64,20 @@ export const ImageWrapper = styled(MarginDiv)`
   display: flex;
   align-self: flex-end;
   margin-right: 12px;
-  border-radius: 25px;
   overflow: hidden;
+`;
+
+export const Footer = styled(MarginDiv)`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const LeftFooter = styled(AvenirFontBase)`
+  display: flex;
+  font-size: 16px;
+`;
+
+export const RightFooter = styled(BeauFontBase)`
+  display: flex;
+  font-size: 20px;
 `;
