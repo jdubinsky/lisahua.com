@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../icons/Arrowless";
 
@@ -17,7 +18,9 @@ export default class Content extends Component {
                 </styles.Text>
                 <styles.CallToActionContainer marginTop="50px">
                     <styles.CallToActionText marginRight="12px">
-                        explore case study
+                        <Link to="/magnet">
+                            explore case study
+                        </Link>
                     </styles.CallToActionText>
                     <ArrowlessIcon />
                 </styles.CallToActionContainer>

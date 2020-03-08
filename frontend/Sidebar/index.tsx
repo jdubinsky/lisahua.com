@@ -1,8 +1,10 @@
 import { h, Component } from "preact";
 
+import ArrowlessIcon from "../icons/Arrowless";
 import DownArrowIcon from "../icons/DownArrow";
 
 import * as styles from "./styles";
+import * as constants from "../constants";
 import description from "./content.txt";
 
 export default class Sidebar extends Component {
@@ -28,9 +30,14 @@ export default class Sidebar extends Component {
                     experience & education
                 </styles.Header>
                 { this.getExperienceAndEducationTable() }
-                <styles.BoldText marginTop="30px">
-                    View full resume
-                </styles.BoldText>
+                <styles.ResumeContainer>
+                    <styles.CallToActionLink href={constants.resumeUrl} marginRight="12px">
+                        <styles.BoldText>
+                            View full resume
+                        </styles.BoldText>
+                    </styles.CallToActionLink>
+                    <ArrowlessIcon />
+                </styles.ResumeContainer>
                 <styles.Header marginTop="60px">
                     say hello
                 </styles.Header>
@@ -42,6 +49,12 @@ export default class Sidebar extends Component {
                 <styles.Header marginTop="60px">
                     my dogs
                 </styles.Header>
+                <div>
+                    <img src={constants.pankoUrl} />
+                    <styles.DogSubtitleText marginTop="10px">
+                        precious panko
+                    </styles.DogSubtitleText>
+                </div>
             </styles.Sidebar>
         );
     }

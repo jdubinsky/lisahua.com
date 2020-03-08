@@ -5,6 +5,11 @@ import Avenir from "./assets/fonts/AvenirRoman.otf";
 const beauFontUrl = `${process.env.STATIC_URL}fonts/BeauRegular.ttf`;
 
 export default createGlobalStyle`
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
   @font-face {
     font-family: Avenir;
     src:
