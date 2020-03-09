@@ -6,6 +6,7 @@ export const magnetUrl = `${STATIC_URL}images/magnet.png`;
 export const netsweeperUrl = `${STATIC_URL}images/netsweeper.png`;
 export const sessionzUrl = `${STATIC_URL}images/sessionz.png`;
 export const yumbaUrl = `${STATIC_URL}images/yumba.png`;
+export const ttcUrl = `${STATIC_URL}images/mobile.png`;
 
 // magnet case study images
 export const magnetHomeUrl = `${STATIC_URL}images/magnet_home.png`;
