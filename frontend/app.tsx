@@ -1,12 +1,8 @@
-import "core-js";
-import "regenerator-runtime/runtime";
-
 import { h, render, Fragment } from "preact";
 import {
 BrowserRouter as Router,
     Switch,
-    Route,
-    useRouteMatch
+    Route
 } from "react-router-dom";
 
 import Container from "./Container";

@@ -27,7 +27,7 @@ app.get("/app.bundle.js", async (request: express.Request, response: express.Res
   return response.sendFile(bundlePath);
 });
 
-app.get("/*png", async (request: express.Request, response: express.Response) => {
+app.get("/*.png", async (request: express.Request, response: express.Response) => {
   const isImg = request.path.endsWith(".png");
   if (!isImg || !bucketName) {
     return response.sendStatus(404);
