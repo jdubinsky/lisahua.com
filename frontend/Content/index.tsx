@@ -6,7 +6,22 @@ import ArrowlessIcon from "../icons/Arrowless";
 import * as styles from "./styles";
 import * as constants from "../constants";
 
+const ENABLE_MAGNET = process.env.NODE_ENV !== "production";
+
 export default class Content extends Component {
+    getMagnetLink() {
+        if (ENABLE_MAGNET) {
+            return (
+                <Link to="/magnet">
+                    explore case study
+                </Link>
+            );
+        }
+
+        return (
+            <p>🤞coming soon</p>
+        );
+    }
     getMagnetCaseStudy() {
         return (
             <styles.CaseStudyContainer>
@@ -18,9 +33,7 @@ export default class Content extends Component {
                 </styles.Text>
                 <styles.CallToActionContainer marginTop="50px">
                     <styles.CallToActionText marginRight="12px">
-                        <Link to="/magnet">
-                            explore case study
-                        </Link>
+                        { this.getMagnetLink() }
                     </styles.CallToActionText>
                     <ArrowlessIcon />
                 </styles.CallToActionContainer>

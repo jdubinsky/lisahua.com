@@ -115,3 +115,8 @@ export const Text = styled(BeauFontDiv)`
 export const BigText = styled(BeauFontDiv)`
   font-size: 24px;
 `;
+
+export const ImgWrapper = styled.img`
+  height: 374px;
+  width: 739px;
+`;

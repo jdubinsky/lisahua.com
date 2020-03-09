@@ -11,97 +11,229 @@ Redesigning the experience of buying and training investigative forensic equipme
 `;
 
 export default class MagnentCaseStudyPage extends Component {
+    buildList(header: string, listItems: string[]) {
+        const listComponents = listItems.map(item => {
+            return (
+                <styles.Text>
+                    { `• ${item}` }
+                </styles.Text>
+            )
+        });
+
+        return (
+            <div>
+                <styles.SmallHeader>
+                    { header }
+                </styles.SmallHeader>
+                { listComponents }
+            </div>
+        );
+    }
+
     getProjectInfo() {
         return (
             <styles.Table>
                 <styles.Column width="60%">
-                    <styles.SmallHeader>
-                        role
-                    </styles.SmallHeader>
-                    <styles.Text>
-                        information architecture
-                    </styles.Text>
-                    <styles.Text>
-                        user personas
-                    </styles.Text>
-                    <styles.Text>
-                        journey mapping
-                    </styles.Text>
-                    <styles.Text>
-                        wireframes
-                    </styles.Text>
-                    <styles.Text>
-                        stakeholder interviews
-                    </styles.Text>
-                    <styles.Text>
-                        user testing
-                    </styles.Text>
+                    { this.buildList("role", [
+                        "information architecture",
+                        "user personas",
+                        "journey mapping",
+                        "wireframes",
+                        "stakeholder interviews",
+                        "user testing"
+                    ])}
                 </styles.Column>
                 <styles.Column width="40%">
-                    <styles.SmallHeader>
-                        project type
-                    </styles.SmallHeader>
-                    <styles.Text>
-                        marketing
-                    </styles.Text>
-                    <styles.Text>
-                        website
-                    </styles.Text>
-                    <styles.SmallHeader>
-                        timeline
-                    </styles.SmallHeader>
-                    <styles.Text>
-                        june - aug 2018
-                    </styles.Text>
+                    { this.buildList("project type", [
+                        "marketing",
+                        "website"
+                    ])}
+                    { this.buildList("timeline", ["june - aug 2018"]) }
                 </styles.Column>
             </styles.Table>
         );
     }
 
     getToolsInfo() {
+        const list = this.buildList(
+            "tools",
+            [
+                "sketch",
+                "invision",
+                "highfive",
+                "skype for teams"
+            ]
+        );
         return (
             <styles.Column>
-                <styles.SmallHeader>
-                    tools
-                </styles.SmallHeader>
-                <styles.Text>
-                    sketch
-                </styles.Text>
-                <styles.Text>
-                    invision
-                </styles.Text>
-                <styles.Text>
-                    highfive
-                </styles.Text>
-                <styles.Text>
-                    skype for teams
-                </styles.Text>
+                { list }
             </styles.Column>
         );
     }
 
     getCredits() {
+        const list = this.buildList(
+            "credits",
+            [
+                "alison ma (product manager)",
+                "joshua van boxtel (lead wordpress developer)",
+                "rennie chun (lead visual designer)",
+                "lisa hua (UX designer)",
+                "justin damer (visual designer)"
+            ]
+        );
         return (
             <styles.Column>
+                { list }
+            </styles.Column>
+        );
+    }
+
+    getProjectGoals() {
+        return (
+            <div>
                 <styles.SmallHeader>
-                    credits
+                    project summary/goals
                 </styles.SmallHeader>
                 <styles.Text>
-                    alison ma (product manager)
+                    Redesign the marketing website to achieve:
                 </styles.Text>
                 <styles.Text>
-                    joshua van boxtel (lead wordpress developer)
+                    • distinguish the different product offering
                 </styles.Text>
                 <styles.Text>
-                    rennie chun (lead visual designer)
+                    • introduce a new way of forensic examinations
                 </styles.Text>
                 <styles.Text>
-                    lisa hua (UX designer)
+                    • get trained on how to use the tools
                 </styles.Text>
                 <styles.Text>
-                    justin damer (visual designer)
+                    • book demos with sales reps
                 </styles.Text>
-            </styles.Column>
+                <styles.Text>
+                    • have different users find the right product for them
+                </styles.Text>
+            </div>
+        );
+    }
+
+    getContributionsList() {
+        return this.buildList(
+            "contribution to the project",
+            [
+                "UX designer in charge of the discovery process which was new at the time",
+                "stakeholder interviews, customer journey mapping, personas, IA, and wireframes",
+                "user testing & recruitment",
+                "handed off designs to visual"
+            ]
+        );
+    }
+
+    getCompetitiveAnalysisList() {
+        return this.buildList(
+            "competitive analysis",
+            [
+                "did our own analysis",
+                "looked at their competitor’s (mostly product offering) and what magnet was doing differently, how their story was different",
+                "most companies did bits and pieces of the examination process, but axiom covered everything",
+                "distrusted using a single tool because they were taught to check their work with multiple tools (and didn’t want to replace their existing toolset)",
+                "was used to using a mix of open source and other tools along with manual processes instead of automation"
+            ]
+        );
+    }
+
+    getChallenges() {
+        return this.buildList(
+            "challenges",
+            [
+                "finding SMEs was difficult because if the niche market",
+                "We were limited by our time to find more respondents -- joined slack channels, linkedin groups, forums and posted looking for people to interview"
+            ]
+        )
+    }
+
+    getStakeholderInterviews() {
+        return this.buildList(
+            "stakeholder interviews",
+            [
+                "Interviewed with multiple of the VPs and Directors of different departments including the CEO and the Founder/CTO to understand their pain points with the existing site"
+            ]
+        )
+    }
+
+    getCustomerInterviews() {
+        return this.buildList(
+            "customer interviews",
+            [
+                "spoke with former forensic examiners from Magnet as well",
+                "conducted small surveys to get an understanding of what type of products were in the market for FE, the type of investigations they worked on, and how open were they to trynig out new tools, as well as who were the decision makers in the buying process"
+            ]
+        );
+    }
+
+    getPersonasList() {
+        return this.buildList(
+            "personas",
+            [
+                "forensic examiner, mid level careers, very techncial (corporate and police version)",
+                "investigator, would be using the other magnet tools, and leading investigations",
+                "police chief - lower knowledge of tool, primary decision maker",
+                "explored a few other ones like the leaders/promoters who would act as the coaches/thought leaders in the industry but left them out as they weren’t the primary audiences Magnet was looking for",
+                "presented to client and matched very similar personas they used internally"
+            ]
+        );
+    }
+
+    getPersonasChallengesList() {
+        return this.buildList(
+            "challenges",
+            [
+                "lots of different audiences and marketing team had a hard time segmenting their messaging to the police/corporate",
+                "corporate had the money that the client wanted but the police had the mission that the client aligned with older generation of FE didn’t like changing their processes and trying new tools",
+                "newer examiners were open to using automated tools and influece their organization’s purchasing decisions"
+            ]
+        );
+    }
+
+    getInformationArchitectureList() {
+        return this.buildList(
+            "information architecture",
+            [
+                "Lorem ipsum"
+            ]
+        );
+    }
+
+    getLoFiWireframesList() {
+        return this.buildList(
+            "low-fidelity wireframes",
+            [
+                "core functions:",
+                "book demos",
+                "able to use blog/resources",
+                "get training for axiom by a professional",
+                "understand difference between tools and how they work together",
+                "low fi invision prototype",
+                "reviewed weekly with the client on different pages with different goals to get them onboard"
+            ]
+        );
+    }
+
+    getHiFiWireframesList() {
+        return this.buildList(
+            "high-fidelity wireframes",
+            [
+                "tested high-fi wireframes with 3 former forensic examiners to get their thoughts on the layout"
+            ]
+        );
+    }
+
+    getNextStepsList() {
+        return this.buildList(
+            "next steps in the project",
+            [
+                "Lorem ipsum"
+            ]
         );
     }
 
@@ -110,7 +242,7 @@ export default class MagnentCaseStudyPage extends Component {
             <styles.Container>
                 <styles.SidebarContainer>
                     <styles.Title>
-                        Magnent
+                        Magnet
                     </styles.Title>
                     <styles.Title marginBottom="40px">
                         Forensics
@@ -144,30 +276,76 @@ export default class MagnentCaseStudyPage extends Component {
                     <styles.SmallHeader>
                         problem
                     </styles.SmallHeader>
+                    { this.getProjectGoals() }
+                    <styles.ImgWrapper src={constants.magnetHomeUrl} />
                     <styles.SmallHeader>
-                        project summary/goals
+                        approach
                     </styles.SmallHeader>
                     <styles.Text>
-                        Redesign the marketing website to achieve:
+                        • no rapid design sprints
                     </styles.Text>
                     <styles.Text>
-                        • distinguish the different product offering
+                        • advocated for a strong discovery phase
                     </styles.Text>
-                    <styles.Text>
-                        • introduce a new way of forensic examinations
-                    </styles.Text>
-                    <styles.Text>
-                        • get trained on how to use the tools
-                    </styles.Text>
-                    <styles.Text>
-                        • book demos with sales reps
-                    </styles.Text>
-                    <styles.Text>
-                        • have different users find the right product for them
-                    </styles.Text>
+                    { this.getContributionsList() }
+                    <styles.Table>
+                        <styles.Column width="20%">
+                            <styles.Section>
+                                research
+                            </styles.Section>
+                        </styles.Column>
+                        <styles.Column width="80%">
+                            Lorem ipsum
+                        </styles.Column>
+                    </styles.Table>
+                    { this.getCompetitiveAnalysisList() }
+                    { this.getChallenges() }
                     <div>
-                        <img src={constants.magnetHomeUrl} />
+                        { this.getStakeholderInterviews() }
+                        <styles.ImgWrapper src={constants.magnetStakeholderUrl} />
                     </div>
+                    <div>
+                        { this.getCustomerInterviews() }
+                        <styles.ImgWrapper src={constants.magnetCustomerUrl} />
+                    </div>
+                    <styles.Table>
+                        <styles.Column width="20%">
+                            <styles.Section>
+                                define
+                            </styles.Section>
+                        </styles.Column>
+                        <styles.Column width="80%">
+                            Lorem ipsum
+                        </styles.Column>
+                    </styles.Table>
+                    { this.getPersonasList() }
+                    { this.getPersonasChallengesList() }
+                    <styles.Table>
+                        <styles.Column width="20%">
+                            <styles.Section>
+                                ideate
+                            </styles.Section>
+                        </styles.Column>
+                        <styles.Column width="80%">
+                            Lorem ipsum
+                        </styles.Column>
+                    </styles.Table>
+                    { this.getInformationArchitectureList() }
+                    { this.getLoFiWireframesList() }
+                    { this.getHiFiWireframesList() }
+                    <styles.Table>
+                        <styles.Column width="20%">
+                            <styles.Section>
+                                retro
+                            </styles.Section>
+                        </styles.Column>
+                        <styles.Column width="80%">
+                            <styles.Text>
+                                internal retro - first big discovery project, was tough client retro
+                            </styles.Text>
+                        </styles.Column>
+                    </styles.Table>
+                    { this.getNextStepsList() }
                 </styles.Content>
             </styles.Container>
         );
