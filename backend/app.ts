@@ -22,17 +22,12 @@ async function getStaticObject(key: string) {
 
 app.use("/static", express.static(__dirname));
 
-app.get("/", (request: express.Request, response: express.Response) => {
-  const indexPath = path.join(__dirname, "/index.html");
-  return response.sendFile(indexPath);
-});
-
 app.get("/app.bundle.js", async (request: express.Request, response: express.Response) => {
   const bundlePath = path.join(__dirname, "/app.bundle.js");
   return response.sendFile(bundlePath);
 });
 
-app.get("/*", async (request: express.Request, response: express.Response) => {
+app.get("/*.png", async (request: express.Request, response: express.Response) => {
   const isImg = request.path.endsWith(".png");
   if (!isImg || !bucketName) {
     return response.sendStatus(404);
@@ -40,6 +35,11 @@ app.get("/*", async (request: express.Request, response: express.Response) => {
 
   const imgFile = path.join(__dirname, request.path);
   return response.sendFile(imgFile);
+});
+
+app.get("/*", (request: express.Request, response: express.Response) => {
+  const indexPath = path.join(__dirname, "/index.html");
+  return response.sendFile(indexPath);
 });
 
 export = app;

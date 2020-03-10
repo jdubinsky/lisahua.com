@@ -12,18 +12,27 @@ const MarginDiv = styled.div<MarginProps>`
   margin-right: ${props => props.marginRight || "0px"};
 `;
 
+const MarginA = styled.a<MarginProps>`
+  margin-top: ${props => props.marginTop || "0px"};
+  margin-left: ${props => props.marginLeft || "0px"};
+  margin-right: ${props => props.marginRight || "0px"};
+`;
+
 export const Sidebar = styled(MarginDiv)`
-  height: 100%;
-  width: 35%;
+  width: 100%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   overflow: auto;
-  left: 0px;
-  top: 0px;
-  margin-left: 54px;
-  margin-top: 65px;
-  margin-right: 60px;
   background: #FFFFFF;
+
+  @media only screen and (min-width: 768px) {
+    width: 35%;
+    margin-top: 65px;
+    margin-left: 54px;
+    margin-right: 60px;
+    overflow: auto;
+  }
 `;
 
 const BeauFontDiv = styled(MarginDiv)`
@@ -85,4 +94,20 @@ export const Subtext = styled(AvenirFontDiv)`
 export const BoldText = styled(AvenirFontDiv)`
   font-weight: 800;
   font-size: 18px;
+`;
+
+export const ResumeContainer = styled(MarginDiv)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30px;
+`
+
+export const CallToActionLink = styled(MarginA)``;
+
+export const DogSubtitleText = styled(BeauFontDiv)`
+  font-size: 16px;
+`;
+
+export const DogsContainer = styled(MarginDiv)`
 `;

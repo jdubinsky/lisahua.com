@@ -13,14 +13,19 @@ const MarginDiv = styled.div<MarginProps>`
 `;
 
 export const Content = styled(MarginDiv)`
-  width: 65%;
+  width: 100%;
   padding: 10px;
-  padding-left: 90px;
-  padding-top: 112px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   background: #E5E5E5;
+
+  @media only screen and (min-width: 768px) {
+    width: 65%;
+    padding-left: 90px;
+    padding-top: 112px;
+    overflow: auto;
+  }
 `;
 
 const BeauFontBase = styled(MarginDiv)`
@@ -69,7 +74,12 @@ export const ImageWrapper = styled(MarginDiv)`
 
 export const Footer = styled(MarginDiv)`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const LeftFooter = styled(AvenirFontBase)`

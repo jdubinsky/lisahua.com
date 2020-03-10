@@ -1,11 +1,36 @@
-import { h, Component } from "preact";
+import { h, Component, Fragment } from "preact";
+import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../icons/Arrowless";
 
 import * as styles from "./styles";
 import * as constants from "../constants";
 
+const ENABLE_MAGNET = process.env.NODE_ENV !== "production";
+
 export default class Content extends Component {
+    getMagnetLink() {
+        if (ENABLE_MAGNET) {
+            return (
+                <Fragment>
+                    <styles.CallToActionText marginRight="12px">
+                        <Link to="/magnet">
+                        explore case study
+                        </Link>
+                    </styles.CallToActionText>
+                    <Link to="/magnet">
+                        <ArrowlessIcon />
+                    </Link>
+                </Fragment>
+            );
+        }
+
+        return (
+            <styles.CallToActionText>
+                🤞 coming soon
+            </styles.CallToActionText>
+        );
+    }
     getMagnetCaseStudy() {
         return (
             <styles.CaseStudyContainer>
@@ -16,14 +41,27 @@ export default class Content extends Component {
                     Redesigning the experience of training forensic investigators.
                 </styles.Text>
                 <styles.CallToActionContainer marginTop="50px">
-                    <styles.CallToActionText marginRight="12px">
-                        explore case study
-                    </styles.CallToActionText>
-                    <ArrowlessIcon />
+                    { this.getMagnetLink() }
                 </styles.CallToActionContainer>
                 <styles.ImageWrapper>
                     <img src={constants.magnetUrl} />
                 </styles.ImageWrapper>
+            </styles.CaseStudyContainer>
+        )
+    }
+
+    getAODACaseStudy() {
+        return (
+            <styles.CaseStudyContainer marginTop="65px">
+                <styles.Header>
+                    AODA Accessibility Project
+                </styles.Header>
+                <styles.Text marginTop="12px">
+                    A comprehensive testing guide designed to onboard non-technical stakeholders.
+                </styles.Text>
+                <styles.CallToActionText marginTop="50px">
+                    🤞coming soon
+                </styles.CallToActionText>
             </styles.CaseStudyContainer>
         )
     }
@@ -47,20 +85,20 @@ export default class Content extends Component {
         )
     }
 
-    getActoCaseStudy() {
+    getTTCCaseStudy() {
         return (
             <styles.CaseStudyContainer marginTop="65px">
                 <styles.Header>
-                    ACTO
+                    TTC Exit
                 </styles.Header>
                 <styles.Text marginTop="12px">
-                    Landing page that successfully booked meetings at the LTEN 2019 conference
+                    A tool that helps you shorten your commute and get you out of the subway station.
                 </styles.Text>
                 <styles.CallToActionText marginTop="50px">
                     🤞coming soon
                 </styles.CallToActionText>
                 <styles.ImageWrapper>
-                    <img src={constants.actoUrl} />
+                    <img src={constants.ttcUrl} />
                 </styles.ImageWrapper>
             </styles.CaseStudyContainer>
         )
@@ -82,44 +120,6 @@ export default class Content extends Component {
         )
     }
 
-    getSessionzCaseStudy() {
-        return (
-            <styles.CaseStudyContainer marginTop="65px">
-                <styles.Header>
-                    Sessionz
-                </styles.Header>
-                <styles.Text marginTop="12px">
-                    A platform that enables individuals to find and book learning opportunities with knowledgeable hosts.
-                </styles.Text>
-                <styles.CallToActionText marginTop="50px">
-                    🤞coming soon
-                </styles.CallToActionText>
-                <styles.ImageWrapper>
-                    <img src={constants.sessionzUrl} />
-                </styles.ImageWrapper>
-            </styles.CaseStudyContainer>
-        )
-    }
-
-    getYumbaCaseStudy() {
-        return (
-            <styles.CaseStudyContainer marginTop="65px">
-                <styles.Header>
-                    YUMBA
-                </styles.Header>
-                <styles.Text marginTop="12px">
-                    A web application that streamlines the checkout process for a meal delivery company.
-                </styles.Text>
-                <styles.CallToActionText marginTop="50px">
-                    🤞coming soon
-                </styles.CallToActionText>
-                <styles.ImageWrapper>
-                    <img src={constants.yumbaUrl} />
-                </styles.ImageWrapper>
-            </styles.CaseStudyContainer>
-        )
-    }
-
     getFooter() {
         return (
             <styles.Footer marginTop="65px">
@@ -137,11 +137,10 @@ export default class Content extends Component {
         return (
             <styles.Content>
                 {this.getMagnetCaseStudy()}
+                {this.getAODACaseStudy()}
                 {this.getNetsweeperCaseStudy()}
-                {this.getActoCaseStudy()}
                 {this.getCanvassCaseStudy()}
-                {this.getSessionzCaseStudy()}
-                {this.getYumbaCaseStudy()}
+                {this.getTTCCaseStudy()}
                 {this.getFooter()}
             </styles.Content>
         );
