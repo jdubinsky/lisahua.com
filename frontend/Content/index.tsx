@@ -26,7 +26,9 @@ export default class Content extends Component {
         }
 
         return (
-            <p>🤞coming soon</p>
+            <styles.CallToActionText>
+                🤞 coming soon
+            </styles.CallToActionText>
         );
     }
     getMagnetCaseStudy() {

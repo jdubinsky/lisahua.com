@@ -276,7 +276,7 @@ export default class MagnentCaseStudyPage extends Component {
     getContent() {
         return (
             <styles.Content>
-                <styles.CenteredTable>
+                <styles.CenteredTable marginBottom="30px">
                     <ArrowlessIcon />
                     <styles.BoldText marginLeft="12px">
                         <Link to="/">
