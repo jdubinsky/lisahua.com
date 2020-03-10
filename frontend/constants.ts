@@ -12,6 +12,7 @@ export const ttcUrl = `${STATIC_URL}images/mobile.png`;
 export const magnetHomeUrl = `${STATIC_URL}images/magnet_home.png`;
 export const magnetStakeholderUrl = `${STATIC_URL}images/magnet_stakeholder.png`;
 export const magnetCustomerUrl = `${STATIC_URL}images/magnet_customer.png`;
+export const magnetWhiteboardUrl = `${STATIC_URL}images/magnet_whiteboard.png`;
 
 // dogs
 export const pankoUrl = `${STATIC_URL}images/panku.jpg`;

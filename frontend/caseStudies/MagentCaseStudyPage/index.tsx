@@ -1,10 +1,13 @@
-import { h, Component } from "preact";
+import { h, Component, Fragment } from "preact";
 import { Link } from "react-router-dom";
 
 import * as constants from "../../constants";
 import ArrowlessIcon from "../../icons/Arrowless";
 
 import * as styles from "./styles";
+
+import contextString from "./context.txt";
+import problemString from "./problem.txt";
 
 const description = `
 Redesigning the experience of buying and training investigative forensic equipment.
@@ -91,29 +94,31 @@ export default class MagnentCaseStudyPage extends Component {
 
     getProjectGoals() {
         return (
-            <div>
-                <styles.SmallHeader>
-                    project summary/goals
+            <Fragment>
+                <styles.SmallHeader marginBottom="15px">
+                    project goals
                 </styles.SmallHeader>
-                <styles.Text>
-                    Redesign the marketing website to achieve:
+                <styles.Text marginBottom="30px">
+                    During our initial discovery session, we identified the following goals for the website:
                 </styles.Text>
-                <styles.Text>
-                    • distinguish the different product offering
+                <styles.Text marginBottom="15px">
+                    • Distinguish between Magnet Forensics’ diverse product offering
                 </styles.Text>
-                <styles.Text>
-                    • introduce a new way of forensic examinations
+                <styles.Text marginBottom="15px">
+                    • Organize resources in a matter that made it easy to find and use on a regular basis
                 </styles.Text>
-                <styles.Text>
-                    • get trained on how to use the tools
+                <styles.Text marginBottom="15px">
+                    • Help users understand the differences between their previous product (Magnet IEF) and their new offerings (Magnet AXIOM and beyond)
                 </styles.Text>
-                <styles.Text>
-                    • book demos with sales reps
+                <styles.Text marginBottom="30px">
+                    • Book demos with sales reps
                 </styles.Text>
-                <styles.Text>
-                    • have different users find the right product for them
-                </styles.Text>
-            </div>
+                <img
+                    height="271"
+                    width="471"
+                    src={constants.magnetWhiteboardUrl}
+                />
+            </Fragment>
         );
     }
 
@@ -258,7 +263,7 @@ export default class MagnentCaseStudyPage extends Component {
 
     getContextTable() {
         return (
-            <styles.Table>
+            <styles.Table marginBottom="50px">
                 <styles.Column width="20%">
                     <styles.Section>
                         context
@@ -266,10 +271,61 @@ export default class MagnentCaseStudyPage extends Component {
                 </styles.Column>
                 <styles.Column width="80%">
                     <styles.BigText>
-                        Magnet came to us with their pain points: too many products, only know for IEF, and lots of stakeholders who wanted different things.
+                        { contextString }
                     </styles.BigText>
                 </styles.Column>
             </styles.Table>
+        );
+    }
+
+    getContextSection() {
+        return (
+            <Fragment>
+                { this.getContextTable() }
+                <styles.SmallHeader marginBottom="15px">
+                    problem
+                </styles.SmallHeader>
+                <styles.Text marginBottom="30px">
+                    { problemString }
+                </styles.Text>
+                {/* <styles.ImgWrapper src={constants.magnetHomeUrl} /> */}
+                <styles.SmallHeader marginBottom="15px">
+                    approach
+                </styles.SmallHeader>
+                <styles.Text marginBottom="30px">
+                    I joined the project as the UX designer, and my involvement spanned across the discovery phase.
+                </styles.Text>
+                <styles.SubHeader marginBottom="10px">
+                    research
+                </styles.SubHeader>
+                <styles.Text marginBottom="30px">
+                    My work consisted of conducting stakeholder interviews, recruiting users and developing surveys, creating personas.
+                </styles.Text>
+                <styles.SubHeader marginBottom="10px">
+                    synthesis
+                </styles.SubHeader>
+                <styles.Text marginBottom="30px">
+                    Working with the product manager and Magnet Forensic’s marketing team, we synthesized the research findings to develop a strategy for the website during this phase. We collaborated on mapping out customer journeys, building the site’s information architecture, creating wireframes and iterated on our work to ensure it aligned with the business’ goals.
+                </styles.Text>
+                <styles.SubHeader marginBottom="10px">
+                    testing
+                </styles.SubHeader>
+                <styles.Text marginBottom="30px">
+                    We began testing the wireframes with existing users, and used their feedback to iterate on the website’s experience on desktop and mobile devices.
+                </styles.Text>
+                { this.getProjectGoals() }
+                <styles.Text>
+                    • no rapid design sprints
+                </styles.Text>
+            </Fragment>
+        );
+    }
+
+    getResearchSection() {
+        return (
+            <Fragment>
+
+            </Fragment>
         );
     }
 
@@ -284,18 +340,8 @@ export default class MagnentCaseStudyPage extends Component {
                         </Link>
                     </styles.BoldText>
                 </styles.CenteredTable>
-                { this.getContextTable() }
-                <styles.SmallHeader>
-                    problem
-                </styles.SmallHeader>
-                { this.getProjectGoals() }
-                <styles.ImgWrapper src={constants.magnetHomeUrl} />
-                <styles.SmallHeader>
-                    approach
-                </styles.SmallHeader>
-                <styles.Text>
-                    • no rapid design sprints
-                </styles.Text>
+                { this.getContextSection() }
+                { this.getResearchSection() }
                 <styles.Text>
                     • advocated for a strong discovery phase
                 </styles.Text>

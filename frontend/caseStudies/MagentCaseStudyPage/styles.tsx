@@ -52,8 +52,9 @@ export const Content = styled(MarginDiv)`
 
   @media only screen and (min-width: 768px) {
     width: 65%;
-    padding-left: 75px;
+    padding-left: 57px;
     padding-top: 37px;
+    padding-right: 137px;
     overflow: auto;
   }
 `;
@@ -88,8 +89,13 @@ export const Container = styled.div`
 `;
 
 export const SmallHeader = styled(AvenirFontDiv)`
-  font-size: 16px;
+  font-weight: 900;
+  font-size: 18px;
 `;
+
+export const SubHeader = styled(AvenirFontDiv)`
+  font-size: 16px;
+`
 
 export const Table = styled(MarginDiv)`
   display: flex;
@@ -114,7 +120,7 @@ export const Text = styled(BeauFontDiv)`
 `;
 
 export const BigText = styled(BeauFontDiv)`
-  font-size: 24px;
+  font-size: 20px;
 `;
 
 export const ImgWrapper = styled.img`
