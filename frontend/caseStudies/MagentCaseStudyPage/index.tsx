@@ -8,6 +8,8 @@ import * as styles from "./styles";
 
 import contextString from "./context.txt";
 import problemString from "./problem.txt";
+import competitiveAnalysisString from "./competitive-analysis.txt";
+import challengesString from "./challenges.txt";
 
 const description = `
 Redesigning the experience of buying and training investigative forensic equipment.
@@ -24,12 +26,12 @@ export default class MagnentCaseStudyPage extends Component {
         });
 
         return (
-            <div>
+            <Fragment>
                 <styles.SmallHeader>
                     { header }
                 </styles.SmallHeader>
                 { listComponents }
-            </div>
+            </Fragment>
         );
     }
 
@@ -91,37 +93,7 @@ export default class MagnentCaseStudyPage extends Component {
             </styles.Column>
         );
     }
-
-    getProjectGoals() {
-        return (
-            <Fragment>
-                <styles.SmallHeader marginBottom="15px">
-                    project goals
-                </styles.SmallHeader>
-                <styles.Text marginBottom="30px">
-                    During our initial discovery session, we identified the following goals for the website:
-                </styles.Text>
-                <styles.Text marginBottom="15px">
-                    • Distinguish between Magnet Forensics’ diverse product offering
-                </styles.Text>
-                <styles.Text marginBottom="15px">
-                    • Organize resources in a matter that made it easy to find and use on a regular basis
-                </styles.Text>
-                <styles.Text marginBottom="15px">
-                    • Help users understand the differences between their previous product (Magnet IEF) and their new offerings (Magnet AXIOM and beyond)
-                </styles.Text>
-                <styles.Text marginBottom="30px">
-                    • Book demos with sales reps
-                </styles.Text>
-                <img
-                    height="271"
-                    width="471"
-                    src={constants.magnetWhiteboardUrl}
-                />
-            </Fragment>
-        );
-    }
-
+    
     getContributionsList() {
         return this.buildList(
             "contribution to the project",
@@ -200,45 +172,22 @@ export default class MagnentCaseStudyPage extends Component {
         );
     }
 
-    getInformationArchitectureList() {
-        return this.buildList(
-            "information architecture",
-            [
-                "Lorem ipsum"
-            ]
-        );
-    }
+    getSpacedList(header: string, items: string[]) {
+        const itemComponents = items.map(item => {
+            return (
+                <styles.Text marginTop="15px">
+                    { item }
+                </styles.Text>
+            );
+        });
 
-    getLoFiWireframesList() {
-        return this.buildList(
-            "low-fidelity wireframes",
-            [
-                "core functions:",
-                "book demos",
-                "able to use blog/resources",
-                "get training for axiom by a professional",
-                "understand difference between tools and how they work together",
-                "low fi invision prototype",
-                "reviewed weekly with the client on different pages with different goals to get them onboard"
-            ]
-        );
-    }
-
-    getHiFiWireframesList() {
-        return this.buildList(
-            "high-fidelity wireframes",
-            [
-                "tested high-fi wireframes with 3 former forensic examiners to get their thoughts on the layout"
-            ]
-        );
-    }
-
-    getNextStepsList() {
-        return this.buildList(
-            "next steps in the project",
-            [
-                "Lorem ipsum"
-            ]
+        return (
+            <Fragment>
+                <styles.SmallHeader>
+                    { header }
+                </styles.SmallHeader>
+                { itemComponents }
+            </Fragment>
         );
     }
 
@@ -258,6 +207,47 @@ export default class MagnentCaseStudyPage extends Component {
                 { this.getToolsInfo() }
                 { this.getCredits() }
             </styles.SidebarContainer>
+        );
+    }
+
+    getProjectGoals() {
+        return (
+            <Fragment>
+                <styles.SmallHeader marginBottom="15px">
+                    project goals
+                </styles.SmallHeader>
+                <styles.Text marginBottom="30px">
+                    During our initial discovery session, we identified the following goals for the website:
+                </styles.Text>
+                <styles.Text marginBottom="15px">
+                    • Distinguish between Magnet Forensics’ diverse product offering
+                </styles.Text>
+                <styles.Text marginBottom="15px">
+                    • Organize resources in a matter that made it easy to find and use on a regular basis
+                </styles.Text>
+                <styles.Text marginBottom="15px">
+                    • Help users understand the differences between their previous product (Magnet IEF) and their new offerings (Magnet AXIOM and beyond)
+                </styles.Text>
+                <styles.Text marginBottom="30px">
+                    • Book demos with sales reps
+                </styles.Text>
+                <styles.BlackBackgroundImage>
+                    <img
+                        height="271"
+                        width="471"
+                        src={constants.magnetWhiteboardUrl}
+                    />
+                </styles.BlackBackgroundImage>
+                <styles.Text marginTop="30px">
+                    And after speaking with our stakeholders, we uncovered the following secondary goals that would support the above:
+                </styles.Text>
+                <styles.Text marginTop="30px">
+                    • Create different journeys to help users find the product offering that suited their needs.
+                </styles.Text>
+                <styles.Text marginTop="15px" marginBottom="50px">
+                    • Get the appropriate training to use the tools in their workflow 
+                </styles.Text>
+            </Fragment>
         );
     }
 
@@ -314,17 +304,73 @@ export default class MagnentCaseStudyPage extends Component {
                     We began testing the wireframes with existing users, and used their feedback to iterate on the website’s experience on desktop and mobile devices.
                 </styles.Text>
                 { this.getProjectGoals() }
-                <styles.Text>
-                    • no rapid design sprints
-                </styles.Text>
             </Fragment>
         );
+    }
+
+    getCustomerInterviewsSubSection() {
+        const items = [
+            "•spoke with former forensic examiners from Magnet as well",
+            "•conducted small surveys to get an understanding of what type of products were in the market for FE, the type of investigations they worked on, and how open were they to trying out new tools, as well as who were the decision makers in the buying process",
+            "•low cash (not decision maker), difficult job. lots of burn out",
+            "•was used to using a mix of open source and other tools along with manual processes instead of automation",
+            "•expensive product that was supposed to replace others, but difficult to do"
+        ];
+
+        return this.getSpacedList("customer interviews", items);
     }
 
     getResearchSection() {
         return (
             <Fragment>
-
+                <styles.Table marginBottom="50px">
+                    <styles.Column width="20%">
+                        <styles.Section>
+                            research
+                        </styles.Section>
+                    </styles.Column>
+                    <styles.Column width="80%">
+                        <styles.BigText>
+                            I’ll be the first to admit that I had no idea of what happens during an investigation. My goal was to learn everything I possibly could in the life of a forensic examiner- the good, the bad, and the ugly.
+                        </styles.BigText>
+                    </styles.Column>
+                </styles.Table>
+                <styles.SmallHeader>
+                    competitive analysis
+                </styles.SmallHeader>
+                <styles.Text marginTop="15px">
+                    { competitiveAnalysisString }
+                </styles.Text>
+                <styles.BigQuote marginTop="30px" marginBottom="30px">
+                    “No one tool is perfect, there's always room for improvement which is why we utilise several tools for analysis.”
+                </styles.BigQuote>
+                <styles.SmallHeader marginBottom="15px">
+                    challenges
+                </styles.SmallHeader>
+                <styles.Text>
+                    { challengesString }
+                </styles.Text>
+                <styles.SmallHeader marginTop="30px">
+                    stakeholder interviews
+                </styles.SmallHeader>
+                <styles.Text marginTop="15px">
+                    Interviewed with multiple of the VPs and Directors of different departments including the CEO and the Founder/CTO to understand their pain points with the existing site
+                </styles.Text>
+                <styles.BlackBackgroundImage marginTop="30px" marginBottom="30px">
+                    <img
+                        src={constants.magnetStakeholderUrl}
+                        height="350"
+                        width="700"
+                    />
+                </styles.BlackBackgroundImage>
+                { this.getCustomerInterviewsSubSection() }
+                <styles.BlackBackgroundImage marginTop="30px">
+                    <img
+                        src={constants.magnetCustomerUrl}
+                        height="350"
+                        width="700"
+                    />
+                </styles.BlackBackgroundImage>
             </Fragment>
         );
     }
@@ -342,6 +388,13 @@ export default class MagnentCaseStudyPage extends Component {
                 </styles.CenteredTable>
                 { this.getContextSection() }
                 { this.getResearchSection() }
+            </styles.Content>
+        );
+    }
+
+    getOldContent() {
+        return (
+            <Fragment>
                 <styles.Text>
                     • advocated for a strong discovery phase
                 </styles.Text>
@@ -404,7 +457,7 @@ export default class MagnentCaseStudyPage extends Component {
                     </styles.Column>
                 </styles.Table>
                 { this.getNextStepsList() }
-            </styles.Content>
+            </Fragment>
         );
     }
 

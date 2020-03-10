@@ -123,7 +123,21 @@ export const BigText = styled(BeauFontDiv)`
   font-size: 20px;
 `;
 
+export const BigQuote = styled(AvenirFontDiv)`
+  font-size: 36px;
+  font-weight: 900;
+  text-align: center;
+  padding-left: 60px;
+  padding-right: 60px;
+`;
+
 export const ImgWrapper = styled.img`
   height: 374px;
   width: 739px;
+`;
+
+export const BlackBackgroundImage = styled(MarginDiv)`
+  display: flex;
+  justify-content: center;
+  background-color: black;
 `;
