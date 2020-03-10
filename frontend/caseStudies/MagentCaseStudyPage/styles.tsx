@@ -32,6 +32,7 @@ export const SidebarContainer = styled(MarginDiv)`
     padding: 10px;
     overflow: auto;
     background: #FFFFFF;
+    margin-bottom: 30px;
 
     @media only screen and (min-width: 768px) {
         width: 35%;

@@ -32,7 +32,7 @@ export default class MagnentCaseStudyPage extends Component {
 
     getProjectInfo() {
         return (
-            <styles.Table>
+            <styles.Table marginBottom="30px">
                 <styles.Column width="60%">
                     { this.buildList("role", [
                         "information architecture",
@@ -65,7 +65,7 @@ export default class MagnentCaseStudyPage extends Component {
             ]
         );
         return (
-            <styles.Column>
+            <styles.Column marginBottom="30px">
                 { list }
             </styles.Column>
         );
@@ -78,8 +78,8 @@ export default class MagnentCaseStudyPage extends Component {
                 "alison ma (product manager)",
                 "joshua van boxtel (lead wordpress developer)",
                 "rennie chun (lead visual designer)",
-                "lisa hua (UX designer)",
-                "justin damer (visual designer)"
+                "justin damer (visual designer)",
+                "lisa hua (user experience designer)"
             ]
         );
         return (
@@ -237,116 +237,136 @@ export default class MagnentCaseStudyPage extends Component {
         );
     }
 
+    getSidebar() {
+        return (
+            <styles.SidebarContainer>
+                <styles.Title>
+                    Magnet
+                </styles.Title>
+                <styles.Title marginBottom="40px">
+                    Forensics
+                </styles.Title>
+                <styles.Text marginBottom="30px">
+                    { description }
+                </styles.Text>
+                { this.getProjectInfo() }
+                { this.getToolsInfo() }
+                { this.getCredits() }
+            </styles.SidebarContainer>
+        );
+    }
+
+    getContextTable() {
+        return (
+            <styles.Table>
+                <styles.Column width="20%">
+                    <styles.Section>
+                        context
+                    </styles.Section>
+                </styles.Column>
+                <styles.Column width="80%">
+                    <styles.BigText>
+                        Magnet came to us with their pain points: too many products, only know for IEF, and lots of stakeholders who wanted different things.
+                    </styles.BigText>
+                </styles.Column>
+            </styles.Table>
+        );
+    }
+
+    getContent() {
+        return (
+            <styles.Content>
+                <styles.CenteredTable>
+                    <ArrowlessIcon />
+                    <styles.BoldText marginLeft="12px">
+                        <Link to="/">
+                            back to all projects
+                        </Link>
+                    </styles.BoldText>
+                </styles.CenteredTable>
+                { this.getContextTable() }
+                <styles.SmallHeader>
+                    problem
+                </styles.SmallHeader>
+                { this.getProjectGoals() }
+                <styles.ImgWrapper src={constants.magnetHomeUrl} />
+                <styles.SmallHeader>
+                    approach
+                </styles.SmallHeader>
+                <styles.Text>
+                    • no rapid design sprints
+                </styles.Text>
+                <styles.Text>
+                    • advocated for a strong discovery phase
+                </styles.Text>
+                { this.getContributionsList() }
+                <styles.Table>
+                    <styles.Column width="20%">
+                        <styles.Section>
+                            research
+                        </styles.Section>
+                    </styles.Column>
+                    <styles.Column width="80%">
+                        Lorem ipsum
+                    </styles.Column>
+                </styles.Table>
+                { this.getCompetitiveAnalysisList() }
+                { this.getChallenges() }
+                <div>
+                    { this.getStakeholderInterviews() }
+                    <styles.ImgWrapper src={constants.magnetStakeholderUrl} />
+                </div>
+                <div>
+                    { this.getCustomerInterviews() }
+                    <styles.ImgWrapper src={constants.magnetCustomerUrl} />
+                </div>
+                <styles.Table>
+                    <styles.Column width="20%">
+                        <styles.Section>
+                            define
+                        </styles.Section>
+                    </styles.Column>
+                    <styles.Column width="80%">
+                        Lorem ipsum
+                    </styles.Column>
+                </styles.Table>
+                { this.getPersonasList() }
+                { this.getPersonasChallengesList() }
+                <styles.Table>
+                    <styles.Column width="20%">
+                        <styles.Section>
+                            ideate
+                        </styles.Section>
+                    </styles.Column>
+                    <styles.Column width="80%">
+                        Lorem ipsum
+                    </styles.Column>
+                </styles.Table>
+                { this.getInformationArchitectureList() }
+                { this.getLoFiWireframesList() }
+                { this.getHiFiWireframesList() }
+                <styles.Table>
+                    <styles.Column width="20%">
+                        <styles.Section>
+                            retro
+                        </styles.Section>
+                    </styles.Column>
+                    <styles.Column width="80%">
+                        <styles.Text>
+                            internal retro - first big discovery project, was tough client retro
+                        </styles.Text>
+                    </styles.Column>
+                </styles.Table>
+                { this.getNextStepsList() }
+            </styles.Content>
+        );
+    }
+
     render() {
         return (
             <styles.Container>
-                <styles.SidebarContainer>
-                    <styles.Title>
-                        Magnet
-                    </styles.Title>
-                    <styles.Title marginBottom="40px">
-                        Forensics
-                    </styles.Title>
-                    { description }
-                    { this.getProjectInfo() }
-                    { this.getToolsInfo() }
-                    { this.getCredits() }
-                </styles.SidebarContainer>
-                <styles.Content>
-                    <styles.CenteredTable>
-                        <ArrowlessIcon />
-                        <styles.BoldText marginLeft="12px">
-                            <Link to="/">
-                                back to all projects
-                            </Link>
-                        </styles.BoldText>
-                    </styles.CenteredTable>
-                    <styles.Table>
-                        <styles.Column width="20%">
-                            <styles.Section>
-                                context
-                            </styles.Section>
-                        </styles.Column>
-                        <styles.Column width="80%">
-                            <styles.BigText>
-                                Magnet came to us with their pain points: too many products, only know for IEF, and lots of stakeholders who wanted different things.
-                            </styles.BigText>
-                        </styles.Column>
-                    </styles.Table>
-                    <styles.SmallHeader>
-                        problem
-                    </styles.SmallHeader>
-                    { this.getProjectGoals() }
-                    <styles.ImgWrapper src={constants.magnetHomeUrl} />
-                    <styles.SmallHeader>
-                        approach
-                    </styles.SmallHeader>
-                    <styles.Text>
-                        • no rapid design sprints
-                    </styles.Text>
-                    <styles.Text>
-                        • advocated for a strong discovery phase
-                    </styles.Text>
-                    { this.getContributionsList() }
-                    <styles.Table>
-                        <styles.Column width="20%">
-                            <styles.Section>
-                                research
-                            </styles.Section>
-                        </styles.Column>
-                        <styles.Column width="80%">
-                            Lorem ipsum
-                        </styles.Column>
-                    </styles.Table>
-                    { this.getCompetitiveAnalysisList() }
-                    { this.getChallenges() }
-                    <div>
-                        { this.getStakeholderInterviews() }
-                        <styles.ImgWrapper src={constants.magnetStakeholderUrl} />
-                    </div>
-                    <div>
-                        { this.getCustomerInterviews() }
-                        <styles.ImgWrapper src={constants.magnetCustomerUrl} />
-                    </div>
-                    <styles.Table>
-                        <styles.Column width="20%">
-                            <styles.Section>
-                                define
-                            </styles.Section>
-                        </styles.Column>
-                        <styles.Column width="80%">
-                            Lorem ipsum
-                        </styles.Column>
-                    </styles.Table>
-                    { this.getPersonasList() }
-                    { this.getPersonasChallengesList() }
-                    <styles.Table>
-                        <styles.Column width="20%">
-                            <styles.Section>
-                                ideate
-                            </styles.Section>
-                        </styles.Column>
-                        <styles.Column width="80%">
-                            Lorem ipsum
-                        </styles.Column>
-                    </styles.Table>
-                    { this.getInformationArchitectureList() }
-                    { this.getLoFiWireframesList() }
-                    { this.getHiFiWireframesList() }
-                    <styles.Table>
-                        <styles.Column width="20%">
-                            <styles.Section>
-                                retro
-                            </styles.Section>
-                        </styles.Column>
-                        <styles.Column width="80%">
-                            <styles.Text>
-                                internal retro - first big discovery project, was tough client retro
-                            </styles.Text>
-                        </styles.Column>
-                    </styles.Table>
-                    { this.getNextStepsList() }
-                </styles.Content>
+                { this.getSidebar() }
+                { this.getContent() }
             </styles.Container>
         );
     }

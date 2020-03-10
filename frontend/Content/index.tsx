@@ -1,4 +1,4 @@
-import { h, Component } from "preact";
+import { h, Component, Fragment } from "preact";
 import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../icons/Arrowless";
@@ -12,9 +12,16 @@ export default class Content extends Component {
     getMagnetLink() {
         if (ENABLE_MAGNET) {
             return (
-                <Link to="/magnet">
-                    explore case study
-                </Link>
+                <Fragment>
+                    <styles.CallToActionText marginRight="12px">
+                        <Link to="/magnet">
+                        explore case study
+                        </Link>
+                    </styles.CallToActionText>
+                    <Link to="/magnet">
+                        <ArrowlessIcon />
+                    </Link>
+                </Fragment>
             );
         }
 
@@ -32,10 +39,7 @@ export default class Content extends Component {
                     Redesigning the experience of training forensic investigators.
                 </styles.Text>
                 <styles.CallToActionContainer marginTop="50px">
-                    <styles.CallToActionText marginRight="12px">
-                        { this.getMagnetLink() }
-                    </styles.CallToActionText>
-                    <ArrowlessIcon />
+                    { this.getMagnetLink() }
                 </styles.CallToActionContainer>
                 <styles.ImageWrapper>
                     <img src={constants.magnetUrl} />
