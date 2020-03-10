@@ -441,9 +441,6 @@ export default class MagnentCaseStudyPage extends Component {
                         Lorem ipsum
                     </styles.Column>
                 </styles.Table>
-                { this.getInformationArchitectureList() }
-                { this.getLoFiWireframesList() }
-                { this.getHiFiWireframesList() }
                 <styles.Table>
                     <styles.Column width="20%">
                         <styles.Section>
@@ -456,7 +453,6 @@ export default class MagnentCaseStudyPage extends Component {
                         </styles.Text>
                     </styles.Column>
                 </styles.Table>
-                { this.getNextStepsList() }
             </Fragment>
         );
     }
