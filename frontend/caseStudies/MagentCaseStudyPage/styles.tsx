@@ -26,20 +26,20 @@ export const AvenirFontDiv = styled(MarginDiv)`
 `;
 
 export const SidebarContainer = styled(MarginDiv)`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 10px;
-    overflow: auto;
-    background: #FFFFFF;
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  overflow: auto;
+  background: #ffffff;
+  margin-bottom: 30px;
 
-    @media only screen and (min-width: 768px) {
-        width: 35%;
-        margin-top: 91px;
-        margin-left: 45px;
-        margin-right: 49px;
-    }
+  @media only screen and (min-width: 768px) {
+    width: 35%;
+    margin-top: 91px;
+    margin-left: 45px;
+    margin-right: 49px;
+  }
 `;
 
 export const Content = styled(MarginDiv)`
@@ -48,7 +48,7 @@ export const Content = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  background: #E5E5E5;
+  background: #e5e5e5;
 
   @media only screen and (min-width: 768px) {
     width: 65%;
@@ -76,7 +76,6 @@ export const BoldText = styled(AvenirFontDiv)`
 export const Container = styled.div`
   height: 100%;
   width: 100%;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -95,7 +94,7 @@ export const SmallHeader = styled(AvenirFontDiv)`
 
 export const SubHeader = styled(AvenirFontDiv)`
   font-size: 16px;
-`
+`;
 
 export const Table = styled(MarginDiv)`
   display: flex;
@@ -114,7 +113,6 @@ export const CenteredTable = styled(Table)`
 export const Column = styled(MarginDiv)`
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
   flex-direction: column;
   width: 100%;
 
@@ -148,4 +146,9 @@ export const BlackBackgroundImage = styled(MarginDiv)`
   display: flex;
   justify-content: center;
   background-color: black;
+`;
+
+export const LightText = styled.span`
+  color: #727272;
+  margin-left: 5px;
 `;

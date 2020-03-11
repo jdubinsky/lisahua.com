@@ -64,6 +64,7 @@ typings/
 */.terraform*
 terraform.tfstate*
 infra/tfplan
+infra/remote_state/.terraform/
 
 # lamba builds
 *lambda*.zip
