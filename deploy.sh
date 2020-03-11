@@ -1,44 +1,46 @@
 #!/bin/bash
 
-echo "Installing dev packages for frontend..."
-pushd frontend
-npm install
+echo "FAKE DEPLOY!"
 
-echo "Compiling..."
-npx tsc
+# echo "Installing dev packages for frontend..."
+# pushd frontend
+# npm install
 
-echo "Building prod fontend..."
-npm run prod
-popd
+# echo "Compiling..."
+# npx tsc
 
-pushd backend
-echo "Installing dev packages..."
-mkdir build
-npm install
+# echo "Building prod fontend..."
+# npm run prod
+# popd
 
-# build js
-echo "Compiling..."
-npx tsc
+# pushd backend
+# echo "Installing dev packages..."
+# mkdir build
+# npm install
 
-# install dependencies (prod only)
-echo "Copying files..."
-cp package*.json build/
-cp ../frontend/dist/* build/
+# # build js
+# echo "Compiling..."
+# npx tsc
 
-pushd build
-echo "Installing prod packages..."
-npm install --only=prod
-popd
-popd
+# # install dependencies (prod only)
+# echo "Copying files..."
+# cp package*.json build/
+# cp ../frontend/dist/* build/
 
-# deploy new lambda zip
-pushd infra
-echo "Deploying to AWS..."
-terraform init -input=false
-# TODO: check that terraform plan output is only lambda
-# and fail if other infra changes
-terraform plan -out=tfplan -input=false
-terraform apply "tfplan"
-popd
+# pushd build
+# echo "Installing prod packages..."
+# npm install --only=prod
+# popd
+# popd
 
-echo "Done!"
+# # deploy new lambda zip
+# pushd infra
+# echo "Deploying to AWS..."
+# terraform init -input=false
+# # TODO: check that terraform plan output is only lambda
+# # and fail if other infra changes
+# terraform plan -out=tfplan -input=false
+# terraform apply "tfplan"
+# popd
+
+# echo "Done!"
