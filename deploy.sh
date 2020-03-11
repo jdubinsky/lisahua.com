@@ -38,6 +38,7 @@ terraform init -input=false
 # TODO: check that terraform plan output is only lambda
 # and fail if other infra changes
 terraform plan -out=tfplan -input=false
+terraform apply "tfplan"
 popd
 
 echo "Done!"

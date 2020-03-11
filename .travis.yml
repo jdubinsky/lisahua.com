@@ -8,10 +8,12 @@ before_install:
   - rm -f /tmp/terraform.zip
 install:
   - pushd backend && npm install && popd
+  - pushd frontend && npm install && npm run prod && popd
+  - cp frontend/dist/index.html backend/
 jobs:
   include:
     - stage: test
-      script: ./test.sh
+      script: pushd backend && npm run test && popd
       env:
         - NODE_ENV=test
         - APP_PORT=8080
