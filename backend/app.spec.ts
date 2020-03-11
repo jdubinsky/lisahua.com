@@ -18,4 +18,29 @@ describe("app", () => {
         done();
       });
   });
+
+  it("returns bundle", done => {
+    chai
+      .request(app)
+      .get("/app.bundle.js")
+      .end((err, res) => {
+        console.log(err, res);
+        chai.assert.isNull(err);
+        res.should.have.status(200);
+        res.type.should.equal("application/javascript");
+        done();
+      });
+  });
+
+  it("returns index for other paths", done => {
+    chai
+      .request(app)
+      .get("/magnet")
+      .end((err, res) => {
+        chai.assert.isNull(err);
+        res.should.have.status(200);
+        res.type.should.equal("text/html");
+        done();
+      });
+  });
 });

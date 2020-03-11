@@ -9,7 +9,7 @@ before_install:
 install:
   - pushd backend && npm install && popd
   - pushd frontend && npm install && npm run prod && popd
-  - cp frontend/dist/index.html backend/
+  - cp frontend/dist/* backend/
 jobs:
   include:
     - stage: test
