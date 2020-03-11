@@ -17,6 +17,3 @@ jobs:
       env:
         - NODE_ENV=test
         - APP_PORT=8080
-    - stage: deploy
-      script: ./deploy.sh
-      if: branch = master

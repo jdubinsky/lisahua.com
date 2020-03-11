@@ -1,4 +1,4 @@
-import { h, Component } from "preact";
+import { h, Component, Fragment } from "preact";
 
 import ArrowlessIcon from "../icons/Arrowless";
 import DownArrowIcon from "../icons/DownArrow";
@@ -8,12 +8,42 @@ import * as constants from "../constants";
 import description from "./content.txt";
 import description2 from "./content-2.txt";
 
-export default class Sidebar extends Component {
-  render() {
+const isMobile = (): boolean => {
+  return screen.width < 768;
+};
+
+interface SidebarState {
+  isCollapsed: boolean;
+}
+
+export default class Sidebar extends Component<{}, SidebarState> {
+  state = {
+    isCollapsed: isMobile()
+  };
+
+  getCollapseButton() {
+    if (this.state.isCollapsed && isMobile()) {
+      return <Fragment />;
+    }
+
     return (
-      <styles.Sidebar>
-        <styles.Title>I'm Lisa,</styles.Title>
-        <styles.Subtitle>a UX designer from Toronto</styles.Subtitle>
+      <button onClick={this.onCollapse}>
+        <styles.Header>collapse</styles.Header>
+      </button>
+    );
+  }
+
+  getContent() {
+    if (this.state.isCollapsed) {
+      return (
+        <button onClick={this.onReadMore}>
+          <styles.Header>read more</styles.Header>
+        </button>
+      );
+    }
+
+    return (
+      <Fragment>
         <styles.Text>{description}</styles.Text>
         <styles.Text>{description2}</styles.Text>
         <styles.TextWithIcon marginTop="34px">
@@ -42,6 +72,27 @@ export default class Sidebar extends Component {
             precious panko
           </styles.DogSubtitleText>
         </div>
+        {this.getCollapseButton()}
+      </Fragment>
+    );
+  }
+
+  onReadMore = () => {
+    this.setState({ isCollapsed: false });
+  };
+
+  onCollapse = () => {
+    this.setState({ isCollapsed: true }, () => {
+      window.scrollTo(0, 0);
+    });
+  };
+
+  render() {
+    return (
+      <styles.Sidebar>
+        <styles.Title>I'm Lisa,</styles.Title>
+        <styles.Subtitle>a UX designer from Toronto</styles.Subtitle>
+        {this.getContent()}
       </styles.Sidebar>
     );
   }
