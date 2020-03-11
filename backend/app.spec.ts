@@ -12,7 +12,6 @@ describe("app", () => {
       .request(app)
       .get("/")
       .end((err, res) => {
-        console.log(err, res);
         chai.assert.isNull(err);
         res.should.have.status(200);
         res.type.should.equal("text/html");
