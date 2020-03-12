@@ -26,8 +26,6 @@ export const AvenirFontDiv = styled(MarginDiv)`
 `;
 
 export const SidebarContainer = styled(MarginDiv)`
-  display: flex;
-  flex-direction: column;
   width: 100%;
   padding: 10px;
   overflow: auto;
@@ -45,8 +43,6 @@ export const SidebarContainer = styled(MarginDiv)`
 export const Content = styled(MarginDiv)`
   width: 100%;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
   overflow-y: scroll;
   background: #e5e5e5;
 
