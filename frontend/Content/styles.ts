@@ -14,11 +14,13 @@ const MarginDiv = styled.div<MarginProps>`
 
 export const Content = styled(MarginDiv)`
   width: 100%;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  background: #E5E5E5;
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #e5e5e5;
 
   @media only screen and (min-width: 768px) {
     width: 65%;
@@ -47,7 +49,7 @@ export const Header = styled(BeauFontBase)`
 export const Text = styled(BeauFontBase)`
   max-width: 379px;
   font-size: 20px;
-`
+`;
 
 const AvenirFontBase = styled(MarginDiv)`
   font-family: Avenir;
@@ -90,4 +92,5 @@ export const LeftFooter = styled(AvenirFontBase)`
 export const RightFooter = styled(BeauFontBase)`
   display: flex;
   font-size: 20px;
+  margin-right: 79px;
 `;
