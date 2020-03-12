@@ -1,16 +1,14 @@
 #!/bin/bash
 
-# echo "FAKE DEPLOY!"
-
 echo "Installing dev packages for frontend..."
 pushd frontend
-npm install
+npm install || exit
 
 echo "Compiling..."
-npx tsc
+npx tsc || exit
 
 echo "Building prod fontend..."
-npm run prod
+npm run prod || exit
 popd
 
 pushd backend
@@ -20,7 +18,7 @@ npm install
 
 # build js
 echo "Compiling..."
-npx tsc
+npx tsc || exit
 
 # install dependencies (prod only)
 echo "Copying files..."
@@ -29,18 +27,18 @@ cp ../frontend/dist/* build/
 
 pushd build
 echo "Installing prod packages..."
-npm install --only=prod
+npm install --only=prod || exit
 popd
 popd
 
 # deploy new lambda zip
 pushd infra
 echo "Deploying to AWS..."
-terraform init -input=false
+terraform init -input=false || exit
 # TODO: check that terraform plan output is only lambda
 # and fail if other infra changes
-terraform plan -out=tfplan -input=false
-terraform apply "tfplan"
+terraform plan -out=tfplan -input=false || exit
+terraform apply "tfplan" || exit
 popd
 
 echo "Done!"
