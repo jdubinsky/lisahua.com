@@ -17,7 +17,9 @@ export const Content = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  padding: 10px;
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
   background: #e5e5e5;
 
   @media only screen and (min-width: 768px) {

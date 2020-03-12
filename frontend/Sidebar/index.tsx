@@ -28,7 +28,9 @@ export default class Sidebar extends Component<{}, SidebarState> {
 
     return (
       <button onClick={this.onCollapse}>
-        <styles.Header>collapse</styles.Header>
+        <styles.ButtonContainer marginTop="50px">
+          <styles.Header>collapse -</styles.Header>
+        </styles.ButtonContainer>
       </button>
     );
   }
@@ -36,9 +38,11 @@ export default class Sidebar extends Component<{}, SidebarState> {
   getContent() {
     if (this.state.isCollapsed) {
       return (
-        <button onClick={this.onReadMore}>
-          <styles.Header>read more</styles.Header>
-        </button>
+        <styles.ButtonContainer marginTop="50px" marginBottom="35px">
+          <button onClick={this.onReadMore}>
+            <styles.Header>read more +</styles.Header>
+          </button>
+        </styles.ButtonContainer>
       );
     }
 

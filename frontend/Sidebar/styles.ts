@@ -4,27 +4,32 @@ interface MarginProps {
   marginLeft?: string;
   marginRight?: string;
   marginTop?: string;
+  marginBottom?: string;
 }
 
 const MarginDiv = styled.div<MarginProps>`
   margin-top: ${props => props.marginTop || "0px"};
+  margin-bottom: ${props => props.marginBottom || "0px"};
   margin-left: ${props => props.marginLeft || "0px"};
   margin-right: ${props => props.marginRight || "0px"};
 `;
 
 const MarginA = styled.a<MarginProps>`
   margin-top: ${props => props.marginTop || "0px"};
+  margin-bottom: ${props => props.marginBottom || "0px"};
   margin-left: ${props => props.marginLeft || "0px"};
   margin-right: ${props => props.marginRight || "0px"};
 `;
 
 export const Sidebar = styled(MarginDiv)`
   width: 100%;
-  padding: 10px;
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
   display: flex;
   flex-direction: column;
   overflow: auto;
-  background: #FFFFFF;
+  background: #ffffff;
 
   @media only screen and (min-width: 768px) {
     width: 35%;
@@ -101,7 +106,7 @@ export const ResumeContainer = styled(MarginDiv)`
   flex-direction: row;
   align-items: center;
   margin-top: 30px;
-`
+`;
 
 export const CallToActionLink = styled(MarginA)``;
 
@@ -109,5 +114,10 @@ export const DogSubtitleText = styled(BeauFontDiv)`
   font-size: 16px;
 `;
 
-export const DogsContainer = styled(MarginDiv)`
+export const DogsContainer = styled(MarginDiv)``;
+
+export const ButtonContainer = styled(MarginDiv)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
