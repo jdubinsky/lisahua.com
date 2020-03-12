@@ -10,6 +10,14 @@ export default createGlobalStyle`
     color: black;
   }
 
+  button {
+    all: unset;
+  }
+
+  button:focus {
+    outline: orange 5px auto;
+  }
+
   @font-face {
     font-family: Avenir;
     src:

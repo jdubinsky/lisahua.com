@@ -22,16 +22,20 @@ export default class Sidebar extends Component<{}, SidebarState> {
   };
 
   getCollapseButton() {
-    if (this.state.isCollapsed && isMobile()) {
+    if (!isMobile()) {
+      return <Fragment />;
+    }
+
+    if (this.state.isCollapsed) {
       return <Fragment />;
     }
 
     return (
-      <button onClick={this.onCollapse}>
-        <styles.ButtonContainer marginTop="50px">
+      <styles.ButtonContainer marginTop="50px" marginBottom="30px">
+        <button onClick={this.onCollapse}>
           <styles.Header>collapse -</styles.Header>
-        </styles.ButtonContainer>
-      </button>
+        </button>
+      </styles.ButtonContainer>
     );
   }
 

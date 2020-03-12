@@ -14,8 +14,6 @@ const MarginDiv = styled.div<MarginProps>`
 
 export const Content = styled(MarginDiv)`
   width: 100%;
-  display: flex;
-  flex-direction: column;
   overflow-y: scroll;
   padding-top: 60px;
   padding-left: 30px;

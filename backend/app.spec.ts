@@ -24,7 +24,6 @@ describe("app", () => {
       .request(app)
       .get("/app.bundle.js")
       .end((err, res) => {
-        console.log(err, res);
         chai.assert.isNull(err);
         res.should.have.status(200);
         res.type.should.equal("application/javascript");

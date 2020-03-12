@@ -63,14 +63,9 @@ export const SmallText = styled(BeauFontDiv)`
   font-size: 20px;
 `;
 
-export const TextTable = styled(MarginDiv)`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-`;
+export const TextTable = styled(MarginDiv)``;
 
 export const Row = styled(MarginDiv)`
-  width: 100%;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
