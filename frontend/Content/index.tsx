@@ -6,7 +6,7 @@ import ArrowlessIcon from "../icons/Arrowless";
 import * as styles from "./styles";
 import * as constants from "../constants";
 
-const ENABLE_MAGNET = process.env.NODE_ENV !== "production";
+const ENABLE_MAGNET = true;
 
 export default class Content extends Component {
   getMagnetLink() {
