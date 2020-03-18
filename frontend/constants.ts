@@ -9,6 +9,9 @@ export const yumbaUrl = `${STATIC_URL}images/yumba.png`;
 export const ttcUrl = `${STATIC_URL}images/mobile.png`;
 
 // magnet case study images
+const magnetBaseUrl = `${STATIC_URL}images/magnet/`;
+export const magnetHeroUrl = `${magnetBaseUrl}hero.jpg`;
+
 export const magnetHomeUrl = `${STATIC_URL}images/magnet_home.png`;
 export const magnetStakeholderUrl = `${STATIC_URL}images/magnet_stakeholder.png`;
 export const magnetCustomerUrl = `${STATIC_URL}images/magnet_customer.png`;

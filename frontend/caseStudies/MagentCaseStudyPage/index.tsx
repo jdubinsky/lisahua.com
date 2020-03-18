@@ -328,6 +328,7 @@ export default class MagnentCaseStudyPage extends Component {
             <Link to="/">back to all projects</Link>
           </styles.BoldText>
         </styles.CenteredTable>
+        <img src={constants.magnetHeroUrl} />
         {this.getContextSection()}
         {this.getResearchSection()}
       </styles.Content>
