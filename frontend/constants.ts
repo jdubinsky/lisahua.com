@@ -9,10 +9,16 @@ export const yumbaUrl = `${STATIC_URL}images/yumba.png`;
 export const ttcUrl = `${STATIC_URL}images/mobile.png`;
 
 // magnet case study images
-export const magnetHomeUrl = `${STATIC_URL}images/magnet_home.png`;
-export const magnetStakeholderUrl = `${STATIC_URL}images/magnet_stakeholder.png`;
-export const magnetCustomerUrl = `${STATIC_URL}images/magnet_customer.png`;
-export const magnetWhiteboardUrl = `${STATIC_URL}images/magnet_whiteboard.png`;
+const magnetBaseUrl = `${STATIC_URL}images/magnet/`;
+export const magnetHeroUrl = `${magnetBaseUrl}hero.jpg`;
+export const magnetStakeholdersUrl = `${magnetBaseUrl}stakeholders.jpg`;
+export const magnetPersonaFE = `${magnetBaseUrl}persona-FE.jpg`;
+export const magnetPersonaPL = `${magnetBaseUrl}persona-PL.jpg`;
+export const magnetPersonaInvestigator = `${magnetBaseUrl}persona-Investigator.jpg`;
+export const magnetJourneyMap = `${magnetBaseUrl}journey\ map.jpg`;
+export const magnetIA = `${magnetBaseUrl}IA.png`;
+export const magnetWireframes = `${magnetBaseUrl}wireframes.png`;
+export const magnetUT = `${magnetBaseUrl}usability\ testing.jpg`;
 
 // dogs
 export const pankoUrl = `${STATIC_URL}images/panku.jpg`;
