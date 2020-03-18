@@ -6,7 +6,7 @@ interface MarginProps {
   marginTop?: string;
 }
 
-const MarginDiv = styled.div<MarginProps>`
+export const MarginDiv = styled.div<MarginProps>`
   margin-top: ${props => props.marginTop || "0px"};
   margin-bottom: ${props => props.marginBottom || "0px"};
   margin-left: ${props => props.marginLeft || "0px"};
@@ -37,6 +37,11 @@ export const SidebarContainer = styled(MarginDiv)`
     margin-top: 91px;
     margin-left: 45px;
     margin-right: 49px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
@@ -61,7 +66,7 @@ export const Title = styled(BeauFontDiv)`
 
 export const Section = styled(AvenirFontDiv)`
   font-size: 36px;
-  font-weight: 900;
+  font-weight: 700;
 `;
 
 export const BoldText = styled(AvenirFontDiv)`
@@ -84,7 +89,7 @@ export const Container = styled.div`
 `;
 
 export const SmallHeader = styled(AvenirFontDiv)`
-  font-weight: 900;
+  font-weight: 700;
   font-size: 18px;
 `;
 
@@ -118,16 +123,18 @@ export const Column = styled(MarginDiv)`
 `;
 
 export const Text = styled(BeauFontDiv)`
+  white-space: pre-line;
   font-size: 20px;
 `;
 
 export const BigText = styled(BeauFontDiv)`
+  white-space: pre-line;
   font-size: 20px;
 `;
 
 export const BigQuote = styled(AvenirFontDiv)`
   font-size: 36px;
-  font-weight: 900;
+  font-weight: 700;
   text-align: center;
   padding-left: 60px;
   padding-right: 60px;
@@ -147,4 +154,47 @@ export const BlackBackgroundImage = styled(MarginDiv)`
 export const LightText = styled.span`
   color: #727272;
   margin-left: 5px;
+`;
+
+export const BigLightText = styled(BeauFontDiv)`
+  color: #727272;
+  font-size: 20px;
+  text-align: center;
+`;
+
+export const BulletList = styled.ul`
+  margin-bottom: 30px;
+`;
+
+export const ListItem = styled.li`
+  font-family: Beau;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  margin-bottom: 15px;
+`;
+
+export const Link = styled.a`
+  margin-left: 5px;
+  text-decoration: underline;
+`;
+
+export const Footer = styled(MarginDiv)`
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+export const LeftFooter = styled(AvenirFontDiv)`
+  display: flex;
+  font-size: 16px;
+`;
+
+export const RightFooter = styled(BeauFontDiv)`
+  display: flex;
+  font-size: 20px;
 `;

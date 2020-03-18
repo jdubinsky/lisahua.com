@@ -37,6 +37,11 @@ export const Sidebar = styled(MarginDiv)`
     margin-left: 54px;
     margin-right: 60px;
     overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
