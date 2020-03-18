@@ -19,6 +19,8 @@ export const magnetJourneyMap = `${magnetBaseUrl}journey\ map.jpg`;
 export const magnetIA = `${magnetBaseUrl}IA.png`;
 export const magnetWireframes = `${magnetBaseUrl}wireframes.png`;
 export const magnetUT = `${magnetBaseUrl}usability\ testing.jpg`;
+export const magnetCustomerUrl = `${STATIC_URL}images/magnet_customer.png`;
+export const magnetWhiteboardUrl = `${STATIC_URL}images/magnet_whiteboard.png`;
 
 // dogs
 export const pankoUrl = `${STATIC_URL}images/panku.jpg`;
