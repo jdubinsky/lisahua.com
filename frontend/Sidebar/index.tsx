@@ -74,12 +74,10 @@ export default class Sidebar extends Component<{}, SidebarState> {
           <a href="mailto:lisavhua@gmail.com">lisavhua@gmail.com</a>
         </styles.SmallText>
         <styles.Header marginTop="60px">my dogs</styles.Header>
-        <div>
-          <img src={constants.pankoUrl} />
-          <styles.DogSubtitleText marginTop="10px">
-            precious panko
-          </styles.DogSubtitleText>
-        </div>
+        <styles.DogImagesContainer>
+          <styles.MarginRightImg src={constants.pankoUrl} />
+          <img src={constants.tootsieUrl} />
+        </styles.DogImagesContainer>
         {this.getCollapseButton()}
       </Fragment>
     );

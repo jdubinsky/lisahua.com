@@ -527,7 +527,7 @@ export default class MagnentCaseStudyPage extends Component {
       <styles.Footer marginTop="50px">
         <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
         <styles.RightFooter>
-          Made with lots of 🍵 and ❣ from my couch
+          Made with lots of 🍵 and ❤️ from my couch
         </styles.RightFooter>
       </styles.Footer>
     );

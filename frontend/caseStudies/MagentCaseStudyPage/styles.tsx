@@ -34,6 +34,7 @@ export const SidebarContainer = styled(MarginDiv)`
 
   @media only screen and (min-width: 768px) {
     width: 35%;
+    padding-top: 0px;
     margin-top: 91px;
     margin-left: 45px;
     margin-right: 49px;

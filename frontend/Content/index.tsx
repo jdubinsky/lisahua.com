@@ -53,6 +53,9 @@ export default class Content extends Component {
         <styles.CallToActionText marginTop="50px">
           🤞coming soon
         </styles.CallToActionText>
+        <styles.ImageWrapper>
+          <img src={constants.aodaUrl} />
+        </styles.ImageWrapper>
       </styles.CaseStudyContainer>
     );
   }
@@ -67,9 +70,10 @@ export default class Content extends Component {
         <styles.CallToActionText marginTop="50px">
           😫 currently unavailable
         </styles.CallToActionText>
-        <styles.ImageWrapper>
+        <styles.RelativeImageWrapper>
           <img src={constants.netsweeperUrl} />
-        </styles.ImageWrapper>
+          <styles.LockIconWrapper />
+        </styles.RelativeImageWrapper>
       </styles.CaseStudyContainer>
     );
   }
@@ -112,7 +116,7 @@ export default class Content extends Component {
       <styles.Footer marginTop="65px">
         <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
         <styles.RightFooter>
-          Made with lots of 🍵 and ❣ from my couch
+          Made with lots of 🍵 and ❤️ from my couch
         </styles.RightFooter>
       </styles.Footer>
     );

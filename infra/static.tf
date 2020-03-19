@@ -52,6 +52,15 @@ resource "aws_s3_bucket_object" "static_magnet_images" {
   etag   = filemd5("../frontend/assets/images/magnet/${each.value}")
 }
 
+resource "aws_s3_bucket_object" "static_homepage_images" {
+  for_each = fileset("../frontend/assets/images/homepage/", "*")
+
+  bucket = aws_s3_bucket.static.id
+  key    = "images/homepage/${each.value}"
+  source = "../frontend/assets/images/homepage/${each.value}"
+  etag   = filemd5("../frontend/assets/images/homepage/${each.value}")
+}
+
 resource "aws_s3_bucket_object" "static_fonts" {
   for_each = fileset("../frontend/assets/fonts/", "*")
 

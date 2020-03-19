@@ -1,4 +1,7 @@
+import { h } from "preact";
 import styled from "styled-components";
+
+import LockIcon from "../icons/Lock";
 
 interface MarginProps {
   marginLeft?: string;
@@ -72,6 +75,23 @@ export const ImageWrapper = styled(MarginDiv)`
   overflow: hidden;
 `;
 
+export const RelativeImageWrapper = styled(ImageWrapper)`
+  position: relative;
+`;
+
+const Lock = ({ className }) => {
+  return <LockIcon className={className} />;
+};
+
+export const LockIconWrapper = styled(Lock)`
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+
 export const Footer = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
@@ -79,6 +99,7 @@ export const Footer = styled(MarginDiv)`
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    max-width: 730px;
   }
 `;
 
@@ -90,5 +111,4 @@ export const LeftFooter = styled(AvenirFontBase)`
 export const RightFooter = styled(BeauFontBase)`
   display: flex;
   font-size: 20px;
-  margin-right: 79px;
 `;

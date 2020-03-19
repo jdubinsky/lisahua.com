@@ -1,12 +1,13 @@
 const STATIC_URL = process.env.STATIC_URL;
 
-// case study preview images on home page
-export const actoUrl = `${STATIC_URL}images/acto.png`;
-export const magnetUrl = `${STATIC_URL}images/magnet.png`;
-export const netsweeperUrl = `${STATIC_URL}images/netsweeper.png`;
-export const sessionzUrl = `${STATIC_URL}images/sessionz.png`;
-export const yumbaUrl = `${STATIC_URL}images/yumba.png`;
-export const ttcUrl = `${STATIC_URL}images/mobile.png`;
+// homepage
+const homepageBaseUrl = `${STATIC_URL}images/homepage/`;
+export const pankoUrl = `${homepageBaseUrl}panku.jpg`;
+export const tootsieUrl = `${homepageBaseUrl}tootsie.jpg`;
+export const magnetUrl = `${homepageBaseUrl}desktop-magnet.png`;
+export const ttcUrl = `${homepageBaseUrl}mobile-ttcexit.png`;
+export const aodaUrl = `${homepageBaseUrl}desktop-aoda.png`;
+export const netsweeperUrl = `${homepageBaseUrl}desktop-netsweeper.png`;
 
 // magnet case study images
 const magnetBaseUrl = `${STATIC_URL}images/magnet/`;
@@ -21,9 +22,6 @@ export const magnetWireframes = `${magnetBaseUrl}wireframes.png`;
 export const magnetUT = `${magnetBaseUrl}usability\ testing.jpg`;
 export const magnetCustomerUrl = `${STATIC_URL}images/magnet_customer.png`;
 export const magnetWhiteboardUrl = `${STATIC_URL}images/magnet_whiteboard.png`;
-
-// dogs
-export const pankoUrl = `${STATIC_URL}images/panku.jpg`;
 
 // files
 export const resumeUrl = `${STATIC_URL}resume.pdf`;
