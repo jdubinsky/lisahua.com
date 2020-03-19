@@ -50,9 +50,9 @@ export default class Content extends Component {
           A comprehensive testing guide designed to onboard non-technical
           stakeholders.
         </styles.Text>
-        <styles.CallToActionText marginTop="50px">
-          🤞coming soon
-        </styles.CallToActionText>
+        <styles.CallToActionContainer marginTop="50px">
+          <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
+        </styles.CallToActionContainer>
         <styles.ImageWrapper>
           <img src={constants.aodaUrl} />
         </styles.ImageWrapper>
@@ -67,9 +67,11 @@ export default class Content extends Component {
         <styles.Text marginTop="12px">
           Transforming the way online purchases are processed
         </styles.Text>
-        <styles.CallToActionText marginTop="50px">
-          😫 currently unavailable
-        </styles.CallToActionText>
+        <styles.CallToActionContainer marginTop="50px">
+          <styles.CallToActionText>
+            😫 currently unavailable
+          </styles.CallToActionText>
+        </styles.CallToActionContainer>
         <styles.RelativeImageWrapper>
           <img src={constants.netsweeperUrl} />
           <styles.LockIconWrapper />
@@ -86,9 +88,9 @@ export default class Content extends Component {
           A tool that helps you shorten your commute and get you out of the
           subway station.
         </styles.Text>
-        <styles.CallToActionText marginTop="50px">
-          🤞coming soon
-        </styles.CallToActionText>
+        <styles.CallToActionContainer marginTop="50px">
+          <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
+        </styles.CallToActionContainer>
         <styles.ImageWrapper>
           <img src={constants.ttcUrl} />
         </styles.ImageWrapper>

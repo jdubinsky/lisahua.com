@@ -110,6 +110,11 @@ export const Table = styled(MarginDiv)`
 
 export const CenteredTable = styled(Table)`
   align-items: center;
+  flex-direction: row;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Column = styled(MarginDiv)`
@@ -141,7 +146,20 @@ export const BigQuote = styled(AvenirFontDiv)`
   padding-right: 60px;
 `;
 
-export const ImgWrapper = styled.img`
+export const MaxWidthImage = styled.img`
+  max-width: 100%;
+`;
+
+export const CustomerImage = styled(MaxWidthImage)`
+  width: 700px;
+  height: 250px;
+
+  @media only screen and (min-width: 768px) {
+    height: 350px;
+  }
+`;
+
+export const ImgWrapper = styled(MaxWidthImage)`
   height: 374px;
   width: 739px;
 `;

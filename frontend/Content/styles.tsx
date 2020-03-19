@@ -61,6 +61,11 @@ const AvenirFontBase = styled(MarginDiv)`
 export const CallToActionContainer = styled(MarginDiv)`
   display: flex;
   align-items: center;
+  margin-bottom: 45px;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  }
 `;
 
 export const CallToActionText = styled(AvenirFontBase)`
