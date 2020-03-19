@@ -33,7 +33,10 @@ export const Sidebar = styled(MarginDiv)`
 
   @media only screen and (min-width: 768px) {
     width: 35%;
-    margin-top: 65px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 50px;
     margin-left: 54px;
     margin-right: 60px;
     overflow: auto;
@@ -120,4 +123,14 @@ export const ButtonContainer = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+`;
+
+export const DogImagesContainer = styled(MarginDiv)`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 90px;
+`;
+
+export const MarginRightImg = styled.img`
+  margin-right: 60px;
 `;

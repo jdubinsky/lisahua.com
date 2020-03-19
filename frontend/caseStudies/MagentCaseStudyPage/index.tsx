@@ -147,7 +147,11 @@ export default class MagnentCaseStudyPage extends Component {
           </styles.ListItem>
         </styles.BulletList>
         <styles.BlackBackgroundImage>
-          <img height="271" width="471" src={constants.magnetWhiteboardUrl} />
+          <styles.MaxWidthImage
+            height="271"
+            width="471"
+            src={constants.magnetWhiteboardUrl}
+          />
         </styles.BlackBackgroundImage>
         <styles.Text marginTop="30px">
           And after speaking with our stakeholders, we uncovered additional
@@ -278,7 +282,7 @@ export default class MagnentCaseStudyPage extends Component {
         </styles.SmallHeader>
         <styles.Text>{challengesString}</styles.Text>
         <styles.MarginDiv marginTop="30px" marginBottom="10px">
-          <img src={constants.magnetStakeholdersUrl} />
+          <styles.MaxWidthImage src={constants.magnetStakeholdersUrl} />
         </styles.MarginDiv>
         <styles.BigLightText marginBottom="30px">
           Over the course of two days we conducted in-person interviews with
@@ -286,7 +290,7 @@ export default class MagnentCaseStudyPage extends Component {
         </styles.BigLightText>
         {this.getCustomerInterviewsSubSection()}
         <styles.BlackBackgroundImage marginTop="30px">
-          <img src={constants.magnetCustomerUrl} height="350" width="700" />
+          <styles.CustomerImage src={constants.magnetCustomerUrl} />
         </styles.BlackBackgroundImage>
         <styles.BigLightText marginTop="10px">
           Conducting a customer interview with examiners from the UK.
@@ -318,7 +322,7 @@ export default class MagnentCaseStudyPage extends Component {
         </styles.Table>
         <styles.SmallHeader marginBottom="30px">personas</styles.SmallHeader>
         <styles.MarginDiv marginBottom="30px">
-          <img src={constants.magnetPersonaFE} />
+          <styles.MaxWidthImage src={constants.magnetPersonaFE} />
         </styles.MarginDiv>
         <styles.Text>
           This is Raymond, a fictional Forensic Examiner. He’s extremely
@@ -331,7 +335,7 @@ export default class MagnentCaseStudyPage extends Component {
           workload.
         </styles.Text>
         <styles.MarginDiv marginTop="45px" marginBottom="25px">
-          <img src={constants.magnetPersonaPL} />
+          <styles.MaxWidthImage src={constants.magnetPersonaPL} />
         </styles.MarginDiv>
         <styles.Text>
           Scott represents the chain of command within a police organization and
@@ -352,7 +356,7 @@ export default class MagnentCaseStudyPage extends Component {
           performance metrics such as crime solve rate and resource allocation.
         </styles.Text>
         <styles.MarginDiv marginTop="50px" marginBottom="30px">
-          <img src={constants.magnetPersonaInvestigator} />
+          <styles.MaxWidthImage src={constants.magnetPersonaInvestigator} />
         </styles.MarginDiv>
         <styles.Text>
           Charles is the Investigator - a persona that didn’t immediately
@@ -381,7 +385,7 @@ export default class MagnentCaseStudyPage extends Component {
           on the site.
         </styles.Text>
         <styles.MarginDiv marginTop="30px">
-          <img src={constants.magnetJourneyMap} />
+          <styles.MaxWidthImage src={constants.magnetJourneyMap} />
         </styles.MarginDiv>
       </Fragment>
     );
@@ -421,7 +425,7 @@ export default class MagnentCaseStudyPage extends Component {
           Forensics’ entire product line.
         </styles.Text>
         <styles.MarginDiv marginTop="30px">
-          <img src={constants.magnetIA} />
+          <styles.MaxWidthImage src={constants.magnetIA} />
         </styles.MarginDiv>
         <styles.SmallHeader>wireframes</styles.SmallHeader>
         <styles.Text marginTop="15px">
@@ -431,7 +435,7 @@ export default class MagnentCaseStudyPage extends Component {
           centre.
         </styles.Text>
         <styles.MarginDiv marginTop="20px">
-          <img src={constants.magnetWireframes} />
+          <styles.MaxWidthImage src={constants.magnetWireframes} />
         </styles.MarginDiv>
         <styles.SmallHeader marginTop="30px">
           usability testing
@@ -461,7 +465,7 @@ export default class MagnentCaseStudyPage extends Component {
           phone investigations with a related customer story as social proof.
         </styles.Text>
         <styles.MarginDiv marginTop="30px">
-          <img src={constants.magnetUT} />
+          <styles.MaxWidthImage src={constants.magnetUT} />
         </styles.MarginDiv>
       </Fragment>
     );
@@ -527,7 +531,7 @@ export default class MagnentCaseStudyPage extends Component {
       <styles.Footer marginTop="50px">
         <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
         <styles.RightFooter>
-          Made with lots of 🍵 and ❣ from my couch
+          Made with lots of 🍵 and ❤️ from my couch
         </styles.RightFooter>
       </styles.Footer>
     );
@@ -543,7 +547,7 @@ export default class MagnentCaseStudyPage extends Component {
           </styles.BoldText>
         </styles.CenteredTable>
         <styles.MarginDiv marginBottom="50px">
-          <img src={constants.magnetHeroUrl} />
+          <styles.MaxWidthImage src={constants.magnetHeroUrl} />
         </styles.MarginDiv>
         {this.getContextSection()}
         {this.getResearchSection()}

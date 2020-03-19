@@ -11,6 +11,5 @@ export const Container = styled.div`
     flex-direction: row;
     overflow: hidden;
     height: 100vh;
-    padding: 10px;
   }
 `;
