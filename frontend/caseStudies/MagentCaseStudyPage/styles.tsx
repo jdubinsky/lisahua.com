@@ -108,13 +108,10 @@ export const Table = styled(MarginDiv)`
   }
 `;
 
-export const CenteredTable = styled(Table)`
+export const CenteredTable = styled(MarginDiv)`
+  display: flex;
   align-items: center;
   flex-direction: row;
-
-  @media only screen and (min-width: 768px) {
-    flex-direction: column;
-  }
 `;
 
 export const Column = styled(MarginDiv)`
