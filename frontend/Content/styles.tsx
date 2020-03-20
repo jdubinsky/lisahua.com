@@ -76,11 +76,13 @@ export const CallToActionText = styled(AvenirFontBase)`
 export const ImageWrapper = styled(MarginDiv)`
   display: flex;
   align-self: flex-start;
+  justify-content: flex-start;
   margin-right: 12px;
   overflow: hidden;
 
   @media only screen and (min-width: 768px) {
     align-self: flex-end;
+    justify-content: flex-end;
   }
 `;
 

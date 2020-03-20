@@ -117,9 +117,7 @@ export default class Content extends Component {
     return (
       <styles.Footer marginTop="70px">
         <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
-        <styles.RightFooter>
-          Made with lots of 🍵 and ❤️ from my couch
-        </styles.RightFooter>
+        <styles.RightFooter>Made with lots of 🍵 and ❤️</styles.RightFooter>
       </styles.Footer>
     );
   }

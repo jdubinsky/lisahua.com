@@ -148,8 +148,8 @@ export const BigQuote = styled(AvenirFontDiv)`
   font-size: 36px;
   font-weight: 700;
   text-align: center;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
 
   @media only screen and (min-width: 768px) {
     padding-left: 60px;
@@ -211,10 +211,14 @@ export const Link = styled.a`
 export const Footer = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-left: -30px;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    align-items: stretch;
   }
 `;
 
