@@ -105,6 +105,22 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
     });
   };
 
+  getCollapseButton() {
+    if (!isMobile()) {
+      return <Fragment />;
+    }
+
+    if (this.state.isCollapsed) {
+      return <Fragment />;
+    }
+
+    return (
+      <styles.AvenirFontDiv marginTop="30px">
+        <button onClick={this.onCollapse}>collapse -</button>
+      </styles.AvenirFontDiv>
+    );
+  }
+
   getSidebarContent() {
     if (this.state.isCollapsed) {
       return (
@@ -121,9 +137,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         {this.getTimeline()}
         {this.getToolsInfo()}
         {this.getCredits()}
-        <styles.AvenirFontDiv marginTop="30px">
-          <button onClick={this.onCollapse}>collapse -</button>
-        </styles.AvenirFontDiv>
+        {this.getCollapseButton()}
       </Fragment>
     );
   }
