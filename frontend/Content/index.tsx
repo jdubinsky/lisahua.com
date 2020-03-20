@@ -107,9 +107,7 @@ export default class Content extends Component {
           predictive insights for industrial plant operations.
         </styles.Text>
         <styles.CallToActionContainer marginTop="50px">
-          <styles.CallToActionText marginTop="50px">
-            🤞coming soon
-          </styles.CallToActionText>
+          <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
         </styles.CallToActionContainer>
         <styles.ImageWrapper>
           <img src={constants.canvassUrl} />
