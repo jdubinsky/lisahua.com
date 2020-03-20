@@ -8,6 +8,7 @@ export const magnetUrl = `${homepageBaseUrl}desktop-magnet.png`;
 export const ttcUrl = `${homepageBaseUrl}mobile-ttcexit.png`;
 export const aodaUrl = `${homepageBaseUrl}desktop-aoda.png`;
 export const netsweeperUrl = `${homepageBaseUrl}desktop-netsweeper.png`;
+export const canvassUrl = `${homepageBaseUrl}desktop-canvass.png`;
 
 // magnet case study images
 const magnetBaseUrl = `${STATIC_URL}images/magnet/`;

@@ -109,6 +109,9 @@ export default class Content extends Component {
         <styles.CallToActionText marginTop="50px">
           🤞coming soon
         </styles.CallToActionText>
+        <styles.ImageWrapper>
+          <img src={constants.canvassUrl} />
+        </styles.ImageWrapper>
       </styles.CaseStudyContainer>
     );
   }
