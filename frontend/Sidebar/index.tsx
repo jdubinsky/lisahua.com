@@ -2,15 +2,12 @@ import { h, Component, Fragment } from "preact";
 
 import ArrowlessIcon from "../icons/Arrowless";
 import DownArrowIcon from "../icons/DownArrow";
+import isMobile from "../is-mobile";
 
 import * as styles from "./styles";
 import * as constants from "../constants";
 import description from "./content.txt";
 import description2 from "./content-2.txt";
-
-const isMobile = (): boolean => {
-  return screen.width < 768;
-};
 
 interface SidebarState {
   isCollapsed: boolean;

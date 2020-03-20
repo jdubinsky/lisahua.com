@@ -31,9 +31,13 @@ export const SidebarContainer = styled(MarginDiv)`
   overflow: auto;
   background: #ffffff;
   margin-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 
   @media only screen and (min-width: 768px) {
     width: 35%;
+    padding-left: 0px;
+    padding-right: 0px;
     padding-top: 0px;
     margin-top: 91px;
     margin-left: 45px;
@@ -51,6 +55,8 @@ export const Content = styled(MarginDiv)`
   padding: 10px;
   overflow-y: scroll;
   background: #e5e5e5;
+  padding-left: 30px;
+  padding-right: 30px;
 
   @media only screen and (min-width: 768px) {
     width: 65%;
@@ -68,6 +74,7 @@ export const Title = styled(BeauFontDiv)`
 export const Section = styled(AvenirFontDiv)`
   font-size: 36px;
   font-weight: 700;
+  margin-bottom: 15px;
 `;
 
 export const BoldText = styled(AvenirFontDiv)`
@@ -81,11 +88,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  padding-top: 50px;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     overflow: hidden;
     height: 100vh;
+    padding-top: 0px;
   }
 `;
 
@@ -139,8 +148,13 @@ export const BigQuote = styled(AvenirFontDiv)`
   font-size: 36px;
   font-weight: 700;
   text-align: center;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  @media only screen and (min-width: 768px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
 `;
 
 export const MaxWidthImage = styled.img`
@@ -197,10 +211,14 @@ export const Link = styled.a`
 export const Footer = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-left: -30px;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    align-items: stretch;
   }
 `;
 

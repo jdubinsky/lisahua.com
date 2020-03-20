@@ -14,11 +14,9 @@ export default class Content extends Component {
       return (
         <Fragment>
           <styles.CallToActionText marginRight="12px">
-            <Link to="/magnet">explore case study</Link>
+            explore case study
           </styles.CallToActionText>
-          <Link to="/magnet">
-            <ArrowlessIcon />
-          </Link>
+          <ArrowlessIcon />
         </Fragment>
       );
     }
@@ -28,23 +26,25 @@ export default class Content extends Component {
   getMagnetCaseStudy() {
     return (
       <styles.CaseStudyContainer>
-        <styles.Header>Magnet Forensics</styles.Header>
-        <styles.Text marginTop="12px">
-          Redesigning the experience of training forensic investigators.
-        </styles.Text>
-        <styles.CallToActionContainer marginTop="50px">
-          {this.getMagnetLink()}
-        </styles.CallToActionContainer>
-        <styles.ImageWrapper>
-          <img src={constants.magnetUrl} />
-        </styles.ImageWrapper>
+        <Link to="/magnet">
+          <styles.Header>Magnet Forensics</styles.Header>
+          <styles.Text marginTop="12px">
+            Redesigning the experience of training forensic investigators.
+          </styles.Text>
+          <styles.CallToActionContainer marginTop="50px">
+            {this.getMagnetLink()}
+          </styles.CallToActionContainer>
+          <styles.ImageWrapper>
+            <img src={constants.magnetUrl} />
+          </styles.ImageWrapper>
+        </Link>
       </styles.CaseStudyContainer>
     );
   }
 
   getAODACaseStudy() {
     return (
-      <styles.CaseStudyContainer marginTop="65px">
+      <styles.CaseStudyContainer marginTop="70px">
         <styles.Header>AODA Accessibility Project</styles.Header>
         <styles.Text marginTop="12px">
           A comprehensive testing guide designed to onboard non-technical
@@ -62,7 +62,7 @@ export default class Content extends Component {
 
   getNetsweeperCaseStudy() {
     return (
-      <styles.CaseStudyContainer marginTop="65px">
+      <styles.CaseStudyContainer marginTop="70px">
         <styles.Header>Netsweeper</styles.Header>
         <styles.Text marginTop="12px">
           Transforming the way online purchases are processed
@@ -82,7 +82,7 @@ export default class Content extends Component {
 
   getTTCCaseStudy() {
     return (
-      <styles.CaseStudyContainer marginTop="65px">
+      <styles.CaseStudyContainer marginTop="70px">
         <styles.Header>TTC Exit</styles.Header>
         <styles.Text marginTop="12px">
           A tool that helps you shorten your commute and get you out of the
@@ -100,7 +100,7 @@ export default class Content extends Component {
 
   getCanvassCaseStudy() {
     return (
-      <styles.CaseStudyContainer marginTop="65px">
+      <styles.CaseStudyContainer marginTop="70px">
         <styles.Header>Canvass.io</styles.Header>
         <styles.Text marginTop="12px">
           An artificial intelligence application that trains and delivers
@@ -115,11 +115,9 @@ export default class Content extends Component {
 
   getFooter() {
     return (
-      <styles.Footer marginTop="65px">
+      <styles.Footer marginTop="70px">
         <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
-        <styles.RightFooter>
-          Made with lots of 🍵 and ❤️ from my couch
-        </styles.RightFooter>
+        <styles.RightFooter>Made with lots of 🍵 and ❤️</styles.RightFooter>
       </styles.Footer>
     );
   }

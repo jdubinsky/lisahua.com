@@ -75,9 +75,15 @@ export const CallToActionText = styled(AvenirFontBase)`
 
 export const ImageWrapper = styled(MarginDiv)`
   display: flex;
-  align-self: flex-end;
+  align-self: flex-start;
+  justify-content: flex-start;
   margin-right: 12px;
   overflow: hidden;
+
+  @media only screen and (min-width: 768px) {
+    align-self: flex-end;
+    justify-content: flex-end;
+  }
 `;
 
 export const RelativeImageWrapper = styled(ImageWrapper)`
@@ -100,10 +106,13 @@ export const LockIconWrapper = styled(Lock)`
 export const Footer = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    align-items: stretch;
     max-width: 730px;
   }
 `;
@@ -111,6 +120,11 @@ export const Footer = styled(MarginDiv)`
 export const LeftFooter = styled(AvenirFontBase)`
   display: flex;
   font-size: 16px;
+  margin-left: -30px;
+
+  @media only screen and (min-width: 768px) {
+    margin-left: 0px;
+  }
 `;
 
 export const RightFooter = styled(BeauFontBase)`

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import * as constants from "../../constants";
 import ArrowlessIcon from "../../icons/Arrowless";
+import isMobile from "../../is-mobile";
 
 import * as styles from "./styles";
 
@@ -15,7 +16,15 @@ const description = `
 Redesigning the experience of buying and training investigative forensic equipment.
 `;
 
-export default class MagnentCaseStudyPage extends Component {
+interface MagnetState {
+  isCollapsed: boolean;
+}
+
+export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
+  state = {
+    isCollapsed: isMobile()
+  };
+
   buildList(header: string, listItems: string[]) {
     // TODO: make this a component
     const listComponents = listItems.map(item => {
@@ -47,30 +56,6 @@ export default class MagnentCaseStudyPage extends Component {
 
   getTimeline() {
     return this.buildList("timeline", ["june - aug 2018"]);
-  }
-
-  getProjectInfoOld() {
-    return (
-      <styles.Table marginBottom="30px">
-        <styles.Column width="60%">
-          {this.buildList("role", [
-            "information architecture",
-            "user personas",
-            "journey mapping",
-            "wireframes",
-            "stakeholder interviews",
-            "user testing"
-          ])}
-        </styles.Column>
-        <styles.Column width="40%">
-          <styles.SubHeader>project type</styles.SubHeader>
-          <styles.Text>marketing</styles.Text>
-          <styles.Text>website</styles.Text>
-          <styles.SubHeader marginTop="30px">timeline</styles.SubHeader>
-          <styles.Text>june - aug 2018</styles.Text>
-        </styles.Column>
-      </styles.Table>
-    );
   }
 
   getToolsInfo() {
@@ -110,17 +95,46 @@ export default class MagnentCaseStudyPage extends Component {
     );
   }
 
+  onReadMore = () => {
+    this.setState({ isCollapsed: false });
+  };
+
+  onCollapse = () => {
+    this.setState({ isCollapsed: true }, () => {
+      window.scrollTo(0, 0);
+    });
+  };
+
+  getSidebarContent() {
+    if (this.state.isCollapsed) {
+      return (
+        <styles.AvenirFontDiv>
+          <button onClick={this.onReadMore}>read more +</button>
+        </styles.AvenirFontDiv>
+      );
+    }
+
+    return (
+      <Fragment>
+        {this.getProjectInfo()}
+        {this.getProjectType()}
+        {this.getTimeline()}
+        {this.getToolsInfo()}
+        {this.getCredits()}
+        <styles.AvenirFontDiv marginTop="30px">
+          <button onClick={this.onCollapse}>collapse -</button>
+        </styles.AvenirFontDiv>
+      </Fragment>
+    );
+  }
+
   getSidebar() {
     return (
       <styles.SidebarContainer>
         <styles.Title>Magnet</styles.Title>
         <styles.Title marginBottom="40px">Forensics</styles.Title>
         <styles.Text marginBottom="30px">{description}</styles.Text>
-        {this.getProjectInfo()}
-        {this.getProjectType()}
-        {this.getTimeline()}
-        {this.getToolsInfo()}
-        {this.getCredits()}
+        {this.getSidebarContent()}
       </styles.SidebarContainer>
     );
   }
@@ -427,7 +441,7 @@ export default class MagnentCaseStudyPage extends Component {
         <styles.MarginDiv marginTop="30px">
           <styles.MaxWidthImage src={constants.magnetIA} />
         </styles.MarginDiv>
-        <styles.SmallHeader>wireframes</styles.SmallHeader>
+        <styles.SmallHeader marginTop="50px">wireframes</styles.SmallHeader>
         <styles.Text marginTop="15px">
           I created forty-three screens that covered the primary functions of
           the website including: the home, product overview, and product landing
@@ -530,9 +544,7 @@ export default class MagnentCaseStudyPage extends Component {
     return (
       <styles.Footer marginTop="50px">
         <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
-        <styles.RightFooter>
-          Made with lots of 🍵 and ❤️ from my couch
-        </styles.RightFooter>
+        <styles.RightFooter>Made with lots of 🍵 and ❤️</styles.RightFooter>
       </styles.Footer>
     );
   }
@@ -540,7 +552,7 @@ export default class MagnentCaseStudyPage extends Component {
   getContent() {
     return (
       <styles.Content>
-        <styles.CenteredTable marginBottom="30px">
+        <styles.CenteredTable marginTop="30px" marginBottom="30px">
           <ArrowlessIcon />
           <styles.BoldText marginLeft="12px">
             <Link to="/">back to all projects</Link>
