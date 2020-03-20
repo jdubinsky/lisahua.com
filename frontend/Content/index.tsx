@@ -106,9 +106,11 @@ export default class Content extends Component {
           An artificial intelligence application that trains and delivers
           predictive insights for industrial plant operations.
         </styles.Text>
-        <styles.CallToActionText marginTop="50px">
-          🤞coming soon
-        </styles.CallToActionText>
+        <styles.CallToActionContainer marginTop="50px">
+          <styles.CallToActionText marginTop="50px">
+            🤞coming soon
+          </styles.CallToActionText>
+        </styles.CallToActionContainer>
         <styles.ImageWrapper>
           <img src={constants.canvassUrl} />
         </styles.ImageWrapper>
