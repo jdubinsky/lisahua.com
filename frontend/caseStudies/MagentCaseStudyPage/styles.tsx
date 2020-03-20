@@ -148,7 +148,6 @@ export const MaxWidthImage = styled.img`
 `;
 
 export const CustomerImage = styled(MaxWidthImage)`
-  width: 700px;
   height: 250px;
 
   @media only screen and (min-width: 768px) {
