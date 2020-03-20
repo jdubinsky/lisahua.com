@@ -427,7 +427,7 @@ export default class MagnentCaseStudyPage extends Component {
         <styles.MarginDiv marginTop="30px">
           <styles.MaxWidthImage src={constants.magnetIA} />
         </styles.MarginDiv>
-        <styles.SmallHeader>wireframes</styles.SmallHeader>
+        <styles.SmallHeader marginTop="50px">wireframes</styles.SmallHeader>
         <styles.Text marginTop="15px">
           I created forty-three screens that covered the primary functions of
           the website including: the home, product overview, and product landing
@@ -540,7 +540,7 @@ export default class MagnentCaseStudyPage extends Component {
   getContent() {
     return (
       <styles.Content>
-        <styles.CenteredTable marginBottom="30px">
+        <styles.CenteredTable marginTop="30px" marginBottom="30px">
           <ArrowlessIcon />
           <styles.BoldText marginLeft="12px">
             <Link to="/">back to all projects</Link>
