@@ -1,8 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
-import Avenir from "./assets/fonts/AvenirRoman.otf";
-
 const beauFontUrl = `${process.env.STATIC_URL}fonts/BeauRegular.ttf`;
+const avenirFontUrl = `${process.env.STATIC_URL}fonts/Avenir-Roman.ttf`;
 
 export default createGlobalStyle`
   a {
@@ -19,10 +18,9 @@ export default createGlobalStyle`
   }
 
   @font-face {
-    font-family: Avenir;
+    font-family: avenir-roman;
     src:
-      local('Avenir'), format('otf'),
-      url('${Avenir}') format('otf');
+      url('${avenirFontUrl}') format('truetype');
     font-weight: 300;
     font-style: normal;
   }

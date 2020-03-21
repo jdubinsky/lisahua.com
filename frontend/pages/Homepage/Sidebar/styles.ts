@@ -81,7 +81,7 @@ export const Row = styled(MarginDiv)`
 `;
 
 export const AvenirFontDiv = styled(MarginDiv)`
-  font-family: Avenir;
+  font-family: avenir-roman;
   font-style: normal;
   font-weight: normal;
 `;

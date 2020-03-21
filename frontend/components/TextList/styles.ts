@@ -14,7 +14,7 @@ export const MarginDiv = styled.div<MarginProps>`
 `;
 
 const AvenirFontDiv = styled(MarginDiv)`
-  font-family: Avenir;
+  font-family: avenir-roman;
   font-style: normal;
   font-weight: normal;
 `;

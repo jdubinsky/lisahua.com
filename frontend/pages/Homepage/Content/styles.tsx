@@ -53,7 +53,7 @@ export const Text = styled(BeauFontBase)`
 `;
 
 const AvenirFontBase = styled(MarginDiv)`
-  font-family: Avenir;
+  font-family: avenir-roman;
   font-style: normal;
   font-weight: normal;
 `;
