@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import * as constants from "../../constants";
 import ArrowlessIcon from "../../icons/Arrowless";
 import isMobile from "../../is-mobile";
+import TextList from "../../components/TextList";
 
 import * as styles from "./styles";
 
@@ -25,46 +26,30 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
     isCollapsed: isMobile()
   };
 
-  buildList(header: string, listItems: string[]) {
-    // TODO: make this a component
-    const listComponents = listItems.map(item => {
-      return <styles.Text>{item}</styles.Text>;
-    });
-
-    return (
-      <Fragment>
-        <styles.SubHeader marginTop="30px">{header}</styles.SubHeader>
-        {listComponents}
-      </Fragment>
-    );
-  }
-
   getProjectInfo() {
-    return this.buildList("role", [
+    const roles = [
       "information architecture",
       "user personas",
       "journey mapping",
       "wireframes",
       "stakeholder interviews",
       "user testing"
-    ]);
+    ];
+    return <TextList header="role" listItems={roles} />;
   }
 
   getProjectType() {
-    return this.buildList("project type", ["marketing", "website"]);
+    const projectTypes = ["marketing", "website"];
+    return <TextList header="project type" listItems={projectTypes} />;
   }
 
   getTimeline() {
-    return this.buildList("timeline", ["june - aug 2018"]);
+    return <TextList header="timeline" listItems={["june - aug 2018"]} />;
   }
 
   getToolsInfo() {
-    const list = this.buildList("tools", [
-      "sketch",
-      "invision",
-      "highfive",
-      "skype for teams"
-    ]);
+    const tools = ["sketch", "invision", "highfive", "skype for teams"];
+    const list = <TextList header="tools" listItems={tools} />;
     return <styles.Column marginBottom="30px">{list}</styles.Column>;
   }
 

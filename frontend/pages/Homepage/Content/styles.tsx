@@ -1,7 +1,7 @@
 import { h } from "preact";
 import styled from "styled-components";
 
-import LockIcon from "../icons/Lock";
+import LockIcon from "../../../icons/Lock";
 
 interface MarginProps {
   marginLeft?: string;

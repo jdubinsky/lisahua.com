@@ -1,10 +1,10 @@
 import { h, Component, Fragment } from "preact";
 import { Link } from "react-router-dom";
 
-import ArrowlessIcon from "../icons/Arrowless";
+import ArrowlessIcon from "../../../icons/Arrowless";
 
 import * as styles from "./styles";
-import * as constants from "../constants";
+import * as constants from "../../../constants";
 
 const ENABLE_MAGNET = true;
 
