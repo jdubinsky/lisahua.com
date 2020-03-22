@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface MarginProps {
+export interface MarginProps {
   marginLeft?: string;
   marginRight?: string;
   marginTop?: string;

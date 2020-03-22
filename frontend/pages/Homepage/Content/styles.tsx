@@ -2,18 +2,7 @@ import { h } from "preact";
 import styled from "styled-components";
 
 import LockIcon from "../../../icons/Lock";
-
-interface MarginProps {
-  marginLeft?: string;
-  marginTop?: string;
-}
-
-const MarginDiv = styled.div<MarginProps>`
-  margin-top: ${props => props.marginTop || "0px"};
-  margin-bottom: ${props => props.marginBottom || "0px"};
-  margin-left: ${props => props.marginLeft || "0px"};
-  margin-right: ${props => props.marginRight || "0px"};
-`;
+import { AvenirFontDiv, BeauFontDiv, MarginDiv } from "../../../text-styles";
 
 export const Content = styled(MarginDiv)`
   width: 100%;
@@ -31,31 +20,19 @@ export const Content = styled(MarginDiv)`
   }
 `;
 
-const BeauFontBase = styled(MarginDiv)`
-  font-family: Beau;
-  font-style: normal;
-  font-weight: normal;
-`;
-
 export const CaseStudyContainer = styled(MarginDiv)`
   max-width: 730px;
   display: flex;
   flex-direction: column;
 `;
 
-export const Header = styled(BeauFontBase)`
+export const Header = styled(BeauFontDiv)`
   font-size: 32px;
 `;
 
-export const Text = styled(BeauFontBase)`
+export const Text = styled(BeauFontDiv)`
   max-width: 379px;
   font-size: 20px;
-`;
-
-const AvenirFontBase = styled(MarginDiv)`
-  font-family: avenir-roman;
-  font-style: normal;
-  font-weight: normal;
 `;
 
 export const CallToActionContainer = styled(MarginDiv)`
@@ -68,7 +45,7 @@ export const CallToActionContainer = styled(MarginDiv)`
   }
 `;
 
-export const CallToActionText = styled(AvenirFontBase)`
+export const CallToActionText = styled(AvenirFontDiv)`
   font-weight: 800;
   font-size: 18px;
 `;
