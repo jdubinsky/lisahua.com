@@ -102,32 +102,3 @@ export const LockIconWrapper = styled(Lock)`
   left: 0;
   right: 0;
 `;
-
-export const Footer = styled(MarginDiv)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 15px;
-
-  @media only screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    max-width: 730px;
-  }
-`;
-
-export const LeftFooter = styled(AvenirFontBase)`
-  display: flex;
-  font-size: 16px;
-  margin-left: -30px;
-
-  @media only screen and (min-width: 768px) {
-    margin-left: 0px;
-  }
-`;
-
-export const RightFooter = styled(BeauFontBase)`
-  display: flex;
-  font-size: 20px;
-`;

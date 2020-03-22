@@ -5,6 +5,8 @@ import * as constants from "../../constants";
 import ArrowlessIcon from "../../icons/Arrowless";
 import isMobile from "../../is-mobile";
 import TextList from "../../components/TextList";
+import SectionHeader from "../../components/SectionHeader";
+import Footer from "../../components/Footer";
 
 import * as styles from "./styles";
 
@@ -25,6 +27,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   state = {
     isCollapsed: isMobile()
   };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   getProjectInfo() {
     const roles = [
@@ -184,16 +190,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   }
 
   getContextTable() {
-    return (
-      <styles.Table marginBottom="50px">
-        <styles.Column width="25%">
-          <styles.Section>context</styles.Section>
-        </styles.Column>
-        <styles.Column width="75%">
-          <styles.BigText>{contextString}</styles.BigText>
-        </styles.Column>
-      </styles.Table>
-    );
+    return <SectionHeader title="context" content={contextString} />;
   }
 
   getContextSection() {
@@ -269,21 +266,15 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   }
 
   getResearchSection() {
+    const researchDescription = `\
+      At the start of this project, I had no idea about the type of\
+      things that would happen during an investigation. I made it my\
+      goal to learn everything I possibly could in the life of a\
+      forensic examiner- the good, the bad, and the ugly.\
+    `;
     return (
       <Fragment>
-        <styles.Table marginBottom="50px">
-          <styles.Column width="25%">
-            <styles.Section>research</styles.Section>
-          </styles.Column>
-          <styles.Column width="75%">
-            <styles.BigText>
-              At the start of this project, I had no idea about the type of
-              things that would happen during an investigation. I made it my
-              goal to learn everything I possibly could in the life of a
-              forensic examiner- the good, the bad, and the ugly.
-            </styles.BigText>
-          </styles.Column>
-        </styles.Table>
+        <SectionHeader title="research" content={researchDescription} />
         <styles.SmallHeader>competitive analysis</styles.SmallHeader>
         <styles.Text marginTop="15px">{competitiveAnalysisString}</styles.Text>
         <styles.BigQuote marginTop="30px" marginBottom="30px">
@@ -315,24 +306,18 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   }
 
   getDefineSection() {
+    const defineDescription = `\
+      As we were collecting information, I began organizing knowledge\
+      into three categories: user types, satisfaction with product, and\
+      competitors. In doing so, I was able to fully flesh out an ideal\
+      customer for Magnet Forensics; what inspires and motivates them,\
+      how Magnet Forensics’ was portrayed in their customers’ eyes, and\
+      what it was that their competitors were doing that users responded\
+      well to.\
+    `;
     return (
-      <Fragment>
-        <styles.Table marginTop="50px" marginBottom="50px">
-          <styles.Column width="25%">
-            <styles.Section>define</styles.Section>
-          </styles.Column>
-          <styles.Column width="75%">
-            <styles.BigText>
-              As we were collecting information, I began organizing knowledge
-              into three categories: user types, satisfaction with product, and
-              competitors. In doing so, I was able to fully flesh out an ideal
-              customer for Magnet Forensics; what inspires and motivates them,
-              how Magnet Forensics’ was portrayed in their customers’ eyes, and
-              what it was that their competitors were doing that users responded
-              well to.
-            </styles.BigText>
-          </styles.Column>
-        </styles.Table>
+      <styles.MarginDiv marginTop="50px">
+        <SectionHeader title="define" content={defineDescription} />
         <styles.SmallHeader marginBottom="30px">personas</styles.SmallHeader>
         <styles.MarginDiv marginBottom="30px">
           <styles.MaxWidthImage src={constants.magnetPersonaFE} />
@@ -400,31 +385,25 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         <styles.MarginDiv marginTop="30px">
           <styles.MaxWidthImage src={constants.magnetJourneyMap} />
         </styles.MarginDiv>
-      </Fragment>
+      </styles.MarginDiv>
     );
   }
 
   getIdeateSection() {
+    const ideateDescription = `\
+      After reporting our findings to Magnet Forensics, the team was\
+      confident that the client’s goals were aligned with the strategy\
+      we wanted to move forward with. Magnet Forensics, both their\
+      product offering and website wanted to focus on shifting their\
+      messaging to cater to the decision makers in an organization, the\
+      leadership roles who are less interested in the technical aspects\
+      of the product, but the results it can deliver. At the time,\
+      Magnet AXIOM was the primary tool, and we came up with ways to its\
+      product page.\
+    `;
     return (
-      <Fragment>
-        <styles.Table marginTop="50px" marginBottom="50px">
-          <styles.Column width="25%">
-            <styles.Section>ideate</styles.Section>
-          </styles.Column>
-          <styles.Column width="75%">
-            <styles.BigText>
-              After reporting our findings to Magnet Forensics, the team was
-              confident that the client’s goals were aligned with the strategy
-              we wanted to move forward with. Magnet Forensics, both their
-              product offering and website wanted to focus on shifting their
-              messaging to cater to the decision makers in an organization, the
-              leadership roles who are less interested in the technical aspects
-              of the product, but the results it can deliver. At the time,
-              Magnet AXIOM was the primary tool, and we came up with ways to its
-              product page.
-            </styles.BigText>
-          </styles.Column>
-        </styles.Table>
+      <styles.MarginDiv marginTop="50px">
+        <SectionHeader title="ideate" content={ideateDescription} />
         <styles.SmallHeader marginTop="50px">
           information architecture
         </styles.SmallHeader>
@@ -480,30 +459,24 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         <styles.MarginDiv marginTop="30px">
           <styles.MaxWidthImage src={constants.magnetUT} />
         </styles.MarginDiv>
-      </Fragment>
+      </styles.MarginDiv>
     );
   }
 
   getRetroSection() {
+    const retroDescription = `\
+      Working on a project whose mission is to “Seek Justice and Protect\
+      The Innocent” has taught me a lot about empathy and the value in\
+      allowing users to have autonomy on the type of content they want\
+      to see. In the conversations we had, we learned that while the\
+      subject matter of their job isn’t always pleasant, our users are\
+      expected to be absolutely confident in their skills, which has\
+      positive and negative effects on their decision making process\
+      when purchasing tools for their investigation.\
+    `;
     return (
-      <Fragment>
-        <styles.Table marginTop="50px" marginBottom="50px">
-          <styles.Column width="25%">
-            <styles.Section>retro</styles.Section>
-          </styles.Column>
-          <styles.Column width="75%">
-            <styles.BigText>
-              Working on a project whose mission is to “Seek Justice and Protect
-              The Innocent” has taught me a lot about empathy and the value in
-              allowing users to have autonomy on the type of content they want
-              to see. In the conversations we had, we learned that while the
-              subject matter of their job isn’t always pleasant, our users are
-              expected to be absolutely confident in their skills, which has
-              positive and negative effects on their decision making process
-              when purchasing tools for their investigation.
-            </styles.BigText>
-          </styles.Column>
-        </styles.Table>
+      <styles.MarginDiv marginTop="50px">
+        <SectionHeader title="retro" content={retroDescription} />
         <styles.SmallHeader marginTop="50px">results</styles.SmallHeader>
         <styles.Text marginTop="25px">
           After the launch of the new website, we observed the following
@@ -534,17 +507,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
             here
           </styles.Link>
         </styles.Text>
-      </Fragment>
-    );
-  }
-
-  getFooter() {
-    // TODO: make this a component
-    return (
-      <styles.Footer marginTop="50px">
-        <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
-        <styles.RightFooter>Made with lots of 🍵 and ❤️</styles.RightFooter>
-      </styles.Footer>
+      </styles.MarginDiv>
     );
   }
 
@@ -565,7 +528,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         {this.getDefineSection()}
         {this.getIdeateSection()}
         {this.getRetroSection()}
-        {this.getFooter()}
+        <Footer />
       </styles.Content>
     );
   }
