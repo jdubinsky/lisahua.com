@@ -1,29 +1,10 @@
 import styled from "styled-components";
 
-interface MarginProps {
-  marginLeft?: string;
-  marginRight?: string;
-  marginTop?: string;
-}
+import { AvenirFontDiv, BeauFontDiv, MarginDiv } from "../../text-styles";
 
-export const MarginDiv = styled.div<MarginProps>`
-  margin-top: ${props => props.marginTop || "0px"};
-  margin-bottom: ${props => props.marginBottom || "0px"};
-  margin-left: ${props => props.marginLeft || "0px"};
-  margin-right: ${props => props.marginRight || "0px"};
-`;
-
-const BeauFontDiv = styled(MarginDiv)`
-  font-family: Beau;
-  font-style: normal;
-  font-weight: normal;
-`;
-
-export const AvenirFontDiv = styled(MarginDiv)`
-  font-family: Avenir;
-  font-style: normal;
-  font-weight: normal;
-`;
+export const AvenirText = styled(AvenirFontDiv);
+export const BeauText = styled(BeauFontDiv);
+export const SpacerDiv = styled(MarginDiv);
 
 export const SidebarContainer = styled(MarginDiv)`
   width: 100%;
@@ -71,12 +52,6 @@ export const Title = styled(BeauFontDiv)`
   font-size: 60px;
 `;
 
-export const Section = styled(AvenirFontDiv)`
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 15px;
-`;
-
 export const BoldText = styled(AvenirFontDiv)`
   font-weight: 800;
   font-size: 18px;
@@ -107,16 +82,6 @@ export const SubHeader = styled(AvenirFontDiv)`
   font-size: 16px;
 `;
 
-export const Table = styled(MarginDiv)`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-
-  @media only screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`;
-
 export const CenteredTable = styled(MarginDiv)`
   display: flex;
   align-items: center;
@@ -135,11 +100,6 @@ export const Column = styled(MarginDiv)`
 `;
 
 export const Text = styled(BeauFontDiv)`
-  white-space: pre-line;
-  font-size: 20px;
-`;
-
-export const BigText = styled(BeauFontDiv)`
   white-space: pre-line;
   font-size: 20px;
 `;
@@ -206,28 +166,4 @@ export const ListItem = styled.li`
 export const Link = styled.a`
   margin-left: 5px;
   text-decoration: underline;
-`;
-
-export const Footer = styled(MarginDiv)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 15px;
-  margin-left: -30px;
-
-  @media only screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-  }
-`;
-
-export const LeftFooter = styled(AvenirFontDiv)`
-  display: flex;
-  font-size: 16px;
-`;
-
-export const RightFooter = styled(BeauFontDiv)`
-  display: flex;
-  font-size: 20px;
 `;

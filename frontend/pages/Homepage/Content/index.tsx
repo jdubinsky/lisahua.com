@@ -1,10 +1,12 @@
 import { h, Component, Fragment } from "preact";
 import { Link } from "react-router-dom";
 
-import ArrowlessIcon from "../icons/Arrowless";
+import ArrowlessIcon from "../../../icons/Arrowless";
+
+import Footer from "../../../components/Footer";
 
 import * as styles from "./styles";
-import * as constants from "../constants";
+import * as constants from "../../../constants";
 
 const ENABLE_MAGNET = true;
 
@@ -116,15 +118,6 @@ export default class Content extends Component {
     );
   }
 
-  getFooter() {
-    return (
-      <styles.Footer marginTop="70px">
-        <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
-        <styles.RightFooter>Made with lots of 🍵 and ❤️</styles.RightFooter>
-      </styles.Footer>
-    );
-  }
-
   render() {
     return (
       <styles.Content>
@@ -133,7 +126,7 @@ export default class Content extends Component {
         {this.getNetsweeperCaseStudy()}
         {this.getCanvassCaseStudy()}
         {this.getTTCCaseStudy()}
-        {this.getFooter()}
+        <Footer />
       </styles.Content>
     );
   }
