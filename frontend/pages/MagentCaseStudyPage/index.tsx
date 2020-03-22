@@ -401,6 +401,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
       Magnet AXIOM was the primary tool, and we came up with ways to its\
       product page.\
     `;
+
     return (
       <styles.SpacerDiv marginTop="50px">
         <SectionHeader title="ideate" content={ideateDescription} />

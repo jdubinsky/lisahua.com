@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import { AvenirFontDiv, BeauFontDiv, MarginDiv } from "../../text-styles";
 
-export const AvenirText = styled(AvenirFontDiv);
-export const BeauText = styled(BeauFontDiv);
-export const SpacerDiv = styled(MarginDiv);
+export const AvenirText = styled(AvenirFontDiv)``;
+export const BeauText = styled(BeauFontDiv)``;
+export const SpacerDiv = styled(MarginDiv)``;
 
 export const SidebarContainer = styled(MarginDiv)`
   width: 100%;
