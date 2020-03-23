@@ -13,12 +13,6 @@ data "archive_file" "zip" {
   output_path = "lhua-lambda.zip"
 }
 
-resource "aws_acm_certificate" "cert" {
-  provider          = aws.cloudfront-acm-certs
-  domain_name       = "lisahua.com"
-  validation_method = "EMAIL"
-}
-
 resource "aws_acm_certificate" "new_cert" {
   provider                  = aws.cloudfront-acm-certs
   domain_name               = "*.lisahua.com"
