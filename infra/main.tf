@@ -13,14 +13,15 @@ data "archive_file" "zip" {
   output_path = "lhua-lambda.zip"
 }
 
-resource "aws_acm_certificate" "cert" {
-  provider          = aws.cloudfront-acm-certs
-  domain_name       = "*.lisahua.com"
-  validation_method = "EMAIL"
+resource "aws_acm_certificate" "new_cert" {
+  provider                  = aws.cloudfront-acm-certs
+  domain_name               = "*.lisahua.com"
+  validation_method         = "EMAIL"
+  subject_alternative_names = ["lisahua.com"]
 }
 
-resource "aws_acm_certificate_validation" "cert" {
-  certificate_arn = aws_acm_certificate.cert.arn
+resource "aws_acm_certificate_validation" "new_cert" {
+  certificate_arn = aws_acm_certificate.new_cert.arn
 }
 
 resource "aws_route53_zone" "root_domain" {
@@ -29,13 +30,12 @@ resource "aws_route53_zone" "root_domain" {
 
 # The domain name to use with api-gateway
 resource "aws_api_gateway_domain_name" "apigw_domain_name" {
-  domain_name     = "www.lisahua.com"
-  certificate_arn = aws_acm_certificate.cert.arn
-
+  domain_name     = "lisahua.com"
+  certificate_arn = aws_acm_certificate.new_cert.arn
 }
 
 resource "aws_api_gateway_stage" "api_prod_stage" {
-  stage_name    = "prod"
+  stage_name    = "production"
   rest_api_id   = aws_api_gateway_rest_api.api.id
   deployment_id = aws_api_gateway_deployment.prod_deploy.id
 }
@@ -47,14 +47,26 @@ resource "aws_api_gateway_base_path_mapping" "apigw_path_map" {
 }
 
 resource "aws_route53_record" "r53rec" {
-  name    = "*.lisahua.com"
+  name    = "lisahua.com"
   type    = "A"
   zone_id = aws_route53_zone.root_domain.id
 
   alias {
     evaluate_target_health = true
-    name                   = aws_api_gateway_domain_name.apigw_domain_name.cloudfront_domain_name
-    zone_id                = aws_api_gateway_domain_name.apigw_domain_name.cloudfront_zone_id
+    name                   = aws_cloudfront_distribution.apigw_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.apigw_distribution.hosted_zone_id
+  }
+}
+
+resource "aws_route53_record" "r53rec-www" {
+  name    = "www.lisahua.com"
+  type    = "A"
+  zone_id = aws_route53_zone.root_domain.id
+
+  alias {
+    evaluate_target_health = true
+    name                   = aws_cloudfront_distribution.apigw_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.apigw_distribution.hosted_zone_id
   }
 }
 
@@ -84,55 +96,55 @@ resource "aws_api_gateway_rest_api" "api" {
   binary_media_types = ["*/*"]
 }
 
- resource "aws_api_gateway_method" "proxy_root" {
-   rest_api_id   = aws_api_gateway_rest_api.api.id
-   resource_id   = aws_api_gateway_rest_api.api.root_resource_id
-   http_method   = "ANY"
-   authorization = "NONE"
- }
+resource "aws_api_gateway_method" "proxy_root" {
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  resource_id   = aws_api_gateway_rest_api.api.root_resource_id
+  http_method   = "ANY"
+  authorization = "NONE"
+}
 
- resource "aws_api_gateway_resource" "proxy" {
-   rest_api_id = aws_api_gateway_rest_api.api.id
-   parent_id   = aws_api_gateway_rest_api.api.root_resource_id
-   path_part   = "{proxy+}"
+resource "aws_api_gateway_resource" "proxy" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  parent_id   = aws_api_gateway_rest_api.api.root_resource_id
+  path_part   = "{proxy+}"
 }
 
 resource "aws_api_gateway_method" "proxy" {
-   rest_api_id   = aws_api_gateway_rest_api.api.id
-   resource_id   = aws_api_gateway_resource.proxy.id
-   http_method   = "ANY"
-   authorization = "NONE"
- }
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  resource_id   = aws_api_gateway_resource.proxy.id
+  http_method   = "ANY"
+  authorization = "NONE"
+}
 
- resource "aws_api_gateway_deployment" "prod_deploy" {
-   depends_on = [
-     aws_api_gateway_integration.lambda,
-     aws_api_gateway_integration.lambda_root,
-   ]
+resource "aws_api_gateway_deployment" "prod_deploy" {
+  depends_on = [
+    aws_api_gateway_integration.lambda,
+    aws_api_gateway_integration.lambda_root,
+  ]
 
-   rest_api_id = aws_api_gateway_rest_api.api.id
-   stage_name  = "prod"
- }
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  stage_name  = "prod"
+}
 
- resource "aws_api_gateway_integration" "lambda" {
-   rest_api_id = aws_api_gateway_rest_api.api.id
-   resource_id = aws_api_gateway_method.proxy.resource_id
-   http_method = aws_api_gateway_method.proxy.http_method
+resource "aws_api_gateway_integration" "lambda" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  resource_id = aws_api_gateway_method.proxy.resource_id
+  http_method = aws_api_gateway_method.proxy.http_method
 
-   integration_http_method = "POST"
-   type                    = "AWS_PROXY"
-   uri                     = aws_lambda_function.lambda.invoke_arn
- }
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = aws_lambda_function.lambda.invoke_arn
+}
 
-  resource "aws_api_gateway_integration" "lambda_root" {
-   rest_api_id = aws_api_gateway_rest_api.api.id
-   resource_id = aws_api_gateway_method.proxy_root.resource_id
-   http_method = aws_api_gateway_method.proxy_root.http_method
+resource "aws_api_gateway_integration" "lambda_root" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  resource_id = aws_api_gateway_method.proxy_root.resource_id
+  http_method = aws_api_gateway_method.proxy_root.http_method
 
-   integration_http_method = "POST"
-   type                    = "AWS_PROXY"
-   uri                     = aws_lambda_function.lambda.invoke_arn
- }
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = aws_lambda_function.lambda.invoke_arn
+}
 
 # Lambda
 resource "aws_lambda_permission" "apigw_lambda" {
@@ -156,15 +168,15 @@ resource "aws_lambda_function" "lambda" {
   runtime = "nodejs10.x"
 
   memory_size = 256
-  timeout = 60
+  timeout     = 60
 
   environment {
     variables = {
-      APP_PORT = 8080
+      APP_PORT    = 8080
       BUCKET_NAME = aws_s3_bucket.static.id
-      NODE_ENV = "production"
-      API_HOST = "https://www.lisahua.com/"
-      STATIC_URL = "https://lhua-static.s3.amazonaws.com/"
+      NODE_ENV    = "production"
+      API_HOST    = "https://www.lisahua.com/"
+      STATIC_URL  = "https://lhua-static.s3.amazonaws.com/"
     }
   }
 }
