@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - node
 before_install:
-  - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.12.23/terraform_0.12.24_linux_amd64.zip
+  - curl -sLo /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
   - unzip /tmp/terraform.zip -d /opt/terraform
   - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
   - rm -f /tmp/terraform.zip
