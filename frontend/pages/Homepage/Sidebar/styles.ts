@@ -4,14 +4,14 @@ import {
   AvenirFontDiv,
   BeauFontDiv,
   MarginDiv,
-  MarginProps
+  MarginProps,
 } from "../../../text-styles";
 
 const MarginA = styled.a<MarginProps>`
-  margin-top: ${props => props.marginTop || "0px"};
-  margin-bottom: ${props => props.marginBottom || "0px"};
-  margin-left: ${props => props.marginLeft || "0px"};
-  margin-right: ${props => props.marginRight || "0px"};
+  margin-top: ${(props) => props.marginTop || "0px"};
+  margin-bottom: ${(props) => props.marginBottom || "0px"};
+  margin-left: ${(props) => props.marginLeft || "0px"};
+  margin-right: ${(props) => props.marginRight || "0px"};
 `;
 
 export const Sidebar = styled(MarginDiv)`
