@@ -2,11 +2,14 @@ import { h, Component, Fragment } from "preact";
 import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../../icons/Arrowless";
-import isMobile from "../../is-mobile";
+import Footer from "../../components/Footer";
+import SectionHeader from "../../components/SectionHeader";
 import TextList from "../../components/TextList";
 
+import isMobile from "../../is-mobile";
+
 import * as constants from "./constants";
-import * as contentText from "./copy";
+import * as copy from "./copy";
 import * as styles from "./styles";
 
 export default class CanvassAICaseStudyPage extends Component<{}> {
@@ -107,27 +110,99 @@ export default class CanvassAICaseStudyPage extends Component<{}> {
 
   getSidebar() {
     return (
-      <styles.SidebarContainer>
-        <styles.Title marginBottom="40px">Canvass AI</styles.Title>
-        <styles.Text>{contentText.titleDescription}</styles.Text>
-        {this.getSidebarContent()}
-      </styles.SidebarContainer>
+      <styles.SidebarWrapper>
+        <styles.SidebarContainer>
+          <styles.Title marginBottom="40px">Canvass AI</styles.Title>
+          <styles.Text>{copy.titleDescription}</styles.Text>
+          {this.getSidebarContent()}
+        </styles.SidebarContainer>
+      </styles.SidebarWrapper>
+    );
+  }
+
+  getContextSection() {
+    return (
+      <Fragment>
+        <SectionHeader title="context" content={copy.context} />
+        <styles.SpacerDiv marginTop="30px" marginBottom="10px">
+          <styles.MaxWidthImage src={constants.oldWebAppUrl} />
+        </styles.SpacerDiv>
+        <styles.BigLightText marginBottom="50px">
+          Screenshots of Canvass AI’s demo environment
+        </styles.BigLightText>
+      </Fragment>
+    );
+  }
+
+  getHighlightsSection() {
+    return (
+      <Fragment>
+        <SectionHeader title="highlights" content={copy.highlights} />
+        <styles.SmallHeader marginBottom="15px">wireframes</styles.SmallHeader>
+        <styles.Text marginBottom="30px">{copy.wireframes}</styles.Text>
+        <styles.SpacerDiv marginBottom="50px">
+          <styles.MaxWidthImage src={constants.wireframesUrl} />
+        </styles.SpacerDiv>
+        <styles.SmallHeader marginBottom="15px">user flow</styles.SmallHeader>
+        <styles.Text marginBottom="30px">{copy.userFlow}</styles.Text>
+        <styles.SpacerDiv marginBottom="10px">
+          <styles.MaxWidthImage src={constants.userFlowUrl} />
+        </styles.SpacerDiv>
+        <styles.BigLightText marginBottom="30px">
+          Canvass AI's userflow
+        </styles.BigLightText>
+        <styles.SmallHeader marginBottom="15px">
+          high fidelity designs
+        </styles.SmallHeader>
+        <styles.Text marginBottom="30px">
+          {copy.highFidelityPartOne}
+        </styles.Text>
+        <styles.SpacerDiv marginBottom="10px">
+          <styles.MaxWidthImage src={constants.moodboardUrl} />
+        </styles.SpacerDiv>
+        <styles.BigLightText marginBottom="30px">
+          Visual inspiration gathered in our research
+        </styles.BigLightText>
+        <styles.Text marginBottom="30px">
+          {copy.highFidelityPartTwo}
+        </styles.Text>
+        <styles.SpacerDiv marginBottom="10px">
+          <styles.MaxWidthImage src={constants.tableComparisonUrl} />
+        </styles.SpacerDiv>
+        <styles.BigLightText marginBottom="50px">
+          The brand color and table designs were tweaked for a cleaner look
+        </styles.BigLightText>
+      </Fragment>
+    );
+  }
+
+  getResultsSection() {
+    return (
+      <Fragment>
+        <SectionHeader title="results" content={copy.results} />
+      </Fragment>
     );
   }
 
   getContent() {
     return (
-      <styles.Content>
-        <styles.CenteredTable marginTop="30px" marginBottom="30px">
-          <ArrowlessIcon />
-          <styles.BoldText marginLeft="12px">
-            <Link to="/">back to all projects</Link>
-          </styles.BoldText>
-        </styles.CenteredTable>
-        <styles.SpacerDiv marginBottom="50px">
-          <styles.MaxWidthImage src={constants.canvassHeroUrl} />
-        </styles.SpacerDiv>
-      </styles.Content>
+      <styles.ContentWrapper>
+        <styles.Content>
+          <styles.CenteredTable marginTop="30px" marginBottom="30px">
+            <ArrowlessIcon />
+            <styles.BoldText marginLeft="12px">
+              <Link to="/">back to all projects</Link>
+            </styles.BoldText>
+          </styles.CenteredTable>
+          <styles.SpacerDiv marginBottom="50px">
+            <styles.MaxWidthImage src={constants.heroUrl} />
+          </styles.SpacerDiv>
+          {this.getContextSection()}
+          {this.getHighlightsSection()}
+          {this.getResultsSection()}
+          <Footer />
+        </styles.Content>
+      </styles.ContentWrapper>
     );
   }
 

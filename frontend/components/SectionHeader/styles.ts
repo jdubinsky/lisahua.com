@@ -19,7 +19,8 @@ export const Column = styled(MarginDiv)`
   width: 100%;
 
   @media only screen and (min-width: 768px) {
-    width: ${props => props.width || "100%"};
+    min-width: 130px;
+    width: ${(props) => props.width || "100%"};
   }
 `;
 
@@ -30,6 +31,5 @@ export const Section = styled(AvenirFontDiv)`
 `;
 
 export const BigText = styled(BeauFontDiv)`
-  white-space: pre-line;
   font-size: 20px;
 `;
