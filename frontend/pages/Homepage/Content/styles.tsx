@@ -37,6 +37,17 @@ export const CallToActionText = styled(AvenirFontDiv)`
 `;
 
 export const ImageWrapper = styled(MarginDiv)`
+  height: auto;
+  max-width: 100%;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+  }
+`;
+
+export const ImageWrapperOld = styled(MarginDiv)`
   display: flex;
   align-self: flex-start;
   justify-content: flex-start;
@@ -54,7 +65,7 @@ export const MaxWidthImage = styled.img`
   max-width: 100%;
 `;
 
-export const RelativeImageWrapper = styled.div`
+export const RelativeImageWrapper = styled(ImageWrapper)`
   position: relative;
 `;
 
