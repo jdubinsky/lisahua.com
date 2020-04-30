@@ -49,6 +49,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
 
     return (
       <Fragment>
+        <styles.Text>I'm actively looking for new opportunities!</styles.Text>
         <styles.Text>{description}</styles.Text>
         <styles.Text>{description2}</styles.Text>
         <styles.TextWithIcon marginTop="34px">
