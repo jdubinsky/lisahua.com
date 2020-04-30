@@ -32,7 +32,9 @@ export default class Content extends Component {
           <styles.CallToActionContainer marginTop="50px">
             {this.getMagnetLink()}
           </styles.CallToActionContainer>
-          <styles.MaxWidthImage src={constants.magnetUrl} />
+          <styles.ImageWrapper>
+            <styles.MaxWidthImage src={constants.magnetUrl} />
+          </styles.ImageWrapper>
         </Link>
       </styles.CaseStudyContainer>
     );
@@ -49,7 +51,9 @@ export default class Content extends Component {
         <styles.CallToActionContainer marginTop="50px">
           <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
         </styles.CallToActionContainer>
-        <styles.MaxWidthImage src={constants.aodaUrl} />
+        <styles.ImageWrapper>
+          <styles.MaxWidthImage src={constants.aodaUrl} />
+        </styles.ImageWrapper>
       </styles.CaseStudyContainer>
     );
   }
@@ -86,7 +90,7 @@ export default class Content extends Component {
           <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
         </styles.CallToActionContainer>
         <styles.ImageWrapper>
-          <img src={constants.ttcUrl} />
+          <styles.MaxWidthImage src={constants.ttcUrl} />
         </styles.ImageWrapper>
       </styles.CaseStudyContainer>
     );
@@ -107,7 +111,9 @@ export default class Content extends Component {
             </styles.CallToActionText>
             <ArrowlessIcon />
           </styles.CallToActionContainer>
-          <styles.MaxWidthImage src={constants.canvassUrl} />
+          <styles.ImageWrapper>
+            <styles.MaxWidthImage src={constants.canvassUrl} />
+          </styles.ImageWrapper>
         </Link>
       </styles.CaseStudyContainer>
     );
