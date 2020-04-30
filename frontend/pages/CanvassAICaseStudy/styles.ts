@@ -1,0 +1,186 @@
+import styled from "styled-components";
+
+import { AvenirFontDiv, BeauFontDiv, MarginDiv } from "../../text-styles";
+
+export const AvenirText = styled(AvenirFontDiv)``;
+export const BeauText = styled(BeauFontDiv)``;
+export const SpacerDiv = styled(MarginDiv)``;
+
+export const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding-top: 50px;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    overflow: hidden;
+    height: 100vh;
+    padding-top: 0px;
+  }
+`;
+
+export const SidebarWrapper = styled(MarginDiv)`
+  width: 100%;
+  overflow: auto;
+  background: #ffffff;
+
+  @media only screen and (min-width: 768px) {
+    width: calc(35% - 115px);
+  }
+`;
+
+export const SidebarContainer = styled(MarginDiv)`
+  padding: 10px;
+  background: #ffffff;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 375px;
+    min-width: 300px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    margin-top: 90px;
+    margin-left: 45px;
+    margin-right: 90px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  padding: 10px;
+  width: 100%;
+  background: #e5e5e5;
+  overflow-y: scroll;
+
+  @media only screen and (min-width: 768px) {
+    width: calc(65% + 115px);
+  }
+`;
+
+export const Content = styled(MarginDiv)`
+  background: #e5e5e5;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 725px;
+    padding-left: 57px;
+    padding-top: 37px;
+    padding-right: 137px;
+    overflow: auto;
+  }
+`;
+
+export const Title = styled(BeauFontDiv)`
+  font-size: 60px;
+`;
+
+export const BoldText = styled(AvenirFontDiv)`
+  font-weight: 800;
+  font-size: 18px;
+`;
+
+export const SmallHeader = styled(AvenirFontDiv)`
+  font-weight: 700;
+  font-size: 18px;
+`;
+
+export const SubHeader = styled(AvenirFontDiv)`
+  font-size: 16px;
+`;
+
+export const CenteredTable = styled(MarginDiv)`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+`;
+
+export const Column = styled(MarginDiv)`
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: 100%;
+
+  @media only screen and (min-width: 768px) {
+    width: ${(props) => props.width || "100%"};
+  }
+`;
+
+export const Text = styled(BeauFontDiv)`
+  font-size: 20px;
+`;
+
+export const BigQuote = styled(AvenirFontDiv)`
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  @media only screen and (min-width: 768px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+`;
+
+export const MaxWidthImage = styled.img`
+  height: auto;
+  max-width: 100%;
+`;
+
+export const CustomerImage = styled(MaxWidthImage)`
+  height: 250px;
+
+  @media only screen and (min-width: 768px) {
+    height: 350px;
+  }
+`;
+
+export const ImgWrapper = styled(MaxWidthImage)`
+  height: 374px;
+  width: 739px;
+`;
+
+export const BlackBackgroundImage = styled(MarginDiv)`
+  display: flex;
+  justify-content: center;
+  background-color: black;
+`;
+
+export const LightText = styled.span`
+  color: #727272;
+  margin-left: 5px;
+`;
+
+export const BigLightText = styled(BeauFontDiv)`
+  color: #727272;
+  font-size: 20px;
+  text-align: center;
+`;
+
+export const BulletList = styled.ul`
+  margin-bottom: 30px;
+`;
+
+export const ListItem = styled.li`
+  font-family: Beau;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  margin-bottom: 15px;
+`;
+
+export const Link = styled.a`
+  margin-left: 5px;
+  text-decoration: underline;
+`;

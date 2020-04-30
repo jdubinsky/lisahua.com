@@ -8,23 +8,18 @@ import Footer from "../../../components/Footer";
 import * as styles from "./styles";
 import * as constants from "../../../constants";
 
-const ENABLE_MAGNET = true;
-
 export default class Content extends Component {
   getMagnetLink() {
-    if (ENABLE_MAGNET) {
-      return (
-        <Fragment>
-          <styles.CallToActionText marginRight="12px">
-            explore case study
-          </styles.CallToActionText>
-          <ArrowlessIcon />
-        </Fragment>
-      );
-    }
-
-    return <styles.CallToActionText>🤞 coming soon</styles.CallToActionText>;
+    return (
+      <Fragment>
+        <styles.CallToActionText marginRight="12px">
+          explore case study
+        </styles.CallToActionText>
+        <ArrowlessIcon />
+      </Fragment>
+    );
   }
+
   getMagnetCaseStudy() {
     return (
       <styles.CaseStudyContainer>
@@ -103,17 +98,22 @@ export default class Content extends Component {
   getCanvassCaseStudy() {
     return (
       <styles.CaseStudyContainer marginTop="70px">
-        <styles.Header>Canvass.io</styles.Header>
-        <styles.Text marginTop="12px">
-          An artificial intelligence application that trains and delivers
-          predictive insights for industrial plant operations.
-        </styles.Text>
-        <styles.CallToActionContainer marginTop="50px">
-          <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
-        </styles.CallToActionContainer>
-        <styles.ImageWrapper>
-          <img src={constants.canvassUrl} />
-        </styles.ImageWrapper>
+        <Link to="/canvass">
+          <styles.Header>Canvass AI</styles.Header>
+          <styles.Text marginTop="12px">
+            An artificial intelligence application that trains and delivers
+            predictive insights for industrial plant operations.
+          </styles.Text>
+          <styles.CallToActionContainer marginTop="50px">
+            <styles.CallToActionText marginRight="12px">
+              explore case study
+            </styles.CallToActionText>
+            <ArrowlessIcon />
+          </styles.CallToActionContainer>
+          <styles.ImageWrapper>
+            <img src={constants.canvassUrl} />
+          </styles.ImageWrapper>
+        </Link>
       </styles.CaseStudyContainer>
     );
   }
@@ -122,9 +122,9 @@ export default class Content extends Component {
     return (
       <styles.Content>
         {this.getMagnetCaseStudy()}
+        {this.getCanvassCaseStudy()}
         {this.getAODACaseStudy()}
         {this.getNetsweeperCaseStudy()}
-        {this.getCanvassCaseStudy()}
         {this.getTTCCaseStudy()}
         <Footer />
       </styles.Content>

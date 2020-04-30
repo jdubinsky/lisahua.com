@@ -3,8 +3,8 @@ resource "aws_s3_bucket" "static" {
 
   cors_rule {
     allowed_headers = ["*"]
-    allowed_methods = ["GET"]
-    allowed_origins = ["https://www.lisahua.com"]
+    allowed_methods = ["GET", "HEAD"]
+    allowed_origins = ["https://www.lisahua.com", "http://localhost:9000"]
     expose_headers  = ["ETag"]
     max_age_seconds = 3000
   }
@@ -50,6 +50,15 @@ resource "aws_s3_bucket_object" "static_magnet_images" {
   key    = "images/magnet/${each.value}"
   source = "../frontend/assets/images/magnet/${each.value}"
   etag   = filemd5("../frontend/assets/images/magnet/${each.value}")
+}
+
+resource "aws_s3_bucket_object" "static_canvass_images" {
+  for_each = fileset("../frontend/assets/images/canvass/", "*")
+
+  bucket = aws_s3_bucket.static.id
+  key    = "images/canvass/${each.value}"
+  source = "../frontend/assets/images/canvass/${each.value}"
+  etag   = filemd5("../frontend/assets/images/canvass/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_homepage_images" {

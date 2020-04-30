@@ -15,7 +15,7 @@ interface SidebarState {
 
 export default class Sidebar extends Component<{}, SidebarState> {
   state = {
-    isCollapsed: isMobile()
+    isCollapsed: isMobile(),
   };
 
   getCollapseButton() {
@@ -49,6 +49,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
 
     return (
       <Fragment>
+        <styles.Text>I'm actively looking for new opportunities!</styles.Text>
         <styles.Text>{description}</styles.Text>
         <styles.Text>{description2}</styles.Text>
         <styles.TextWithIcon marginTop="34px">
@@ -105,11 +106,11 @@ export default class Sidebar extends Component<{}, SidebarState> {
       <styles.TextTable>
         <styles.Row>
           <styles.SmallText>Crowdlinker</styles.SmallText>
-          <styles.SmallText>2018-present</styles.SmallText>
+          <styles.SmallText>2017-2020</styles.SmallText>
         </styles.Row>
         <styles.Row marginTop="6px">
           <styles.SmallText>George Brown</styles.SmallText>
-          <styles.SmallText>2017-2018</styles.SmallText>
+          <styles.SmallText>2016-2017</styles.SmallText>
         </styles.Row>
         <styles.Row marginTop="6px">
           <styles.SmallText>University of Toronto</styles.SmallText>
