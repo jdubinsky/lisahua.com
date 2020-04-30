@@ -49,7 +49,12 @@ export const ImageWrapper = styled(MarginDiv)`
   }
 `;
 
-export const RelativeImageWrapper = styled(ImageWrapper)`
+export const MaxWidthImage = styled.img`
+  height: auto;
+  max-width: 100%;
+`;
+
+export const RelativeImageWrapper = styled.div`
   position: relative;
 `;
 
