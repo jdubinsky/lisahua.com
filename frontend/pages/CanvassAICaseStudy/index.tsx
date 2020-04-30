@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
 import SectionHeader from "../../components/SectionHeader";
+import PageContent from "../../components/PageContent";
 import PageSidebar from "../../components/PageSidebar";
 import TextList from "../../components/TextList";
 
@@ -196,23 +197,21 @@ export default class CanvassAICaseStudyPage extends Component<
 
   getContent() {
     return (
-      <styles.ContentWrapper>
-        <styles.Content>
-          <styles.CenteredTable marginTop="30px" marginBottom="30px">
-            <ArrowlessIcon />
-            <styles.BoldText marginLeft="12px">
-              <Link to="/">back to all projects</Link>
-            </styles.BoldText>
-          </styles.CenteredTable>
-          <styles.SpacerDiv marginBottom="50px">
-            <styles.MaxWidthImage src={constants.heroUrl} />
-          </styles.SpacerDiv>
-          {this.getContextSection()}
-          {this.getHighlightsSection()}
-          {this.getResultsSection()}
-          <Footer />
-        </styles.Content>
-      </styles.ContentWrapper>
+      <PageContent width={65} widthOffset={115} maxWidth={725}>
+        <styles.CenteredTable marginTop="30px" marginBottom="30px">
+          <ArrowlessIcon />
+          <styles.BoldText marginLeft="12px">
+            <Link to="/">back to all projects</Link>
+          </styles.BoldText>
+        </styles.CenteredTable>
+        <styles.SpacerDiv marginBottom="50px">
+          <styles.MaxWidthImage src={constants.heroUrl} />
+        </styles.SpacerDiv>
+        {this.getContextSection()}
+        {this.getHighlightsSection()}
+        {this.getResultsSection()}
+        <Footer />
+      </PageContent>
     );
   }
 

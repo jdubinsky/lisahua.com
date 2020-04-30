@@ -3,6 +3,7 @@ import { h, Component, Fragment } from "preact";
 import ArrowlessIcon from "../../../icons/Arrowless";
 import DownArrowIcon from "../../../icons/DownArrow";
 import isMobile from "../../../is-mobile";
+import PageSidebar from "../../../components/PageSidebar";
 import * as constants from "../../../constants";
 
 import * as styles from "./styles";
@@ -93,11 +94,11 @@ export default class Sidebar extends Component<{}, SidebarState> {
 
   render() {
     return (
-      <styles.Sidebar>
+      <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
         <styles.Title>I'm Lisa,</styles.Title>
         <styles.Subtitle>a UX designer from Toronto</styles.Subtitle>
         {this.getContent()}
-      </styles.Sidebar>
+      </PageSidebar>
     );
   }
 

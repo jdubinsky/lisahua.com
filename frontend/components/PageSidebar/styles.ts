@@ -18,6 +18,11 @@ export const SidebarWrapper = styled.div<SidebarWrapperProps>`
   @media only screen and (min-width: 768px) {
     width: ${(props: SidebarWrapperProps) =>
       `calc(${props.width}% - ${props.widthOffset}px`});
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
@@ -37,10 +42,5 @@ export const Sidebar = styled.div<SidebarProps>`
     margin-top: 90px;
     margin-left: 45px;
     margin-right: 90px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
   }
 `;

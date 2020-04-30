@@ -22,31 +22,6 @@ export const Container = styled.div`
   }
 `;
 
-export const ContentWrapper = styled.div`
-  padding: 10px;
-  width: 100%;
-  background: #e5e5e5;
-  overflow-y: scroll;
-
-  @media only screen and (min-width: 768px) {
-    width: calc(65% + 115px);
-  }
-`;
-
-export const Content = styled(MarginDiv)`
-  background: #e5e5e5;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  @media only screen and (min-width: 768px) {
-    max-width: 725px;
-    padding-left: 57px;
-    padding-top: 37px;
-    padding-right: 137px;
-    overflow: auto;
-  }
-`;
-
 export const Title = styled(BeauFontDiv)`
   font-size: 60px;
 `;

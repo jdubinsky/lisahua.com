@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ArrowlessIcon from "../../../icons/Arrowless";
 
 import Footer from "../../../components/Footer";
+import PageContent from "../../../components/PageContent";
 
 import * as styles from "./styles";
 import * as constants from "../../../constants";
@@ -120,14 +121,15 @@ export default class Content extends Component {
 
   render() {
     return (
-      <styles.Content>
+      <PageContent width={65} widthOffset={115} maxWidth={725}>
+        <styles.SpacerDiv marginTop="45px" />
         {this.getMagnetCaseStudy()}
         {this.getCanvassCaseStudy()}
         {this.getAODACaseStudy()}
         {this.getNetsweeperCaseStudy()}
         {this.getTTCCaseStudy()}
         <Footer />
-      </styles.Content>
+      </PageContent>
     );
   }
 }

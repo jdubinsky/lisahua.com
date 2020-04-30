@@ -4,21 +4,7 @@ import styled from "styled-components";
 import LockIcon from "../../../icons/Lock";
 import { AvenirFontDiv, BeauFontDiv, MarginDiv } from "../../../text-styles";
 
-export const Content = styled(MarginDiv)`
-  width: 100%;
-  overflow-y: scroll;
-  padding-top: 60px;
-  padding-left: 30px;
-  padding-right: 30px;
-  background: #e5e5e5;
-
-  @media only screen and (min-width: 768px) {
-    width: 65%;
-    padding-left: 90px;
-    padding-top: 112px;
-    overflow: auto;
-  }
-`;
+export const SpacerDiv = styled(MarginDiv)``;
 
 export const CaseStudyContainer = styled(MarginDiv)`
   max-width: 730px;
