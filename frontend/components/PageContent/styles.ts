@@ -14,11 +14,6 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
   width: 100%;
   background: #e5e5e5;
   overflow-y: scroll;
-
-  @media only screen and (min-width: 768px) {
-    width: ${(props: ContentWrapperProps) =>
-      `calc(${props.width}% + ${props.widthOffset}px`});
-  }
 `;
 
 export const Content = styled.div`
@@ -27,7 +22,7 @@ export const Content = styled.div`
   padding-right: 30px;
 
   @media only screen and (min-width: 768px) {
-    max-width: ${(props: ContentProps) => `${props.maxWidth}px`};
+    max-width: 915px;
     padding-left: 57px;
     padding-top: 37px;
     padding-right: 137px;
