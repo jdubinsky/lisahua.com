@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
 import SectionHeader from "../../components/SectionHeader";
+import PageContent from "../../components/PageContent";
+import PageSidebar from "../../components/PageSidebar";
 import TextList from "../../components/TextList";
 
 import isMobile from "../../is-mobile";
@@ -12,10 +14,21 @@ import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
-export default class CanvassAICaseStudyPage extends Component<{}> {
+interface CanvassState {
+  isCollapsed: boolean;
+}
+
+export default class CanvassAICaseStudyPage extends Component<
+  {},
+  CanvassState
+> {
   state = {
     isCollapsed: isMobile(),
   };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   onReadMore = () => {
     this.setState({ isCollapsed: false });
@@ -110,13 +123,11 @@ export default class CanvassAICaseStudyPage extends Component<{}> {
 
   getSidebar() {
     return (
-      <styles.SidebarWrapper>
-        <styles.SidebarContainer>
-          <styles.Title marginBottom="40px">Canvass AI</styles.Title>
-          <styles.Text>{copy.titleDescription}</styles.Text>
-          {this.getSidebarContent()}
-        </styles.SidebarContainer>
-      </styles.SidebarWrapper>
+      <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
+        <styles.Title marginBottom="40px">Canvass AI</styles.Title>
+        <styles.Text>{copy.titleDescription}</styles.Text>
+        {this.getSidebarContent()}
+      </PageSidebar>
     );
   }
 
@@ -186,23 +197,21 @@ export default class CanvassAICaseStudyPage extends Component<{}> {
 
   getContent() {
     return (
-      <styles.ContentWrapper>
-        <styles.Content>
-          <styles.CenteredTable marginTop="30px" marginBottom="30px">
-            <ArrowlessIcon />
-            <styles.BoldText marginLeft="12px">
-              <Link to="/">back to all projects</Link>
-            </styles.BoldText>
-          </styles.CenteredTable>
-          <styles.SpacerDiv marginBottom="50px">
-            <styles.MaxWidthImage src={constants.heroUrl} />
-          </styles.SpacerDiv>
-          {this.getContextSection()}
-          {this.getHighlightsSection()}
-          {this.getResultsSection()}
-          <Footer />
-        </styles.Content>
-      </styles.ContentWrapper>
+      <PageContent width={65} widthOffset={115} maxWidth={725}>
+        <styles.CenteredTable marginTop="30px" marginBottom="30px">
+          <ArrowlessIcon />
+          <styles.BoldText marginLeft="12px">
+            <Link to="/">back to all projects</Link>
+          </styles.BoldText>
+        </styles.CenteredTable>
+        <styles.SpacerDiv marginBottom="50px">
+          <styles.MaxWidthImage src={constants.heroUrl} />
+        </styles.SpacerDiv>
+        {this.getContextSection()}
+        {this.getHighlightsSection()}
+        {this.getResultsSection()}
+        <Footer />
+      </PageContent>
     );
   }
 

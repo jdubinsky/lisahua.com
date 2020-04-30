@@ -6,48 +6,6 @@ export const AvenirText = styled(AvenirFontDiv)``;
 export const BeauText = styled(BeauFontDiv)``;
 export const SpacerDiv = styled(MarginDiv)``;
 
-export const SidebarContainer = styled(MarginDiv)`
-  width: 100%;
-  padding: 10px;
-  overflow: auto;
-  background: #ffffff;
-  margin-bottom: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  @media only screen and (min-width: 768px) {
-    width: 35%;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-    margin-top: 91px;
-    margin-left: 45px;
-    margin-right: 49px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
-
-export const Content = styled(MarginDiv)`
-  width: 100%;
-  padding: 10px;
-  overflow-y: scroll;
-  background: #e5e5e5;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  @media only screen and (min-width: 768px) {
-    width: 65%;
-    padding-left: 57px;
-    padding-top: 37px;
-    padding-right: 137px;
-    overflow: auto;
-  }
-`;
-
 export const Title = styled(BeauFontDiv)`
   font-size: 60px;
 `;
@@ -95,7 +53,7 @@ export const Column = styled(MarginDiv)`
   width: 100%;
 
   @media only screen and (min-width: 768px) {
-    width: ${props => props.width || "100%"};
+    width: ${(props) => props.width || "100%"};
   }
 `;
 

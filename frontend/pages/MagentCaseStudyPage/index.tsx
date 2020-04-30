@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 import * as constants from "../../constants";
 import ArrowlessIcon from "../../icons/Arrowless";
-import isMobile from "../../is-mobile";
-import TextList from "../../components/TextList";
-import SectionHeader from "../../components/SectionHeader";
 import Footer from "../../components/Footer";
+import isMobile from "../../is-mobile";
+import PageContent from "../../components/PageContent";
+import PageSidebar from "../../components/PageSidebar";
+import SectionHeader from "../../components/SectionHeader";
+import TextList from "../../components/TextList";
 
 import * as styles from "./styles";
 
@@ -25,7 +27,7 @@ interface MagnetState {
 
 export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   state = {
-    isCollapsed: isMobile()
+    isCollapsed: isMobile(),
   };
 
   componentDidMount() {
@@ -39,7 +41,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
       "journey mapping",
       "wireframes",
       "stakeholder interviews",
-      "user testing"
+      "user testing",
     ];
     return <TextList header="role" listItems={roles} />;
   }
@@ -66,10 +68,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
       { name: "orest hazda", title: "(lead developer)" },
       { name: "rennie chun", title: "(lead visual designer)" },
       { name: "justin damer", title: "(visual designer)" },
-      { name: "lisa hua", title: "(user experience designer)" }
+      { name: "lisa hua", title: "(user experience designer)" },
     ];
 
-    const creditTexts = credits.map(credit => {
+    const creditTexts = credits.map((credit) => {
       return (
         <styles.Text>
           {credit.name}
@@ -135,12 +137,12 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
 
   getSidebar() {
     return (
-      <styles.SidebarContainer>
+      <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
         <styles.Title>Magnet</styles.Title>
         <styles.Title marginBottom="40px">Forensics</styles.Title>
         <styles.Text marginBottom="30px">{description}</styles.Text>
         {this.getSidebarContent()}
-      </styles.SidebarContainer>
+      </PageSidebar>
     );
   }
 
@@ -514,7 +516,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
 
   getContent() {
     return (
-      <styles.Content>
+      <PageContent width={65} widthOffset={115} maxWidth={725}>
         <styles.CenteredTable marginTop="30px" marginBottom="30px">
           <ArrowlessIcon />
           <styles.BoldText marginLeft="12px">
@@ -530,7 +532,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         {this.getIdeateSection()}
         {this.getRetroSection()}
         <Footer />
-      </styles.Content>
+      </PageContent>
     );
   }
 

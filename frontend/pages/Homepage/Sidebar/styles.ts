@@ -14,33 +14,6 @@ const MarginA = styled.a<MarginProps>`
   margin-right: ${(props) => props.marginRight || "0px"};
 `;
 
-export const Sidebar = styled(MarginDiv)`
-  width: 100%;
-  padding-top: 50px;
-  padding-left: 30px;
-  padding-right: 30px;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  background: #ffffff;
-
-  @media only screen and (min-width: 768px) {
-    width: 35%;
-    padding-top: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-top: 50px;
-    margin-left: 54px;
-    margin-right: 60px;
-    overflow: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
-
 export const Title = styled(BeauFontDiv)`
   font-size: 105px;
 `;

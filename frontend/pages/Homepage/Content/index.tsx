@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ArrowlessIcon from "../../../icons/Arrowless";
 
 import Footer from "../../../components/Footer";
+import PageContent from "../../../components/PageContent";
 
 import * as styles from "./styles";
 import * as constants from "../../../constants";
@@ -31,9 +32,7 @@ export default class Content extends Component {
           <styles.CallToActionContainer marginTop="50px">
             {this.getMagnetLink()}
           </styles.CallToActionContainer>
-          <styles.ImageWrapper>
-            <img src={constants.magnetUrl} />
-          </styles.ImageWrapper>
+          <styles.MaxWidthImage src={constants.magnetUrl} />
         </Link>
       </styles.CaseStudyContainer>
     );
@@ -50,9 +49,7 @@ export default class Content extends Component {
         <styles.CallToActionContainer marginTop="50px">
           <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
         </styles.CallToActionContainer>
-        <styles.ImageWrapper>
-          <img src={constants.aodaUrl} />
-        </styles.ImageWrapper>
+        <styles.MaxWidthImage src={constants.aodaUrl} />
       </styles.CaseStudyContainer>
     );
   }
@@ -70,7 +67,7 @@ export default class Content extends Component {
           </styles.CallToActionText>
         </styles.CallToActionContainer>
         <styles.RelativeImageWrapper>
-          <img src={constants.netsweeperUrl} />
+          <styles.MaxWidthImage src={constants.netsweeperUrl} />
           <styles.LockIconWrapper />
         </styles.RelativeImageWrapper>
       </styles.CaseStudyContainer>
@@ -110,9 +107,7 @@ export default class Content extends Component {
             </styles.CallToActionText>
             <ArrowlessIcon />
           </styles.CallToActionContainer>
-          <styles.ImageWrapper>
-            <img src={constants.canvassUrl} />
-          </styles.ImageWrapper>
+          <styles.MaxWidthImage src={constants.canvassUrl} />
         </Link>
       </styles.CaseStudyContainer>
     );
@@ -120,14 +115,15 @@ export default class Content extends Component {
 
   render() {
     return (
-      <styles.Content>
+      <PageContent width={65} widthOffset={115} maxWidth={725}>
+        <styles.SpacerDiv marginTop="45px" />
         {this.getMagnetCaseStudy()}
         {this.getCanvassCaseStudy()}
         {this.getAODACaseStudy()}
         {this.getNetsweeperCaseStudy()}
         {this.getTTCCaseStudy()}
         <Footer />
-      </styles.Content>
+      </PageContent>
     );
   }
 }
