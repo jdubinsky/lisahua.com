@@ -22,40 +22,6 @@ export const Container = styled.div`
   }
 `;
 
-export const SidebarWrapper = styled(MarginDiv)`
-  width: 100%;
-  overflow: auto;
-  background: #ffffff;
-
-  @media only screen and (min-width: 768px) {
-    width: calc(35% - 115px);
-  }
-`;
-
-export const SidebarContainer = styled(MarginDiv)`
-  padding: 10px;
-  background: #ffffff;
-  margin-bottom: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  @media only screen and (min-width: 768px) {
-    max-width: 375px;
-    min-width: 300px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-    margin-top: 90px;
-    margin-left: 45px;
-    margin-right: 90px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
-
 export const ContentWrapper = styled.div`
   padding: 10px;
   width: 100%;
