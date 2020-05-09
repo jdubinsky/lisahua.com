@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
+import ImageModal from "../../components/ImageModal";
 import SectionHeader from "../../components/SectionHeader";
 import PageContent from "../../components/PageContent";
 import PageSidebar from "../../components/PageSidebar";
 import TextList from "../../components/TextList";
+
+import useModal from "../../hooks/useModal";
 
 import isMobile from "../../is-mobile";
 
@@ -25,6 +28,18 @@ export default class CanvassAICaseStudyPage extends Component<
   state = {
     isCollapsed: isMobile(),
   };
+
+  renderImageWithModal(imageUrl: string, modalImageUrl: string) {
+    // TODO: make HOC
+    const { isVisible, toggle } = useModal();
+
+    return (
+      <Fragment>
+          <styles.MaxWidthImage src={imageUrl} onClick={toggle} />
+          <ImageModal imageUrl={modalImageUrl} isVisible={isVisible} onClose={toggle} />
+      </Fragment>
+    );
+  }
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -136,7 +151,7 @@ export default class CanvassAICaseStudyPage extends Component<
       <Fragment>
         <SectionHeader title="context" content={copy.context} />
         <styles.SpacerDiv marginTop="30px" marginBottom="10px">
-          <styles.MaxWidthImage src={constants.oldWebAppUrl} />
+          {this.renderImageWithModal(constants.oldWebAppUrl, constants.oldWebAppUrl)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="50px">
           Screenshots of Canvass AI’s demo environment
@@ -152,12 +167,12 @@ export default class CanvassAICaseStudyPage extends Component<
         <styles.SmallHeader marginBottom="15px">wireframes</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.wireframes}</styles.Text>
         <styles.SpacerDiv marginBottom="50px">
-          <styles.MaxWidthImage src={constants.wireframesUrl} />
+          {this.renderImageWithModal(constants.wireframesUrl, constants.wireframesUrl)}
         </styles.SpacerDiv>
         <styles.SmallHeader marginBottom="15px">user flow</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.userFlow}</styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          <styles.MaxWidthImage src={constants.userFlowUrl} />
+          {this.renderImageWithModal(constants.userFlowUrl, constants.userFlowUrl)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="30px">
           Canvass AI's userflow
@@ -169,7 +184,7 @@ export default class CanvassAICaseStudyPage extends Component<
           {copy.highFidelityPartOne}
         </styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          <styles.MaxWidthImage src={constants.moodboardUrl} />
+          {this.renderImageWithModal(constants.moodboardUrl, constants.moodboardUrl)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="30px">
           Visual inspiration gathered in our research
@@ -178,7 +193,7 @@ export default class CanvassAICaseStudyPage extends Component<
           {copy.highFidelityPartTwo}
         </styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          <styles.MaxWidthImage src={constants.tableComparisonUrl} />
+          {this.renderImageWithModal(constants.tableComparisonUrl, constants.tableComparisonUrl)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="50px">
           The brand color and table designs were tweaked for a cleaner look
@@ -205,7 +220,7 @@ export default class CanvassAICaseStudyPage extends Component<
           </styles.BoldText>
         </styles.CenteredTable>
         <styles.SpacerDiv marginBottom="50px">
-          <styles.MaxWidthImage src={constants.heroUrl} />
+          {this.renderImageWithModal(constants.heroUrl, constants.heroUrl)}
         </styles.SpacerDiv>
         {this.getContextSection()}
         {this.getHighlightsSection()}
