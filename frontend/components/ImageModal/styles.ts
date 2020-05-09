@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const Modal = styled.div`
-  padding: 4rem;
   display: flex;
   flex-direction: column;
 `;
 
 export const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   max-height: 100%;
   max-width: 100%;
   position: fixed;
@@ -25,7 +26,7 @@ export const ModalOverlay = styled.div`
   opacity: .5;
 `;
 
-export const CloseButton = styled.button`
+export const CloseButton = styled.div`
   cursor: pointer;
 `;
 
@@ -33,3 +34,5 @@ export const ModalActions = styled.div`
   display: flex;
   align-self: flex-end;
 `;
+
+export const ScaledImage = styled.img``;
