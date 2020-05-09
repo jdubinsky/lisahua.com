@@ -35,6 +35,4 @@ export const ModalActions = styled.div`
   align-self: flex-end;
 `;
 
-export const ScaledImage = styled.img`
-  transform: ${props => `scale(${props.scale})`};
-`;
+export const ScaledImage = styled.img``;

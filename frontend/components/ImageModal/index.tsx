@@ -11,14 +11,9 @@ interface ImageModalProps {
   imageUrl: string;
 }
 
-interface ImageModalState {
-  scale: number;
-  hasLoaded: boolean;
-}
-
 export default class ImageModal extends Component<
   ImageModalProps,
-  ImageModalState
+  {}
 > {
   ref = createRef<HTMLImageElement>();
 
@@ -26,13 +21,8 @@ export default class ImageModal extends Component<
     isVisible: false,
   };
 
-  state = {
-    scale: 1,
-    hasLoaded: false,
-  };
-
   setImageScale() {
-    if (!this.ref.current || this.state.hasLoaded) {
+    if (!this.ref.current) {
       return;
     }
 
@@ -45,7 +35,6 @@ export default class ImageModal extends Component<
     const newHeight = scale * imgHeight;
     this.ref.current.height = newHeight;
     this.ref.current.width = newWidth;
-    this.setState({ hasLoaded: true });
   }
 
   onLoad = () => {
@@ -72,7 +61,6 @@ export default class ImageModal extends Component<
             <styles.ScaledImage
               ref={this.ref}
               src={this.props.imageUrl}
-              scale={this.state.scale}
               onLoad={this.onLoad}
             />
           </styles.Modal>
