@@ -90,12 +90,6 @@ export const CustomerImage = styled.img`
   }
 `;
 
-export const ImgWrapper = styled.img`
-  cursor: pointer;
-  height: 271px;
-  width: 471px;
-`;
-
 export const BlackBackgroundImage = styled(MarginDiv)`
   cursor: pointer;
   display: flex;

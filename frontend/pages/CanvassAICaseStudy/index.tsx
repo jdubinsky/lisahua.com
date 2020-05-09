@@ -31,6 +31,14 @@ export default class CanvassAICaseStudyPage extends Component<
 
   renderImageWithModal(imageUrl: string, modalImageUrl: string) {
     // TODO: make HOC
+    if (isMobile()) {
+      return (
+        <Fragment>
+          <styles.MaxWidthImage src={imageUrl} />
+        </Fragment>
+      )
+    }
+
     const { isVisible, toggle } = useModal();
 
     return (
@@ -151,7 +159,7 @@ export default class CanvassAICaseStudyPage extends Component<
       <Fragment>
         <SectionHeader title="context" content={copy.context} />
         <styles.SpacerDiv marginTop="30px" marginBottom="10px">
-          {this.renderImageWithModal(constants.oldWebAppUrl, constants.oldWebAppUrl)}
+          {this.renderImageWithModal(constants.oldWebAppUrl, constants.oldWebAppUrl2x)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="50px">
           Screenshots of Canvass AI’s demo environment
@@ -167,12 +175,12 @@ export default class CanvassAICaseStudyPage extends Component<
         <styles.SmallHeader marginBottom="15px">wireframes</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.wireframes}</styles.Text>
         <styles.SpacerDiv marginBottom="50px">
-          {this.renderImageWithModal(constants.wireframesUrl, constants.wireframesUrl)}
+          {this.renderImageWithModal(constants.wireframesUrl, constants.wireframesUrl2x)}
         </styles.SpacerDiv>
         <styles.SmallHeader marginBottom="15px">user flow</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.userFlow}</styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          {this.renderImageWithModal(constants.userFlowUrl, constants.userFlowUrl)}
+          {this.renderImageWithModal(constants.userFlowUrl, constants.userFlowUrl2x)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="30px">
           Canvass AI's userflow
@@ -184,7 +192,7 @@ export default class CanvassAICaseStudyPage extends Component<
           {copy.highFidelityPartOne}
         </styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          {this.renderImageWithModal(constants.moodboardUrl, constants.moodboardUrl)}
+          {this.renderImageWithModal(constants.moodboardUrl, constants.moodboardUrl2x)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="30px">
           Visual inspiration gathered in our research
@@ -193,7 +201,7 @@ export default class CanvassAICaseStudyPage extends Component<
           {copy.highFidelityPartTwo}
         </styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          {this.renderImageWithModal(constants.tableComparisonUrl, constants.tableComparisonUrl)}
+          {this.renderImageWithModal(constants.tableComparisonUrl, constants.tableComparisonUrl2x)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="50px">
           The brand color and table designs were tweaked for a cleaner look
@@ -220,7 +228,7 @@ export default class CanvassAICaseStudyPage extends Component<
           </styles.BoldText>
         </styles.CenteredTable>
         <styles.SpacerDiv marginBottom="50px">
-          {this.renderImageWithModal(constants.heroUrl, constants.heroUrl)}
+          {this.renderImageWithModal(constants.heroUrl, constants.heroUrl2x)}
         </styles.SpacerDiv>
         {this.getContextSection()}
         {this.getHighlightsSection()}

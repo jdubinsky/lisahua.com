@@ -39,6 +39,14 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   }
 
   renderImageWithModal(imageUrl: string, modalImageUrl: string) {
+    if (isMobile()) {
+      return (
+        <Fragment>
+          <styles.MaxWidthImage src={imageUrl} />
+        </Fragment>
+      )
+    }
+
     const { isVisible, toggle } = useModal();
 
     return (
@@ -162,8 +170,6 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   }
 
   getProjectGoals() {
-    const { isVisible, toggle } = useModal();
-
     return (
       <Fragment>
         <styles.SmallHeader marginBottom="15px">
@@ -185,11 +191,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           </styles.ListItem>
         </styles.BulletList>
         <styles.BlackBackgroundImage>
-          <styles.ImgWrapper
-            src={constants.magnetWhiteboardUrl}
-            onClick={toggle}
-          />
-          <ImageModal imageUrl={constants.magnetWhiteboardUrl2x} isVisible={isVisible} onClose={toggle} />
+          {this.renderImageWithModal(constants.magnetWhiteboardUrl, constants.magnetWhiteboardUrl2x)}
         </styles.BlackBackgroundImage>
         <styles.Text marginTop="30px">
           And after speaking with our stakeholders, we uncovered additional
@@ -292,6 +294,13 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
       forensic examiner- the good, the bad, and the ugly.\
     `;
     const { isVisible, toggle } = useModal();
+    const onClick = () => {
+      if (isMobile()) {
+        return;
+      }
+
+      toggle();
+    }
 
     return (
       <Fragment>
@@ -315,7 +324,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.BigLightText>
         {this.getCustomerInterviewsSubSection()}
         <styles.BlackBackgroundImage marginTop="30px">
-          <styles.CustomerImage src={constants.magnetCustomerUrl} onClick={toggle} />
+          <styles.CustomerImage src={constants.magnetCustomerUrl} onClick={onClick} />
           <ImageModal imageUrl={constants.magnetCustomerUrl2x} isVisible={isVisible} onClose={toggle} />
         </styles.BlackBackgroundImage>
         <styles.BigLightText marginTop="10px">
