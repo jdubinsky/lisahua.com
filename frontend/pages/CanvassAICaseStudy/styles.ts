@@ -76,26 +76,9 @@ export const BigQuote = styled(AvenirFontDiv)`
 
 export const MaxWidthImage = styled.img`
   height: auto;
+  width: 100%;
   max-width: 100%;
-`;
-
-export const CustomerImage = styled(MaxWidthImage)`
-  height: 250px;
-
-  @media only screen and (min-width: 768px) {
-    height: 350px;
-  }
-`;
-
-export const ImgWrapper = styled(MaxWidthImage)`
-  height: 374px;
-  width: 739px;
-`;
-
-export const BlackBackgroundImage = styled(MarginDiv)`
-  display: flex;
-  justify-content: center;
-  background-color: black;
+  cursor: pointer;
 `;
 
 export const LightText = styled.span`
