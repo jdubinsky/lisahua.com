@@ -1,6 +1,8 @@
 import { h, Component, Fragment } from "preact";
 import { createPortal } from "preact/compat";
 
+import CloseIcon from "../../icons/CloseIcon";
+
 import * as styles from "./styles";
 
 interface ImageModalProps {
@@ -26,7 +28,7 @@ export default class ImageModal extends Component<ImageModalProps, {}> {
                     <styles.Modal>
                         <styles.ModalActions>
                             <styles.CloseButton onClick={this.props.onClose}>
-                                Close
+                                <CloseIcon></CloseIcon>
                             </styles.CloseButton>
                         </styles.ModalActions>
                         <img src={this.props.imageUrl} />
