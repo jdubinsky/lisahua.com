@@ -77,10 +77,11 @@ export const BigQuote = styled(AvenirFontDiv)`
 
 export const MaxWidthImage = styled.img`
   cursor: pointer;
+  width: 100%;
   max-width: 100%;
 `;
 
-export const CustomerImage = styled(MaxWidthImage)`
+export const CustomerImage = styled.img`
   cursor: pointer;
   height: 250px;
 
@@ -89,10 +90,10 @@ export const CustomerImage = styled(MaxWidthImage)`
   }
 `;
 
-export const ImgWrapper = styled(MaxWidthImage)`
+export const ImgWrapper = styled.img`
   cursor: pointer;
-  height: 374px;
-  width: 739px;
+  height: 271px;
+  width: 471px;
 `;
 
 export const BlackBackgroundImage = styled(MarginDiv)`

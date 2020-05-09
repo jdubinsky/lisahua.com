@@ -185,9 +185,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           </styles.ListItem>
         </styles.BulletList>
         <styles.BlackBackgroundImage>
-          <styles.MaxWidthImage
-            height="271"
-            width="471"
+          <styles.ImgWrapper
             src={constants.magnetWhiteboardUrl}
             onClick={toggle}
           />
