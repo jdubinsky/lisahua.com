@@ -10,7 +10,7 @@ import * as styles from "./styles";
 import * as constants from "../../../constants";
 
 export default class Content extends Component {
-  getMagnetLink() {
+  getLink() {
     return (
       <Fragment>
         <styles.CallToActionText marginRight="12px">
@@ -30,7 +30,7 @@ export default class Content extends Component {
             Redesigning the experience of training forensic investigators.
           </styles.Text>
           <styles.CallToActionContainer marginTop="50px">
-            {this.getMagnetLink()}
+            {this.getLink()}
           </styles.CallToActionContainer>
           <styles.ImageWrapper>
             <styles.MaxWidthImage src={constants.magnetUrl} />
@@ -40,20 +40,40 @@ export default class Content extends Component {
     );
   }
 
-  getAODACaseStudy() {
+  getOnCallCaseStudy() {
     return (
       <styles.CaseStudyContainer marginTop="70px">
-        <styles.Header>AODA Accessibility Project</styles.Header>
-        <styles.Text marginTop="12px">
-          A comprehensive testing guide designed to onboard non-technical
-          stakeholders.
-        </styles.Text>
-        <styles.CallToActionContainer marginTop="50px">
-          <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
-        </styles.CallToActionContainer>
-        <styles.ImageWrapper>
-          <styles.MaxWidthImage src={constants.aodaUrl} />
-        </styles.ImageWrapper>
+        <Link to="/oncall">
+          <styles.Header>OnCall Health</styles.Header>
+          <styles.Text marginTop="12px">
+            Developing a brand new identity for a virtual care company in Canada
+          </styles.Text>
+          <styles.CallToActionContainer marginTop="50px">
+            {this.getLink()}
+          </styles.CallToActionContainer>
+          <styles.ImageWrapper>
+            <styles.MaxWidthImage src={constants.oncallUrl} />
+          </styles.ImageWrapper>
+        </Link>
+      </styles.CaseStudyContainer>
+    );
+  }
+
+  getEsightCaseStudy() {
+    return (
+      <styles.CaseStudyContainer marginTop="70px">
+        <Link to="/esight">
+          <styles.Header>eSight Eyewear</styles.Header>
+          <styles.Text marginTop="12px">
+            Designing tools that empower people with visual impairments
+          </styles.Text>
+          <styles.CallToActionContainer marginTop="50px">
+            {this.getLink()}
+          </styles.CallToActionContainer>
+          <styles.ImageWrapper>
+            <styles.MaxWidthImage src={constants.esightUrl} />
+          </styles.ImageWrapper>
+        </Link>
       </styles.CaseStudyContainer>
     );
   }
@@ -74,24 +94,6 @@ export default class Content extends Component {
           <styles.MaxWidthImage src={constants.netsweeperUrl} />
           <styles.LockIconWrapper />
         </styles.RelativeImageWrapper>
-      </styles.CaseStudyContainer>
-    );
-  }
-
-  getTTCCaseStudy() {
-    return (
-      <styles.CaseStudyContainer marginTop="70px">
-        <styles.Header>TTC Exit</styles.Header>
-        <styles.Text marginTop="12px">
-          A tool that helps you shorten your commute and get you out of the
-          subway station.
-        </styles.Text>
-        <styles.CallToActionContainer marginTop="50px">
-          <styles.CallToActionText>🤞coming soon</styles.CallToActionText>
-        </styles.CallToActionContainer>
-        <styles.ImageWrapper>
-          <styles.MaxWidthImage src={constants.ttcUrl} />
-        </styles.ImageWrapper>
       </styles.CaseStudyContainer>
     );
   }
@@ -124,10 +126,10 @@ export default class Content extends Component {
       <PageContent width={65} widthOffset={115} maxWidth={725}>
         <styles.SpacerDiv marginTop="45px" />
         {this.getMagnetCaseStudy()}
+        {this.getOnCallCaseStudy()}
+        {this.getEsightCaseStudy()}
         {this.getCanvassCaseStudy()}
-        {this.getAODACaseStudy()}
         {this.getNetsweeperCaseStudy()}
-        {this.getTTCCaseStudy()}
         <Footer />
       </PageContent>
     );

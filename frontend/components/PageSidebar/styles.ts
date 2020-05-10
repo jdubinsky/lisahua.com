@@ -8,6 +8,7 @@ interface SidebarWrapperProps {
 interface SidebarProps {
   minWidth: string;
   maxWidth: string;
+  marginRight: number;
 }
 
 export const SidebarWrapper = styled.div<SidebarWrapperProps>`
@@ -40,6 +41,6 @@ export const Sidebar = styled.div<SidebarProps>`
     padding-top: 0px;
     margin-top: 90px;
     margin-left: 45px;
-    margin-right: 90px;
+    margin-right: ${(props: SidebarProps) => `${props.marginRight}px`};
   }
 `;

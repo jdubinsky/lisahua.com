@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Container from "./pages/Homepage/Container";
 import CanvassAICaseStudyPage from "./pages/CanvassAICaseStudy";
+import EsightCaseStudy from "./pages/EsightCaseStudy";
 import MagnetCaseStudyPage from "./pages/MagentCaseStudyPage";
+import OnCallCaseStudy from "./pages/OnCallCaseStudy";
 
 import GlobalFonts from "./globalStyles";
 
@@ -18,6 +20,12 @@ function getApp() {
           </Route>
           <Route path="/canvass">
             <CanvassAICaseStudyPage />
+          </Route>
+          <Route path="/oncall">
+            <OnCallCaseStudy />
+          </Route>
+          <Route path="/esight">
+            <EsightCaseStudy />
           </Route>
           <Route path="">
             <Container />
