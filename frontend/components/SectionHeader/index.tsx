@@ -17,17 +17,6 @@ export default class SectionHeader extends Component<SectionHeaderProps> {
     contentWidthPercent: 75,
   };
 
-  renderContent() {
-    const { content } = this.props;
-    return content.split(/\n\n/).map((contentBlock: string) => {
-      return (
-        <p>
-          <styles.BigText>{contentBlock}</styles.BigText>
-        </p>
-      );
-    });
-  }
-
   render() {
     const { titleWidthPercent, contentWidthPercent } = this.props;
     const titlePercent = `${titleWidthPercent}%`;
