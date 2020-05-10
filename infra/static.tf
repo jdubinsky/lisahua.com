@@ -61,6 +61,24 @@ resource "aws_s3_bucket_object" "static_canvass_images" {
   etag   = filemd5("../frontend/assets/images/canvass/${each.value}")
 }
 
+resource "aws_s3_bucket_object" "static_oncall_images" {
+  for_each = fileset("../frontend/assets/images/oncall/", "*")
+
+  bucket = aws_s3_bucket.static.id
+  key    = "images/oncall/${each.value}"
+  source = "../frontend/assets/images/oncall/${each.value}"
+  etag   = filemd5("../frontend/assets/images/oncall/${each.value}")
+}
+
+resource "aws_s3_bucket_object" "static_esight_images" {
+  for_each = fileset("../frontend/assets/images/esight/", "*")
+
+  bucket = aws_s3_bucket.static.id
+  key    = "images/esight/${each.value}"
+  source = "../frontend/assets/images/esight/${each.value}"
+  etag   = filemd5("../frontend/assets/images/esight/${each.value}")
+}
+
 resource "aws_s3_bucket_object" "static_homepage_images" {
   for_each = fileset("../frontend/assets/images/homepage/", "*")
 
