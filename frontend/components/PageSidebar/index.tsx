@@ -7,9 +7,14 @@ interface SidebarProps {
   widthOffset: string;
   minWidth: string;
   maxWidth: string;
+  marginRight?: number;
 }
 
 export default class PageSidebar extends Component<SidebarProps> {
+  static defaultProps = {
+    marginRight: 90,
+  };
+
   render() {
     return (
       <styles.SidebarWrapper
@@ -19,6 +24,7 @@ export default class PageSidebar extends Component<SidebarProps> {
         <styles.Sidebar
           minWidth={this.props.minWidth}
           maxWidth={this.props.maxWidth}
+          marginRight={this.props.marginRight}
         >
           {this.props.children}
         </styles.Sidebar>

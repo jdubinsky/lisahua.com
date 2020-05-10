@@ -1,5 +1,7 @@
 import { h, Component } from "preact";
 
+import ParagraphText from "../ParagraphText";
+
 import * as styles from "./styles";
 
 interface SectionHeaderProps {
@@ -12,7 +14,7 @@ interface SectionHeaderProps {
 export default class SectionHeader extends Component<SectionHeaderProps> {
   static defaultProps = {
     titleWidthPercent: 25,
-    contentWidthPercent: 75
+    contentWidthPercent: 75,
   };
 
   render() {
@@ -26,7 +28,7 @@ export default class SectionHeader extends Component<SectionHeaderProps> {
           <styles.Section>{this.props.title}</styles.Section>
         </styles.Column>
         <styles.Column width={contentPercent}>
-          <styles.BigText>{this.props.content}</styles.BigText>
+          <ParagraphText content={this.props.content} />
         </styles.Column>
       </styles.Table>
     );
