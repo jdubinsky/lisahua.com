@@ -44,7 +44,7 @@ export default class OnCallCaseStudy extends Component<{}> {
 
     const creditTexts = credits.map((credit) => {
       return (
-        <styles.Text marginBottom="20px">
+        <styles.Text>
           {credit.name}
           <styles.LightText>{credit.title}</styles.LightText>
         </styles.Text>
@@ -97,10 +97,7 @@ export default class OnCallCaseStudy extends Component<{}> {
       <Fragment>
         <SectionHeader title="context" content={copy.context} />
         <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage
-            imageUrl={constants.reinventUrl}
-            modalImageUrl={constants.reinventUrl2x}
-          />
+          <MaxWidthImage imageUrl={constants.reinventUrl} />
         </styles.SpacerDiv>
       </Fragment>
     );

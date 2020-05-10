@@ -96,7 +96,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
     return (
       <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
         <styles.Title>I'm Lisa,</styles.Title>
-        <styles.Subtitle>a UX designer from Toronto</styles.Subtitle>
+        <styles.Subtitle>a UI/UX designer from Toronto</styles.Subtitle>
         {this.getContent()}
       </PageSidebar>
     );

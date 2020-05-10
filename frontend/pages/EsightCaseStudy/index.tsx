@@ -158,8 +158,8 @@ export default class EsightCaseStudy extends Component<{}> {
         <SectionHeader title="results" content={copy.results} />
         <styles.SpacerDiv marginBottom="50px">
           <MaxWidthImage
-            imageUrl={constants.accesibilityToolsUrl}
-            modalImageUrl={constants.accesibilityToolsUrl2x}
+            imageUrl={constants.accessibilityToolsUrl}
+            modalImageUrl={constants.accessibilityToolsUrl2x}
           />
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="30px">
