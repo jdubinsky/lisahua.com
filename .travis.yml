@@ -12,6 +12,11 @@ install:
   - cp frontend/dist/* backend/
 jobs:
   include:
+    - stage: compile FE
+      script: pushd frontend && tsc && pod
+      env:
+        - NODE_ENV=test
+        - APP_PORT=8080
     - stage: test
       script: pushd backend && npm run test && popd
       env:
