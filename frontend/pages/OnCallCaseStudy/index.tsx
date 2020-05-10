@@ -9,15 +9,13 @@ import PageContent from "../../components/PageContent";
 import PageSidebar from "../../components/PageSidebar";
 import TextList from "../../components/TextList";
 
-import withMobileSupport, {
-  WithMobileSupportProps,
-} from "../../hoc/withMobileSupport";
+import useMobile from "../../hooks/useMobile";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
-export class OnCallCaseStudy extends Component<WithMobileSupportProps> {
+export default class OnCallCaseStudy extends Component<{}> {
   getProjectInfo() {
     const roles = ["visual design", "high fidelity mockup", "prototyping"];
     return <TextList header="role" listItems={roles} />;
@@ -62,10 +60,12 @@ export class OnCallCaseStudy extends Component<WithMobileSupportProps> {
   }
 
   getSidebarContent() {
-    if (this.props.isCollapsed) {
+    const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
+
+    if (isCollapsed) {
       return (
         <styles.AvenirText>
-          <button onClick={this.props.onReadMore}>read more +</button>
+          <button onClick={onReadMore}>read more +</button>
         </styles.AvenirText>
       );
     }
@@ -77,7 +77,7 @@ export class OnCallCaseStudy extends Component<WithMobileSupportProps> {
         {this.getTimeline()}
         {this.getToolsInfo()}
         {this.getCredits()}
-        {this.props.getCollapseButton()}
+        {getCollapseButton()}
       </Fragment>
     );
   }
@@ -149,5 +149,3 @@ export class OnCallCaseStudy extends Component<WithMobileSupportProps> {
     );
   }
 }
-
-export default withMobileSupport(OnCallCaseStudy);

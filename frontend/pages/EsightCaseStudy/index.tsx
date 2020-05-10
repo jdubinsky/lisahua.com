@@ -10,15 +10,13 @@ import PageSidebar from "../../components/PageSidebar";
 import ParagraphText from "../../components/ParagraphText";
 import TextList from "../../components/TextList";
 
-import withMobileSupport, {
-  WithMobileSupportProps,
-} from "../../hoc/withMobileSupport";
+import useMobile from "../../hooks/useMobile";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
-export class EsightCaseStudy extends Component<WithMobileSupportProps> {
+export default class EsightCaseStudy extends Component<{}> {
   getProjectInfo() {
     const roles = [
       "AA accessibility",
@@ -78,10 +76,11 @@ export class EsightCaseStudy extends Component<WithMobileSupportProps> {
   }
 
   getSidebarContent() {
-    if (this.props.isCollapsed) {
+    const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
+    if (isCollapsed) {
       return (
         <styles.AvenirText>
-          <button onClick={this.props.onReadMore}>read more +</button>
+          <button onClick={onReadMore}>read more +</button>
         </styles.AvenirText>
       );
     }
@@ -93,7 +92,7 @@ export class EsightCaseStudy extends Component<WithMobileSupportProps> {
         {this.getTimeline()}
         {this.getToolsInfo()}
         {this.getCredits()}
-        {this.props.getCollapseButton()}
+        {getCollapseButton()}
       </Fragment>
     );
   }
@@ -206,5 +205,3 @@ export class EsightCaseStudy extends Component<WithMobileSupportProps> {
     );
   }
 }
-
-export default withMobileSupport(EsightCaseStudy);
