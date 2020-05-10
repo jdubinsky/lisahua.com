@@ -9,14 +9,14 @@ import * as styles from "./styles";
 
 interface MaxWidthImageProps {
   imageUrl: string;
-  modalImageUrl: string;
+  modalImageUrl?: string;
 }
 
 export default class MaxWitdthImage extends Component<MaxWidthImageProps> {
   render() {
     const { imageUrl, modalImageUrl } = this.props;
 
-    if (isMobile()) {
+    if (isMobile() || !modalImageUrl) {
       return (
         <Fragment>
           <styles.MaxWidthImage src={imageUrl} />
@@ -28,7 +28,7 @@ export default class MaxWitdthImage extends Component<MaxWidthImageProps> {
 
     return (
       <Fragment>
-        <styles.MaxWidthImage src={imageUrl} onClick={toggle} />
+        <styles.ClickableMaxWidthImage src={imageUrl} onClick={toggle} />
         <ImageModal
           imageUrl={modalImageUrl}
           isVisible={isVisible}
