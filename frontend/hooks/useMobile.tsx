@@ -15,7 +15,6 @@ const useMobile = (): UseMobile => {
   const [isCollapsed, setIsCollapsed] = useState(isMobile());
 
   useEffect(() => {
-    console.log("use effect", isCollapsed);
     if (isCollapsed) {
       window.scrollTo(0, 0);
     }

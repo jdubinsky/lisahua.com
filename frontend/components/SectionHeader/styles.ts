@@ -27,7 +27,10 @@ export const Column = styled(MarginDiv)`
 export const Section = styled(AvenirFontDiv)`
   font-size: 36px;
   font-weight: 700;
-  margin-bottom: 15px;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 15px;
+  }
 `;
 
 export const BigText = styled(BeauFontDiv)`
