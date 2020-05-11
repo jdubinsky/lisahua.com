@@ -64,11 +64,17 @@ export default class ImageModal extends Component<
 
     image.height = newHeight;
     image.width = newWidth;
+    document.body.style.overflow = "hidden";
 
     this.setState({
       hasResized: true,
     });
   }
+
+  onClose = () => {
+    document.body.style.overflow = "unset";
+    this.props.onClose();
+  };
 
   onLoad = () => {
     this.setImageScale();
@@ -84,7 +90,7 @@ export default class ImageModal extends Component<
         <styles.ModalOverlay />
         <styles.ModalContainer>
           <styles.ModalActions>
-            <styles.CloseButton onClick={this.props.onClose}>
+            <styles.CloseButton onClick={this.onClose}>
               <CloseIcon></CloseIcon>
             </styles.CloseButton>
           </styles.ModalActions>
