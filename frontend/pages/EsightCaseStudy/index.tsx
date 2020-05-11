@@ -131,7 +131,7 @@ export default class EsightCaseStudy extends Component<{}> {
         <ParagraphText content={copy.infoArchitecture} />
         <styles.SpacerDiv marginTop="30px" marginBottom="50px">
           <MaxWidthImage
-            imageUrl={constants.infoArchitectureUrl}
+            imageUrl={constants.infoArchitectureUrl2x}
             modalImageUrl={constants.infoArchitectureUrl2x}
           />
         </styles.SpacerDiv>

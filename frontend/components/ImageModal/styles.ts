@@ -14,7 +14,7 @@ export const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);;
+  transform: translate(-50%, -50%);
 `;
 
 export const ModalOverlay = styled.div`
@@ -24,7 +24,7 @@ export const ModalOverlay = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  opacity: .5;
+  opacity: 0.5;
 `;
 
 export const CloseButton = styled.div`
@@ -36,4 +36,6 @@ export const ModalActions = styled.div`
   align-self: flex-end;
 `;
 
-export const ScaledImage = styled.img``;
+export const ScaledImage = styled.img`
+  display: ${(props) => (props.isLoading ? "none" : "block")};
+`;

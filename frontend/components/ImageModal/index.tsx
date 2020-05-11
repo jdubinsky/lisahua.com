@@ -11,9 +11,13 @@ interface ImageModalProps {
   imageUrl: string;
 }
 
+interface ImageModalState {
+  hasResized: boolean;
+}
+
 export default class ImageModal extends Component<
   ImageModalProps,
-  {}
+  ImageModalState
 > {
   ref = createRef<HTMLImageElement>();
 
@@ -21,26 +25,53 @@ export default class ImageModal extends Component<
     isVisible: false,
   };
 
+  state = {
+    hasResized: false,
+  };
+
   setImageScale() {
-    if (!this.ref.current) {
+    const image = this.ref.current;
+    if (!image) {
       return;
     }
 
-    const browserWidth = window.innerWidth - 150;
-    const browserHeight = window.innerHeight - 150;
-    const imgWidth = this.ref.current.width;
-    const imgHeight = this.ref.current.height;
-    const scale = Math.min(browserWidth / imgWidth, browserHeight / imgHeight);
-    const newWidth = scale * imgWidth;
-    const newHeight = scale * imgHeight;
-    this.ref.current.height = newHeight;
-    this.ref.current.width = newWidth;
+    const browserHeight = window.innerHeight;
+    const maxHeight = browserHeight - browserHeight * 0.1;
+    const browserWidth = window.innerWidth;
+    const maxWidth = browserWidth - browserWidth * 0.1;
+    let newHeight: number;
+    let newWidth: number;
+
+    if (image.naturalWidth > image.naturalHeight) {
+      newWidth = Math.min(maxWidth, image.naturalWidth);
+      const scale = newWidth / image.naturalWidth;
+      newHeight = scale * image.clientHeight;
+      if (newHeight > maxHeight) {
+        const widthScale = maxHeight / newHeight;
+        newHeight = maxHeight;
+        newWidth = newWidth * widthScale;
+      }
+    } else {
+      newHeight = Math.min(maxHeight, image.naturalHeight);
+      const scale = newHeight / image.naturalHeight;
+      newWidth = scale * image.clientWidth;
+      if (newWidth > maxWidth) {
+        const heightScale = maxWidth / newWidth;
+        newWidth = maxWidth;
+        newHeight = newHeight * heightScale;
+      }
+    }
+
+    image.height = newHeight;
+    image.width = newWidth;
+
+    this.setState({
+      hasResized: true,
+    });
   }
 
   onLoad = () => {
-    if (this.ref.current) {
-      this.setImageScale();
-    }
+    this.setImageScale();
   };
 
   render() {
@@ -58,7 +89,7 @@ export default class ImageModal extends Component<
             </styles.CloseButton>
           </styles.ModalActions>
           <styles.Modal>
-            <styles.ScaledImage
+            <img
               ref={this.ref}
               src={this.props.imageUrl}
               onLoad={this.onLoad}
