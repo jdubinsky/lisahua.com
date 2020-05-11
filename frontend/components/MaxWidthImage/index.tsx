@@ -2,7 +2,6 @@ import { h, Component, Fragment } from "preact";
 
 import ImageModal from "../ImageModal";
 
-import isMobile from "../../is-mobile";
 import useModal from "../../hooks/useModal";
 
 import * as styles from "./styles";
@@ -16,7 +15,7 @@ export default class MaxWitdthImage extends Component<MaxWidthImageProps> {
   render() {
     const { imageUrl, modalImageUrl } = this.props;
 
-    if (isMobile() || !modalImageUrl) {
+    if (!modalImageUrl) {
       return (
         <Fragment>
           <styles.MaxWidthImage src={imageUrl} />

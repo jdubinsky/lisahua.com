@@ -6,6 +6,7 @@ import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
 import isMobile from "../../is-mobile";
 import ImageModal from "../../components/ImageModal";
+import MaxWidthImage from "../../components/MaxWidthImage";
 import PageContent from "../../components/PageContent";
 import PageSidebar from "../../components/PageSidebar";
 import SectionHeader from "../../components/SectionHeader";
@@ -33,28 +34,8 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
     isCollapsed: isMobile(),
   };
 
-
   componentDidMount() {
     window.scrollTo(0, 0);
-  }
-
-  renderImageWithModal(imageUrl: string, modalImageUrl: string) {
-    if (isMobile()) {
-      return (
-        <Fragment>
-          <styles.MaxWidthImage src={imageUrl} />
-        </Fragment>
-      )
-    }
-
-    const { isVisible, toggle } = useModal();
-
-    return (
-      <Fragment>
-          <styles.MaxWidthImage src={imageUrl} onClick={toggle} />
-          <ImageModal imageUrl={modalImageUrl} isVisible={isVisible} onClose={toggle} />
-      </Fragment>
-    );
   }
 
   getProjectInfo() {
@@ -191,7 +172,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           </styles.ListItem>
         </styles.BulletList>
         <styles.BlackBackgroundImage>
-          {this.renderImageWithModal(constants.magnetWhiteboardUrl, constants.magnetWhiteboardUrl2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetWhiteboardUrl}
+            modalImageUrl={constants.magnetWhiteboardUrl2x}
+          />
         </styles.BlackBackgroundImage>
         <styles.Text marginTop="30px">
           And after speaking with our stakeholders, we uncovered additional
@@ -300,7 +284,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
       }
 
       toggle();
-    }
+    };
 
     return (
       <Fragment>
@@ -316,7 +300,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.SmallHeader>
         <styles.Text>{challengesString}</styles.Text>
         <styles.SpacerDiv marginTop="30px" marginBottom="10px">
-          {this.renderImageWithModal(constants.magnetStakeholdersUrl, constants.magnetStakeholdersUrl2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetStakeholdersUrl}
+            modalImageUrl={constants.magnetStakeholdersUrl2x}
+          />
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="30px">
           Over the course of two days we conducted in-person interviews with
@@ -324,8 +311,15 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.BigLightText>
         {this.getCustomerInterviewsSubSection()}
         <styles.BlackBackgroundImage marginTop="30px">
-          <styles.CustomerImage src={constants.magnetCustomerUrl} onClick={onClick} />
-          <ImageModal imageUrl={constants.magnetCustomerUrl2x} isVisible={isVisible} onClose={toggle} />
+          <styles.CustomerImage
+            src={constants.magnetCustomerUrl}
+            onClick={onClick}
+          />
+          <ImageModal
+            imageUrl={constants.magnetCustomerUrl2x}
+            isVisible={isVisible}
+            onClose={toggle}
+          />
         </styles.BlackBackgroundImage>
         <styles.BigLightText marginTop="10px">
           Conducting a customer interview with examiners from the UK.
@@ -352,7 +346,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         <SectionHeader title="define" content={defineDescription} />
         <styles.SmallHeader marginBottom="30px">personas</styles.SmallHeader>
         <styles.SpacerDiv marginBottom="30px">
-          {this.renderImageWithModal(constants.magnetPersonaFE, constants.magnetPersonaFE2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetPersonaFE}
+            modalImageUrl={constants.magnetPersonaFE2x}
+          />
         </styles.SpacerDiv>
         <styles.Text>
           This is Raymond, a fictional Forensic Examiner. He’s extremely
@@ -365,7 +362,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           workload.
         </styles.Text>
         <styles.SpacerDiv marginTop="45px" marginBottom="25px">
-          {this.renderImageWithModal(constants.magnetPersonaPL, constants.magnetPersonaPL2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetPersonaPL}
+            modalImageUrl={constants.magnetPersonaPL2x}
+          />
         </styles.SpacerDiv>
         <styles.Text>
           Scott represents the chain of command within a police organization and
@@ -386,7 +386,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           performance metrics such as crime solve rate and resource allocation.
         </styles.Text>
         <styles.SpacerDiv marginTop="50px" marginBottom="30px">
-          {this.renderImageWithModal(constants.magnetPersonaInvestigator, constants.magnetPersonaInvestigator2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetPersonaInvestigator}
+            modalImageUrl={constants.magnetPersonaInvestigator2x}
+          />
         </styles.SpacerDiv>
         <styles.Text>
           Charles is the Investigator - a persona that didn’t immediately
@@ -415,7 +418,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           on the site.
         </styles.Text>
         <styles.SpacerDiv marginTop="30px">
-          {this.renderImageWithModal(constants.magnetJourneyMap, constants.magnetJourneyMap2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetJourneyMap}
+            modalImageUrl={constants.magnetJourneyMap2x}
+          />
         </styles.SpacerDiv>
       </styles.SpacerDiv>
     );
@@ -450,7 +456,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           Forensics’ entire product line.
         </styles.Text>
         <styles.SpacerDiv marginTop="30px">
-          {this.renderImageWithModal(constants.magnetIA, constants.magnetIA2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetIA}
+            modalImageUrl={constants.magnetIA2x}
+          />
         </styles.SpacerDiv>
         <styles.SmallHeader marginTop="50px">wireframes</styles.SmallHeader>
         <styles.Text marginTop="15px">
@@ -460,7 +469,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           centre.
         </styles.Text>
         <styles.SpacerDiv marginTop="20px">
-          {this.renderImageWithModal(constants.magnetWireframes, constants.magnetWireframes2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetWireframes}
+            modalImageUrl={constants.magnetWireframes2x}
+          />
         </styles.SpacerDiv>
         <styles.SmallHeader marginTop="30px">
           usability testing
@@ -490,7 +502,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           phone investigations with a related customer story as social proof.
         </styles.Text>
         <styles.SpacerDiv marginTop="30px">
-          {this.renderImageWithModal(constants.magnetUT, constants.magnetUT2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetUT}
+            modalImageUrl={constants.magnetUT2x}
+          />
         </styles.SpacerDiv>
       </styles.SpacerDiv>
     );
@@ -554,7 +569,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           </styles.BoldText>
         </styles.CenteredTable>
         <styles.SpacerDiv marginBottom="50px">
-          {this.renderImageWithModal(constants.magnetHeroUrl, constants.magnetHeroUrl2x)}
+          <MaxWidthImage
+            imageUrl={constants.magnetHeroUrl}
+            modalImageUrl={constants.magnetHeroUrl2x}
+          />
         </styles.SpacerDiv>
         {this.getContextSection()}
         {this.getResearchSection()}
