@@ -1,5 +1,4 @@
 import app = require("./app");
-import cors = require("cors");
 
 const binaryMimeTypes = [
   "binary/octet-stream",
@@ -25,6 +24,5 @@ if (isInLambda) {
   exports.handler = (event: any, context: any) =>
     serverlessExpress.proxy(server, event, context);
 } else {
-  app.use(cors());
   app.listen(port, () => console.log(`Listening on port ${port}`));
 }
