@@ -82,6 +82,12 @@ data "aws_iam_policy_document" "policy" {
 
     actions = ["sts:AssumeRole"]
   }
+
+  statement {
+    actions = ["secretsmanager:GetSecret"]
+
+    resources = ["arn:aws:secretsmanager:*:*:secret:prod*"]
+  }
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
