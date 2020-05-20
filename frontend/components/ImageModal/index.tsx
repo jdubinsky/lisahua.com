@@ -19,7 +19,7 @@ export default class ImageModal extends Component<
   ImageModalProps,
   ImageModalState
 > {
-  ref = createRef<HTMLImageElement>();
+  imageRef = createRef<HTMLImageElement>();
 
   static defaultProps = {
     isVisible: false,
@@ -30,7 +30,7 @@ export default class ImageModal extends Component<
   };
 
   setImageScale() {
-    const image = this.ref.current;
+    const image = this.imageRef.current;
     if (!image) {
       return;
     }
@@ -96,7 +96,7 @@ export default class ImageModal extends Component<
           </styles.ModalActions>
           <styles.Modal>
             <img
-              ref={this.ref}
+              ref={this.imageRef}
               src={this.props.imageUrl}
               onLoad={this.onLoad}
             />

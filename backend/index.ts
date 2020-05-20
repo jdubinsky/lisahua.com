@@ -1,19 +1,20 @@
 import app = require("./app");
+import cors = require("cors");
 
 const binaryMimeTypes = [
-  'binary/octet-stream',
-  'font/eot',
-  'font/opentype',
-  'font/otf',
-  'font/ttf',
-  'image/jpeg',
-  'image/png',
-  'image/svg+xml',
-  'text/comma-separated-values',
-  'text/plain',
-  'text/text',
-  'text/xml'
-]
+  "binary/octet-stream",
+  "font/eot",
+  "font/opentype",
+  "font/otf",
+  "font/ttf",
+  "image/jpeg",
+  "image/png",
+  "image/svg+xml",
+  "text/comma-separated-values",
+  "text/plain",
+  "text/text",
+  "text/xml",
+];
 
 const port = process.env.APP_PORT;
 const isInLambda = !!process.env.LAMBDA_TASK_ROOT;
@@ -24,5 +25,6 @@ if (isInLambda) {
   exports.handler = (event: any, context: any) =>
     serverlessExpress.proxy(server, event, context);
 } else {
+  app.use(cors());
   app.listen(port, () => console.log(`Listening on port ${port}`));
 }
