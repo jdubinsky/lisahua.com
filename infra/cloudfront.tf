@@ -17,7 +17,7 @@ resource "aws_cloudfront_distribution" "apigw_distribution" {
   is_ipv6_enabled = true
 
   default_cache_behavior {
-    allowed_methods        = ["GET", "HEAD", "POST", "OPTIONS"]
+    allowed_methods        = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = aws_api_gateway_domain_name.apigw_domain_name.id
     viewer_protocol_policy = "redirect-to-https"
