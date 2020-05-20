@@ -79,6 +79,15 @@ resource "aws_s3_bucket_object" "static_esight_images" {
   etag   = filemd5("../frontend/assets/images/esight/${each.value}")
 }
 
+resource "aws_s3_bucket_object" "static_syrup_images" {
+  for_each = fileset("../frontend/assets/images/syrup/", "*")
+
+  bucket = aws_s3_bucket.static.id
+  key    = "images/syrup/${each.value}"
+  source = "../frontend/assets/images/syrup/${each.value}"
+  etag   = filemd5("../frontend/assets/images/syrup/${each.value}")
+}
+
 resource "aws_s3_bucket_object" "static_homepage_images" {
   for_each = fileset("../frontend/assets/images/homepage/", "*")
 
