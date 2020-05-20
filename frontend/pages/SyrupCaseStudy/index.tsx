@@ -115,8 +115,10 @@ export default class SyrupCaseStudy extends Component<{}> {
   }
 
   getBulletList(copyList: string[]) {
-    const liEls = copyList.map((copyStr) => <li>{copyStr}</li>);
-    return <ul>{liEls}</ul>;
+    const liEls = copyList.map((copyStr) => (
+      <styles.ListItem>{copyStr}</styles.ListItem>
+    ));
+    return <styles.BulletList>{liEls}</styles.BulletList>;
   }
 
   getDesignSprintSection() {

@@ -6,8 +6,7 @@ import SSM = require("aws-sdk/clients/secretsmanager");
 const app = express();
 const s3 = new S3();
 const bucketName = process.env.BUCKET_NAME;
-// const secretId = process.env.PASSWORDS_SECRET_ID;
-const secretId = "prod/case_studies/passwords";
+const secretId = process.env.PASSWORDS_SECRET_ID;
 interface Secrets {
   [key: string]: string;
 }
@@ -16,6 +15,9 @@ let secretsLastRefreshedDate: Date | null = null;
 const SECRETS_REFRESH_THRESH = 60 * 60 * 1000; // 1hr in ms
 
 async function getSecrets() {
+  if (!secretId) {
+    return {};
+  }
   const currentDate = new Date();
   if (secretsLastRefreshedDate !== null) {
     const dateDiff = currentDate.getTime() - secretsLastRefreshedDate.getTime();
@@ -98,6 +100,11 @@ app.post(
     }
 
     const authResult = passwordAttempt === matchingSecret;
+    response.set({
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "HEAD,POST",
+      "Access-Control-Allow-Headers": "Content-Type",
+    });
     return response.json({ authResult });
   }
 );

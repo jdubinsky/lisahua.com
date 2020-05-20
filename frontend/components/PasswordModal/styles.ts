@@ -1,9 +1,20 @@
 import styled from "styled-components";
 
+import { AvenirFontDiv, BeauFontDiv } from "../../text-styles";
+
+export const AvenirText = styled(AvenirFontDiv)``;
+export const BeauText = styled(BeauFontDiv)``;
+
+export const ErrorText = styled(BeauText)`
+  color: #d8000c;
+`;
+
 export const Modal = styled.div`
   background: #e5e5e5;
   display: flex;
   flex-direction: column;
+  padding: 50px;
+  border-radius: 10px;
 `;
 
 export const ModalContainer = styled.div`
@@ -34,4 +45,18 @@ export const CloseButton = styled.div`
 export const ModalActions = styled.div`
   display: flex;
   align-self: flex-end;
+`;
+
+export const ModalContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const SubmitButton = styled.button`
+  cursor: pointer;
+  padding: 5px;
+`;
+
+export const Input = styled.input`
+  flex-grow: 1;
 `;

@@ -1,6 +1,8 @@
 import { h, render, Fragment } from "preact";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import PasswordProtectedPage from "./components/PasswordProtectedPage";
+
 import Container from "./pages/Homepage/Container";
 import CanvassAICaseStudyPage from "./pages/CanvassAICaseStudy";
 import EsightCaseStudy from "./pages/EsightCaseStudy";
@@ -29,7 +31,9 @@ function getApp() {
             <EsightCaseStudy />
           </Route>
           <Route path="/syrup">
-            <SyrupCaseStudy />
+            <PasswordProtectedPage path="syrup">
+              <SyrupCaseStudy />
+            </PasswordProtectedPage>
           </Route>
           <Route path="">
             <Container />
