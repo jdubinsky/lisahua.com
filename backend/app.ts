@@ -15,6 +15,7 @@ let secretsLastRefreshedDate: Date | null = null;
 const SECRETS_REFRESH_THRESH = 60 * 60 * 1000; // 1hr in ms
 
 async function getSecrets() {
+  console.log(secretId);
   if (!secretId) {
     return {};
   }
@@ -41,6 +42,7 @@ async function getSecrets() {
   }
 
   const secretStr = secretsResponse.SecretString;
+  console.log(secretStr);
   if (secretStr === undefined) {
     return {};
   }
@@ -94,6 +96,10 @@ app.post(
     const passwordAttempt = request.body.password;
     const secrets = await getSecrets();
     const matchingSecret = secrets[`${caseStudy}_password`];
+    console.log(secrets);
+    console.log(matchingSecret, passwordAttempt);
+    console.log(matchingSecret === passwordAttempt);
+    console.log(typeof matchingSecret, typeof passwordAttempt);
 
     if (matchingSecret === undefined) {
       return response.json({ authResult: false });
