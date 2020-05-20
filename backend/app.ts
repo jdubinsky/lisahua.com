@@ -100,11 +100,6 @@ app.post(
     }
 
     const authResult = passwordAttempt === matchingSecret;
-    response.set({
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "HEAD,POST",
-      "Access-Control-Allow-Headers": "Content-Type",
-    });
     return response.json({ authResult });
   }
 );
