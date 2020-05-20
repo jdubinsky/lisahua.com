@@ -157,6 +157,8 @@ resource "aws_lambda_permission" "apigw_lambda" {
   source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*/*"
 }
 
+variable "pw_secret_id" {}
+
 resource "aws_lambda_function" "lambda" {
   function_name = "lisahua-domain"
 
@@ -172,11 +174,12 @@ resource "aws_lambda_function" "lambda" {
 
   environment {
     variables = {
-      APP_PORT    = 8080
-      BUCKET_NAME = aws_s3_bucket.static.id
-      NODE_ENV    = "production"
-      API_HOST    = "https://www.lisahua.com/"
-      STATIC_URL  = "https://lhua-static.s3.amazonaws.com/"
+      APP_PORT            = 8080
+      BUCKET_NAME         = aws_s3_bucket.static.id
+      NODE_ENV            = "production"
+      API_HOST            = "https://www.lisahua.com/"
+      STATIC_URL          = "https://lhua-static.s3.amazonaws.com/"
+      PASSWORDS_SECRET_ID = var.pw_secret_id
     }
   }
 }
