@@ -6,6 +6,7 @@ import CanvassAICaseStudyPage from "./pages/CanvassAICaseStudy";
 import EsightCaseStudy from "./pages/EsightCaseStudy";
 import MagnetCaseStudyPage from "./pages/MagentCaseStudyPage";
 import OnCallCaseStudy from "./pages/OnCallCaseStudy";
+import SyrupCaseStudy from "./pages/SyrupCaseStudy";
 
 import GlobalFonts from "./globalStyles";
 
@@ -26,6 +27,9 @@ function getApp() {
           </Route>
           <Route path="/esight">
             <EsightCaseStudy />
+          </Route>
+          <Route path="/syrup">
+            <SyrupCaseStudy />
           </Route>
           <Route path="">
             <Container />
