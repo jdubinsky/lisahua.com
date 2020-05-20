@@ -80,13 +80,12 @@ data "aws_iam_policy_document" "policy" {
       type        = "Service"
     }
 
+    principals {
+      identifiers = ["secretsmanager.amazonaws.com"]
+      type        = "Service"
+    }
+
     actions = ["sts:AssumeRole"]
-  }
-
-  statement {
-    actions = ["secretsmanager:GetSecret"]
-
-    resources = ["arn:aws:secretsmanager:*:*:secret:prod*"]
   }
 }
 
