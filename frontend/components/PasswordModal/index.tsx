@@ -33,7 +33,7 @@ export default class PasswordModal extends Component<
 
     const passwordAttempt = this.inputRef.current.value;
     const { path } = this.props;
-    const response = await fetch(`http://localhost:9001/auth/${path}`, {
+    const response = await fetch(`/auth/${path}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
