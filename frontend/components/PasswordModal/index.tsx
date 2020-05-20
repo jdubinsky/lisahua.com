@@ -33,14 +33,23 @@ export default class PasswordModal extends Component<
 
     const passwordAttempt = this.inputRef.current.value;
     const { path } = this.props;
-    const response = await fetch(`/auth/${path}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ password: passwordAttempt }),
-    });
+    let response: Response;
+
+    try {
+      response = await fetch(`/auth/${path}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password: passwordAttempt }),
+      });
+    } catch (err) {
+      console.error(err);
+      this.setState({ passwordError: true });
+      return;
+    }
+
     const respJson = await response.json();
     if (respJson.authResult === true) {
       this.props.onPasswordSuccess();
