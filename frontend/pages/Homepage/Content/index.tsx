@@ -52,7 +52,7 @@ export default class Content extends Component {
             {this.getLink()}
           </styles.CallToActionContainer>
           <styles.ImageWrapper>
-            <styles.MaxWidthImage src={constants.oncallUrl} />
+            <styles.MaxWidthImage src={constants.oncallUrl2x} />
           </styles.ImageWrapper>
         </Link>
       </styles.CaseStudyContainer>
@@ -71,7 +71,7 @@ export default class Content extends Component {
             {this.getLink()}
           </styles.CallToActionContainer>
           <styles.ImageWrapper>
-            <styles.MaxWidthImage src={constants.esightUrl} />
+            <styles.MaxWidthImage src={constants.esightUrl2x} />
           </styles.ImageWrapper>
         </Link>
       </styles.CaseStudyContainer>
@@ -91,7 +91,7 @@ export default class Content extends Component {
           </styles.CallToActionText>
         </styles.CallToActionContainer>
         <styles.RelativeImageWrapper>
-          <styles.MaxWidthImage src={constants.netsweeperUrl} />
+          <styles.MaxWidthImage src={constants.netsweeperUrl2x} />
           <styles.LockIconWrapper />
         </styles.RelativeImageWrapper>
       </styles.CaseStudyContainer>
@@ -114,7 +114,7 @@ export default class Content extends Component {
             <ArrowlessIcon />
           </styles.CallToActionContainer>
           <styles.ImageWrapper>
-            <styles.MaxWidthImage src={constants.canvassUrl} />
+            <styles.MaxWidthImage src={constants.canvassUrl2x} />
           </styles.ImageWrapper>
         </Link>
       </styles.CaseStudyContainer>

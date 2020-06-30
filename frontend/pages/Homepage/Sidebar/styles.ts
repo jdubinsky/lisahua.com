@@ -85,6 +85,11 @@ export const DogImagesContainer = styled(MarginDiv)`
   margin-bottom: 90px;
 `;
 
-export const MarginRightImg = styled.img`
+export const DogImage = styled.img`
+  max-height: 192px;
+  max-width: 151px;
+`;
+
+export const MarginRightImg = styled(DogImage)`
   margin-right: 60px;
 `;

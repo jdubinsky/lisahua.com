@@ -1,14 +1,11 @@
 import { h, render, Fragment } from "preact";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import PasswordProtectedPage from "./components/PasswordProtectedPage";
-
 import Container from "./pages/Homepage/Container";
 import CanvassAICaseStudyPage from "./pages/CanvassAICaseStudy";
 import EsightCaseStudy from "./pages/EsightCaseStudy";
 import MagnetCaseStudyPage from "./pages/MagentCaseStudyPage";
 import OnCallCaseStudy from "./pages/OnCallCaseStudy";
-import SyrupCaseStudy from "./pages/SyrupCaseStudy";
 
 import GlobalFonts from "./globalStyles";
 
@@ -29,11 +26,6 @@ function getApp() {
           </Route>
           <Route path="/esight">
             <EsightCaseStudy />
-          </Route>
-          <Route path="/syrup">
-            <PasswordProtectedPage path="syrup">
-              <SyrupCaseStudy />
-            </PasswordProtectedPage>
           </Route>
           <Route path="">
             <Container />

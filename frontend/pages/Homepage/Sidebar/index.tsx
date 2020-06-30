@@ -74,8 +74,8 @@ export default class Sidebar extends Component<{}, SidebarState> {
         </styles.SmallText>
         <styles.Header marginTop="60px">my dogs</styles.Header>
         <styles.DogImagesContainer>
-          <styles.MarginRightImg src={constants.pankoUrl} />
-          <img src={constants.tootsieUrl} />
+          <styles.MarginRightImg src={constants.pankoUrl2x} />
+          <styles.DogImage src={constants.tootsieUrl2x} />
         </styles.DogImagesContainer>
         {this.getCollapseButton()}
       </Fragment>

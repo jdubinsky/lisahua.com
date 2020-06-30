@@ -1,7 +1,6 @@
 import { h, Component, Fragment } from "preact";
 import { Link } from "react-router-dom";
 
-import * as constants from "../../constants";
 import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
 import isMobile from "../../is-mobile";
@@ -14,12 +13,9 @@ import TextList from "../../components/TextList";
 
 import useModal from "../../hooks/useModal";
 
+import * as constants from "./constants";
+import * as copy from "./copy";
 import * as styles from "./styles";
-
-import contextString from "./context.txt";
-import problemString from "./problem.txt";
-import competitiveAnalysisString from "./competitive-analysis.txt";
-import challengesString from "./challenges.txt";
 
 const description = `
 Redesigning the experience of buying and training investigative forensic equipment.
@@ -173,7 +169,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.BulletList>
         <styles.BlackBackgroundImage>
           <MaxWidthImage
-            imageUrl={constants.magnetWhiteboardUrl}
+            imageUrl={constants.magnetWhiteboardUrl2x}
             modalImageUrl={constants.magnetWhiteboardUrl2x}
           />
         </styles.BlackBackgroundImage>
@@ -195,7 +191,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   }
 
   getContextTable() {
-    return <SectionHeader title="context" content={contextString} />;
+    return <SectionHeader title="context" content={copy.context} />;
   }
 
   getContextSection() {
@@ -203,7 +199,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
       <Fragment>
         {this.getContextTable()}
         <styles.SmallHeader marginBottom="15px">problem</styles.SmallHeader>
-        <styles.Text marginBottom="30px">{problemString}</styles.Text>
+        <styles.Text marginBottom="30px">{copy.problem}</styles.Text>
         <styles.SmallHeader marginBottom="15px">approach</styles.SmallHeader>
         <styles.Text marginBottom="30px">
           I joined the project as the UX designer, and my involvement spanned
@@ -290,7 +286,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
       <Fragment>
         <SectionHeader title="research" content={researchDescription} />
         <styles.SmallHeader>competitive analysis</styles.SmallHeader>
-        <styles.Text marginTop="15px">{competitiveAnalysisString}</styles.Text>
+        <styles.Text marginTop="15px">{copy.competitiveAnalysis}</styles.Text>
         <styles.BigQuote marginTop="30px" marginBottom="30px">
           “No one tool is perfect, there's always room for improvement which is
           why we utilise several tools for analysis.”
@@ -298,10 +294,10 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         <styles.SmallHeader marginBottom="15px">
           stakeholder interviews
         </styles.SmallHeader>
-        <styles.Text>{challengesString}</styles.Text>
+        <styles.Text>{copy.stakeholderInterviews}</styles.Text>
         <styles.SpacerDiv marginTop="30px" marginBottom="10px">
           <MaxWidthImage
-            imageUrl={constants.magnetStakeholdersUrl}
+            imageUrl={constants.magnetStakeholdersUrl2x}
             modalImageUrl={constants.magnetStakeholdersUrl2x}
           />
         </styles.SpacerDiv>
@@ -312,7 +308,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         {this.getCustomerInterviewsSubSection()}
         <styles.BlackBackgroundImage marginTop="30px">
           <styles.CustomerImage
-            src={constants.magnetCustomerUrl}
+            src={constants.magnetCustomerUrl2x}
             onClick={onClick}
           />
           <ImageModal
@@ -325,7 +321,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
           Conducting a customer interview with examiners from the UK.
         </styles.BigLightText>
         <styles.SmallHeader marginTop="30px">challenges</styles.SmallHeader>
-        <styles.Text marginTop="15px">{challengesString}</styles.Text>
+        <styles.Text marginTop="15px">{copy.challenges}</styles.Text>
       </Fragment>
     );
   }
@@ -347,7 +343,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         <styles.SmallHeader marginBottom="30px">personas</styles.SmallHeader>
         <styles.SpacerDiv marginBottom="30px">
           <MaxWidthImage
-            imageUrl={constants.magnetPersonaFE}
+            imageUrl={constants.magnetPersonaFE2x}
             modalImageUrl={constants.magnetPersonaFE2x}
           />
         </styles.SpacerDiv>
@@ -363,7 +359,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.Text>
         <styles.SpacerDiv marginTop="45px" marginBottom="25px">
           <MaxWidthImage
-            imageUrl={constants.magnetPersonaPL}
+            imageUrl={constants.magnetPersonaPL2x}
             modalImageUrl={constants.magnetPersonaPL2x}
           />
         </styles.SpacerDiv>
@@ -387,7 +383,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.Text>
         <styles.SpacerDiv marginTop="50px" marginBottom="30px">
           <MaxWidthImage
-            imageUrl={constants.magnetPersonaInvestigator}
+            imageUrl={constants.magnetPersonaInvestigator2x}
             modalImageUrl={constants.magnetPersonaInvestigator2x}
           />
         </styles.SpacerDiv>
@@ -419,7 +415,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.Text>
         <styles.SpacerDiv marginTop="30px">
           <MaxWidthImage
-            imageUrl={constants.magnetJourneyMap}
+            imageUrl={constants.magnetJourneyMap2x}
             modalImageUrl={constants.magnetJourneyMap2x}
           />
         </styles.SpacerDiv>
@@ -457,7 +453,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.Text>
         <styles.SpacerDiv marginTop="30px">
           <MaxWidthImage
-            imageUrl={constants.magnetIA}
+            imageUrl={constants.magnetIA2x}
             modalImageUrl={constants.magnetIA2x}
           />
         </styles.SpacerDiv>
@@ -470,7 +466,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.Text>
         <styles.SpacerDiv marginTop="20px">
           <MaxWidthImage
-            imageUrl={constants.magnetWireframes}
+            imageUrl={constants.magnetWireframes2x}
             modalImageUrl={constants.magnetWireframes2x}
           />
         </styles.SpacerDiv>
@@ -503,7 +499,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.Text>
         <styles.SpacerDiv marginTop="30px">
           <MaxWidthImage
-            imageUrl={constants.magnetUT}
+            imageUrl={constants.magnetUT2x}
             modalImageUrl={constants.magnetUT2x}
           />
         </styles.SpacerDiv>
@@ -570,7 +566,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
         </styles.CenteredTable>
         <styles.SpacerDiv marginBottom="50px">
           <MaxWidthImage
-            imageUrl={constants.magnetHeroUrl}
+            imageUrl={constants.magnetHeroUrl2x}
             modalImageUrl={constants.magnetHeroUrl2x}
           />
         </styles.SpacerDiv>

@@ -162,8 +162,6 @@ resource "aws_lambda_permission" "apigw_lambda" {
   source_arn = "${aws_api_gateway_rest_api.api.execution_arn}/*/*"
 }
 
-variable "pw_secret_id" {}
-
 resource "aws_lambda_function" "lambda" {
   function_name = "lisahua-domain"
 
