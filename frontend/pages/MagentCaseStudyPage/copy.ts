@@ -9,7 +9,7 @@ export const problem = `
 Like many other scale-ups, Magnet Forensics had outgrown their website:
  resources were all over the place and difficult to find,
  there were too many products on the website, and they had multiple stakeholders
- trying to achieve different goals at the same time. 
+ trying to achieve different goals at the same time.
 `;
 
 export const competitiveAnalysis = `

@@ -16,3 +16,10 @@ repos:
     rev: v7.3.1
     hooks:
       - id: eslint
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+        types: [file]
+        additional_dependencies:
+          - eslint@7.3.1
+          - eslint-config-prettier@6.11.0
+          - eslint-plugin-prettier@3.1.4
+          - eslint-config-preact@1.1.1
