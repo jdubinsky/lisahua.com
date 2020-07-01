@@ -4,11 +4,11 @@ import ArrowlessIcon from "../../../icons/Arrowless";
 import DownArrowIcon from "../../../icons/DownArrow";
 import isMobile from "../../../is-mobile";
 import PageSidebar from "../../../components/PageSidebar";
+import ParagraphText from "../../../components/ParagraphText";
 import * as constants from "../../../constants";
 
 import * as styles from "./styles";
-import description from "./content.txt";
-import description2 from "./content-2.txt";
+import * as copy from "./copy";
 
 interface SidebarState {
   isCollapsed: boolean;
@@ -51,8 +51,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
     return (
       <Fragment>
         <styles.Text>I'm actively looking for new opportunities!</styles.Text>
-        <styles.Text>{description}</styles.Text>
-        <styles.Text>{description2}</styles.Text>
+        <ParagraphText fontSize={24} content={copy.content} />
         <styles.TextWithIcon marginTop="34px">
           <DownArrowIcon />
           <styles.Subtext marginLeft="13px">scroll</styles.Subtext>
@@ -94,7 +93,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
 
   render() {
     return (
-      <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
+      <PageSidebar width={35} widthOffset={115} maxWidth="375" minWidth="300">
         <styles.Title>I'm Lisa,</styles.Title>
         <styles.Subtitle>a UI/UX designer from Toronto</styles.Subtitle>
         {this.getContent()}

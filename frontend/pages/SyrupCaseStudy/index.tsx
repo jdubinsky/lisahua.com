@@ -93,8 +93,8 @@ export default class SyrupCaseStudy extends Component<{}> {
   getSidebar() {
     return (
       <PageSidebar
-        width="35"
-        widthOffset="115"
+        width={32}
+        widthOffset={115}
         maxWidth="435"
         minWidth="300"
         marginRight={45}
@@ -184,7 +184,7 @@ export default class SyrupCaseStudy extends Component<{}> {
 
   getContent() {
     return (
-      <PageContent width={65} widthOffset={115} maxWidth={725}>
+      <PageContent width={68} widthOffset={115} maxWidth={725}>
         <styles.CenteredTable marginTop="30px" marginBottom="30px">
           <Link to="/">
             <ArrowlessIcon />

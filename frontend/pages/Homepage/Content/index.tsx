@@ -33,7 +33,7 @@ export default class Content extends Component {
             {this.getLink()}
           </styles.CallToActionContainer>
           <styles.ImageWrapper>
-            <styles.MaxWidthImage src={constants.magnetUrl} />
+            <styles.MaxWidthImage src={constants.magnetUrl2x} />
           </styles.ImageWrapper>
         </Link>
       </styles.CaseStudyContainer>

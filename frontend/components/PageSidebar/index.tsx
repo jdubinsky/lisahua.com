@@ -3,8 +3,8 @@ import { h, Component } from "preact";
 import * as styles from "./styles";
 
 interface SidebarProps {
-  width: string;
-  widthOffset: string;
+  width: number;
+  widthOffset: number;
   minWidth: string;
   maxWidth: string;
   marginRight?: number;

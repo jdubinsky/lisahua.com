@@ -7,6 +7,7 @@ export const pankoUrl2x = `${homepageBaseUrl}panku@2x.jpg`;
 export const tootsieUrl = `${homepageBaseUrl}tootsie.jpg`;
 export const tootsieUrl2x = `${homepageBaseUrl}tootsie@2x.jpg`;
 export const magnetUrl = `${homepageBaseUrl}desktop-magnet.png`;
+export const magnetUrl2x = `${homepageBaseUrl}desktop-magnet@2x.png`;
 export const ttcUrl = `${homepageBaseUrl}mobile-ttcexit.png`;
 export const aodaUrl = `${homepageBaseUrl}desktop-aoda.png`;
 export const aodaUrl2x = `${homepageBaseUrl}desktop-aoda@2x.png`;

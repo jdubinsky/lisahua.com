@@ -1,8 +1,7 @@
 import { h, Component, Fragment } from "preact";
-import { Link } from "react-router-dom";
 
-import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
+import GoBackHeader from "../../components/GoBackHeader";
 import MaxWidthImage from "../../components/MaxWidthImage";
 import SectionHeader from "../../components/SectionHeader";
 import PageContent from "../../components/PageContent";
@@ -100,8 +99,8 @@ export default class EsightCaseStudy extends Component<{}> {
   getSidebar() {
     return (
       <PageSidebar
-        width="35"
-        widthOffset="115"
+        width={32}
+        widthOffset={115}
         maxWidth="435"
         minWidth="300"
         marginRight={45}
@@ -141,7 +140,7 @@ export default class EsightCaseStudy extends Component<{}> {
         <ParagraphText content={copy.highFidelityDesigns} />
         <styles.SpacerDiv marginTop="30px" marginBottom="50px">
           <MaxWidthImage
-            imageUrl={constants.designsUrl}
+            imageUrl={constants.designsUrl2x}
             modalImageUrl={constants.designsUrl2x}
           />
         </styles.SpacerDiv>
@@ -158,7 +157,7 @@ export default class EsightCaseStudy extends Component<{}> {
         <SectionHeader title="results" content={copy.results} />
         <styles.SpacerDiv marginBottom="50px">
           <MaxWidthImage
-            imageUrl={constants.accessibilityToolsUrl}
+            imageUrl={constants.accessibilityToolsUrl2x}
             modalImageUrl={constants.accessibilityToolsUrl2x}
           />
         </styles.SpacerDiv>
@@ -171,20 +170,11 @@ export default class EsightCaseStudy extends Component<{}> {
 
   getContent() {
     return (
-      <PageContent width={65} widthOffset={115} maxWidth={725}>
-        <styles.CenteredTable marginTop="30px" marginBottom="30px">
-          <Link to="/">
-            <ArrowlessIcon />
-          </Link>
-          <Link to="/">
-            <styles.BoldText marginLeft="12px">
-              back to all projects
-            </styles.BoldText>
-          </Link>
-        </styles.CenteredTable>
+      <PageContent width={68} widthOffset={115} maxWidth={725}>
+        <GoBackHeader />
         <styles.SpacerDiv marginBottom="50px">
           <MaxWidthImage
-            imageUrl={constants.heroUrl}
+            imageUrl={constants.heroUrl2x}
             modalImageUrl={constants.heroUrl2x}
           />
         </styles.SpacerDiv>

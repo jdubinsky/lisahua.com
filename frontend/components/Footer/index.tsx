@@ -7,7 +7,6 @@ export default class Footer extends Component {
     return (
       <styles.Footer marginTop="50px">
         <styles.LeftFooter>© 2020 lisa hua</styles.LeftFooter>
-        <styles.RightFooter>Made with lots of 🍵 and ❤️</styles.RightFooter>
       </styles.Footer>
     );
   }

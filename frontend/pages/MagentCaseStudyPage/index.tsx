@@ -1,8 +1,7 @@
 import { h, Component, Fragment } from "preact";
-import { Link } from "react-router-dom";
 
-import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
+import GoBackHeader from "../../components/GoBackHeader";
 import isMobile from "../../is-mobile";
 import ImageModal from "../../components/ImageModal";
 import MaxWidthImage from "../../components/MaxWidthImage";
@@ -137,7 +136,7 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
 
   getSidebar() {
     return (
-      <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
+      <PageSidebar width={32} widthOffset={115} maxWidth="375" minWidth="300">
         <styles.Title>Magnet</styles.Title>
         <styles.Title marginBottom="40px">Forensics</styles.Title>
         <styles.Text marginBottom="30px">{description}</styles.Text>
@@ -557,13 +556,9 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
 
   getContent() {
     return (
-      <PageContent width={65} widthOffset={115} maxWidth={725}>
-        <styles.CenteredTable marginTop="30px" marginBottom="30px">
-          <ArrowlessIcon />
-          <styles.BoldText marginLeft="12px">
-            <Link to="/">back to all projects</Link>
-          </styles.BoldText>
-        </styles.CenteredTable>
+      <PageContent width={68} widthOffset={115} maxWidth={725}>
+        <GoBackHeader />
+        <styles.PushDiv />
         <styles.SpacerDiv marginBottom="50px">
           <MaxWidthImage
             imageUrl={constants.magnetHeroUrl2x}

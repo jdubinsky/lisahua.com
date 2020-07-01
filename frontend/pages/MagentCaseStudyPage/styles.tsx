@@ -124,3 +124,17 @@ export const Link = styled.a`
   margin-left: 5px;
   text-decoration: underline;
 `;
+
+export const GoBackHeader = styled(CenteredTable)`
+  position: fixed;
+  top: 0;
+  background: #e5e5e5;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+`;
+
+export const PushDiv = styled.div`
+  margin-bottom: 30px;
+  background: #e5e5e5;
+`;
