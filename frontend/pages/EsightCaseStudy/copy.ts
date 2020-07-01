@@ -23,7 +23,7 @@ Based on the client’s requirements and what we found from the research process
  to design multiple journeys on the website, one for eSight users and one for vision professionals.
  Designing for the different needs and frustrations of our personas we created a list of questions
  each persona had and how we could answer it on the site.
- 
+
 The site was divided into five major sections, the product, learning centre, vision professionals,
  eMPOWER, and about the company.
 `;
@@ -35,7 +35,7 @@ Colour usage was very important to the overall design. eSight has a colourful pa
  WebAIM contrast checker to ensure that the CTAs met accessibility requirements.
  The font sizes for the CTAs were increased to 19px to ensure that the orange and white met
  AA colour contrast of 3:1.
- 
+
 We also tested the site with automated accessibility checkers like
  aXe to catch issues such as missing alt text, and that the headings followed a logical order from H1 to H5.
  Alongside the developer, I manually tested sections of the site with VoiceOver for

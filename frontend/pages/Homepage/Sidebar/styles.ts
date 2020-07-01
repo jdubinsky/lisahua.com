@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-import {
-  AvenirFontDiv,
-  BeauFontDiv,
-  MarginDiv,
-  MarginProps,
-} from "../../../text-styles";
+import { AvenirFontDiv, BeauFontDiv, MarginDiv, MarginProps } from "../../../text-styles";
 
 const MarginA = styled.a<MarginProps>`
   margin-top: ${(props) => props.marginTop || "0px"};
@@ -85,6 +80,11 @@ export const DogImagesContainer = styled(MarginDiv)`
   margin-bottom: 90px;
 `;
 
-export const MarginRightImg = styled.img`
+export const DogImage = styled.img`
+  max-height: 192px;
+  max-width: 151px;
+`;
+
+export const MarginRightImg = styled(DogImage)`
   margin-right: 60px;
 `;

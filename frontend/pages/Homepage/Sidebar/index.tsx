@@ -4,16 +4,17 @@ import ArrowlessIcon from "../../../icons/Arrowless";
 import DownArrowIcon from "../../../icons/DownArrow";
 import isMobile from "../../../is-mobile";
 import PageSidebar from "../../../components/PageSidebar";
+import ParagraphText from "../../../components/ParagraphText";
 import * as constants from "../../../constants";
 
 import * as styles from "./styles";
-import description from "./content.txt";
-import description2 from "./content-2.txt";
+import * as copy from "./copy";
 
 interface SidebarState {
   isCollapsed: boolean;
 }
 
+// eslint-disable-next-line
 export default class Sidebar extends Component<{}, SidebarState> {
   state = {
     isCollapsed: isMobile(),
@@ -51,19 +52,15 @@ export default class Sidebar extends Component<{}, SidebarState> {
     return (
       <Fragment>
         <styles.Text>I'm actively looking for new opportunities!</styles.Text>
-        <styles.Text>{description}</styles.Text>
-        <styles.Text>{description2}</styles.Text>
-        <styles.TextWithIcon marginTop="34px">
+        <ParagraphText fontSize={24} content={copy.content} />
+        <styles.TextWithIcon marginTop="20px">
           <DownArrowIcon />
           <styles.Subtext marginLeft="13px">scroll</styles.Subtext>
         </styles.TextWithIcon>
         <styles.Header marginTop="150px">experience & education</styles.Header>
         {this.getExperienceAndEducationTable()}
         <styles.ResumeContainer>
-          <styles.CallToActionLink
-            href={constants.resumeUrl}
-            marginRight="12px"
-          >
+          <styles.CallToActionLink href={constants.resumeUrl} marginRight="12px">
             <styles.BoldText>View full resume</styles.BoldText>
           </styles.CallToActionLink>
           <ArrowlessIcon />
@@ -74,8 +71,8 @@ export default class Sidebar extends Component<{}, SidebarState> {
         </styles.SmallText>
         <styles.Header marginTop="60px">my dogs</styles.Header>
         <styles.DogImagesContainer>
-          <styles.MarginRightImg src={constants.pankoUrl} />
-          <img src={constants.tootsieUrl} />
+          <styles.MarginRightImg src={constants.pankoUrl2x} />
+          <styles.DogImage src={constants.tootsieUrl2x} />
         </styles.DogImagesContainer>
         {this.getCollapseButton()}
       </Fragment>
@@ -94,7 +91,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
 
   render() {
     return (
-      <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
+      <PageSidebar width={35} widthOffset={115} maxWidth="375" minWidth="300">
         <styles.Title>I'm Lisa,</styles.Title>
         <styles.Subtitle>a UI/UX designer from Toronto</styles.Subtitle>
         {this.getContent()}

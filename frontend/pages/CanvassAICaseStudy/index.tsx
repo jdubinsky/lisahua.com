@@ -1,7 +1,6 @@
-import { h, Component, Fragment } from "preact";
-import { Link } from "react-router-dom";
+import { h, FunctionComponent, Fragment, VNode } from "preact";
+import { useEffect, useState } from "preact/hooks";
 
-import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
 import ImageModal from "../../components/ImageModal";
 import SectionHeader from "../../components/SectionHeader";
@@ -17,89 +16,79 @@ import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
-interface CanvassState {
-  isCollapsed: boolean;
-}
+const CanvassAICaseStudyPage: FunctionComponent = (): VNode => {
+  const [isCollapsed, setIsCollapsed] = useState(isMobile());
+  const { isVisible, open, close } = useModal();
 
-export default class CanvassAICaseStudyPage extends Component<
-  {},
-  CanvassState
-> {
-  state = {
-    isCollapsed: isMobile(),
-  };
+  useEffect(() => {
+    if (isCollapsed === true) {
+      window.scrollTo(0, 0);
+    }
+  }, [isCollapsed]);
 
-  renderImageWithModal(imageUrl: string, modalImageUrl: string) {
+  const renderImageWithModal = (imageUrl: string, modalImageUrl: string) => {
     // TODO: make HOC
     if (isMobile()) {
       return (
         <Fragment>
           <styles.MaxWidthImage src={imageUrl} />
         </Fragment>
-      )
+      );
     }
-
-    const { isVisible, toggle } = useModal();
 
     return (
       <Fragment>
-          <styles.MaxWidthImage src={imageUrl} onClick={toggle} />
-          <ImageModal imageUrl={modalImageUrl} isVisible={isVisible} onClose={toggle} />
+        <styles.MaxWidthImage src={imageUrl} onClick={open} />
+        <ImageModal imageUrl={modalImageUrl} isVisible={isVisible} onClose={close} />
       </Fragment>
     );
-  }
-
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
-  onReadMore = () => {
-    this.setState({ isCollapsed: false });
   };
 
-  onCollapse = () => {
-    this.setState({ isCollapsed: true }, () => {
-      window.scrollTo(0, 0);
-    });
+  const onReadMore = () => {
+    setIsCollapsed(false);
   };
 
-  getCollapseButton() {
+  const onCollapse = () => {
+    setIsCollapsed(true);
+  };
+
+  const getCollapseButton = () => {
     if (!isMobile()) {
       return <Fragment />;
     }
 
-    if (this.state.isCollapsed) {
+    if (isCollapsed) {
       return <Fragment />;
     }
 
     return (
       <styles.AvenirText marginTop="30px">
-        <button onClick={this.onCollapse}>collapse -</button>
+        <button onClick={onCollapse}>collapse -</button>
       </styles.AvenirText>
     );
-  }
+  };
 
-  getProjectInfo() {
+  const getProjectInfo = () => {
     const roles = ["user flow", "wireframes", "visual designs"];
     return <TextList header="role" listItems={roles} />;
-  }
+  };
 
-  getProjectType() {
+  const getProjectType = () => {
     const projectTypes = ["web application"];
     return <TextList header="project type" listItems={projectTypes} />;
-  }
+  };
 
-  getTimeline() {
+  const getTimeline = () => {
     return <TextList header="timeline" listItems={["dec 2017 - feb 2018"]} />;
-  }
+  };
 
-  getToolsInfo() {
+  const getToolsInfo = () => {
     const tools = ["sketch", "invision", "anima app"];
     const list = <TextList header="tools" listItems={tools} />;
     return <styles.Column marginBottom="30px">{list}</styles.Column>;
-  }
+  };
 
-  getCredits() {
+  const getCredits = () => {
     const credits = [
       { name: "courtney zorio", title: "(project manager)" },
       { name: "rennie chun", title: "(lead visual designer)" },
@@ -121,129 +110,111 @@ export default class CanvassAICaseStudyPage extends Component<
         {creditTexts}
       </styles.Column>
     );
-  }
+  };
 
-  getSidebarContent() {
-    if (this.state.isCollapsed) {
+  const getSidebarContent = () => {
+    if (isCollapsed) {
       return (
         <styles.AvenirText>
-          <button onClick={this.onReadMore}>read more +</button>
+          <button onClick={onReadMore}>read more +</button>
         </styles.AvenirText>
       );
     }
 
     return (
       <Fragment>
-        {this.getProjectInfo()}
-        {this.getProjectType()}
-        {this.getTimeline()}
-        {this.getToolsInfo()}
-        {this.getCredits()}
-        {this.getCollapseButton()}
+        {getProjectInfo()}
+        {getProjectType()}
+        {getTimeline()}
+        {getToolsInfo()}
+        {getCredits()}
+        {getCollapseButton()}
       </Fragment>
     );
-  }
+  };
 
-  getSidebar() {
+  const getSidebar = () => {
     return (
-      <PageSidebar width="35" widthOffset="115" maxWidth="375" minWidth="300">
+      <PageSidebar width={32} widthOffset={115} maxWidth="375" minWidth="300">
         <styles.Title marginBottom="40px">Canvass AI</styles.Title>
         <styles.Text>{copy.titleDescription}</styles.Text>
-        {this.getSidebarContent()}
+        {getSidebarContent()}
       </PageSidebar>
     );
-  }
+  };
 
-  getContextSection() {
+  const getContextSection = () => {
     return (
       <Fragment>
         <SectionHeader title="context" content={copy.context} />
         <styles.SpacerDiv marginTop="30px" marginBottom="10px">
-          {this.renderImageWithModal(constants.oldWebAppUrl, constants.oldWebAppUrl2x)}
+          {renderImageWithModal(constants.oldWebAppUrl2x, constants.oldWebAppUrl2x)}
         </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="50px">
-          Screenshots of Canvass AI’s demo environment
-        </styles.BigLightText>
+        <styles.BigLightText marginBottom="50px">Screenshots of Canvass AI’s demo environment</styles.BigLightText>
       </Fragment>
     );
-  }
+  };
 
-  getHighlightsSection() {
+  const getHighlightsSection = () => {
     return (
       <Fragment>
         <SectionHeader title="highlights" content={copy.highlights} />
         <styles.SmallHeader marginBottom="15px">wireframes</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.wireframes}</styles.Text>
         <styles.SpacerDiv marginBottom="50px">
-          {this.renderImageWithModal(constants.wireframesUrl, constants.wireframesUrl2x)}
+          {renderImageWithModal(constants.wireframesUrl2x, constants.wireframesUrl2x)}
         </styles.SpacerDiv>
         <styles.SmallHeader marginBottom="15px">user flow</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.userFlow}</styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          {this.renderImageWithModal(constants.userFlowUrl, constants.userFlowUrl2x)}
+          {renderImageWithModal(constants.userFlowUrl2x, constants.userFlowUrl2x)}
         </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="30px">
-          Canvass AI's userflow
-        </styles.BigLightText>
-        <styles.SmallHeader marginBottom="15px">
-          high fidelity designs
-        </styles.SmallHeader>
-        <styles.Text marginBottom="30px">
-          {copy.highFidelityPartOne}
-        </styles.Text>
+        <styles.BigLightText marginBottom="30px">Canvass AI's userflow</styles.BigLightText>
+        <styles.SmallHeader marginBottom="15px">high fidelity designs</styles.SmallHeader>
+        <styles.Text marginBottom="30px">{copy.highFidelityPartOne}</styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          {this.renderImageWithModal(constants.moodboardUrl, constants.moodboardUrl2x)}
+          {renderImageWithModal(constants.moodboardUrl2x, constants.moodboardUrl2x)}
         </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="30px">
-          Visual inspiration gathered in our research
-        </styles.BigLightText>
-        <styles.Text marginBottom="30px">
-          {copy.highFidelityPartTwo}
-        </styles.Text>
+        <styles.BigLightText marginBottom="30px">Visual inspiration gathered in our research</styles.BigLightText>
+        <styles.Text marginBottom="30px">{copy.highFidelityPartTwo}</styles.Text>
         <styles.SpacerDiv marginBottom="10px">
-          {this.renderImageWithModal(constants.tableComparisonUrl, constants.tableComparisonUrl2x)}
+          {renderImageWithModal(constants.tableComparisonUrl2x, constants.tableComparisonUrl2x)}
         </styles.SpacerDiv>
         <styles.BigLightText marginBottom="50px">
           The brand color and table designs were tweaked for a cleaner look
         </styles.BigLightText>
       </Fragment>
     );
-  }
+  };
 
-  getResultsSection() {
+  const getResultsSection = () => {
     return (
       <Fragment>
         <SectionHeader title="results" content={copy.results} />
       </Fragment>
     );
-  }
+  };
 
-  getContent() {
+  const getContent = () => {
     return (
-      <PageContent width={65} widthOffset={115} maxWidth={725}>
-        <styles.CenteredTable marginTop="30px" marginBottom="30px">
-          <ArrowlessIcon />
-          <styles.BoldText marginLeft="12px">
-            <Link to="/">back to all projects</Link>
-          </styles.BoldText>
-        </styles.CenteredTable>
+      <PageContent width={68} widthOffset={115} maxWidth={725}>
         <styles.SpacerDiv marginBottom="50px">
-          {this.renderImageWithModal(constants.heroUrl, constants.heroUrl2x)}
+          {renderImageWithModal(constants.heroUrl2x, constants.heroUrl2x)}
         </styles.SpacerDiv>
-        {this.getContextSection()}
-        {this.getHighlightsSection()}
-        {this.getResultsSection()}
+        {getContextSection()}
+        {getHighlightsSection()}
+        {getResultsSection()}
         <Footer />
       </PageContent>
     );
-  }
+  };
 
-  render() {
-    return (
-      <styles.Container>
-        {this.getSidebar()}
-        {this.getContent()}
-      </styles.Container>
-    );
-  }
-}
+  return (
+    <styles.Container>
+      {getSidebar()}
+      {getContent()}
+    </styles.Container>
+  );
+};
+
+export default CanvassAICaseStudyPage;

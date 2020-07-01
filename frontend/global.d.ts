@@ -1,24 +1,24 @@
-declare module '*.txt' {
+declare module "*.txt" {
   const content: string;
   export default content;
 }
 
-declare module '*.png' {
+declare module "*.png" {
   const content: string;
   export default content;
 }
 
-declare module '*.otf' {
+declare module "*.otf" {
   const content: string;
   export default content;
 }
 
-declare module '*.ttf' {
+declare module "*.ttf" {
   const content: string;
   export default content;
 }
 
-declare module '*.svg' {
+declare module "*.svg" {
   const content: string;
   export default content;
 }

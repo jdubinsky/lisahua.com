@@ -1,7 +1,8 @@
-import { h, Component, Fragment } from "preact";
+import { h, FunctionComponent, Fragment, VNode } from "preact";
 import { createPortal, createRef } from "preact/compat";
 
 import CloseIcon from "../../icons/CloseIcon";
+import useEscape from "../../hooks/useEscape";
 
 import * as styles from "./styles";
 
@@ -11,26 +12,11 @@ interface ImageModalProps {
   imageUrl: string;
 }
 
-interface ImageModalState {
-  hasResized: boolean;
-}
+const ImageModal: FunctionComponent<ImageModalProps> = ({ isVisible = false, onClose, imageUrl }): VNode => {
+  const imageRef = createRef<HTMLImageElement>();
 
-export default class ImageModal extends Component<
-  ImageModalProps,
-  ImageModalState
-> {
-  imageRef = createRef<HTMLImageElement>();
-
-  static defaultProps = {
-    isVisible: false,
-  };
-
-  state = {
-    hasResized: false,
-  };
-
-  setImageScale() {
-    const image = this.imageRef.current;
+  const setImageScale = () => {
+    const image = imageRef.current;
     if (!image) {
       return;
     }
@@ -65,45 +51,41 @@ export default class ImageModal extends Component<
     image.height = newHeight;
     image.width = newWidth;
     document.body.style.overflow = "hidden";
+  };
 
-    this.setState({
-      hasResized: true,
-    });
-  }
-
-  onClose = () => {
+  const onCloseHandler = () => {
     document.body.style.overflow = "unset";
-    this.props.onClose();
+    onClose();
   };
 
-  onLoad = () => {
-    this.setImageScale();
+  const onLoad = () => {
+    setImageScale();
   };
 
-  render() {
-    if (!this.props.isVisible) {
-      return null;
-    }
+  useEscape(() => {
+    onCloseHandler();
+  });
 
-    return createPortal(
-      <Fragment>
-        <styles.ModalOverlay />
-        <styles.ModalContainer>
-          <styles.ModalActions>
-            <styles.CloseButton onClick={this.onClose}>
-              <CloseIcon></CloseIcon>
-            </styles.CloseButton>
-          </styles.ModalActions>
-          <styles.Modal>
-            <img
-              ref={this.imageRef}
-              src={this.props.imageUrl}
-              onLoad={this.onLoad}
-            />
-          </styles.Modal>
-        </styles.ModalContainer>
-      </Fragment>,
-      document.body
-    );
+  if (!isVisible) {
+    return <Fragment />;
   }
-}
+
+  return createPortal(
+    <Fragment>
+      <styles.ModalOverlay />
+      <styles.ModalContainer>
+        <styles.ModalActions>
+          <styles.CloseButton onClick={onCloseHandler}>
+            <CloseIcon />
+          </styles.CloseButton>
+        </styles.ModalActions>
+        <styles.Modal>
+          <img ref={imageRef} src={imageUrl} onLoad={onLoad} />
+        </styles.Modal>
+      </styles.ModalContainer>
+    </Fragment>,
+    document.body,
+  );
+};
+
+export default ImageModal;

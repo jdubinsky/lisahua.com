@@ -1,4 +1,5 @@
-import { h, Component } from "preact";
+import { h, FunctionComponent, Fragment, VNode } from "preact";
+import { useState } from "preact/hooks";
 import { useHistory } from "react-router-dom";
 
 import PasswordModal from "../PasswordModal";
@@ -7,39 +8,25 @@ interface PasswordProtectedPageProps {
   path: string;
 }
 
-interface PasswordProectedPageState {
-  authorized: boolean;
-}
+const PasswordProtectedPage: FunctionComponent<PasswordProtectedPageProps> = (props): VNode => {
+  const [authorized, setAuthorized] = useState(false);
+  const history = useHistory();
 
-export default class PasswordProtectedPage extends Component<
-  PasswordProtectedPageProps,
-  PasswordProectedPageState
-> {
-  state = {
-    authorized: false,
-  };
-
-  returnToHomepage = () => {
-    const history = useHistory();
+  const returnToHomepage = () => {
     history.push("/");
   };
 
-  onSuccess = () => {
-    this.setState({ authorized: true });
+  const onSuccess = () => {
+    setAuthorized(true);
   };
 
-  render() {
-    if (this.state.authorized) {
-      return this.props.children;
-    }
-
-    return (
-      <PasswordModal
-        isVisible={true}
-        path={this.props.path}
-        onGoBack={this.returnToHomepage}
-        onPasswordSuccess={this.onSuccess}
-      />
-    );
+  if (authorized) {
+    return <Fragment>{props.children}</Fragment>;
   }
-}
+
+  const { path } = props;
+
+  return <PasswordModal isVisible={true} path={path} onGoBack={returnToHomepage} onPasswordSuccess={onSuccess} />;
+};
+
+export default PasswordProtectedPage;
