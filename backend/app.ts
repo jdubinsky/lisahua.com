@@ -1,10 +1,8 @@
 import express = require("express");
 import path = require("path");
-import S3 = require("aws-sdk/clients/s3");
 import SSM = require("aws-sdk/clients/secretsmanager");
 
 const app = express();
-const s3 = new S3();
 const bucketName = process.env.BUCKET_NAME;
 const secretId = process.env.PASSWORDS_SECRET_ID;
 interface Secrets {
@@ -15,7 +13,6 @@ let secretsLastRefreshedDate: Date | null = null;
 const SECRETS_REFRESH_THRESH = 60 * 60 * 1000; // 1hr in ms
 
 async function getSecrets() {
-  console.log(secretId);
   if (!secretId) {
     return {};
   }
@@ -42,7 +39,6 @@ async function getSecrets() {
   }
 
   const secretStr = secretsResponse.SecretString;
-  console.log(secretStr);
   if (secretStr === undefined) {
     return {};
   }
@@ -50,19 +46,6 @@ async function getSecrets() {
   secretsLastRefreshedDate = currentDate;
   secretsCache = JSON.parse(secretStr);
   return secretsCache;
-}
-
-async function getStaticObject(key: string) {
-  if (!bucketName) {
-    return;
-  }
-
-  const params: S3.Types.GetObjectRequest = {
-    Bucket: bucketName,
-    Key: key,
-  };
-
-  return await s3.getObject(params).promise();
 }
 
 app.use("/static", express.static(__dirname));
@@ -96,10 +79,6 @@ app.post(
     const passwordAttempt = request.body.password;
     const secrets = await getSecrets();
     const matchingSecret = secrets[`${caseStudy}_password`];
-    console.log(secrets);
-    console.log(matchingSecret, passwordAttempt);
-    console.log(matchingSecret === passwordAttempt);
-    console.log(typeof matchingSecret, typeof passwordAttempt);
 
     if (matchingSecret === undefined) {
       return response.json({ authResult: false });

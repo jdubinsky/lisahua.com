@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 chai.should();
 
 describe("app", () => {
-  it("returns index.html", done => {
+  it("returns index.html", (done) => {
     chai
       .request(app)
       .get("/")
@@ -19,7 +19,7 @@ describe("app", () => {
       });
   });
 
-  it("returns bundle", done => {
+  it("returns bundle", (done) => {
     chai
       .request(app)
       .get("/app.bundle.js")
@@ -31,7 +31,7 @@ describe("app", () => {
       });
   });
 
-  it("returns index for other paths", done => {
+  it("returns index for other paths", (done) => {
     chai
       .request(app)
       .get("/magnet")

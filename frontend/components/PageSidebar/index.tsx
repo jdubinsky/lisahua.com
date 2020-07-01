@@ -17,10 +17,7 @@ export default class PageSidebar extends Component<SidebarProps> {
 
   render() {
     return (
-      <styles.SidebarWrapper
-        width={this.props.width}
-        widthOffset={this.props.widthOffset}
-      >
+      <styles.SidebarWrapper width={this.props.width} widthOffset={this.props.widthOffset}>
         <styles.Sidebar
           minWidth={this.props.minWidth}
           maxWidth={this.props.maxWidth}

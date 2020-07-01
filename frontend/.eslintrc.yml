@@ -1,12 +1,22 @@
 env:
   browser: true
   es6: true
+  mocha: true
 extends:
   - "eslint:recommended"
   - "prettier"
+  - "prettier/@typescript-eslint"
   - "preact"
+  - "plugin:@typescript-eslint/eslint-recommended"
+  - "plugin:@typescript-eslint/recommended"
+parser: "@typescript-eslint/parser"
 parserOptions:
+  ecmaVersion: 2020
+  ecmaFeatures:
+    jsx: true
   sourceType: module
+ignorePatterns:
+  - "webpack.*.js"
 rules:
   "react/react-in-jsx-scope": [off]
   quotes:

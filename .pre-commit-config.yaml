@@ -3,15 +3,12 @@ repos:
     rev: v2.3.0
     hooks:
       - id: check-yaml
-      - id: check-json
       - id: end-of-file-fixer
       - id: trailing-whitespace
-  - repo: https://github.com/awebdeveloper/pre-commit-prettier
-    rev: v0.0.1
+  - repo: https://github.com/prettier/prettier
+    rev: 2.0.5
     hooks:
       - id: prettier
-        args: []
-        additional_dependencies: ["prettier@1.1.0"]
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v7.3.1
     hooks:

@@ -1,4 +1,4 @@
-import { h, Component, Fragment } from "preact";
+import { h, FunctionComponent, Fragment, VNode } from "preact";
 
 import Footer from "../../components/Footer";
 import MaxWidthImage from "../../components/MaxWidthImage";
@@ -14,8 +14,10 @@ import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
-export default class EsightCaseStudy extends Component<{}> {
-  getProjectInfo() {
+const EsightCaseStudy: FunctionComponent = (): VNode => {
+  const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
+
+  const getProjectInfo = () => {
     const roles = [
       "AA accessibility",
       "information architecture",
@@ -25,31 +27,24 @@ export default class EsightCaseStudy extends Component<{}> {
       "prototyping",
     ];
     return <TextList header="role" listItems={roles} />;
-  }
+  };
 
-  getProjectType() {
+  const getProjectType = () => {
     const projectTypes = ["website"];
     return <TextList header="project type" listItems={projectTypes} />;
-  }
+  };
 
-  getTimeline() {
+  const getTimeline = () => {
     return <TextList header="timeline" listItems={["january - march 2020"]} />;
-  }
+  };
 
-  getToolsInfo() {
-    const tools = [
-      "figma",
-      "whimsical",
-      "aXe",
-      "voiceover",
-      "webAIM",
-      "start colour contrast analyzer",
-    ];
+  const getToolsInfo = () => {
+    const tools = ["figma", "whimsical", "aXe", "voiceover", "webAIM", "start colour contrast analyzer"];
     const list = <TextList header="tools" listItems={tools} />;
     return <styles.Column marginBottom="30px">{list}</styles.Column>;
-  }
+  };
 
-  getCredits() {
+  const getCredits = () => {
     const credits = [
       { name: "yusef dualeh", title: "(product manager)" },
       { name: "joshua van boxtel", title: "(lead developer)" },
@@ -71,10 +66,9 @@ export default class EsightCaseStudy extends Component<{}> {
         {creditTexts}
       </styles.Column>
     );
-  }
+  };
 
-  getSidebarContent() {
-    const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
+  const getSidebarContent = () => {
     if (isCollapsed) {
       return (
         <styles.AvenirText>
@@ -85,72 +79,54 @@ export default class EsightCaseStudy extends Component<{}> {
 
     return (
       <Fragment>
-        {this.getProjectInfo()}
-        {this.getProjectType()}
-        {this.getTimeline()}
-        {this.getToolsInfo()}
-        {this.getCredits()}
+        {getProjectInfo()}
+        {getProjectType()}
+        {getTimeline()}
+        {getToolsInfo()}
+        {getCredits()}
         {getCollapseButton()}
       </Fragment>
     );
-  }
+  };
 
-  getSidebar() {
+  const getSidebar = () => {
     return (
-      <PageSidebar
-        width={32}
-        widthOffset={115}
-        maxWidth="435"
-        minWidth="300"
-        marginRight={45}
-      >
+      <PageSidebar width={32} widthOffset={115} maxWidth="435" minWidth="300" marginRight={45}>
         <styles.Title marginBottom="40px">eSight Eyewear</styles.Title>
         <styles.Text marginBottom="10px">{copy.titleDescription}</styles.Text>
-        {this.getSidebarContent()}
+        {getSidebarContent()}
       </PageSidebar>
     );
-  }
+  };
 
-  getGoalsSection() {
+  const getGoalsSection = () => {
     return (
       <Fragment>
         <SectionHeader title="goals" content={copy.goals} />
       </Fragment>
     );
-  }
+  };
 
-  getResearchSection() {
+  const getResearchSection = () => {
     return (
       <Fragment>
         <SectionHeader title="research" content={copy.research} />
-        <styles.SmallHeader marginBottom="15px">
-          information architecture
-        </styles.SmallHeader>
+        <styles.SmallHeader marginBottom="15px">information architecture</styles.SmallHeader>
         <ParagraphText content={copy.infoArchitecture} />
         <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage
-            imageUrl={constants.infoArchitectureUrl2x}
-            modalImageUrl={constants.infoArchitectureUrl2x}
-          />
+          <MaxWidthImage imageUrl={constants.infoArchitectureUrl2x} modalImageUrl={constants.infoArchitectureUrl2x} />
         </styles.SpacerDiv>
-        <styles.SmallHeader marginBottom="15px">
-          high fidelity designs
-        </styles.SmallHeader>
+        <styles.SmallHeader marginBottom="15px">high fidelity designs</styles.SmallHeader>
         <ParagraphText content={copy.highFidelityDesigns} />
         <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage
-            imageUrl={constants.designsUrl2x}
-            modalImageUrl={constants.designsUrl2x}
-          />
+          <MaxWidthImage imageUrl={constants.designsUrl2x} modalImageUrl={constants.designsUrl2x} />
         </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="30px">
-          {copy.designsImgSubtitle}
-        </styles.BigLightText>
+        <styles.BigLightText marginBottom="30px">{copy.designsImgSubtitle}</styles.BigLightText>
       </Fragment>
     );
-  }
+  };
 
-  getResultsSection() {
+  const getResultsSection = () => {
     return (
       <Fragment>
         <SectionHeader title="results" content={copy.results} />
@@ -160,36 +136,31 @@ export default class EsightCaseStudy extends Component<{}> {
             modalImageUrl={constants.accessibilityToolsUrl2x}
           />
         </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="30px">
-          {copy.resultsImgSubtitle}
-        </styles.BigLightText>
+        <styles.BigLightText marginBottom="30px">{copy.resultsImgSubtitle}</styles.BigLightText>
       </Fragment>
     );
-  }
+  };
 
-  getContent() {
+  const getContent = () => {
     return (
       <PageContent width={68} widthOffset={115} maxWidth={725}>
         <styles.SpacerDiv marginBottom="50px">
-          <MaxWidthImage
-            imageUrl={constants.heroUrl2x}
-            modalImageUrl={constants.heroUrl2x}
-          />
+          <MaxWidthImage imageUrl={constants.heroUrl2x} modalImageUrl={constants.heroUrl2x} />
         </styles.SpacerDiv>
-        {this.getGoalsSection()}
-        {this.getResearchSection()}
-        {this.getResultsSection()}
+        {getGoalsSection()}
+        {getResearchSection()}
+        {getResultsSection()}
         <Footer />
       </PageContent>
     );
-  }
+  };
 
-  render() {
-    return (
-      <styles.Container>
-        {this.getSidebar()}
-        {this.getContent()}
-      </styles.Container>
-    );
-  }
-}
+  return (
+    <styles.Container>
+      {getSidebar()}
+      {getContent()}
+    </styles.Container>
+  );
+};
+
+export default EsightCaseStudy;

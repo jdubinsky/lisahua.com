@@ -7,11 +7,11 @@ interface TextListProps {
   listItems: string[];
 }
 
-export default class TextList extends Component<TextListProps, {}> {
+export default class TextList extends Component<TextListProps> {
   render() {
     const { header, listItems } = this.props;
 
-    const listComponents = listItems.map(item => {
+    const listComponents = listItems.map((item) => {
       return <styles.Text>{item}</styles.Text>;
     });
 

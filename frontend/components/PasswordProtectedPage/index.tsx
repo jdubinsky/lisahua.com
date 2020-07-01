@@ -8,13 +8,11 @@ interface PasswordProtectedPageProps {
   path: string;
 }
 
-const PasswordProtectedPage: FunctionComponent<PasswordProtectedPageProps> = (
-  props
-): VNode => {
+const PasswordProtectedPage: FunctionComponent<PasswordProtectedPageProps> = (props): VNode => {
   const [authorized, setAuthorized] = useState(false);
+  const history = useHistory();
 
   const returnToHomepage = () => {
-    const history = useHistory();
     history.push("/");
   };
 
@@ -28,14 +26,7 @@ const PasswordProtectedPage: FunctionComponent<PasswordProtectedPageProps> = (
 
   const { path } = props;
 
-  return (
-    <PasswordModal
-      isVisible={true}
-      path={path}
-      onGoBack={returnToHomepage}
-      onPasswordSuccess={onSuccess}
-    />
-  );
+  return <PasswordModal isVisible={true} path={path} onGoBack={returnToHomepage} onPasswordSuccess={onSuccess} />;
 };
 
 export default PasswordProtectedPage;

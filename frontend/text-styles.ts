@@ -7,10 +7,10 @@ export interface MarginProps {
 }
 
 export const MarginDiv = styled.div<MarginProps>`
-  margin-top: ${props => props.marginTop || "0px"};
-  margin-bottom: ${props => props.marginBottom || "0px"};
-  margin-left: ${props => props.marginLeft || "0px"};
-  margin-right: ${props => props.marginRight || "0px"};
+  margin-top: ${(props) => props.marginTop || "0px"};
+  margin-bottom: ${(props) => props.marginBottom || "0px"};
+  margin-left: ${(props) => props.marginLeft || "0px"};
+  margin-right: ${(props) => props.marginRight || "0px"};
 `;
 
 export const AvenirFontDiv = styled(MarginDiv)`

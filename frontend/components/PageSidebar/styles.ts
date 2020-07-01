@@ -17,8 +17,7 @@ export const SidebarWrapper = styled.div<SidebarWrapperProps>`
   background: #ffffff;
 
   @media only screen and (min-width: 768px) {
-    max-width: ${(props: SidebarWrapperProps) =>
-      `${props.width * 15}px` || "525px"};
+    max-width: ${(props: SidebarWrapperProps) => `${props.width * 15}px` || "525px"};
     scrollbar-width: none;
     -ms-overflow-style: none;
     ::-webkit-scrollbar {

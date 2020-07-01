@@ -16,10 +16,7 @@ interface PasswordModalState {
   passwordError: boolean;
 }
 
-export default class PasswordModal extends Component<
-  PasswordModalProps,
-  PasswordModalState
-> {
+export default class PasswordModal extends Component<PasswordModalProps, PasswordModalState> {
   inputRef = createRef<HTMLInputElement>();
 
   state = {
@@ -70,11 +67,7 @@ export default class PasswordModal extends Component<
       return null;
     }
 
-    return (
-      <styles.ErrorText marginBottom="30px">
-        Incorrect password, please try again.
-      </styles.ErrorText>
-    );
+    return <styles.ErrorText marginBottom="30px">Incorrect password, please try again.</styles.ErrorText>;
   }
 
   render() {
@@ -88,31 +81,22 @@ export default class PasswordModal extends Component<
         <styles.ModalContainer>
           <styles.ModalActions>
             <styles.CloseButton onClick={this.props.onGoBack}>
-              <CloseIcon></CloseIcon>
+              <CloseIcon />
             </styles.CloseButton>
           </styles.ModalActions>
           <styles.Modal>
-            <styles.BeauText marginBottom="30px">
-              Enter the password to view the case study
-            </styles.BeauText>
+            <styles.BeauText marginBottom="30px">Enter the password to view the case study</styles.BeauText>
             {this.getErrorText()}
             <styles.ModalContent>
-              <styles.Input
-                ref={this.inputRef}
-                onKeyPress={this.onPasswordSubmitKeyPress}
-                type="password"
-              />
-              <styles.SubmitButton
-                onClick={this.onPasswordSubmit}
-                onKeyPress={this.onPasswordSubmitKeyPress}
-              >
+              <styles.Input ref={this.inputRef} onKeyPress={this.onPasswordSubmitKeyPress} type="password" />
+              <styles.SubmitButton onClick={this.onPasswordSubmit} onKeyPress={this.onPasswordSubmitKeyPress}>
                 <styles.AvenirText>Submit</styles.AvenirText>
               </styles.SubmitButton>
             </styles.ModalContent>
           </styles.Modal>
         </styles.ModalContainer>
       </Fragment>,
-      document.body
+      document.body,
     );
   }
 }

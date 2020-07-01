@@ -21,7 +21,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   padding-left: 10px;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 `;
 
 export const PushDiv = styled.div`

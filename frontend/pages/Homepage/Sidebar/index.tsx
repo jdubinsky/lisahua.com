@@ -14,6 +14,7 @@ interface SidebarState {
   isCollapsed: boolean;
 }
 
+// eslint-disable-next-line
 export default class Sidebar extends Component<{}, SidebarState> {
   state = {
     isCollapsed: isMobile(),
@@ -59,10 +60,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
         <styles.Header marginTop="150px">experience & education</styles.Header>
         {this.getExperienceAndEducationTable()}
         <styles.ResumeContainer>
-          <styles.CallToActionLink
-            href={constants.resumeUrl}
-            marginRight="12px"
-          >
+          <styles.CallToActionLink href={constants.resumeUrl} marginRight="12px">
             <styles.BoldText>View full resume</styles.BoldText>
           </styles.CallToActionLink>
           <ArrowlessIcon />

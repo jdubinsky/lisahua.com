@@ -1,4 +1,4 @@
-import { h, Component, Fragment } from "preact";
+import { h, FunctionComponent, Fragment, VNode } from "preact";
 
 import Footer from "../../components/Footer";
 import MaxWidthImage from "../../components/MaxWidthImage";
@@ -13,28 +13,30 @@ import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
-export default class OnCallCaseStudy extends Component<{}> {
-  getProjectInfo() {
+const OnCallCaseStudy: FunctionComponent = (): VNode => {
+  const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
+
+  const getProjectInfo = () => {
     const roles = ["visual design", "high fidelity mockup", "prototyping"];
     return <TextList header="role" listItems={roles} />;
-  }
+  };
 
-  getProjectType() {
+  const getProjectType = () => {
     const projectTypes = ["website"];
     return <TextList header="project type" listItems={projectTypes} />;
-  }
+  };
 
-  getTimeline() {
+  const getTimeline = () => {
     return <TextList header="timeline" listItems={["february 2020"]} />;
-  }
+  };
 
-  getToolsInfo() {
+  const getToolsInfo = () => {
     const tools = ["figma"];
     const list = <TextList header="tools" listItems={tools} />;
     return <styles.Column marginBottom="30px">{list}</styles.Column>;
-  }
+  };
 
-  getCredits() {
+  const getCredits = () => {
     const credits = [
       { name: "alison ma", title: "(product manager)" },
       { name: "lisa hua", title: "(user experience designer)" },
@@ -55,11 +57,9 @@ export default class OnCallCaseStudy extends Component<{}> {
         {creditTexts}
       </styles.Column>
     );
-  }
+  };
 
-  getSidebarContent() {
-    const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
-
+  const getSidebarContent = () => {
     if (isCollapsed) {
       return (
         <styles.AvenirText>
@@ -70,27 +70,27 @@ export default class OnCallCaseStudy extends Component<{}> {
 
     return (
       <Fragment>
-        {this.getProjectInfo()}
-        {this.getProjectType()}
-        {this.getTimeline()}
-        {this.getToolsInfo()}
-        {this.getCredits()}
+        {getProjectInfo()}
+        {getProjectType()}
+        {getTimeline()}
+        {getToolsInfo()}
+        {getCredits()}
         {getCollapseButton()}
       </Fragment>
     );
-  }
+  };
 
-  getSidebar() {
+  const getSidebar = () => {
     return (
       <PageSidebar width={32} widthOffset={115} maxWidth="375" minWidth="300">
         <styles.Title marginBottom="40px">OnCall</styles.Title>
         <styles.Text marginBottom="10px">{copy.titleDescription}</styles.Text>
-        {this.getSidebarContent()}
+        {getSidebarContent()}
       </PageSidebar>
     );
-  }
+  };
 
-  getContextSection() {
+  const getContextSection = () => {
     return (
       <Fragment>
         <SectionHeader title="context" content={copy.context} />
@@ -99,38 +99,35 @@ export default class OnCallCaseStudy extends Component<{}> {
         </styles.SpacerDiv>
       </Fragment>
     );
-  }
+  };
 
-  getResultsSection() {
+  const getResultsSection = () => {
     return (
       <Fragment>
         <SectionHeader title="results" content={copy.results} />
       </Fragment>
     );
-  }
+  };
 
-  getContent() {
+  const getContent = () => {
     return (
       <PageContent width={68} widthOffset={115} maxWidth={725}>
         <styles.SpacerDiv marginBottom="50px">
-          <MaxWidthImage
-            imageUrl={constants.heroUrl2x}
-            modalImageUrl={constants.heroUrl2x}
-          />
+          <MaxWidthImage imageUrl={constants.heroUrl2x} modalImageUrl={constants.heroUrl2x} />
         </styles.SpacerDiv>
-        {this.getContextSection()}
-        {this.getResultsSection()}
+        {getContextSection()}
+        {getResultsSection()}
         <Footer />
       </PageContent>
     );
-  }
+  };
 
-  render() {
-    return (
-      <styles.Container>
-        {this.getSidebar()}
-        {this.getContent()}
-      </styles.Container>
-    );
-  }
-}
+  return (
+    <styles.Container>
+      {getSidebar()}
+      {getContent()}
+    </styles.Container>
+  );
+};
+
+export default OnCallCaseStudy;

@@ -1,4 +1,4 @@
-import { h, Component, Fragment } from "preact";
+import { h, FunctionComponent, Fragment, VNode } from "preact";
 
 import ImageModal from "../ImageModal";
 
@@ -11,29 +11,24 @@ interface MaxWidthImageProps {
   modalImageUrl?: string;
 }
 
-export default class MaxWitdthImage extends Component<MaxWidthImageProps> {
-  render() {
-    const { imageUrl, modalImageUrl } = this.props;
+const MaxWidthImage: FunctionComponent<MaxWidthImageProps> = (props): VNode => {
+  const { isVisible, close, open } = useModal();
+  const { imageUrl, modalImageUrl } = props;
 
-    if (!modalImageUrl) {
-      return (
-        <Fragment>
-          <styles.MaxWidthImage src={imageUrl} />
-        </Fragment>
-      );
-    }
-
-    const { isVisible, toggle } = useModal();
-
+  if (!modalImageUrl) {
     return (
       <Fragment>
-        <styles.ClickableMaxWidthImage src={imageUrl} onClick={toggle} />
-        <ImageModal
-          imageUrl={modalImageUrl}
-          isVisible={isVisible}
-          onClose={toggle}
-        />
+        <styles.MaxWidthImage src={imageUrl} />
       </Fragment>
     );
   }
-}
+
+  return (
+    <Fragment>
+      <styles.ClickableMaxWidthImage src={imageUrl} onClick={open} />
+      <ImageModal imageUrl={modalImageUrl} isVisible={isVisible} onClose={close} />
+    </Fragment>
+  );
+};
+
+export default MaxWidthImage;

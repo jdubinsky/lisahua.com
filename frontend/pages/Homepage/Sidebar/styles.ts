@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-import {
-  AvenirFontDiv,
-  BeauFontDiv,
-  MarginDiv,
-  MarginProps,
-} from "../../../text-styles";
+import { AvenirFontDiv, BeauFontDiv, MarginDiv, MarginProps } from "../../../text-styles";
 
 const MarginA = styled.a<MarginProps>`
   margin-top: ${(props) => props.marginTop || "0px"};

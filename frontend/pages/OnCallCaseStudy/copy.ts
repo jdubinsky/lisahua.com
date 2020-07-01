@@ -1,4 +1,4 @@
-export const titleDescription = `Developing a new brand identity for a telemedical health company in Canada.`;
+export const titleDescription = "Developing a new brand identity for a telemedical health company in Canada.";
 
 export const context = `
 Part of my job at Crowdlinker is to help brainstorm ideas for prospective clients;
