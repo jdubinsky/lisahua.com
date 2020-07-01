@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
-const beauFontUrl = `${process.env.STATIC_URL}fonts/BeauRegular.ttf`;
-const avenirFontUrl = `${process.env.STATIC_URL}fonts/Avenir-Roman.ttf`;
+const beauFontUrl = "../fonts/BeauRegular.ttf";
+const avenirFontUrl = "../fonts/Avenir-Roman.ttf";
 
 export default createGlobalStyle`
   a {
