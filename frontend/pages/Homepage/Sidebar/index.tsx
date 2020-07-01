@@ -52,7 +52,7 @@ export default class Sidebar extends Component<{}, SidebarState> {
       <Fragment>
         <styles.Text>I'm actively looking for new opportunities!</styles.Text>
         <ParagraphText fontSize={24} content={copy.content} />
-        <styles.TextWithIcon marginTop="34px">
+        <styles.TextWithIcon marginTop="20px">
           <DownArrowIcon />
           <styles.Subtext marginLeft="13px">scroll</styles.Subtext>
         </styles.TextWithIcon>
