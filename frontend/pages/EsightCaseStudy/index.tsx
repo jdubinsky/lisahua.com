@@ -1,7 +1,6 @@
 import { h, Component, Fragment } from "preact";
 
 import Footer from "../../components/Footer";
-import GoBackHeader from "../../components/GoBackHeader";
 import MaxWidthImage from "../../components/MaxWidthImage";
 import SectionHeader from "../../components/SectionHeader";
 import PageContent from "../../components/PageContent";
@@ -171,7 +170,6 @@ export default class EsightCaseStudy extends Component<{}> {
   getContent() {
     return (
       <PageContent width={68} widthOffset={115} maxWidth={725}>
-        <GoBackHeader />
         <styles.SpacerDiv marginBottom="50px">
           <MaxWidthImage
             imageUrl={constants.heroUrl2x}

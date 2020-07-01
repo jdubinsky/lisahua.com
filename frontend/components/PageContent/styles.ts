@@ -14,7 +14,6 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
   width: 100%;
   background: #e5e5e5;
   overflow-y: scroll;
-  max-width: 1000px;
 `;
 
 export const Content = styled.div`

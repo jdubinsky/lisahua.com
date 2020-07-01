@@ -63,6 +63,7 @@ export const ImageWrapperOld = styled(MarginDiv)`
 export const MaxWidthImage = styled.img`
   max-height: 208px;
   max-width: 361px;
+  width: 100%;
 `;
 
 export const RelativeImageWrapper = styled(ImageWrapper)`

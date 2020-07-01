@@ -1,7 +1,6 @@
 import { h, Component, Fragment } from "preact";
 
 import Footer from "../../components/Footer";
-import GoBackHeader from "../../components/GoBackHeader";
 import ImageModal from "../../components/ImageModal";
 import SectionHeader from "../../components/SectionHeader";
 import PageContent from "../../components/PageContent";
@@ -239,7 +238,6 @@ export default class CanvassAICaseStudyPage extends Component<
   getContent() {
     return (
       <PageContent width={68} widthOffset={115} maxWidth={725}>
-        <GoBackHeader />
         <styles.SpacerDiv marginBottom="50px">
           {this.renderImageWithModal(constants.heroUrl2x, constants.heroUrl2x)}
         </styles.SpacerDiv>

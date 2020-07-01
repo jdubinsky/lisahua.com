@@ -1,7 +1,6 @@
 import { h, Component, Fragment } from "preact";
 
 import Footer from "../../components/Footer";
-import GoBackHeader from "../../components/GoBackHeader";
 import isMobile from "../../is-mobile";
 import ImageModal from "../../components/ImageModal";
 import MaxWidthImage from "../../components/MaxWidthImage";
@@ -557,8 +556,6 @@ export default class MagnentCaseStudyPage extends Component<{}, MagnetState> {
   getContent() {
     return (
       <PageContent width={68} widthOffset={115} maxWidth={725}>
-        <GoBackHeader />
-        <styles.PushDiv />
         <styles.SpacerDiv marginBottom="50px">
           <MaxWidthImage
             imageUrl={constants.magnetHeroUrl2x}
