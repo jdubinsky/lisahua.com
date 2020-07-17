@@ -3,26 +3,19 @@ import { useEffect, useState } from "preact/hooks";
 
 import Footer from "../../components/Footer";
 import isMobile from "../../is-mobile";
-import ImageModal from "../../components/ImageModal";
 import MaxWidthImage from "../../components/MaxWidthImage";
 import PageContent from "../../components/PageContent";
 import PageSidebar from "../../components/PageSidebar";
+import ParagraphText from "../../components/ParagraphText";
 import SectionHeader from "../../components/SectionHeader";
 import TextList from "../../components/TextList";
-
-import useModal from "../../hooks/useModal";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
-const description = `
-Redesigning the experience of buying and training investigative forensic equipment.
-`;
-
 const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
   const [isCollapsed, setIsCollapsed] = useState(isMobile());
-  const { isVisible, open, close } = useModal();
 
   useEffect(() => {
     if (isCollapsed === true) {
@@ -130,7 +123,7 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
       <PageSidebar width={32} widthOffset={115} maxWidth="375" minWidth="300">
         <styles.Title>Magnet</styles.Title>
         <styles.Title marginBottom="40px">Forensics</styles.Title>
-        <styles.Text marginBottom="30px">{description}</styles.Text>
+        <styles.Text marginBottom="30px">{copy.description}</styles.Text>
         {getSidebarContent()}
       </PageSidebar>
     );
@@ -181,24 +174,13 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
         <styles.SmallHeader marginBottom="15px">problem</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.problem}</styles.Text>
         <styles.SmallHeader marginBottom="15px">approach</styles.SmallHeader>
-        <styles.Text marginBottom="30px">
-          I joined the project as the UX designer, and my involvement spanned across the discovery phase.
-        </styles.Text>
+        <styles.Text marginBottom="30px">{copy.approach}</styles.Text>
         <styles.SubHeader marginBottom="10px">research</styles.SubHeader>
-        <styles.Text marginBottom="30px">
-          I conducted stakeholder interviews, recruited users and wrote screeners and surveys, created personas.
-        </styles.Text>
+        <styles.Text marginBottom="30px">{copy.approachResearch}</styles.Text>
         <styles.SubHeader marginBottom="10px">synthesis</styles.SubHeader>
-        <styles.Text marginBottom="30px">
-          Working with the Product Manager, I synthesized the research findings to develop a strategy for the website.
-          We mapped out customer journeys and from there I built the site’s information architecture, created wireframes
-          and iterated on the concepts to ensure it aligned with the business’ goals.
-        </styles.Text>
+        <styles.Text marginBottom="30px">{copy.synthesis}</styles.Text>
         <styles.SubHeader marginBottom="10px">testing</styles.SubHeader>
-        <styles.Text marginBottom="30px">
-          We began testing the wireframes with existing users, and used their feedback to iterate on the website’s
-          experience on desktop and mobile devices.
-        </styles.Text>
+        <styles.Text marginBottom="30px">{copy.testing}</styles.Text>
         {getProjectGoals()}
       </Fragment>
     );
@@ -207,14 +189,7 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
   const getCustomerInterviewsSubSection = () => {
     return (
       <Fragment>
-        <styles.Text>
-          We recruited an existing customer of Magnet Forensics and sent out surveys to forensic examiners we recruited
-          via forum posts. Our objective was to develop our understanding of the product market, the types of
-          investigations they typically worked on, and how willing they were to try something new.
-        </styles.Text>
-        <styles.Text>
-          Based on our interviews, we learned the following about the forensic examiner and their role in their company:
-        </styles.Text>
+        <ParagraphText content={copy.interviews} />
         <styles.BulletList>
           <styles.ListItem>
             They’re accustomed to using free and open-source tools instead of automation
@@ -237,25 +212,11 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
   };
 
   const getResearchSection = () => {
-    const researchDescription = `
-      At the start of this project, I had no idea about the type of
-      things that would happen during an investigation. I made it my
-      goal to learn everything I possibly could in the life of a
-      forensic examiner- the good, the bad, and the ugly.
-    `;
-    const onClick = () => {
-      if (isMobile()) {
-        return;
-      }
-
-      open();
-    };
-
     return (
       <Fragment>
-        <SectionHeader title="research" content={researchDescription} />
+        <SectionHeader title="research" content={copy.research} />
         <styles.SmallHeader>competitive analysis</styles.SmallHeader>
-        <styles.Text marginTop="15px">{copy.competitiveAnalysis}</styles.Text>
+        <ParagraphText content={copy.competitiveAnalysis} />
         <styles.BigQuote marginTop="30px" marginBottom="30px">
           “No one tool is perfect, there's always room for improvement which is why we utilise several tools for
           analysis.”
@@ -272,33 +233,20 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
           Over the course of two days we conducted in-person interviews with various stakeholders at Magnet Forensics
         </styles.BigLightText>
         {getCustomerInterviewsSubSection()}
-        <styles.BlackBackgroundImage marginTop="30px">
-          <styles.CustomerImage src={constants.magnetCustomerUrl2x} onClick={onClick} />
-          <ImageModal imageUrl={constants.magnetCustomerUrl2x} isVisible={isVisible} onClose={close} />
-        </styles.BlackBackgroundImage>
+        <MaxWidthImage imageUrl={constants.magnetCustomerUrl2x} modalImageUrl={constants.magnetCustomerUrl2x} />
         <styles.BigLightText marginTop="10px">
           Conducting a customer interview with examiners from the UK.
         </styles.BigLightText>
         <styles.SmallHeader marginTop="30px">challenges</styles.SmallHeader>
-        <styles.Text marginTop="15px">{copy.challenges}</styles.Text>
+        <ParagraphText content={copy.challenges} />
       </Fragment>
     );
   };
 
   const getDefineSection = () => {
-    const defineDescription = `
-      As we were collecting information, I began organizing knowledge
-      into three categories: user types, satisfaction with product, and
-      competitors. In doing so, I was able to fully flesh out an ideal
-      customer for Magnet Forensics; what inspires and motivates them,
-      how Magnet Forensics’ was portrayed in their customers’ eyes, and
-      what it was that their competitors were doing that users responded
-      well to.
-    `;
-
     return (
       <styles.SpacerDiv marginTop="50px">
-        <SectionHeader title="define" content={defineDescription} />
+        <SectionHeader title="define" content={copy.define} />
         <styles.SmallHeader marginBottom="30px">personas</styles.SmallHeader>
         <styles.SpacerDiv marginBottom="30px">
           <MaxWidthImage imageUrl={constants.magnetPersonaFE2x} modalImageUrl={constants.magnetPersonaFE2x} />
@@ -357,21 +305,9 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
   };
 
   const getIdeateSection = () => {
-    const ideateDescription = `
-      After reporting our findings to Magnet Forensics, the team was
-      confident that the client’s goals were aligned with the strategy
-      we wanted to move forward with. Magnet Forensics, both their
-      product offering and website wanted to focus on shifting their
-      messaging to cater to the decision makers in an organization, the
-      leadership roles who are less interested in the technical aspects
-      of the product, but the results it can deliver. At the time,
-      Magnet AXIOM was the primary tool, and we came up with ways to its
-      product page.
-    `;
-
     return (
       <styles.SpacerDiv marginTop="50px">
-        <SectionHeader title="ideate" content={ideateDescription} />
+        <SectionHeader title="ideate" content={copy.ideate} />
         <styles.SmallHeader marginTop="50px">information architecture</styles.SmallHeader>
         <styles.Text marginTop="15px">
           We tailored the journey to suit the three persona types identified in our research. Our approach to this was
@@ -417,19 +353,9 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
   };
 
   const getRetroSection = () => {
-    const retroDescription = `
-      Working on a project whose mission is to “Seek Justice and Protect
-      The Innocent” has taught me a lot about empathy and the value in
-      allowing users to have autonomy on the type of content they want
-      to see. In the conversations we had, we learned that while the
-      subject matter of their job isn’t always pleasant, our users are
-      expected to be absolutely confident in their skills, which has
-      positive and negative effects on their decision making process
-      when purchasing tools for their investigation.
-    `;
     return (
       <styles.SpacerDiv marginTop="50px">
-        <SectionHeader title="retro" content={retroDescription} />
+        <SectionHeader title="retro" content={copy.retro} />
         <styles.SmallHeader marginTop="50px">results</styles.SmallHeader>
         <styles.Text marginTop="25px">
           After the launch of the new website, we observed the following positive outcomes:
