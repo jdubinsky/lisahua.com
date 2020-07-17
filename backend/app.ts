@@ -14,8 +14,8 @@ let secretsCache: Secrets = {};
 let secretsLastRefreshedDate: Date | null = null;
 const SECRETS_REFRESH_THRESH = 60 * 60 * 1000; // 1hr in ms
 const FONT_CT_LOOKUP: { [key: string]: string } = {
-  ttf: "application/x-font-ttf",
-  woff: "application/font-woff",
+  ttf: "font/ttf",
+  woff: "font/woff",
 };
 
 async function getStaticObject(key: string) {
@@ -121,11 +121,18 @@ app.get(
       return response.sendStatus(404);
     }
 
-    const fontFile = await getStaticObject(`fonts/${fontName}`);
     const fontType = fontName.split(".")[1];
     const fontContentType: string = FONT_CT_LOOKUP[fontType];
+    const fontResponse = await getStaticObject(`fonts/${fontName}`);
+
+    if (fontResponse === undefined || fontResponse.Body === undefined) {
+      return response.sendStatus(404);
+    }
+
+    const fontBuffer = Buffer.from(fontResponse.Body);
     response.contentType(fontContentType);
-    response.send(fontFile);
+    response.header("Access-Control-Allow-Origin", "*");
+    return response.send(fontBuffer);
   }
 );
 
