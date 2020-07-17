@@ -58,7 +58,6 @@ export const Column = styled(MarginDiv)`
 `;
 
 export const Text = styled(BeauFontDiv)`
-  white-space: pre-line;
   font-size: 20px;
 `;
 

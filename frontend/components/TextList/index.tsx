@@ -1,4 +1,4 @@
-import { h, Component, Fragment } from "preact";
+import { h, Fragment, FunctionComponent, VNode } from "preact";
 
 import * as styles from "./styles";
 
@@ -7,19 +7,17 @@ interface TextListProps {
   listItems: string[];
 }
 
-export default class TextList extends Component<TextListProps> {
-  render() {
-    const { header, listItems } = this.props;
+const TextList: FunctionComponent<TextListProps> = ({ header, listItems }): VNode => {
+  const listComponents = listItems.map((item) => {
+    return <styles.Text>{item}</styles.Text>;
+  });
 
-    const listComponents = listItems.map((item) => {
-      return <styles.Text>{item}</styles.Text>;
-    });
+  return (
+    <Fragment>
+      <styles.Header>{header}</styles.Header>
+      {listComponents}
+    </Fragment>
+  );
+};
 
-    return (
-      <Fragment>
-        <styles.Header>{header}</styles.Header>
-        {listComponents}
-      </Fragment>
-    );
-  }
-}
+export default TextList;

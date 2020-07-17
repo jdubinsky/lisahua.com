@@ -2,13 +2,11 @@ import { h, FunctionComponent, Fragment, VNode } from "preact";
 import { useEffect, useState } from "preact/hooks";
 
 import Footer from "../../components/Footer";
-import ImageModal from "../../components/ImageModal";
-import SectionHeader from "../../components/SectionHeader";
+import MaxWidthImage from "../../components/MaxWidthImage";
 import PageContent from "../../components/PageContent";
 import PageSidebar from "../../components/PageSidebar";
+import SectionHeader from "../../components/SectionHeader";
 import TextList from "../../components/TextList";
-
-import useModal from "../../hooks/useModal";
 
 import isMobile from "../../is-mobile";
 
@@ -18,7 +16,6 @@ import * as styles from "./styles";
 
 const CanvassAICaseStudyPage: FunctionComponent = (): VNode => {
   const [isCollapsed, setIsCollapsed] = useState(isMobile());
-  const { isVisible, open, close } = useModal();
 
   useEffect(() => {
     if (isCollapsed === true) {
@@ -27,19 +24,18 @@ const CanvassAICaseStudyPage: FunctionComponent = (): VNode => {
   }, [isCollapsed]);
 
   const renderImageWithModal = (imageUrl: string, modalImageUrl: string) => {
-    // TODO: make HOC
-    if (isMobile()) {
-      return (
-        <Fragment>
-          <styles.MaxWidthImage src={imageUrl} />
-        </Fragment>
-      );
-    }
+    const imageProps = isMobile()
+      ? {
+          imageUrl,
+        }
+      : {
+          imageUrl,
+          modalImageUrl,
+        };
 
     return (
       <Fragment>
-        <styles.MaxWidthImage src={imageUrl} onClick={open} />
-        <ImageModal imageUrl={modalImageUrl} isVisible={isVisible} onClose={close} />
+        <MaxWidthImage {...imageProps} />
       </Fragment>
     );
   };
