@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const beauFontUrl = "../fonts/BeauRegular.ttf";
 const beauWoffUrl = "../fonts/beau-regular.woff";
 const avenirFontUrl = "../fonts/Avenir-Roman.ttf";
-const aveniorWoffUrl = "../fonts/avenior-roman.woff";
+const avenirWoffUrl = "../fonts/avenir-roman.woff";
 
 export default createGlobalStyle`
   a {
@@ -22,7 +22,7 @@ export default createGlobalStyle`
   @font-face {
     font-family: avenir-roman;
     src:
-      url('${aveniorWoffUrl}') format('woff');
+      url('${avenirWoffUrl}') format('woff');
       url('${avenirFontUrl}') format('truetype');
     font-weight: 300;
     font-style: normal;
