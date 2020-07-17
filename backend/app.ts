@@ -1,8 +1,10 @@
 import express = require("express");
 import path = require("path");
 import SSM = require("aws-sdk/clients/secretsmanager");
+import S3 = require("aws-sdk/clients/s3");
 
 const app = express();
+const s3 = new S3();
 const bucketName = process.env.BUCKET_NAME;
 const secretId = process.env.PASSWORDS_SECRET_ID;
 interface Secrets {
@@ -11,6 +13,23 @@ interface Secrets {
 let secretsCache: Secrets = {};
 let secretsLastRefreshedDate: Date | null = null;
 const SECRETS_REFRESH_THRESH = 60 * 60 * 1000; // 1hr in ms
+const FONT_CT_LOOKUP: { [key: string]: string } = {
+  ttf: "application/x-font-ttf",
+  woff: "application/font-woff",
+};
+
+async function getStaticObject(key: string) {
+  if (!bucketName) {
+    return;
+  }
+
+  const params: S3.Types.GetObjectRequest = {
+    Bucket: bucketName,
+    Key: key,
+  };
+
+  return await s3.getObject(params).promise();
+}
 
 async function getSecrets() {
   if (!secretId) {
@@ -86,6 +105,27 @@ app.post(
 
     const authResult = passwordAttempt === matchingSecret;
     return response.json({ authResult });
+  }
+);
+
+app.get(
+  "/fonts/*",
+  async (request: express.Request, response: express.Response) => {
+    const pathSplit = request.path.split("/");
+    if (pathSplit.length < 2) {
+      return response.sendStatus(404);
+    }
+
+    const fontName = pathSplit[2];
+    if (fontName.length === 0) {
+      return response.sendStatus(404);
+    }
+
+    const fontFile = await getStaticObject(`fonts/${fontName}`);
+    const fontType = fontName.split(".")[1];
+    const fontContentType: string = FONT_CT_LOOKUP[fontType];
+    response.contentType(fontContentType);
+    response.send(fontFile);
   }
 );
 
