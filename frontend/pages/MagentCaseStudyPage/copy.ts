@@ -2,6 +2,25 @@ export const description = `
 Redesigning the experience of buying and training investigative forensic equipment.
 `;
 
+export const goals = `
+During our initial discovery session, we identified the following goals for the website:
+`;
+
+export const goalsList = [
+  "Help users understand the differences between their previous product (Magnet IEF) and their new offerings (Magnet AXIOM and beyond)",
+  "Improve the “Book A Demo” user flow",
+  "Organize resources in a way that made it easy to find and use for existing users",
+];
+
+export const additionalGoals = `
+And after speaking with our stakeholders, we uncovered additional goals that would roll up to the primary objectives.
+`;
+
+export const additionalGoalsList = [
+  "Create different journeys to help users find the product offering that suited their needs.",
+  "Get the appropriate training to use the tools in their workflow",
+];
+
 export const context = `
 Magnet Forensics is a software company that develops products
 used in investigations by governing agencies and private corporations.
@@ -71,6 +90,47 @@ what it was that their competitors were doing that users responded
 well to.
 `;
 
+export const examiner = `
+  This is Raymond, a fictional Forensic Examiner. He’s extremely detail-oriented and has a backlog of over forty
+  devices he needs to process. Each one could take anywhere between two to eight hours to do manually, depending
+  on the complexity of the case and the information that he needed to find. But a colleague of his mentioned
+  Magnet AXIOM, so he’s looking for a way to get a free trial. He’s looking for something that fits into his
+  existing workflow and reduces his workload.
+`;
+
+export const policeLeader = `
+  Scott represents the chain of command within a police organization and a decision maker in the purchasing
+  decision. While forensic examiners like Raymond can influence their organization from the bottom-up, Magnet
+  Forensics wanted to cater to police leaders who were responsible for organization-wide decisions. Their
+  existing customers include the U.S. Department of Homeland Security and the Department of Justice.
+`;
+
+export const policeAdvisor = `
+  This user group was especially difficult to find interviewees, however we were fortunate enough to be put in
+  contact with a police advisor. He previously consulted with the Peel Regional Police and spoke to some of the
+  pain points that police leaders faced. Their needs were vastly different than the Forensic Examiner; they
+  weren’t involved in investigations, but they were concerned on their organizations performance metrics such as
+  crime solve rate and resource allocation.
+`;
+
+export const investigator = `
+  Charles is the Investigator - a persona that didn’t immediately surface during my research. During the
+  stakeholder interviews, our team learned about Magnet Forensics’ intention to launch a new suite of tools
+  designed for investigators. The investigators are in charge of leading the investigation; they coordinate
+  between different parties and assign tasks to Forensic Examiners. This persona would be interested in Magnet
+  Forensics’ expanded products which doesn’t require certification to use like Magnet AXIOM, but shifts the
+  chain of command towards an asynchronous model where Forensic Examiners could automate their workflow and
+  report their progress in an effective manner.
+`;
+
+export const journeyMapping = `
+  I created customer journey maps of the existing site for the different personas and printed them out and
+  pinned them to the wall to make it easier to review in a meeting. This made it easier for the team to get
+  together and analyze each step in the journey; where were users dropping off, where was information being
+  duplicated? Each persona was looking for something different from the website and it helped jump-start the
+  team to think about the way information was organized on the site.
+`;
+
 export const ideate = `
 After reporting our findings to Magnet Forensics, the team was
 confident that the client’s goals were aligned with the strategy
@@ -92,6 +152,19 @@ subject matter of their job isn’t always pleasant, our users are
 expected to be absolutely confident in their skills, which has
 positive and negative effects on their decision making process
 when purchasing tools for their investigation.
+`;
+
+export const retroList = [
+  "Click throughs to “Try Magnet AXIOM” increased from 2470 pre-launch to 2978 post-launch",
+  "Increased time-on-page on both the blog and resources.",
+];
+
+export const nextSteps = `
+  While our initial project scope only extended as far as the marketing website, we plan to observe the site’s
+  health and continually engage with Magnet Forensics to improve site performance and usability. Given more time
+  and resources, I’d like to incorporate in-depth research practices in the discovery such as conducting field
+  studies and conducting open card sorting exercises to better categorize engaging content such as resources and
+  blog posts.
 `;
 
 export const research = `
@@ -126,4 +199,42 @@ via forum posts. Our objective was to develop our understanding of the product m
 investigations they typically worked on, and how willing they were to try something new.
 
 Based on our interviews, we learned the following about the forensic examiner and their role in their company:
+`;
+
+export const interviewsList = [
+  "They’re accustomed to using free and open-source tools instead of automation",
+  "There is a lack of funding and time available for Forensic examiners to undertake training, especially for in-person courses",
+  `They were not the primary decision maker in the product purchase; they would submit requests for any new
+   tools or training and had to make their case to their managers`,
+  "Leadership roles in the public sector often had a budget to spend every year; a “use it or lose it” type of policy",
+];
+
+export const infoArch = `
+  We tailored the journey to suit the three persona types identified in our research. Our approach to this was
+  designing dedicated solutions pages that each persona could self-identify with and find the appropriate tool
+  for their skill level and job requirements. By doing so, we helped reduce decision fatigue from the users,
+  especially the leadership roles, who didn’t have the time to go through Magnet Forensics’ entire product line.
+`;
+
+export const wireframes = `
+  I created forty-three screens that covered the primary functions of the website including: the home, product
+  overview, and product landing pages, solutions pages, start a free trial, and the blog & resource centre.
+`;
+
+export const usabilityTesting = `
+  Using an Invision prototype, we conducted three usability tests with recruited participants with varying
+  degrees of knowledge of Magnet AXIOM. Participants were instructed to complete four common tasks, with the
+  goal of evaluating the user’s understanding of the information architecture.
+`;
+
+export const usabilityTestingList = [
+  `The content in the prototype did not effectively address Magnet AXIOM’s ability to perform smart phone
+   investigations.`,
+];
+
+export const afterUsabilityTesting = `
+  After testing, I created a report that summarized the results of the testing and the recommendations to
+  improve the user flow. I went back to adjust the wireframes and placed higher emphasis on smart phones by
+  following an “F” shaped pattern and moved the smart phone tab on the left-hand side. I also included a section
+  on the home page about smart phone investigations with a related customer story as social proof.
 `;
