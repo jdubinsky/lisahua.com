@@ -59,9 +59,11 @@ function getExploreLink(to: string) {
 
 function getTitleSection() {
   const link = (
-    <styles.ExploreButton href="/canvass">
-      <styles.ExploreButtonText>explore case study</styles.ExploreButtonText>
-    </styles.ExploreButton>
+    <Link to="/canvass">
+      <styles.ExploreButton>
+        <styles.ExploreButtonText>explore case study</styles.ExploreButtonText>
+      </styles.ExploreButton>
+    </Link>
   );
 
   return (

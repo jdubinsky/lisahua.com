@@ -63,7 +63,7 @@ export const FeaturedProjectContainer = styled.div`
   background: #ebe9e4;
 `;
 
-export const ExploreButton = styled.a`
+export const ExploreButton = styled.div`
   padding: 15px 25px;
   background: #21282e;
   border-radius: 130px;
