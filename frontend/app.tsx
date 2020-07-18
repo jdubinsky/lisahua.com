@@ -6,6 +6,7 @@ import isMobile from "./is-mobile";
 import Container from "./pages/Homepage/Container";
 import CanvassAICaseStudyPage from "./pages/CanvassAICaseStudy";
 import EsightCaseStudy from "./pages/EsightCaseStudy";
+import HomepageV2 from "./pages/HomepageV2";
 import MagnetCaseStudyPage from "./pages/MagentCaseStudyPage";
 import OnCallCaseStudy from "./pages/OnCallCaseStudy";
 import GoBackHeader from "./components/GoBackHeader";
@@ -38,6 +39,9 @@ function getApp() {
           </Route>
           <Route path="/esight">
             <EsightCaseStudy />
+          </Route>
+          <Route path="/v2">
+            <HomepageV2 />
           </Route>
           <Route path="">
             <Container />
