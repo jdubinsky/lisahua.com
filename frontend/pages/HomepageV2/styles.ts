@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import { AvenirFontDiv, BeauFontDiv, MarginDiv, MarginA } from "../../text-styles";
 
+const MIN_WIDTH = "1000px";
+
 export const Container = styled.div`
   height: 100%;
   width: 100%;
@@ -9,7 +11,7 @@ export const Container = styled.div`
   flex-wrap: nowrap;
   flex-direction: column;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${MIN_WIDTH}) {
     height: 100vh;
   }
 `;
@@ -19,7 +21,7 @@ export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${MIN_WIDTH}) {
     min-width: 100px;
     max-width: 287px;
     padding-top: 37px;
@@ -28,11 +30,13 @@ export const Sidebar = styled.div`
 `;
 
 export const Content = styled.div`
+  display: flex;
   background: ${(props) => props.background};
   padding-left: 30px;
   padding-right: 30px;
+  flex-direction: column;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: ${MIN_WIDTH}) {
     max-width: 960px;
     padding-left: 58px;
   }
@@ -44,24 +48,45 @@ export const Section = styled.div`
 
 export const TitleSection = styled(Section)`
   background: white;
+  flex-direction: column;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    flex-direction: row;
+  }
 `;
 
 export const ProjectSection = styled(Section)`
   background: #ebe9e4;
+  flex-direction: column;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    flex-direction: row;
+  }
 `;
 
 export const ContentRow = styled.div`
   display: flex;
   padding-bottom: 60px;
+  flex-direction: column;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    flex-direction: row;
+  }
 `;
 
 export const RowItem = styled.div`
   display: flex;
-  width: 420px;
+  max-width: 420px;
 `;
 
 export const SmSpacer = styled.div`
-  width: 50px;
+  height: 60px;
+  width: 0;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    height: 0;
+    width: 50px;
+  }
 `;
 
 export const Column = styled.div`
@@ -73,11 +98,21 @@ export const Column = styled.div`
 export const Title = styled(BeauFontDiv)`
   font-size: 48px;
   margin-bottom: 60px;
-  margin-top: 100px;
+  margin-top: 50px;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    margin-top: 100px;
+  }
 `;
 
 export const Spacer = styled.div`
-  width: 70px;
+  height: 60px;
+  width: 0;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    height: 0;
+    width: 70px;
+  }
 `;
 
 export const BigSpacer = styled.div`
@@ -189,12 +224,48 @@ export const BoldFooterText = styled(FooterText)`
 
 export const FooterDogsRow = styled(ContentRow)`
   height: 175px;
+  flex-direction: column;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    flex-direction: row;
+  }
+`;
+
+export const FooterDogImages = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const FooterRow = styled(ContentRow)`
-  justify-content: space-between;
+  align-items: center;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    justify-content: space-between;
+  }
 `;
 
 export const Footer = styled(Content)`
   width: 100%;
+`;
+
+export const BadgeRow = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    justify-content: flex-end;
+  }
+`;
+
+export const FooterTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    align-items: baseline;
+    margin-top: 0;
+  }
 `;

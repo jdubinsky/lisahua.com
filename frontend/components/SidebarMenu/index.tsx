@@ -45,8 +45,10 @@ const SidebarMenu: FunctionComponent<SidebarMenuProps> = ({ selectedSection }): 
       <styles.LogoWrapper>
         <Logo />
       </styles.LogoWrapper>
-      {getMenuItem("about", selectedSection)}
-      {getMenuItem("work", selectedSection)}
+      <styles.MenuContainer>
+        {getMenuItem("about", selectedSection)}
+        {getMenuItem("work", selectedSection)}
+      </styles.MenuContainer>
     </styles.SidebarMenu>
   );
 };

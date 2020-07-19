@@ -8,7 +8,7 @@ import * as styles from "./styles";
 const GoBackHeader: FunctionComponent = (): VNode => {
   const location = useLocation();
 
-  if (location.pathname === "/") {
+  if (location.pathname === "/" || location.pathname === "/v2") {
     return <Fragment />;
   }
 

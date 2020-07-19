@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import ArrowlessIcon from "../../icons/Arrowless";
 import ParagraphText from "../../components/ParagraphText";
 import ProjectCard from "../../components/ProjectCard";
-import MaxWidthImage from "../../components/MaxWidthImage";
 import SidebarMenu from "../../components/SidebarMenu";
+import StatusBadge from "../../components/StatusBadge";
+
+import isMobile from "../../is-mobile";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
@@ -68,6 +70,9 @@ function getTitleSection() {
     <styles.TitleSection>
       <SidebarMenu selectedSection="about" />
       <styles.Content>
+        <styles.BadgeRow>
+          <StatusBadge status="active" />
+        </styles.BadgeRow>
         <styles.Title>
           <a name="about" />
           {copy.title}
@@ -151,6 +156,21 @@ function getProjectsSection() {
   );
 }
 
+function getEmailLink() {
+  if (isMobile()) {
+    return <Fragment />;
+  }
+
+  return (
+    <div>
+      <styles.FooterText>say hello</styles.FooterText>
+      <styles.BoldFooterText>
+        <a href="mailto:lisavhua@gmail.com?subject=Hey Lisa!">lisavhua@gmail.com</a>
+      </styles.BoldFooterText>
+    </div>
+  );
+}
+
 function getFooter() {
   return (
     <styles.Section>
@@ -159,21 +179,20 @@ function getFooter() {
         <styles.FooterTitle>my dogs</styles.FooterTitle>
         <styles.FooterDogsRow>
           <styles.FooterText>{copy.dogs}</styles.FooterText>
-          <img src={constants.pankoUrl2x} height={175} width={140} />
-          <styles.Spacer />
-          <img src={constants.tootsieUrl2x} height={175} width={140} />
+          <styles.FooterDogImages>
+            <img src={constants.pankoUrl2x} height={175} width={140} />
+            <styles.Spacer />
+            <img src={constants.tootsieUrl2x} height={175} width={140} />
+          </styles.FooterDogImages>
         </styles.FooterDogsRow>
         <styles.FooterRow>
-          <div>
-            <styles.FooterText>say hello</styles.FooterText>
-            <styles.BoldFooterText>
-              <a href="mailto:lisavhua@gmail.com?subject=Hey Lisa!">lisavhua@gmail.com</a>
-            </styles.BoldFooterText>
-          </div>
-          <div>
+          {getEmailLink()}
+          <styles.FooterTextContainer>
             <styles.FooterText>© 2020 lisa hua</styles.FooterText>
-            <styles.FooterText>developed by jacob dubinsky</styles.FooterText>
-          </div>
+            <styles.FooterText>
+              <a href="https://jdubinsky.dev">developed by jacob dubinsky</a>
+            </styles.FooterText>
+          </styles.FooterTextContainer>
         </styles.FooterRow>
       </styles.Footer>
     </styles.Section>
