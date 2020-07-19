@@ -14,8 +14,10 @@ export const Container = styled.div`
   }
 `;
 
-export const SidebarMenu = styled.div`
+export const Sidebar = styled.div`
   background: ${(props) => props.background};
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (min-width: 768px) {
     min-width: 100px;
@@ -37,6 +39,18 @@ export const Content = styled.div`
     padding-top: 37px;
     padding-right: 137px;
   }
+`;
+
+export const Section = styled.div`
+  display: flex;
+`;
+
+export const TitleSection = styled(Section)`
+  background: white;
+`;
+
+export const ProjectSection = styled(Section)`
+  background: #ebe9e4;
 `;
 
 export const ContentRow = styled.div`
@@ -127,6 +141,7 @@ export const SubTitle = styled.div`
   font-weight: 800;
   font-size: 36px;
   color: #21282e;
+  margin-bottom: 60px;
 `;
 
 export const LinkText = styled.div`

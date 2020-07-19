@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ArrowlessIcon from "../../icons/Arrowless";
 import ParagraphText from "../../components/ParagraphText";
 import ProjectCard from "../../components/ProjectCard";
+import SidebarMenu from "../../components/SidebarMenu";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
@@ -42,10 +43,6 @@ function getExperienceEducationSection() {
   );
 }
 
-function getMenu(background: string) {
-  return <styles.SidebarMenu background={background}>about</styles.SidebarMenu>;
-}
-
 function getExploreLink(to: string) {
   return (
     <Link to={to}>
@@ -67,10 +64,13 @@ function getTitleSection() {
   );
 
   return (
-    <styles.ContentRow>
-      {getMenu("white")}
-      <styles.Content background="white">
-        <styles.Title marginBottom="60px">{copy.title}</styles.Title>
+    <styles.TitleSection>
+      <SidebarMenu selectedSection="about" />
+      <styles.Content>
+        <styles.Title marginBottom="60px">
+          <a name="about" />
+          {copy.title}
+        </styles.Title>
         <styles.ContentRow>
           <styles.Column>
             <ParagraphText content={copy.description} />
@@ -89,18 +89,21 @@ function getTitleSection() {
           </styles.FeaturedProjectContainer>
         </styles.ContentRow>
       </styles.Content>
-    </styles.ContentRow>
+    </styles.TitleSection>
   );
 }
 
 function getProjectsSection() {
-  const comingSoonLink = <styles.LinkText>🤞 coming soon</styles.LinkText>;
+  const comingSoonLink = <styles.LinkText>🤞coming soon</styles.LinkText>;
 
   return (
-    <styles.ContentRow>
-      <styles.SidebarMenu background="#EBE9E4" />
-      <styles.Content background="#EBE9E4">
-        <styles.SubTitle>selected projects</styles.SubTitle>
+    <styles.ProjectSection>
+      <styles.Sidebar />
+      <styles.Content>
+        <styles.SubTitle>
+          <a name="work" />
+          selected projects
+        </styles.SubTitle>
         <styles.ContentRow>
           <ProjectCard
             title="Accessibility Audit"
@@ -108,6 +111,7 @@ function getProjectsSection() {
             link={comingSoonLink}
             imgUrl={""}
           />
+          <styles.Spacer />
           <ProjectCard
             title="Magnet Forensics"
             content={copy.magnetBlurb}
@@ -116,7 +120,7 @@ function getProjectsSection() {
           />
         </styles.ContentRow>
       </styles.Content>
-    </styles.ContentRow>
+    </styles.ProjectSection>
   );
 }
 
