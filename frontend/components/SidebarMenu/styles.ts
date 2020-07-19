@@ -29,3 +29,8 @@ export const MenuItem = styled.span`
   font-size: 18px;
   color: #21282e;
 `;
+
+export const SelectedMenuContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;

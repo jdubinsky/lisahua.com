@@ -22,3 +22,7 @@ export const magnetBlurb = "Redesigning the experience of training forensic inve
 export const esightBlurb = "Building a website that empowers people with visual impairments";
 
 export const oncallBlurb = "Developing a new brand identity for a virtual care company in Canada.";
+
+export const dogs = `
+This menacing pair spend their days scurrying around and causing trouble wherever they go.
+`;

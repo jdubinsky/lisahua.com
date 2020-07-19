@@ -31,13 +31,10 @@ export const Content = styled.div`
   background: ${(props) => props.background};
   padding-left: 30px;
   padding-right: 30px;
-  width: 100%;
 
   @media only screen and (min-width: 768px) {
     max-width: 960px;
     padding-left: 58px;
-    padding-top: 37px;
-    padding-right: 137px;
   }
 `;
 
@@ -58,6 +55,15 @@ export const ContentRow = styled.div`
   padding-bottom: 60px;
 `;
 
+export const RowItem = styled.div`
+  display: flex;
+  width: 420px;
+`;
+
+export const SmSpacer = styled.div`
+  width: 50px;
+`;
+
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
@@ -66,10 +72,16 @@ export const Column = styled.div`
 
 export const Title = styled(BeauFontDiv)`
   font-size: 48px;
+  margin-bottom: 60px;
+  margin-top: 100px;
 `;
 
 export const Spacer = styled.div`
   width: 70px;
+`;
+
+export const BigSpacer = styled.div`
+  width: 200px;
 `;
 
 export const FeaturedProjectContainer = styled.div`
@@ -127,6 +139,7 @@ export const CallToActionContainer = styled(MarginDiv)`
 export const CallToActionText = styled(AvenirFontDiv)`
   font-weight: 800;
   font-size: 18px;
+  margin-right: 12px;
 `;
 
 export const CallToActionLink = styled(MarginA)``;
@@ -142,6 +155,11 @@ export const SubTitle = styled.div`
   font-size: 36px;
   color: #21282e;
   margin-bottom: 60px;
+  margin-top: 60px;
+`;
+
+export const FooterTitle = styled(SubTitle)`
+  margin-bottom: 9px;
 `;
 
 export const LinkText = styled.div`
@@ -150,4 +168,33 @@ export const LinkText = styled.div`
   font-size: 18px;
   color: #21282e;
   margin-top: 30px;
+`;
+
+export const Border = styled.div`
+  border: 1px solid #21282e;
+  margin: 0 0 60px 0;
+`;
+
+export const FooterText = styled.div`
+  font-family: Beau;
+  font-size: 16px;
+  color: black;
+  max-width: 240px;
+  margin-right: 60px;
+`;
+
+export const BoldFooterText = styled(FooterText)`
+  font-weight: 800;
+`;
+
+export const FooterDogsRow = styled(ContentRow)`
+  height: 175px;
+`;
+
+export const FooterRow = styled(ContentRow)`
+  justify-content: space-between;
+`;
+
+export const Footer = styled(Content)`
+  width: 100%;
 `;

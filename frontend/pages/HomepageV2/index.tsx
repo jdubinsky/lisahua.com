@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ArrowlessIcon from "../../icons/Arrowless";
 import ParagraphText from "../../components/ParagraphText";
 import ProjectCard from "../../components/ProjectCard";
+import MaxWidthImage from "../../components/MaxWidthImage";
 import SidebarMenu from "../../components/SidebarMenu";
 
 import * as constants from "./constants";
@@ -67,7 +68,7 @@ function getTitleSection() {
     <styles.TitleSection>
       <SidebarMenu selectedSection="about" />
       <styles.Content>
-        <styles.Title marginBottom="60px">
+        <styles.Title>
           <a name="about" />
           {copy.title}
         </styles.Title>
@@ -105,22 +106,77 @@ function getProjectsSection() {
           selected projects
         </styles.SubTitle>
         <styles.ContentRow>
-          <ProjectCard
-            title="Accessibility Audit"
-            content={copy.accessibilityBlurb}
-            link={comingSoonLink}
-            imgUrl={""}
-          />
+          <styles.RowItem>
+            <ProjectCard
+              title="Accessibility Audit"
+              content={copy.accessibilityBlurb}
+              link={comingSoonLink}
+              imgUrl={""}
+            />
+          </styles.RowItem>
           <styles.Spacer />
-          <ProjectCard
-            title="Magnet Forensics"
-            content={copy.magnetBlurb}
-            link={getExploreLink("/magnet")}
-            imgUrl={constants.magnetUrl2x}
-          />
+          <styles.RowItem>
+            <styles.SmSpacer />
+            <ProjectCard
+              title="Magnet Forensics"
+              content={copy.magnetBlurb}
+              link={getExploreLink("/magnet")}
+              imgUrl={constants.magnetUrl2x}
+            />
+          </styles.RowItem>
+        </styles.ContentRow>
+        <styles.Border />
+        <styles.ContentRow>
+          <styles.RowItem>
+            <ProjectCard
+              title="eSight Eyewear"
+              content={copy.esightBlurb}
+              link={getExploreLink("/esight")}
+              imgUrl={constants.esightUrl2x}
+            />
+          </styles.RowItem>
+          <styles.Spacer />
+          <styles.RowItem>
+            <styles.SmSpacer />
+            <ProjectCard
+              title="OnCall Health"
+              content={copy.oncallBlurb}
+              link={getExploreLink("/oncall")}
+              imgUrl={constants.oncallUrl2x}
+            />
+          </styles.RowItem>
         </styles.ContentRow>
       </styles.Content>
     </styles.ProjectSection>
+  );
+}
+
+function getFooter() {
+  return (
+    <styles.Section>
+      <styles.Sidebar />
+      <styles.Footer>
+        <styles.FooterTitle>my dogs</styles.FooterTitle>
+        <styles.FooterDogsRow>
+          <styles.FooterText>{copy.dogs}</styles.FooterText>
+          <img src={constants.pankoUrl2x} height={175} width={140} />
+          <styles.Spacer />
+          <img src={constants.tootsieUrl2x} height={175} width={140} />
+        </styles.FooterDogsRow>
+        <styles.FooterRow>
+          <div>
+            <styles.FooterText>say hello</styles.FooterText>
+            <styles.BoldFooterText>
+              <a href="mailto:lisavhua@gmail.com?subject=Hey Lisa!">lisavhua@gmail.com</a>
+            </styles.BoldFooterText>
+          </div>
+          <div>
+            <styles.FooterText>© 2020 lisa hua</styles.FooterText>
+            <styles.FooterText>developed by jacob dubinsky</styles.FooterText>
+          </div>
+        </styles.FooterRow>
+      </styles.Footer>
+    </styles.Section>
   );
 }
 
@@ -129,6 +185,7 @@ const HomepageV2: FunctionComponent = (): VNode => {
     <styles.Container>
       {getTitleSection()}
       {getProjectsSection()}
+      {getFooter()}
     </styles.Container>
   );
 };

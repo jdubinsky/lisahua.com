@@ -19,12 +19,12 @@ const BACKGROUND_MAP = {
 function getMenuItem(section: Sections, selectedSection: Sections): VNode {
   if (section === selectedSection) {
     return (
-      <div>
-        <a href={`#${section}`}>
+      <a href={`#${section}`}>
+        <styles.SelectedMenuContainer>
           <styles.SelectedMenuItem>{section}</styles.SelectedMenuItem>
           <ArrowlessSmall />
-        </a>
-      </div>
+        </styles.SelectedMenuContainer>
+      </a>
     );
   }
 

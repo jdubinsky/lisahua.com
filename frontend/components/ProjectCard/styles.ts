@@ -17,9 +17,18 @@ export const HighlightText = styled.div`
 export const Title = styled.div`
   font-family: Beau;
   font-size: 32px;
+  margin-bottom: 12px;
 `;
 
 export const Content = styled.div`
   font-family: Beau;
   font-size: 20px;
+`;
+
+export const SmallSpacer = styled.div`
+  height: 15px;
+`;
+
+export const Spacer = styled.div`
+  height: 30px;
 `;
