@@ -1,10 +1,11 @@
 import { h, FunctionComponent, Fragment, VNode } from "preact";
+import { useState } from "preact/hooks";
 import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../../icons/Arrowless";
 import ParagraphText from "../../components/ParagraphText";
 import ProjectCard from "../../components/ProjectCard";
-import SidebarMenu from "../../components/SidebarMenu";
+import SidebarMenu, { Sections } from "../../components/SidebarMenu";
 import StatusBadge from "../../components/StatusBadge";
 
 import isMobile from "../../is-mobile";
@@ -57,7 +58,7 @@ function getExploreLink(to: string) {
   );
 }
 
-function getTitleSection() {
+function getTitleSection(selectedSection: Sections, setSection: (section: Sections) => void) {
   const link = (
     <Link to="/canvass">
       <styles.ExploreButton>
@@ -68,7 +69,7 @@ function getTitleSection() {
 
   return (
     <styles.TitleSection>
-      <SidebarMenu selectedSection="about" />
+      <SidebarMenu selectedSection={selectedSection} onSelectSection={setSection} />
       <styles.Content>
         <styles.BadgeRow>
           <StatusBadge status="active" />
@@ -200,9 +201,11 @@ function getFooter() {
 }
 
 const HomepageV2: FunctionComponent = (): VNode => {
+  const [selectedSection, setSection] = useState<Sections>("about");
+
   return (
     <styles.Container>
-      {getTitleSection()}
+      {getTitleSection(selectedSection, setSection)}
       {getProjectsSection()}
       {getFooter()}
     </styles.Container>

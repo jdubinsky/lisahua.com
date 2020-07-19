@@ -5,10 +5,11 @@ import Logo from "../../icons/Logo";
 
 import * as styles from "./styles";
 
-type Sections = "about" | "work";
+export type Sections = "about" | "work";
 
 interface SidebarMenuProps {
   selectedSection: Sections;
+  onSelectSection: (section: Sections) => void;
 }
 
 const BACKGROUND_MAP = {
@@ -16,7 +17,7 @@ const BACKGROUND_MAP = {
   work: "",
 };
 
-function getMenuItem(section: Sections, selectedSection: Sections): VNode {
+function getMenuItem(section: Sections, selectedSection: Sections, setSection: (section: Sections) => void): VNode {
   if (section === selectedSection) {
     return (
       <a href={`#${section}`}>
@@ -28,16 +29,20 @@ function getMenuItem(section: Sections, selectedSection: Sections): VNode {
     );
   }
 
+  const onClick = () => {
+    setSection(section);
+  };
+
   return (
     <div>
-      <a href={`#${section}`}>
+      <a href={`#${section}`} onClick={onClick}>
         <styles.MenuItem>{section}</styles.MenuItem>
       </a>
     </div>
   );
 }
 
-const SidebarMenu: FunctionComponent<SidebarMenuProps> = ({ selectedSection }): VNode => {
+const SidebarMenu: FunctionComponent<SidebarMenuProps> = ({ selectedSection, onSelectSection }): VNode => {
   const background = BACKGROUND_MAP[selectedSection];
 
   return (
@@ -46,8 +51,8 @@ const SidebarMenu: FunctionComponent<SidebarMenuProps> = ({ selectedSection }): 
         <Logo />
       </styles.LogoWrapper>
       <styles.MenuContainer>
-        {getMenuItem("about", selectedSection)}
-        {getMenuItem("work", selectedSection)}
+        {getMenuItem("about", selectedSection, onSelectSection)}
+        {getMenuItem("work", selectedSection, onSelectSection)}
       </styles.MenuContainer>
     </styles.SidebarMenu>
   );
