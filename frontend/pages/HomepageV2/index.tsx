@@ -9,6 +9,7 @@ import SidebarMenu, { Sections } from "../../components/SidebarMenu";
 import StatusBadge from "../../components/StatusBadge";
 
 import isMobile from "../../is-mobile";
+import isTablet from "../../is-tablet";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
@@ -69,7 +70,7 @@ function getTitleSection(selectedSection: Sections, setSection: (section: Sectio
 
   return (
     <styles.TitleSection>
-      <SidebarMenu selectedSection={selectedSection} onSelectSection={setSection} />
+      <SidebarMenu />
       <styles.Content>
         <styles.BadgeRow>
           <StatusBadge status="active" />
@@ -158,7 +159,7 @@ function getProjectsSection() {
 }
 
 function getEmailLink() {
-  if (isMobile()) {
+  if (isTablet()) {
     return <Fragment />;
   }
 
@@ -202,6 +203,7 @@ function getFooter() {
 
 const HomepageV2: FunctionComponent = (): VNode => {
   const [selectedSection, setSection] = useState<Sections>("about");
+  console.log("selected", selectedSection);
 
   return (
     <styles.Container>

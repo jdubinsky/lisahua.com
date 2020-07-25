@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { AvenirFontDiv, BeauFontDiv, MarginDiv, MarginA } from "../../text-styles";
 
 const MIN_WIDTH = "1000px";
+const MIN_TABLET_WIDTH = "768px";
 
 export const Container = styled.div`
   height: 100%;
@@ -77,6 +78,11 @@ export const ContentRow = styled.div`
 export const RowItem = styled.div`
   display: flex;
   max-width: 420px;
+
+  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
+    width: 100%;
+    max-width: none;
+  }
 `;
 
 export const SmSpacer = styled.div`
@@ -93,15 +99,21 @@ export const Column = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 420px;
+
+  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
+    width: 100%;
+    max-width: fit-content;
+  }
 `;
 
 export const Title = styled(BeauFontDiv)`
   font-size: 48px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   margin-top: 50px;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
     margin-top: 100px;
+    margin-bottom: 60px;
   }
 `;
 
@@ -206,16 +218,23 @@ export const LinkText = styled.div`
 `;
 
 export const Border = styled.div`
-  border: 1px solid #21282e;
   margin: 0 0 60px 0;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    border: 1px solid #21282e;
+  }
 `;
 
 export const FooterText = styled.div`
   font-family: Beau;
   font-size: 16px;
   color: black;
-  max-width: 240px;
   margin-right: 60px;
+  max-width: 240px;
+
+  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
+    max-width: none;
+  }
 `;
 
 export const BoldFooterText = styled(FooterText)`
@@ -226,6 +245,10 @@ export const FooterDogsRow = styled(ContentRow)`
   height: 175px;
   flex-direction: column;
 
+  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
+    padding-bottom: 0;
+  }
+
   @media only screen and (min-width: ${MIN_WIDTH}) {
     flex-direction: row;
   }
@@ -234,6 +257,11 @@ export const FooterDogsRow = styled(ContentRow)`
 export const FooterDogImages = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
+    justify-content: space-evenly;
+    padding-top: 10px;
+  }
 `;
 
 export const FooterRow = styled(ContentRow)`
@@ -253,7 +281,7 @@ export const BadgeRow = styled.div`
   justify-content: center;
   margin-top: 16px;
 
-  @media only screen and (min-width: ${MIN_WIDTH}) {
+  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
     justify-content: flex-end;
   }
 `;

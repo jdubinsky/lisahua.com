@@ -26,6 +26,7 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
         <styles.SmallSpacer />
       </Fragment>
     ) : null;
+
   return (
     <styles.Container>
       {highlightEl}
@@ -34,7 +35,9 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
       <styles.Spacer />
       {link}
       <styles.Spacer />
-      <MaxWidthImage imageUrl={imgUrl} />
+      <styles.ImgContainer>
+        <styles.FixedImg src={imgUrl} />
+      </styles.ImgContainer>
     </styles.Container>
   );
 };
