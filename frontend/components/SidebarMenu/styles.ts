@@ -3,16 +3,20 @@ import styled from "styled-components";
 const MIN_WIDTH = "1000px";
 
 export const SidebarMenu = styled.div`
-  background: ${(props) => props.background};
   display: flex;
   border-bottom: 1px solid black;
+  background: white;
+  position: fixed;
+  width: 100%;
+  height: 60px;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
-    min-width: 100px;
-    max-width: 287px;
     padding-left: 35px;
     flex-direction: column;
     border-bottom: none;
+    background: transparent;
+    height: 100%;
+    width: 100px;
   }
 `;
 

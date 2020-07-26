@@ -107,7 +107,7 @@ function getProjectsSection() {
   return (
     <styles.ProjectSection>
       <styles.Sidebar />
-      <styles.Content>
+      <styles.Content background="#ebe9e4">
         <styles.SubTitle>
           <a name="work" />
           selected projects

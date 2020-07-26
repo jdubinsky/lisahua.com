@@ -36,10 +36,12 @@ export const Content = styled.div`
   padding-left: 30px;
   padding-right: 30px;
   flex-direction: column;
+  padding-top: 60px;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
     max-width: 960px;
-    padding-left: 58px;
+    padding-top: none;
+    padding-left: 175px;
   }
 `;
 

@@ -10,14 +10,8 @@ import * as styles from "./styles";
 export type Sections = "about" | "work";
 const SECTIONS: Sections[] = ["about", "work"];
 
-const BACKGROUND_MAP: { [key in Sections]: string } = {
-  about: "white",
-  work: "",
-};
-
 const SidebarMenu: FunctionComponent = (): VNode => {
   const [section, setSection] = useState<Sections>("about");
-  const background = BACKGROUND_MAP[section];
   const location = useLocation();
 
   useEffect(() => {
@@ -50,7 +44,7 @@ const SidebarMenu: FunctionComponent = (): VNode => {
   };
 
   return (
-    <styles.SidebarMenu background={background}>
+    <styles.SidebarMenu>
       <styles.LogoWrapper>
         <Logo />
       </styles.LogoWrapper>
