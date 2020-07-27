@@ -17,6 +17,8 @@ export const SidebarMenu = styled.div`
     background: transparent;
     height: 100%;
     width: 100px;
+    top: 0;
+    left: 0;
   }
 `;
 

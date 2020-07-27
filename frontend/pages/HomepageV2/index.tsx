@@ -1,5 +1,6 @@
 import { h, FunctionComponent, Fragment, VNode } from "preact";
-import { useState } from "preact/hooks";
+import { createRef } from "preact/compat";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../../icons/Arrowless";
@@ -59,105 +60,6 @@ function getExploreLink(to: string) {
   );
 }
 
-function getTitleSection(selectedSection: Sections, setSection: (section: Sections) => void) {
-  const link = (
-    <Link to="/canvass">
-      <styles.ExploreButton>
-        <styles.ExploreButtonText>explore case study</styles.ExploreButtonText>
-      </styles.ExploreButton>
-    </Link>
-  );
-
-  return (
-    <styles.TitleSection>
-      <SidebarMenu />
-      <styles.Content>
-        <styles.BadgeRow>
-          <StatusBadge status="active" />
-        </styles.BadgeRow>
-        <styles.Title>
-          <a name="about" />
-          {copy.title}
-        </styles.Title>
-        <styles.ContentRow>
-          <styles.Column>
-            <ParagraphText content={copy.description} />
-            {getExperienceEducationSection()}
-            {getResume()}
-          </styles.Column>
-          <styles.Spacer />
-          <styles.FeaturedProjectContainer>
-            <ProjectCard
-              highlightText="featured project"
-              title="Canvass AI"
-              content={copy.canvassBlurb}
-              link={link}
-              imgUrl={constants.canvassUrl2x}
-            />
-          </styles.FeaturedProjectContainer>
-        </styles.ContentRow>
-      </styles.Content>
-    </styles.TitleSection>
-  );
-}
-
-function getProjectsSection() {
-  const comingSoonLink = <styles.LinkText>🤞coming soon</styles.LinkText>;
-
-  return (
-    <styles.ProjectSection>
-      <styles.Sidebar />
-      <styles.Content background="#ebe9e4">
-        <styles.SubTitle>
-          <a name="work" />
-          selected projects
-        </styles.SubTitle>
-        <styles.ContentRow>
-          <styles.RowItem>
-            <ProjectCard
-              title="Accessibility Audit"
-              content={copy.accessibilityBlurb}
-              link={comingSoonLink}
-              imgUrl={""}
-            />
-          </styles.RowItem>
-          <styles.Spacer />
-          <styles.RowItem>
-            <styles.SmSpacer />
-            <ProjectCard
-              title="Magnet Forensics"
-              content={copy.magnetBlurb}
-              link={getExploreLink("/magnet")}
-              imgUrl={constants.magnetUrl2x}
-            />
-          </styles.RowItem>
-        </styles.ContentRow>
-        <styles.Border />
-        <styles.ContentRow>
-          <styles.RowItem>
-            <ProjectCard
-              title="eSight Eyewear"
-              content={copy.esightBlurb}
-              link={getExploreLink("/esight")}
-              imgUrl={constants.esightUrl2x}
-            />
-          </styles.RowItem>
-          <styles.Spacer />
-          <styles.RowItem>
-            <styles.SmSpacer />
-            <ProjectCard
-              title="OnCall Health"
-              content={copy.oncallBlurb}
-              link={getExploreLink("/oncall")}
-              imgUrl={constants.oncallUrl2x}
-            />
-          </styles.RowItem>
-        </styles.ContentRow>
-      </styles.Content>
-    </styles.ProjectSection>
-  );
-}
-
 function getEmailLink() {
   if (isTablet()) {
     return <Fragment />;
@@ -176,7 +78,6 @@ function getEmailLink() {
 function getFooter() {
   return (
     <styles.Section>
-      <styles.Sidebar />
       <styles.Footer>
         <styles.FooterTitle>my dogs</styles.FooterTitle>
         <styles.FooterDogsRow>
@@ -201,13 +102,163 @@ function getFooter() {
   );
 }
 
+const aboutSectionRef = createRef<HTMLDivElement>();
+const workSectionRef = createRef<HTMLDivElement>();
+
 const HomepageV2: FunctionComponent = (): VNode => {
-  const [selectedSection, setSection] = useState<Sections>("about");
-  console.log("selected", selectedSection);
+  const [selectedSection, _setSection] = useState<Sections>(() => "about");
+  // TODO: this is awful
+  const stateRef = useRef(selectedSection);
+
+  const refMap = {
+    about: aboutSectionRef,
+    work: workSectionRef,
+  };
+
+  const setSection = (s: Sections) => {
+    stateRef.current = s;
+    _setSection(s);
+  };
+
+  function getTitleSection() {
+    const link = (
+      <Link to="/canvass">
+        <styles.ExploreButton>
+          <styles.ExploreButtonText>explore case study</styles.ExploreButtonText>
+        </styles.ExploreButton>
+      </Link>
+    );
+
+    return (
+      <styles.TitleSection ref={aboutSectionRef}>
+        <SidebarMenu scrollSection={selectedSection} />
+        <styles.Content>
+          <styles.BadgeRow>
+            <StatusBadge status="active" />
+          </styles.BadgeRow>
+          <styles.Title>
+            <a name="about" />
+            {copy.title}
+          </styles.Title>
+          <styles.ContentRow>
+            <styles.Column>
+              <ParagraphText content={copy.description} />
+              {getExperienceEducationSection()}
+              {getResume()}
+            </styles.Column>
+            <styles.Spacer />
+            <styles.FeaturedProjectContainer>
+              <ProjectCard
+                highlightText="featured project"
+                title="Canvass AI"
+                content={copy.canvassBlurb}
+                link={link}
+                imgUrl={constants.canvassUrl2x}
+              />
+            </styles.FeaturedProjectContainer>
+          </styles.ContentRow>
+        </styles.Content>
+      </styles.TitleSection>
+    );
+  }
+
+  function getProjectsSection() {
+    const comingSoonLink = <styles.LinkText>🤞coming soon</styles.LinkText>;
+
+    return (
+      <styles.ProjectSection ref={workSectionRef}>
+        <styles.Content background="#ebe9e4">
+          <styles.SubTitle>
+            <a name="work" />
+            selected projects
+          </styles.SubTitle>
+          <styles.ContentRow>
+            <styles.RowItem>
+              <ProjectCard
+                title="Accessibility Audit"
+                content={copy.accessibilityBlurb}
+                link={comingSoonLink}
+                imgUrl={""}
+              />
+            </styles.RowItem>
+            <styles.Spacer />
+            <styles.RowItem>
+              <styles.SmSpacer />
+              <ProjectCard
+                title="Magnet Forensics"
+                content={copy.magnetBlurb}
+                link={getExploreLink("/magnet")}
+                imgUrl={constants.magnetUrl2x}
+              />
+            </styles.RowItem>
+          </styles.ContentRow>
+          <styles.Border />
+          <styles.ContentRow>
+            <styles.RowItem>
+              <ProjectCard
+                title="eSight Eyewear"
+                content={copy.esightBlurb}
+                link={getExploreLink("/esight")}
+                imgUrl={constants.esightUrl2x}
+              />
+            </styles.RowItem>
+            <styles.Spacer />
+            <styles.RowItem>
+              <styles.SmSpacer />
+              <ProjectCard
+                title="OnCall Health"
+                content={copy.oncallBlurb}
+                link={getExploreLink("/oncall")}
+                imgUrl={constants.oncallUrl2x}
+              />
+            </styles.RowItem>
+          </styles.ContentRow>
+        </styles.Content>
+      </styles.ProjectSection>
+    );
+  }
+
+  const checkSection = (event: Event) => {
+    const aboutSection = aboutSectionRef.current;
+    if (!aboutSection) {
+      return;
+    }
+
+    const bottom = aboutSection.getBoundingClientRect().bottom;
+    const top = aboutSection.getBoundingClientRect().top;
+
+    const section = stateRef.current;
+    if (!section) {
+      return;
+    }
+
+    if (bottom > 0 && section !== "about") {
+      setSection("about");
+      return;
+    } else if (bottom > 0 && section === "about") {
+      return;
+    }
+
+    const workSection = workSectionRef.current;
+    if (!workSection) {
+      return;
+    }
+
+    const workSectionBottom = workSection.getBoundingClientRect().bottom;
+    if (workSectionBottom > 0 && section !== "work") {
+      setSection("work");
+      return;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("scroll", checkSection);
+    return () => document.removeEventListener("scroll", checkSection);
+  }, []);
 
   return (
     <styles.Container>
-      {getTitleSection(selectedSection, setSection)}
+      {getTitleSection()}
       {getProjectsSection()}
       {getFooter()}
     </styles.Container>

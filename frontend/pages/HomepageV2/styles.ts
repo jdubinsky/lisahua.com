@@ -37,34 +37,31 @@ export const Content = styled.div`
   padding-right: 30px;
   flex-direction: column;
   padding-top: 60px;
+  width: 100%;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
     max-width: 960px;
-    padding-top: none;
-    padding-left: 175px;
+    padding-top: 0;
   }
 `;
 
 export const Section = styled.div`
   display: flex;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    justify-content: center;
+    flex-direction: row;
+  }
 `;
 
 export const TitleSection = styled(Section)`
   background: white;
   flex-direction: column;
-
-  @media only screen and (min-width: ${MIN_WIDTH}) {
-    flex-direction: row;
-  }
 `;
 
 export const ProjectSection = styled(Section)`
   background: #ebe9e4;
   flex-direction: column;
-
-  @media only screen and (min-width: ${MIN_WIDTH}) {
-    flex-direction: row;
-  }
 `;
 
 export const ContentRow = styled.div`

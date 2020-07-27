@@ -3,4 +3,5 @@
 ### 27/07
 
 - [x] Center content
-- [ ] Sticky side menu
+- [x] Sticky side menu
+- [x] Side menu selection changes with scroll
