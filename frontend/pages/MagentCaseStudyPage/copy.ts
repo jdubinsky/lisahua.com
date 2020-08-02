@@ -238,3 +238,21 @@ export const afterUsabilityTesting = `
   following an “F” shaped pattern and moved the smart phone tab on the left-hand side. I also included a section
   on the home page about smart phone investigations with a related customer story as social proof.
 `;
+
+export const titleSubText = `
+Redesigning the experience of buying and training investigative forensic equipment.
+`;
+
+export const toolQuote = `
+No one tool is perfect, there's always room for improvement which is why we utilise several tools for analysis.
+`;
+
+export const stakeholderCaption = `
+Over the course of two days we conducted in-person interviews with various stakeholders at Magnet Forensics
+`;
+
+export const customerCaption = "Conducting a customer interview with examiners from the UK.";
+
+export const concern = "One concern that was brought up in our testing session:";
+
+export const outcomes = "After the launch of the new website, we observed the following positive outcomes:";

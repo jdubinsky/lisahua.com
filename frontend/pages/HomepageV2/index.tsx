@@ -218,14 +218,13 @@ const HomepageV2: FunctionComponent = (): VNode => {
     );
   }
 
-  const checkSection = (event: Event) => {
+  const checkSection = () => {
     const aboutSection = aboutSectionRef.current;
     if (!aboutSection) {
       return;
     }
 
     const bottom = aboutSection.getBoundingClientRect().bottom;
-    const top = aboutSection.getBoundingClientRect().top;
 
     const section = stateRef.current;
     if (!section) {

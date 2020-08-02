@@ -17,19 +17,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Sidebar = styled.div`
-  background: ${(props) => props.background};
-  display: flex;
-  flex-direction: column;
-
-  @media only screen and (min-width: ${MIN_WIDTH}) {
-    min-width: 100px;
-    max-width: 287px;
-    padding-top: 37px;
-    padding-left: 35px;
-  }
-`;
-
 export const Content = styled.div`
   display: flex;
   background: ${(props) => props.background};

@@ -1,30 +1,18 @@
 import { h, FunctionComponent, Fragment, VNode } from "preact";
-import { useEffect, useState } from "preact/hooks";
 
 import BulletList from "../../components/BulletList";
 import Footer from "../../components/Footer";
 import MaxWidthImage from "../../components/MaxWidthImage";
-import PageContent from "../../components/PageContent";
-import PageSidebar from "../../components/PageSidebar";
 import ParagraphText from "../../components/ParagraphText";
-import SectionHeader from "../../components/SectionHeader";
-import TextList from "../../components/TextList";
-
-import isMobile from "../../is-mobile";
+import Section, { SectionNode } from "../../components/Section";
+import SmallSection from "../../components/SmallSection";
+import TitleSection from "../../components/TitleSection";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
 const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
-  const [isCollapsed, setIsCollapsed] = useState(isMobile());
-
-  useEffect(() => {
-    if (isCollapsed === true) {
-      window.scrollTo(0, 0);
-    }
-  }, [isCollapsed]);
-
   const getProjectInfo = () => {
     const roles = [
       "information architecture",
@@ -34,22 +22,21 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
       "stakeholder interviews",
       "user testing",
     ];
-    return <TextList header="role" listItems={roles} />;
+    return <SmallSection header="role" textItems={roles} />;
   };
 
   const getProjectType = () => {
     const projectTypes = ["marketing", "website"];
-    return <TextList header="project type" listItems={projectTypes} />;
+    return <SmallSection header="project type" textItems={projectTypes} />;
   };
 
   const getTimeline = () => {
-    return <TextList header="timeline" listItems={["june - aug 2018"]} />;
+    return <SmallSection header="timeline" textItems={["june - aug 2018"]} />;
   };
 
   const getToolsInfo = () => {
     const tools = ["sketch", "invision", "highfive", "skype for teams"];
-    const list = <TextList header="tools" listItems={tools} />;
-    return <styles.Column marginBottom="30px">{list}</styles.Column>;
+    return <SmallSection header="tools" textItems={tools} />;
   };
 
   const getCredits = () => {
@@ -79,94 +66,58 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
     );
   };
 
-  const onReadMore = () => {
-    setIsCollapsed(false);
-  };
-
-  const onCollapse = () => {
-    setIsCollapsed(true);
-  };
-
-  const getCollapseButton = () => {
-    if (!isMobile() || isCollapsed) {
-      return <Fragment />;
-    }
-
-    return (
-      <styles.AvenirText marginTop="30px">
-        <button onClick={onCollapse}>collapse -</button>
-      </styles.AvenirText>
-    );
-  };
-
-  const getSidebarContent = () => {
-    if (isCollapsed) {
-      return (
-        <styles.AvenirText>
-          <button onClick={onReadMore}>read more +</button>
-        </styles.AvenirText>
-      );
-    }
-
-    return (
-      <Fragment>
-        {getProjectInfo()}
-        {getProjectType()}
-        {getTimeline()}
-        {getToolsInfo()}
-        {getCredits()}
-        {getCollapseButton()}
-      </Fragment>
-    );
-  };
-
-  const getSidebar = () => {
-    return (
-      <PageSidebar width={32} widthOffset={115} maxWidth="375" minWidth="300">
-        <styles.Title>Magnet</styles.Title>
-        <styles.Title marginBottom="40px">Forensics</styles.Title>
-        <styles.Text marginBottom="30px">{copy.description}</styles.Text>
-        {getSidebarContent()}
-      </PageSidebar>
-    );
-  };
-
   const getProjectGoals = () => {
     return (
       <Fragment>
         <styles.SmallHeader marginBottom="15px">project goals</styles.SmallHeader>
         <styles.Text marginBottom="30px">{copy.goals}</styles.Text>
         <BulletList listItems={copy.goalsList} />
-        <styles.BlackBackgroundImage>
-          <MaxWidthImage imageUrl={constants.magnetWhiteboardUrl2x} modalImageUrl={constants.magnetWhiteboardUrl2x} />
-        </styles.BlackBackgroundImage>
+        <MaxWidthImage imageUrl={constants.magnetWhiteboardUrl2x} modalImageUrl={constants.magnetWhiteboardUrl2x} />
         <styles.Text marginTop="30px">{copy.additionalGoals}</styles.Text>
         <BulletList listItems={copy.additionalGoalsList} />
       </Fragment>
     );
   };
 
-  const getContextTable = () => {
-    return <SectionHeader title="context" content={copy.context} />;
-  };
-
   const getContextSection = () => {
-    return (
-      <Fragment>
-        {getContextTable()}
-        <styles.SmallHeader marginBottom="15px">problem</styles.SmallHeader>
-        <styles.Text marginBottom="30px">{copy.problem}</styles.Text>
-        <styles.SmallHeader marginBottom="15px">approach</styles.SmallHeader>
-        <styles.Text marginBottom="30px">{copy.approach}</styles.Text>
-        <styles.SubHeader marginBottom="10px">research</styles.SubHeader>
-        <styles.Text marginBottom="30px">{copy.approachResearch}</styles.Text>
-        <styles.SubHeader marginBottom="10px">synthesis</styles.SubHeader>
-        <styles.Text marginBottom="30px">{copy.synthesis}</styles.Text>
-        <styles.SubHeader marginBottom="10px">testing</styles.SubHeader>
-        <styles.Text marginBottom="30px">{copy.testing}</styles.Text>
-        {getProjectGoals()}
-      </Fragment>
-    );
+    const contextSections: SectionNode[] = [
+      { nodeType: "copy", node: copy.context },
+      { nodeType: "header", node: "problem" },
+      { nodeType: "copy", node: copy.problem },
+      { nodeType: "header", node: "approach" },
+      { nodeType: "copy", node: copy.approach },
+      { nodeType: "lightHeader", node: "research" },
+      { nodeType: "copy", node: copy.approachResearch },
+      { nodeType: "lightHeader", node: "synthesis" },
+      { nodeType: "copy", node: copy.synthesis },
+      { nodeType: "lightHeader", node: "testing" },
+      { nodeType: "copy", node: copy.testing },
+      { nodeType: "header", node: "project goals" },
+      { nodeType: "copy", node: copy.goals },
+      { nodeType: "bulletList", node: copy.goalsList },
+      { nodeType: "image", node: constants.magnetWhiteboardUrl2x },
+      { nodeType: "copy", node: copy.additionalGoals, customStyle: { paddingTop: "30px" } },
+      { nodeType: "bulletList", node: copy.additionalGoalsList },
+    ];
+
+    return <Section title="context" sections={contextSections} />;
+    // return (
+    //   <styles.Section>
+    //     <styles.SectionTitle>context</styles.SectionTitle>
+    //     <styles.Text marginBottom="30px">{copy.context}</styles.Text>
+    //     <styles.SmallHeader marginBottom="15px">problem</styles.SmallHeader>
+    //     <styles.Text marginBottom="30px">{copy.problem}</styles.Text>
+    //     <styles.SmallHeader marginBottom="15px">approach</styles.SmallHeader>
+    //     <styles.Text marginBottom="30px">{copy.approach}</styles.Text>
+    //     <styles.SubHeader marginBottom="10px">research</styles.SubHeader>
+    //     <styles.Text marginBottom="30px">{copy.approachResearch}</styles.Text>
+    //     <styles.SubHeader marginBottom="10px">synthesis</styles.SubHeader>
+    //     <styles.Text marginBottom="30px">{copy.synthesis}</styles.Text>
+    //     <styles.SubHeader marginBottom="10px">testing</styles.SubHeader>
+    //     <styles.Text marginBottom="30px">{copy.testing}</styles.Text>
+    //     {getProjectGoals()}
+    //   </styles.Section>
+    // );
   };
 
   const getCustomerInterviewsSubSection = () => {
@@ -179,9 +130,29 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
   };
 
   const getResearchSection = () => {
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.research },
+      { nodeType: "header", node: "competitive analysis" },
+      { nodeType: "paragraph", node: copy.competitiveAnalysis },
+      { nodeType: "quote", node: copy.toolQuote },
+      { nodeType: "header", node: "stakeholder interviews" },
+      { nodeType: "copy", node: copy.stakeholderInterviews },
+      { nodeType: "image", node: constants.magnetStakeholdersUrl2x },
+      { nodeType: "caption", node: copy.stakeholderCaption },
+      { nodeType: "paragraph", node: copy.interviews },
+      { nodeType: "bulletList", node: copy.interviewsList },
+      { nodeType: "image", node: constants.magnetCustomerUrl2x },
+      { nodeType: "caption", node: copy.customerCaption },
+      { nodeType: "header", node: "challenges" },
+      { nodeType: "paragraph", node: copy.challenges },
+    ];
+
+    return <Section title="research" sections={sections} />;
+
     return (
-      <Fragment>
-        <SectionHeader title="research" content={copy.research} />
+      <styles.Section>
+        <styles.SectionTitle>research</styles.SectionTitle>
+        <styles.Text marginBottom="30px">{copy.research}</styles.Text>
         <styles.SmallHeader>competitive analysis</styles.SmallHeader>
         <ParagraphText content={copy.competitiveAnalysis} />
         <styles.BigQuote marginTop="30px" marginBottom="30px">
@@ -206,14 +177,31 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
         </styles.BigLightText>
         <styles.SmallHeader marginTop="30px">challenges</styles.SmallHeader>
         <ParagraphText content={copy.challenges} />
-      </Fragment>
+      </styles.Section>
     );
   };
 
   const getDefineSection = () => {
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.define },
+      { nodeType: "header", node: "personas" },
+      { nodeType: "image", node: constants.magnetPersonaFE2x },
+      { nodeType: "copy", node: copy.examiner, customStyle: { paddingTop: "30px", paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.magnetPersonaPL2x },
+      { nodeType: "paragraph", node: copy.policeLeader },
+      { nodeType: "paragraph", node: copy.policeAdvisor },
+      { nodeType: "image", node: constants.magnetPersonaInvestigator2x },
+      { nodeType: "copy", node: copy.investigator, customStyle: { paddingTop: "30px", paddingBottom: "30px" } },
+      { nodeType: "header", node: "journey mapping" },
+      { nodeType: "copy", node: copy.journeyMapping, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.magnetJourneyMap2x },
+    ];
+
+    return <Section title="define" sections={sections} />;
     return (
-      <styles.SpacerDiv marginTop="50px">
-        <SectionHeader title="define" content={copy.define} />
+      <styles.Section>
+        <styles.SectionTitle>define</styles.SectionTitle>
+        <styles.Text>{copy.define}</styles.Text>
         <styles.SmallHeader marginBottom="30px">personas</styles.SmallHeader>
         <styles.SpacerDiv marginBottom="30px">
           <MaxWidthImage imageUrl={constants.magnetPersonaFE2x} modalImageUrl={constants.magnetPersonaFE2x} />
@@ -236,14 +224,33 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
         <styles.SpacerDiv marginTop="30px">
           <MaxWidthImage imageUrl={constants.magnetJourneyMap2x} modalImageUrl={constants.magnetJourneyMap2x} />
         </styles.SpacerDiv>
-      </styles.SpacerDiv>
+      </styles.Section>
     );
   };
 
   const getIdeateSection = () => {
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.ideate },
+      { nodeType: "header", node: "information architecture" },
+      { nodeType: "copy", node: copy.infoArch, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.magnetIA2x },
+      { nodeType: "header", node: "wireframes" },
+      { nodeType: "copy", node: copy.wireframes, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.magnetWireframes2x },
+      { nodeType: "header", node: "usability testing" },
+      { nodeType: "copy", node: copy.usabilityTesting },
+      { nodeType: "copy", node: copy.concern },
+      { nodeType: "bulletList", node: copy.usabilityTestingList },
+      { nodeType: "copy", node: copy.afterUsabilityTesting, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.magnetUT2x },
+    ];
+
+    return <Section title="ideate" sections={sections} />;
+
     return (
-      <styles.SpacerDiv marginTop="50px">
-        <SectionHeader title="ideate" content={copy.ideate} />
+      <styles.Section>
+        <styles.SectionTitle>ideate</styles.SectionTitle>
+        <styles.Text marginTop="15px">{copy.ideate}</styles.Text>
         <styles.SmallHeader marginTop="50px">information architecture</styles.SmallHeader>
         <styles.Text marginTop="15px">{copy.infoArch}</styles.Text>
         <styles.SpacerDiv marginTop="30px">
@@ -262,14 +269,36 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
         <styles.SpacerDiv marginTop="30px">
           <MaxWidthImage imageUrl={constants.magnetUT2x} modalImageUrl={constants.magnetUT2x} />
         </styles.SpacerDiv>
-      </styles.SpacerDiv>
+      </styles.Section>
+    );
+  };
+
+  const getLiveLink = () => {
+    return (
+      <styles.Text marginTop="25px">
+        See the live website
+        <styles.Link href="https://www.magnetforensics.com/">here</styles.Link>
+      </styles.Text>
     );
   };
 
   const getRetroSection = () => {
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.retro },
+      { nodeType: "header", node: "results" },
+      { nodeType: "copy", node: copy.outcomes },
+      { nodeType: "bulletList", node: copy.retroList },
+      { nodeType: "header", node: "next steps" },
+      { nodeType: "copy", node: copy.nextSteps },
+      { nodeType: "node", node: getLiveLink() },
+    ];
+
+    return <Section title="retro" sections={sections} />;
+
     return (
-      <styles.SpacerDiv marginTop="50px">
-        <SectionHeader title="retro" content={copy.retro} />
+      <styles.Section>
+        <styles.SectionTitle>retro</styles.SectionTitle>
+        <styles.Text marginTop="15px">{copy.retro}</styles.Text>
         <styles.SmallHeader marginTop="50px">results</styles.SmallHeader>
         <styles.Text marginTop="25px">
           After the launch of the new website, we observed the following positive outcomes:
@@ -281,30 +310,28 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
           See the live website
           <styles.Link href="https://www.magnetforensics.com/">here</styles.Link>
         </styles.Text>
-      </styles.SpacerDiv>
-    );
-  };
-
-  const getContent = () => {
-    return (
-      <PageContent width={68} widthOffset={115} maxWidth={725}>
-        <styles.SpacerDiv marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.magnetHeroUrl2x} modalImageUrl={constants.magnetHeroUrl2x} />
-        </styles.SpacerDiv>
-        {getContextSection()}
-        {getResearchSection()}
-        {getDefineSection()}
-        {getIdeateSection()}
-        {getRetroSection()}
-        <Footer />
-      </PageContent>
+      </styles.Section>
     );
   };
 
   return (
     <styles.Container>
-      {getSidebar()}
-      {getContent()}
+      <TitleSection title="Magnet Forensics" titleSubText={copy.titleSubText} heroImgUrl={constants.magnetHeroUrl2x} />
+      <styles.TitleSubSection>
+        <div>
+          {getProjectInfo()}
+          {getToolsInfo()}
+          {getProjectType()}
+          {getTimeline()}
+        </div>
+        {getCredits()}
+      </styles.TitleSubSection>
+      {getContextSection()}
+      {getResearchSection()}
+      {getDefineSection()}
+      {getIdeateSection()}
+      {getRetroSection()}
+      <Footer />
     </styles.Container>
   );
 };
