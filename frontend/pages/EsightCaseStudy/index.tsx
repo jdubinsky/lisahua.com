@@ -93,11 +93,13 @@ const EsightCaseStudy: FunctionComponent = (): VNode => {
   return (
     <styles.Container>
       <TitleSection title="eSight Eyewear" titleSubText={copy.titleDescription} heroImgUrl={constants.heroUrl2x} />
-      {getTitleSubSection()}
-      {getGoalsSection()}
-      {getResearchSection()}
-      {getResultsSection()}
-      <Footer />
+      <styles.PaddedContent>
+        {getTitleSubSection()}
+        {getGoalsSection()}
+        {getResearchSection()}
+        {getResultsSection()}
+        <Footer />
+      </styles.PaddedContent>
     </styles.Container>
   );
 };

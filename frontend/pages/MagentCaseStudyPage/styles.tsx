@@ -93,3 +93,8 @@ export const SectionTitle = styled.div`
   margin-top: 30px;
   margin-bottom: 15px;
 `;
+
+export const PaddedContent = styled.div`
+  padding-left: 30px;
+  padding-right: 30px;
+`;

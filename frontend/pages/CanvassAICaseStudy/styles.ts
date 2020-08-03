@@ -43,3 +43,8 @@ export const LightText = styled.span`
   color: #727272;
   margin-left: 5px;
 `;
+
+export const PaddedContent = styled.div`
+  padding-left: 30px;
+  padding-right: 30px;
+`;

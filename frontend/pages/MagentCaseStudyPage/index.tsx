@@ -171,13 +171,15 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
   return (
     <styles.Container>
       <TitleSection title="Magnet Forensics" titleSubText={copy.titleSubText} heroImgUrl={constants.magnetHeroUrl2x} />
-      {getTitleSubSection()}
-      {getContextSection()}
-      {getResearchSection()}
-      {getDefineSection()}
-      {getIdeateSection()}
-      {getRetroSection()}
-      <Footer />
+      <styles.PaddedContent>
+        {getTitleSubSection()}
+        {getContextSection()}
+        {getResearchSection()}
+        {getDefineSection()}
+        {getIdeateSection()}
+        {getRetroSection()}
+        <Footer />
+      </styles.PaddedContent>
     </styles.Container>
   );
 };

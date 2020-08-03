@@ -92,11 +92,13 @@ const CanvassAICaseStudyPage: FunctionComponent = (): VNode => {
   return (
     <styles.Container>
       <TitleSection title="Canvass AI" titleSubText={copy.titleDescription} heroImgUrl={constants.heroUrl2x} />
-      {getTitleSubSection()}
-      {getContextSection()}
-      {getHighlightsSection()}
-      {getResultsSection()}
-      <Footer />
+      <styles.PaddedContent>
+        {getTitleSubSection()}
+        {getContextSection()}
+        {getHighlightsSection()}
+        {getResultsSection()}
+        <Footer />
+      </styles.PaddedContent>
     </styles.Container>
   );
 };

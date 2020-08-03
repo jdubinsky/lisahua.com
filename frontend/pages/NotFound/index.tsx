@@ -1,9 +1,8 @@
-import { h, Fragment, FunctionComponent, VNode } from "preact";
+import { h, FunctionComponent, VNode } from "preact";
 import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
-import GoBackHeader from "../../components/GoBackHeader";
 import SidebarMenu from "../../components/SidebarMenu";
 import StatusBadge from "../../components/StatusBadge";
 

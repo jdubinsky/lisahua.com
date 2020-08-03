@@ -19,6 +19,8 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 960px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 export const TitleText = styled.div`

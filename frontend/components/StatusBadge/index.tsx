@@ -1,4 +1,5 @@
 import { h, FunctionComponent, VNode } from "preact";
+import { useLocation } from "react-router-dom";
 
 import * as styles from "./styles";
 
@@ -16,8 +17,11 @@ const StatusBadge: FunctionComponent<StatusBadgeProps> = ({ status }): VNode => 
   const statusInfo = STATUS_MAP[status];
   const statusText = statusInfo.text;
 
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
-    <styles.ActiveBadge>
+    <styles.ActiveBadge isHomePage={isHomePage}>
       <styles.StatusText>{statusText}</styles.StatusText>
       <styles.StatusDot />
     </styles.ActiveBadge>
