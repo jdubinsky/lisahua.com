@@ -69,10 +69,12 @@ const OnCallCaseStudy: FunctionComponent = (): VNode => {
   return (
     <styles.Container>
       <TitleSection title="OnCall" titleSubText={copy.titleDescription} heroImgUrl={constants.heroUrl2x} />
-      {getTitleSubSection()}
-      {getContextSection()}
-      {getResultsSection()}
-      <Footer />
+      <styles.PaddedContent>
+        {getTitleSubSection()}
+        {getContextSection()}
+        {getResultsSection()}
+        <Footer />
+      </styles.PaddedContent>
     </styles.Container>
   );
 };
