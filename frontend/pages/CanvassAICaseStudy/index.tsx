@@ -81,7 +81,7 @@ const CanvassAICaseStudyPage: FunctionComponent = (): VNode => {
       { nodeType: "smallSection", node: roles, header: "role" },
       { nodeType: "smallSection", node: tools, header: "tools" },
       { nodeType: "smallSection", node: projectTypes, header: "project type" },
-      { nodeType: "smallSection", node: ["june - aug 2018"], header: "timeline" },
+      { nodeType: "smallSection", node: ["dec 2017 - feb 2018"], header: "timeline" },
     ];
 
     const right: SectionNode[] = [{ nodeType: "node", node: getCredits() }];

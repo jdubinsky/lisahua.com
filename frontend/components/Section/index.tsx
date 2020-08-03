@@ -27,6 +27,7 @@ interface LinkNode {
 interface ParagraphNode {
   nodeType: "paragraph";
   node: string;
+  customStyle?: { [key: string]: string };
 }
 
 interface QuoteNode {

@@ -77,4 +77,5 @@ dist/
 .DS_store
 
 # ctags
+tags
 .tags

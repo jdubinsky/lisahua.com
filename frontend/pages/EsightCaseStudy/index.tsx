@@ -1,49 +1,16 @@
 import { h, FunctionComponent, Fragment, VNode } from "preact";
 
 import Footer from "../../components/Footer";
-import MaxWidthImage from "../../components/MaxWidthImage";
-import SectionHeader from "../../components/SectionHeader";
-import PageContent from "../../components/PageContent";
-import PageSidebar from "../../components/PageSidebar";
-import ParagraphText from "../../components/ParagraphText";
-import TextList from "../../components/TextList";
-
-import useMobile from "../../hooks/useMobile";
+import ContentSection from "../../components/ContentSection";
+import { SectionNode } from "../../components/Section";
+import TitleSection from "../../components/TitleSection";
+import TitleSubSection from "../../components/TitleSubSection";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
 const EsightCaseStudy: FunctionComponent = (): VNode => {
-  const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
-
-  const getProjectInfo = () => {
-    const roles = [
-      "AA accessibility",
-      "information architecture",
-      "customer journey mapping",
-      "responsive design",
-      "visual design",
-      "prototyping",
-    ];
-    return <TextList header="role" listItems={roles} />;
-  };
-
-  const getProjectType = () => {
-    const projectTypes = ["website"];
-    return <TextList header="project type" listItems={projectTypes} />;
-  };
-
-  const getTimeline = () => {
-    return <TextList header="timeline" listItems={["january - march 2020"]} />;
-  };
-
-  const getToolsInfo = () => {
-    const tools = ["figma", "whimsical", "aXe", "voiceover", "webAIM", "start colour contrast analyzer"];
-    const list = <TextList header="tools" listItems={tools} />;
-    return <styles.Column marginBottom="30px">{list}</styles.Column>;
-  };
-
   const getCredits = () => {
     const credits = [
       { name: "yusef dualeh", title: "(product manager)" },
@@ -68,97 +35,69 @@ const EsightCaseStudy: FunctionComponent = (): VNode => {
     );
   };
 
-  const getSidebarContent = () => {
-    if (isCollapsed) {
-      return (
-        <styles.AvenirText>
-          <button onClick={onReadMore}>read more +</button>
-        </styles.AvenirText>
-      );
-    }
-
-    return (
-      <Fragment>
-        {getProjectInfo()}
-        {getProjectType()}
-        {getTimeline()}
-        {getToolsInfo()}
-        {getCredits()}
-        {getCollapseButton()}
-      </Fragment>
-    );
-  };
-
-  const getSidebar = () => {
-    return (
-      <PageSidebar width={32} widthOffset={115} maxWidth="435" minWidth="300" marginRight={45}>
-        <styles.Title marginBottom="40px">eSight Eyewear</styles.Title>
-        <styles.Text marginBottom="10px">{copy.titleDescription}</styles.Text>
-        {getSidebarContent()}
-      </PageSidebar>
-    );
-  };
-
   const getGoalsSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="goals" content={copy.goals} />
-      </Fragment>
-    );
+    const sections: SectionNode[] = [{ nodeType: "copy", node: copy.goals }];
+
+    return <ContentSection title="goals" sections={sections} />;
   };
 
   const getResearchSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="research" content={copy.research} />
-        <styles.SmallHeader marginBottom="15px">information architecture</styles.SmallHeader>
-        <ParagraphText content={copy.infoArchitecture} />
-        <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.infoArchitectureUrl2x} modalImageUrl={constants.infoArchitectureUrl2x} />
-        </styles.SpacerDiv>
-        <styles.SmallHeader marginBottom="15px">high fidelity designs</styles.SmallHeader>
-        <ParagraphText content={copy.highFidelityDesigns} />
-        <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.designsUrl2x} modalImageUrl={constants.designsUrl2x} />
-        </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="30px">{copy.designsImgSubtitle}</styles.BigLightText>
-      </Fragment>
-    );
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.research },
+      { nodeType: "header", node: "information architecture" },
+      { nodeType: "paragraph", node: copy.infoArchitecture },
+      { nodeType: "image", node: constants.infoArchitectureUrl2x },
+      { nodeType: "header", node: "high fidelity designs" },
+      { nodeType: "paragraph", node: copy.highFidelityDesigns },
+      { nodeType: "image", node: constants.designsUrl2x },
+      { nodeType: "caption", node: copy.designsImgSubtitle },
+    ];
+
+    return <ContentSection title="research" sections={sections} />;
   };
 
   const getResultsSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="results" content={copy.results} />
-        <styles.SpacerDiv marginBottom="50px">
-          <MaxWidthImage
-            imageUrl={constants.accessibilityToolsUrl2x}
-            modalImageUrl={constants.accessibilityToolsUrl2x}
-          />
-        </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="30px">{copy.resultsImgSubtitle}</styles.BigLightText>
-      </Fragment>
-    );
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.results, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.accessibilityToolsUrl2x },
+      { nodeType: "caption", node: copy.resultsImgSubtitle },
+    ];
+
+    return <ContentSection title="results" sections={sections} />;
   };
 
-  const getContent = () => {
-    return (
-      <PageContent width={68} widthOffset={115} maxWidth={725}>
-        <styles.SpacerDiv marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.heroUrl2x} modalImageUrl={constants.heroUrl2x} />
-        </styles.SpacerDiv>
-        {getGoalsSection()}
-        {getResearchSection()}
-        {getResultsSection()}
-        <Footer />
-      </PageContent>
-    );
+  const getTitleSubSection = () => {
+    const roles = [
+      "AA accessibility",
+      "information architecture",
+      "customer journey mapping",
+      "responsive design",
+      "visual design",
+      "prototyping",
+    ];
+    const tools = ["figma", "whimsical", "aXe", "voiceover", "webAIM", "start colour contrast analyzer"];
+    const projectTypes = ["website"];
+    const timeline = ["january - march 2020"];
+    const left: SectionNode[] = [
+      { nodeType: "smallSection", node: roles, header: "role" },
+      { nodeType: "smallSection", node: tools, header: "tools" },
+      { nodeType: "smallSection", node: projectTypes, header: "project type" },
+      { nodeType: "smallSection", node: timeline, header: "timeline" },
+    ];
+
+    const right: SectionNode[] = [{ nodeType: "node", node: getCredits() }];
+
+    return <TitleSubSection leftSections={left} rightSections={right} />;
   };
 
   return (
     <styles.Container>
-      {getSidebar()}
-      {getContent()}
+      <TitleSection title="eSight Eyewear" titleSubText={copy.titleDescription} heroImgUrl={constants.heroUrl2x} />
+      {getTitleSubSection()}
+      {getGoalsSection()}
+      {getResearchSection()}
+      {getResultsSection()}
+      <Footer />
     </styles.Container>
   );
 };
