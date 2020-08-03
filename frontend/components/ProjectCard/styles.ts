@@ -43,7 +43,6 @@ export const Spacer = styled.div`
 export const ImgContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  max-width: 300px;
 `;
 
 export const FixedImg = styled.img`
