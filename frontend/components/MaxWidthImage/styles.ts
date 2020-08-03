@@ -5,6 +5,7 @@ export const MaxWidthImage = styled.img`
   width: 100%;
   max-width: 100%;
   max-height: 100%;
+  align-self: flex-end;
 `;
 
 export const ClickableMaxWidthImage = styled(MaxWidthImage)`

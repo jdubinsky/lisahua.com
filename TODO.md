@@ -1,5 +1,10 @@
 ## Tasks
 
+### 01/08
+
+- [ ] Mobile images on homepage
+- [ ] iPad landscape layout is borked
+
 ### 27/07
 
 - [x] Center content

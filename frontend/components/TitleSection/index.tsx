@@ -1,4 +1,5 @@
 import { h, Fragment, FunctionComponent, VNode } from "preact";
+import { useEffect } from "preact/hooks";
 
 import GoBackHeader from "../GoBackHeader";
 import MaxWidthImage from "../MaxWidthImage";
@@ -16,6 +17,10 @@ interface TitleSectionProps {
 }
 
 const TitleSection: FunctionComponent<TitleSectionProps> = ({ heroImgUrl, title, titleSubText }): VNode => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <styles.Container>
       <SidebarMenu scrollSection="work" />
