@@ -2,26 +2,47 @@ import styled from "styled-components";
 
 import { AvenirFontDiv, BeauFontDiv, MarginDiv } from "../../text-styles";
 
+const MIN_WIDTH = "1000px";
+const MIN_TABLET_WIDTH = "768px";
+
 export const Footer = styled(MarginDiv)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  max-width: 960px;
+  width: 100%;
   margin-bottom: 15px;
-  margin-left: -30px;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
   }
 `;
 
 export const LeftFooter = styled(AvenirFontDiv)`
   display: flex;
+  flex-direction: column;
   font-size: 16px;
 `;
 
 export const RightFooter = styled(BeauFontDiv)`
   display: flex;
+  flex-direction: column;
   font-size: 20px;
+`;
+
+export const FooterText = styled.div`
+  font-family: Beau;
+  font-size: 16px;
+  color: black;
+  margin-right: 60px;
+  max-width: 240px;
+
+  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
+    max-width: none;
+  }
+`;
+
+export const BoldFooterText = styled(FooterText)`
+  font-weight: 800;
 `;

@@ -54,3 +54,11 @@ use to demo in their pitches. In the coming months after project completion,
 we received word that Canvass AI successfully raised $5M USD led by
 Gradient Ventures, Google’s AI fund.
 `;
+
+export const demoCaption = `
+Screenshots of Canvass AI’s demo environment
+`;
+
+export const moodboardCaption = "Visual inspiration gathered in our research";
+
+export const tableCaption = "The brand color and table designs were tweaked for a cleaner look";

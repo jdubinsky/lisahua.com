@@ -1,41 +1,16 @@
 import { h, FunctionComponent, Fragment, VNode } from "preact";
 
 import Footer from "../../components/Footer";
-import MaxWidthImage from "../../components/MaxWidthImage";
-import SectionHeader from "../../components/SectionHeader";
-import PageContent from "../../components/PageContent";
-import PageSidebar from "../../components/PageSidebar";
-import TextList from "../../components/TextList";
-
-import useMobile from "../../hooks/useMobile";
+import ContentSection from "../../components/ContentSection";
+import { SectionNode } from "../../components/Section";
+import TitleSection from "../../components/TitleSection";
+import TitleSubSection from "../../components/TitleSubSection";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
 const OnCallCaseStudy: FunctionComponent = (): VNode => {
-  const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
-
-  const getProjectInfo = () => {
-    const roles = ["visual design", "high fidelity mockup", "prototyping"];
-    return <TextList header="role" listItems={roles} />;
-  };
-
-  const getProjectType = () => {
-    const projectTypes = ["website"];
-    return <TextList header="project type" listItems={projectTypes} />;
-  };
-
-  const getTimeline = () => {
-    return <TextList header="timeline" listItems={["february 2020"]} />;
-  };
-
-  const getToolsInfo = () => {
-    const tools = ["figma"];
-    const list = <TextList header="tools" listItems={tools} />;
-    return <styles.Column marginBottom="30px">{list}</styles.Column>;
-  };
-
   const getCredits = () => {
     const credits = [
       { name: "alison ma", title: "(product manager)" },
@@ -59,73 +34,45 @@ const OnCallCaseStudy: FunctionComponent = (): VNode => {
     );
   };
 
-  const getSidebarContent = () => {
-    if (isCollapsed) {
-      return (
-        <styles.AvenirText>
-          <button onClick={onReadMore}>read more +</button>
-        </styles.AvenirText>
-      );
-    }
-
-    return (
-      <Fragment>
-        {getProjectInfo()}
-        {getProjectType()}
-        {getTimeline()}
-        {getToolsInfo()}
-        {getCredits()}
-        {getCollapseButton()}
-      </Fragment>
-    );
-  };
-
-  const getSidebar = () => {
-    return (
-      <PageSidebar width={32} widthOffset={115} maxWidth="375" minWidth="300">
-        <styles.Title marginBottom="40px">OnCall</styles.Title>
-        <styles.Text marginBottom="10px">{copy.titleDescription}</styles.Text>
-        {getSidebarContent()}
-      </PageSidebar>
-    );
-  };
-
   const getContextSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="context" content={copy.context} />
-        <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.reinventUrl2x} />
-        </styles.SpacerDiv>
-      </Fragment>
-    );
+    const sections: SectionNode[] = [
+      { nodeType: "paragraph", node: copy.context, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.reinventUrl2x },
+    ];
+
+    return <ContentSection title="context" sections={sections} />;
   };
 
   const getResultsSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="results" content={copy.results} />
-      </Fragment>
-    );
+    const sections: SectionNode[] = [{ nodeType: "paragraph", node: copy.results }];
+
+    return <ContentSection title="results" sections={sections} />;
   };
 
-  const getContent = () => {
-    return (
-      <PageContent width={68} widthOffset={115} maxWidth={725}>
-        <styles.SpacerDiv marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.heroUrl2x} modalImageUrl={constants.heroUrl2x} />
-        </styles.SpacerDiv>
-        {getContextSection()}
-        {getResultsSection()}
-        <Footer />
-      </PageContent>
-    );
+  const getTitleSubSection = () => {
+    const roles = ["visual design", "high fidelity mockup", "prototyping"];
+    const tools = ["figma"];
+    const projectTypes = ["website"];
+    const timeline = ["february 2020"];
+    const left: SectionNode[] = [
+      { nodeType: "smallSection", node: roles, header: "role" },
+      { nodeType: "smallSection", node: tools, header: "tools" },
+      { nodeType: "smallSection", node: projectTypes, header: "project type" },
+      { nodeType: "smallSection", node: timeline, header: "timeline" },
+    ];
+
+    const right: SectionNode[] = [{ nodeType: "node", node: getCredits() }];
+
+    return <TitleSubSection leftSections={left} rightSections={right} />;
   };
 
   return (
     <styles.Container>
-      {getSidebar()}
-      {getContent()}
+      <TitleSection title="OnCall" titleSubText={copy.titleDescription} heroImgUrl={constants.heroUrl2x} />
+      {getTitleSubSection()}
+      {getContextSection()}
+      {getResultsSection()}
+      <Footer />
     </styles.Container>
   );
 };

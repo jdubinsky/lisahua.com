@@ -1,11 +1,11 @@
 import { h, render, Fragment } from "preact";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Redirect, Route } from "react-router-dom";
 
 import isMobile from "./is-mobile";
 
-import Container from "./pages/Homepage/Container";
 import CanvassAICaseStudyPage from "./pages/CanvassAICaseStudy";
 import EsightCaseStudy from "./pages/EsightCaseStudy";
+import HomepageV2 from "./pages/HomepageV2";
 import MagnetCaseStudyPage from "./pages/MagentCaseStudyPage";
 import OnCallCaseStudy from "./pages/OnCallCaseStudy";
 import GoBackHeader from "./components/GoBackHeader";
@@ -25,23 +25,16 @@ function getApp() {
     <Fragment>
       <GlobalFonts />
       <Router>
-        {getMobileHeader()}
         <Switch>
-          <Route path="/magnet">
-            <MagnetCaseStudyPage />
+          <Route path="/magnet" component={MagnetCaseStudyPage} />
+          <Route path="/canvass" component={CanvassAICaseStudyPage} />
+          <Route path="/oncall" component={OnCallCaseStudy} />
+          <Route path="/esight" component={EsightCaseStudy} />
+          <Route exact path="/" component={HomepageV2} />
+          <Route path="/404">
+            <div />
           </Route>
-          <Route path="/canvass">
-            <CanvassAICaseStudyPage />
-          </Route>
-          <Route path="/oncall">
-            <OnCallCaseStudy />
-          </Route>
-          <Route path="/esight">
-            <EsightCaseStudy />
-          </Route>
-          <Route path="">
-            <Container />
-          </Route>
+          <Redirect to="/404" />
         </Switch>
       </Router>
     </Fragment>

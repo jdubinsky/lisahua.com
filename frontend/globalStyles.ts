@@ -5,6 +5,10 @@ const avenirFontUrl = "../fonts/Avenir-Roman.ttf";
 const avenirWoffUrl = "../fonts/avenir-roman.woff";
 
 export default createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+
   a {
     text-decoration: none;
     color: black;

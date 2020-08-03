@@ -7,9 +7,7 @@ export const Text = styled(BeauFontDiv)`
   font-size: 20px;
 `;
 
-export const BulletList = styled.ul`
-  margin-bottom: 30px;
-`;
+export const BulletList = styled.ul``;
 
 export const ListItem = styled.li`
   font-family: Beau;
