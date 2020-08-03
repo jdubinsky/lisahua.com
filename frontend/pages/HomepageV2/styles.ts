@@ -13,7 +13,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
-    height: 100vh;
+    height: 100%;
   }
 `;
 
