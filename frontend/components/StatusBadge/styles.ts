@@ -7,6 +7,7 @@ export const Badge = styled.div`
   padding: 5px 0px 5px 10px;
   display: flex;
   align-items: center;
+  z-index: 1;
 `;
 
 export const ActiveBadge = styled(Badge)`

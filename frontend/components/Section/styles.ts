@@ -2,21 +2,6 @@ import styled from "styled-components";
 
 const MIN_WIDTH = "1000px";
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  max-width: 700px;
-`;
-
-export const Title = styled.div`
-  font-family: avenir-roman;
-  font-size: 36px;
-  font-weight: 800;
-  margin-top: 30px;
-  margin-bottom: 15px;
-`;
-
 export const Text = styled.div`
   font-family: Beau;
   font-size: 20px;

@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
-import { AvenirFontDiv, BeauFontDiv, MarginDiv, MarginA } from "../../text-styles";
-
 const MIN_WIDTH = "1000px";
-const MIN_TABLET_WIDTH = "768px";
 
 export const Container = styled.div`
   height: 100%;
@@ -27,12 +24,21 @@ export const Section = styled.div`
 export const TitleText = styled.div`
   font-family: Beau;
   font-size: 48px;
-  padding-top: 50px;
+  padding-top: 100px;
   padding-bottom: 30px;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    padding-top: 50px;
+  }
 `;
 
 export const TitleSubText = styled.div`
   font-family: Beau;
   font-size: 20px;
   padding-bottom: 30px;
+`;
+
+export const BadgeContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;

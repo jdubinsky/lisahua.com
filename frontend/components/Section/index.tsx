@@ -3,12 +3,19 @@ import { h, FunctionComponent, Fragment, VNode } from "preact";
 import BulletList from "../BulletList";
 import MaxWidthImage from "../MaxWidthImage";
 import ParagraphText from "../ParagraphText";
+import SmallSection from "../SmallSection";
 
 import * as styles from "./styles";
 
 interface ElNode {
   nodeType: "node";
   node: VNode;
+}
+
+interface SmallSectionNode {
+  nodeType: "smallSection";
+  node: string[];
+  header: string;
 }
 
 interface LinkNode {
@@ -60,6 +67,7 @@ interface BulletListNode {
 
 export type SectionNode =
   | ElNode
+  | SmallSectionNode
   | QuoteNode
   | CaptionNode
   | ParagraphNode
@@ -71,12 +79,11 @@ export type SectionNode =
   | BulletListNode;
 
 interface SectionProps {
-  title: string;
   sections: SectionNode[];
 }
 
-const Section: FunctionComponent<SectionProps> = ({ title, sections }): VNode => {
-  function renderSectionNodes(sections: SectionNode[]) {
+const Section: FunctionComponent<SectionProps> = ({ sections }): VNode => {
+  function renderSectionNodes(sections: SectionNode[]): VNode[] {
     return sections.map((sectionNode) => {
       switch (sectionNode.nodeType) {
         case "header":
@@ -97,20 +104,17 @@ const Section: FunctionComponent<SectionProps> = ({ title, sections }): VNode =>
           return <BulletList listItems={sectionNode.node} />;
         case "link":
           return <styles.Link href={sectionNode.node}>{sectionNode.text}</styles.Link>;
+        case "smallSection":
+          return <SmallSection header={sectionNode.header} textItems={sectionNode.node} />;
         case "node":
           return sectionNode.node;
         default:
-          return null;
+          return <Fragment />;
       }
     });
   }
 
-  return (
-    <styles.Container>
-      <styles.Title>{title}</styles.Title>
-      {renderSectionNodes(sections)}
-    </styles.Container>
-  );
+  return <Fragment>{renderSectionNodes(sections)}</Fragment>;
 };
 
 export default Section;

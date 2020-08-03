@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import { AvenirFontDiv, MarginDiv } from "../../text-styles";
-import isMobile from "../../is-mobile";
 
 export const BoldText = styled(AvenirFontDiv)`
   font-weight: 800;
@@ -17,7 +16,7 @@ export const HeaderContent = styled(MarginDiv)`
 export const HeaderContainer = styled.div`
   position: fixed;
   top: 0;
-  background: ${isMobile() ? "#ffffff" : "#e5e5e5"};
+  background: #e5e5e5;
   width: 100%;
   padding-left: 10px;
   padding-top: 30px;

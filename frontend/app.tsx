@@ -25,7 +25,6 @@ function getApp() {
     <Fragment>
       <GlobalFonts />
       <Router>
-        {getMobileHeader()}
         <Switch>
           <Route path="/magnet" component={MagnetCaseStudyPage} />
           <Route path="/canvass" component={CanvassAICaseStudyPage} />

@@ -3,15 +3,14 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-self: center;
+  max-width: 700px;
 `;
 
-export const Header = styled.div`
+export const Title = styled.div`
   font-family: avenir-roman;
-  font-size: 16px;
-`;
-
-export const Text = styled.div`
-  font-family: Beau;
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 36px;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-bottom: 15px;
 `;

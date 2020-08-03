@@ -1,7 +1,6 @@
 import { h, FunctionComponent, Fragment, VNode } from "preact";
 import { createRef } from "preact/compat";
 import { useEffect, useRef, useState } from "preact/hooks";
-import { Link } from "react-router-dom";
 
 import ArrowlessIcon from "../../icons/Arrowless";
 import ParagraphText from "../../components/ParagraphText";
@@ -9,7 +8,6 @@ import ProjectCard from "../../components/ProjectCard";
 import SidebarMenu, { Sections } from "../../components/SidebarMenu";
 import StatusBadge from "../../components/StatusBadge";
 
-import isMobile from "../../is-mobile";
 import isTablet from "../../is-tablet";
 
 import * as constants from "./constants";
@@ -49,14 +47,14 @@ function getExperienceEducationSection() {
   );
 }
 
-function getExploreLink(to: string) {
+function getExploreLink() {
   return (
-    <Link to={to}>
+    <Fragment>
       <styles.CallToActionContainer marginTop="30px">
         <styles.CallToActionText>explore case study</styles.CallToActionText>
         <ArrowlessIcon />
       </styles.CallToActionContainer>
-    </Link>
+    </Fragment>
   );
 }
 
@@ -121,25 +119,21 @@ const HomepageV2: FunctionComponent = (): VNode => {
   };
 
   function getTitleSection() {
-    const link = (
-      <Link to="/canvass">
-        <styles.ExploreButton>
-          <styles.ExploreButtonText>explore case study</styles.ExploreButtonText>
-        </styles.ExploreButton>
-      </Link>
+    const linkButton = (
+      <styles.ExploreButton>
+        <styles.ExploreButtonText>explore case study</styles.ExploreButtonText>
+      </styles.ExploreButton>
     );
 
     return (
       <styles.TitleSection ref={aboutSectionRef}>
         <SidebarMenu scrollSection={selectedSection} />
         <styles.Content>
+          <a name="about" />
           <styles.BadgeRow>
             <StatusBadge status="active" />
           </styles.BadgeRow>
-          <styles.Title>
-            <a name="about" />
-            {copy.title}
-          </styles.Title>
+          <styles.Title>{copy.title}</styles.Title>
           <styles.ContentRow>
             <styles.Column>
               <ParagraphText content={copy.description} />
@@ -152,7 +146,8 @@ const HomepageV2: FunctionComponent = (): VNode => {
                 highlightText="featured project"
                 title="Canvass AI"
                 content={copy.canvassBlurb}
-                link={link}
+                linkUrl="/canvass"
+                linkButton={linkButton}
                 imgUrl={constants.canvassUrl2x}
               />
             </styles.FeaturedProjectContainer>
@@ -168,16 +163,14 @@ const HomepageV2: FunctionComponent = (): VNode => {
     return (
       <styles.ProjectSection ref={workSectionRef}>
         <styles.Content background="#ebe9e4">
-          <styles.SubTitle>
-            <a name="work" />
-            selected projects
-          </styles.SubTitle>
+          <a name="work" />
+          <styles.SubTitle>selected projects</styles.SubTitle>
           <styles.ContentRow>
             <styles.RowItem>
               <ProjectCard
                 title="Accessibility Audit"
                 content={copy.accessibilityBlurb}
-                link={comingSoonLink}
+                linkButton={comingSoonLink}
                 imgUrl={""}
               />
             </styles.RowItem>
@@ -187,7 +180,8 @@ const HomepageV2: FunctionComponent = (): VNode => {
               <ProjectCard
                 title="Magnet Forensics"
                 content={copy.magnetBlurb}
-                link={getExploreLink("/magnet")}
+                linkButton={getExploreLink()}
+                linkUrl={"/magnet"}
                 imgUrl={constants.magnetUrl2x}
               />
             </styles.RowItem>
@@ -198,7 +192,8 @@ const HomepageV2: FunctionComponent = (): VNode => {
               <ProjectCard
                 title="eSight Eyewear"
                 content={copy.esightBlurb}
-                link={getExploreLink("/esight")}
+                linkButton={getExploreLink()}
+                linkUrl="/esight"
                 imgUrl={constants.esightUrl2x}
               />
             </styles.RowItem>
@@ -208,7 +203,8 @@ const HomepageV2: FunctionComponent = (): VNode => {
               <ProjectCard
                 title="OnCall Health"
                 content={copy.oncallBlurb}
-                link={getExploreLink("/oncall")}
+                linkButton={getExploreLink()}
+                linkUrl="oncall"
                 imgUrl={constants.oncallUrl2x}
               />
             </styles.RowItem>
@@ -231,10 +227,10 @@ const HomepageV2: FunctionComponent = (): VNode => {
       return;
     }
 
-    if (bottom > 0 && section !== "about") {
+    if (bottom > 5 && section !== "about") {
       setSection("about");
       return;
-    } else if (bottom > 0 && section === "about") {
+    } else if (bottom > 5 && section === "about") {
       return;
     }
 
@@ -244,7 +240,7 @@ const HomepageV2: FunctionComponent = (): VNode => {
     }
 
     const workSectionBottom = workSection.getBoundingClientRect().bottom;
-    if (workSectionBottom > 0 && section !== "work") {
+    if (workSectionBottom > 5 && section !== "work") {
       setSection("work");
       return;
     }

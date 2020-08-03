@@ -19,7 +19,7 @@ const SidebarMenu: FunctionComponent<SidebarMenuProps> = ({ scrollSection }): VN
   const getMenuItem = (section: Sections, selectedSection: Sections): VNode => {
     if (section === selectedSection) {
       return (
-        <a href={`#${section}`}>
+        <a href={`/#${section}`}>
           <styles.SelectedMenuContainer>
             <styles.SelectedMenuItem>{section}</styles.SelectedMenuItem>
             <ArrowlessSmall />
@@ -29,7 +29,7 @@ const SidebarMenu: FunctionComponent<SidebarMenuProps> = ({ scrollSection }): VN
     }
 
     return (
-      <a href={`#${section}`}>
+      <a href={`/#${section}`}>
         <styles.MenuItem>{section}</styles.MenuItem>
       </a>
     );
@@ -37,7 +37,7 @@ const SidebarMenu: FunctionComponent<SidebarMenuProps> = ({ scrollSection }): VN
 
   return (
     <styles.SidebarMenu>
-      <Link to="/v2">
+      <Link to="/">
         <styles.LogoWrapper>
           <Logo />
         </styles.LogoWrapper>
