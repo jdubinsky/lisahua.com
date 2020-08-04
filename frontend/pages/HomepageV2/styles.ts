@@ -38,6 +38,7 @@ export const Section = styled.div`
   @media only screen and (min-width: ${MIN_WIDTH}) {
     justify-content: center;
     flex-direction: row;
+    padding-left: 150px;
   }
 `;
 

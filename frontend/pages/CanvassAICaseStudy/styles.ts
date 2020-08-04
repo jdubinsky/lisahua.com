@@ -45,6 +45,6 @@ export const LightText = styled.span`
 `;
 
 export const PaddedContent = styled(Container)`
-  padding-left: 30px;
+  padding-left: 150px;
   padding-right: 30px;
 `;

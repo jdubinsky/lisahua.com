@@ -19,7 +19,7 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 960px;
-  padding-left: 30px;
+  padding-left: 150px;
   padding-right: 30px;
 `;
 
