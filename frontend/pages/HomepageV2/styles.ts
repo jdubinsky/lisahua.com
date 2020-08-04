@@ -24,7 +24,6 @@ export const Content = styled.div`
   padding-right: 30px;
   flex-direction: column;
   padding-top: 60px;
-  width: 100%;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
     max-width: 960px;
@@ -136,13 +135,14 @@ export const ExploreButtonText = styled.div`
   color: white;
 `;
 
-export const SmallText = styled(BeauFontDiv)`
+export const SmallText = styled.div`
+  font-family: Beau;
   font-size: 20px;
 `;
 
 export const TextTable = styled(MarginDiv)``;
 
-export const Row = styled(MarginDiv)`
+export const Row = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
