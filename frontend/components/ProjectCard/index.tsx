@@ -35,7 +35,7 @@ const ProjectCard: FunctionComponent<ProjectCardProps> = ({
       {linkButton}
       <styles.Spacer />
       <styles.ImgContainer>
-        <MaxWidthImage imageUrl={imgUrl} />
+        <MaxWidthImage imageUrl={imgUrl} maxWidth="370px" />
       </styles.ImgContainer>
     </Fragment>
   );
