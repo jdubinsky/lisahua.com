@@ -64,12 +64,12 @@ function getEmailLink() {
   }
 
   return (
-    <div>
+    <styles.FooterTextContainer>
       <styles.FooterText>say hello</styles.FooterText>
       <styles.BoldFooterText>
         <a href="mailto:lisavhua@gmail.com?subject=Hey Lisa!">lisavhua@gmail.com</a>
       </styles.BoldFooterText>
-    </div>
+    </styles.FooterTextContainer>
   );
 }
 
