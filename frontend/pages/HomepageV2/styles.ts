@@ -215,11 +215,10 @@ export const FooterText = styled.div`
   font-family: Beau;
   font-size: 16px;
   color: black;
-  margin-right: 60px;
   max-width: 240px;
 
-  @media only screen and (min-width: ${MIN_TABLET_WIDTH}) {
-    max-width: none;
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    padding-right: 90px;
   }
 `;
 
@@ -252,6 +251,7 @@ export const FooterDogImages = styled.div`
 
 export const FooterRow = styled(ContentRow)`
   align-items: center;
+  padding-top: 50px;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
     justify-content: space-between;
@@ -276,10 +276,8 @@ export const FooterTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 90px;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
-    align-items: baseline;
-    margin-top: 0;
+    align-items: flex-end;
   }
 `;
