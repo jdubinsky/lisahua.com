@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 
 const beauFontUrl = "../fonts/BeauRegular.ttf";
 const avenirFontUrl = "../fonts/Avenir-Roman.ttf";
-const avenirWoffUrl = "../fonts/avenir-roman.woff";
 
 export default createGlobalStyle`
   html {
@@ -25,7 +24,6 @@ export default createGlobalStyle`
   @font-face {
     font-family: avenir-roman;
     src:
-      url('${avenirWoffUrl}') format('woff');
       url('${avenirFontUrl}') format('truetype');
     font-weight: 300;
     font-style: normal;
