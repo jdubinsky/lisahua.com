@@ -13,7 +13,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  background: #e5e5e5;
+  background: #ebe9e4;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
     justify-content: center;
@@ -87,7 +87,7 @@ export const Section = styled.div`
 `;
 
 export const SectionTitle = styled.div`
-  font-family: avenir-roman;
+  font-family: Avenir;
   font-size: 36px;
   font-weight: 800;
   margin-top: 30px;
@@ -95,6 +95,11 @@ export const SectionTitle = styled.div`
 `;
 
 export const PaddedContent = styled(Container)`
-  padding-left: 150px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    padding-left: 150px;
+    padding-right: 30px;
+  }
 `;

@@ -6,7 +6,7 @@ import * as styles from "./styles";
 
 const Footer: FunctionComponent = (): VNode => {
   return (
-    <styles.Footer marginTop="50px">
+    <styles.Footer marginTop="100px">
       {isTablet() ? (
         <Fragment />
       ) : (

@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`
-  font-family: avenir-roman;
+  font-family: Avenir;
   font-size: 36px;
   font-weight: 800;
   margin-top: 30px;

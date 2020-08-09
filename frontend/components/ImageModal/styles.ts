@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Modal = styled.div`
-  background: #e5e5e5;
+  background: #ebe9e4;
   display: flex;
   flex-direction: column;
 `;

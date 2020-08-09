@@ -69,7 +69,7 @@ const MagnentCaseStudyPage: FunctionComponent = (): VNode => {
       { nodeType: "paragraph", node: copy.competitiveAnalysis },
       { nodeType: "quote", node: copy.toolQuote },
       { nodeType: "header", node: "stakeholder interviews" },
-      { nodeType: "copy", node: copy.stakeholderInterviews },
+      { nodeType: "copy", node: copy.stakeholderInterviews, customStyle: { paddingBottom: "30px" } },
       { nodeType: "image", node: constants.magnetStakeholdersUrl2x },
       { nodeType: "caption", node: copy.stakeholderCaption },
       { nodeType: "paragraph", node: copy.interviews },

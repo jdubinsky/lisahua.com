@@ -94,7 +94,7 @@ const Section: FunctionComponent<SectionProps> = ({ sections }): VNode => {
         case "copy":
           return <styles.Text style={sectionNode.customStyle}>{sectionNode.node}</styles.Text>;
         case "paragraph":
-          return <ParagraphText content={sectionNode.node} />;
+          return <ParagraphText customStyle={sectionNode.customStyle} content={sectionNode.node} />;
         case "quote":
           return <styles.Quote>{sectionNode.node}</styles.Quote>;
         case "caption":

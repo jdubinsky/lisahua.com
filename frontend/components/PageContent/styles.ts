@@ -5,19 +5,15 @@ interface ContentWrapperProps {
   widthOffset: number;
 }
 
-interface ContentProps {
-  maxWidth: number;
-}
-
 export const ContentWrapper = styled.div<ContentWrapperProps>`
   padding: 10px;
   width: 100%;
-  background: #e5e5e5;
+  background: #ebe9e4;
   overflow-y: scroll;
 `;
 
 export const Content = styled.div`
-  background: #e5e5e5;
+  background: #ebe9e4;
   padding-left: 30px;
   padding-right: 30px;
 

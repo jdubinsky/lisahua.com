@@ -1,4 +1,4 @@
-import { h, Component, Fragment } from "preact";
+import { h, Component, Fragment, VNode } from "preact";
 import { createPortal, createRef } from "preact/compat";
 
 import CloseIcon from "../../icons/CloseIcon";
@@ -23,7 +23,7 @@ export default class PasswordModal extends Component<PasswordModalProps, Passwor
     passwordError: false,
   };
 
-  onPasswordSubmit = async () => {
+  onPasswordSubmit = async (): Promise<void> => {
     if (!this.inputRef.current) {
       return;
     }
@@ -56,13 +56,13 @@ export default class PasswordModal extends Component<PasswordModalProps, Passwor
     }
   };
 
-  onPasswordSubmitKeyPress = async (event: KeyboardEvent) => {
+  onPasswordSubmitKeyPress = async (event: KeyboardEvent): Promise<void> => {
     if (event.key === "Enter") {
       this.onPasswordSubmit();
     }
   };
 
-  getErrorText() {
+  getErrorText(): VNode | null {
     if (!this.state.passwordError) {
       return null;
     }
@@ -70,7 +70,7 @@ export default class PasswordModal extends Component<PasswordModalProps, Passwor
     return <styles.ErrorText marginBottom="30px">Incorrect password, please try again.</styles.ErrorText>;
   }
 
-  render() {
+  render(): VNode | null {
     if (!this.props.isVisible) {
       return null;
     }
