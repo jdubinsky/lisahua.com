@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { AvenirFontDiv, BeauFontDiv, MarginDiv } from "../../text-styles";
 
-const MIN_WIDTH = "1000px";
 const MIN_TABLET_WIDTH = "768px";
 
 export const Footer = styled(MarginDiv)`
@@ -28,13 +27,14 @@ export const LeftFooter = styled(AvenirFontDiv)`
 export const RightFooter = styled(BeauFontDiv)`
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   font-size: 20px;
 `;
 
 export const FooterText = styled.div`
-  font-family: Beau;
+  font-family: Avenir;
   font-size: 16px;
-  color: black;
+  color: #21282e;
   margin-right: 60px;
   max-width: 240px;
 

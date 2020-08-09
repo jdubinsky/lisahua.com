@@ -3,12 +3,11 @@ import { createRef } from "preact/compat";
 import { useEffect, useRef, useState } from "preact/hooks";
 
 import ArrowlessIcon from "../../icons/Arrowless";
+import Footer from "../../components/Footer";
 import ParagraphText from "../../components/ParagraphText";
 import ProjectCard from "../../components/ProjectCard";
 import SidebarMenu, { Sections } from "../../components/SidebarMenu";
 import StatusBadge from "../../components/StatusBadge";
-
-import isTablet from "../../is-tablet";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
@@ -58,21 +57,6 @@ function getExploreLink() {
   );
 }
 
-function getEmailLink() {
-  if (isTablet()) {
-    return <Fragment />;
-  }
-
-  return (
-    <styles.FooterTextContainer>
-      <styles.FooterText>say hello</styles.FooterText>
-      <styles.BoldFooterText>
-        <a href="mailto:lisavhua@gmail.com?subject=Hey Lisa!">lisavhua@gmail.com</a>
-      </styles.BoldFooterText>
-    </styles.FooterTextContainer>
-  );
-}
-
 function getFooter() {
   return (
     <styles.Section>
@@ -87,13 +71,7 @@ function getFooter() {
           </styles.FooterDogImages>
         </styles.FooterDogsRow>
         <styles.FooterRow>
-          {getEmailLink()}
-          <styles.FooterTextContainer>
-            <styles.FooterText>© 2020 lisa hua</styles.FooterText>
-            <styles.FooterText>
-              <a href="https://jdubinsky.dev">developed by jacob dubinsky</a>
-            </styles.FooterText>
-          </styles.FooterTextContainer>
+          <Footer />
         </styles.FooterRow>
       </styles.Footer>
     </styles.Section>
@@ -107,11 +85,6 @@ const HomepageV2: FunctionComponent = (): VNode => {
   const [selectedSection, _setSection] = useState<Sections>(() => "about");
   // TODO: this is awful
   const stateRef = useRef(selectedSection);
-
-  const refMap = {
-    about: aboutSectionRef,
-    work: workSectionRef,
-  };
 
   const setSection = (s: Sections) => {
     stateRef.current = s;

@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
-const beauFontUrl = "../fonts/BeauRegular.ttf";
-const avenirFontUrl = "../fonts/Avenir-Roman.ttf";
+const IS_DEV = process.env.NODE_ENV === "development";
+
+const beauFontUrl = IS_DEV ? "https://lisahua.com/fonts/BeauRegular.ttf" : "../fonts/BeauRegular.ttf";
+const avenirFontUrl = IS_DEV ? "https://lisahua.com/fonts/Avenir-Roman.ttf" : "../fonts/Avenir-Roman.ttf";
 
 export default createGlobalStyle`
   html {
@@ -22,7 +24,7 @@ export default createGlobalStyle`
   }
 
   @font-face {
-    font-family: avenir-roman;
+    font-family: Avenir;
     src:
       url('${avenirFontUrl}') format('truetype');
     font-weight: 300;

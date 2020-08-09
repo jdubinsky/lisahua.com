@@ -19,8 +19,13 @@ export const Section = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 960px;
-  padding-left: 150px;
-  padding-right: 30px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @media only screen and (min-width: ${MIN_WIDTH}) {
+    padding-left: 150px;
+    padding-right: 30px;
+  }
 `;
 
 export const TitleText = styled.div`

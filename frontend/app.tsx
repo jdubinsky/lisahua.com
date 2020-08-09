@@ -7,6 +7,8 @@ import HomepageV2 from "./pages/HomepageV2";
 import MagnetCaseStudyPage from "./pages/MagentCaseStudyPage";
 import NotFound from "./pages/NotFound";
 import OnCallCaseStudy from "./pages/OnCallCaseStudy";
+import PasswordProtectedPage from "./components/PasswordProtectedPage";
+import SyrupCaseStudy from "./pages/SyrupCaseStudy";
 
 import GlobalFonts from "./globalStyles";
 
@@ -20,6 +22,11 @@ function getApp() {
           <Route path="/canvass" component={CanvassAICaseStudyPage} />
           <Route path="/oncall" component={OnCallCaseStudy} />
           <Route path="/esight" component={EsightCaseStudy} />
+          <Route path="/syrup">
+            <PasswordProtectedPage path="syrup">
+              <SyrupCaseStudy />
+            </PasswordProtectedPage>
+          </Route>
           <Route exact path="/" component={HomepageV2} />
           <Route path="/404" component={NotFound} />
           <Redirect to="/404" />

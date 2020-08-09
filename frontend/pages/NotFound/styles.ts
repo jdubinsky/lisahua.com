@@ -48,7 +48,7 @@ export const BackToAllContainer = styled.div`
 `;
 
 export const BoldText = styled.div`
-  font-family: avenir-roman;
+  font-family: Avenir;
   font-weight: 800;
   font-size: 18px;
   margin-right: 12px;

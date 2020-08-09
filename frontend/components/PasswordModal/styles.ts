@@ -10,7 +10,7 @@ export const ErrorText = styled(BeauText)`
 `;
 
 export const Modal = styled.div`
-  background: #e5e5e5;
+  background: #ebe9e4;
   display: flex;
   flex-direction: column;
   padding: 50px;

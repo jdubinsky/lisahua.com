@@ -1,44 +1,16 @@
-import { h, FunctionComponent, Fragment, VNode } from "preact";
-import { Link } from "react-router-dom";
+import { h, FunctionComponent, VNode } from "preact";
 
-import ArrowlessIcon from "../../icons/Arrowless";
 import Footer from "../../components/Footer";
-import MaxWidthImage from "../../components/MaxWidthImage";
-import SectionHeader from "../../components/SectionHeader";
-import PageContent from "../../components/PageContent";
-import PageSidebar from "../../components/PageSidebar";
-import ParagraphText from "../../components/ParagraphText";
-import TextList from "../../components/TextList";
-
-import useMobile from "../../hooks/useMobile";
+import ContentSection from "../../components/ContentSection";
+import { SectionNode } from "../../components/Section";
+import TitleSection from "../../components/TitleSection";
+import TitleSubSection from "../../components/TitleSubSection";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
 import * as styles from "./styles";
 
 const SyrupCaseStudy: FunctionComponent = (): VNode => {
-  const { isCollapsed, onReadMore, getCollapseButton } = useMobile();
-
-  const getProjectInfo = () => {
-    const roles = ["design sprint", "brainstorming", "prototyping", "visual designs", "visual QA"];
-    return <TextList header="role" listItems={roles} />;
-  };
-
-  const getProjectType = () => {
-    const projectTypes = ["web application"];
-    return <TextList header="project type" listItems={projectTypes} />;
-  };
-
-  const getTimeline = () => {
-    return <TextList header="timeline" listItems={["july - december 2019"]} />;
-  };
-
-  const getToolsInfo = () => {
-    const tools = ["sketch", "abstract", "invision", "miro", "google forms"];
-    const list = <TextList header="tools" listItems={tools} />;
-    return <styles.Column marginBottom="30px">{list}</styles.Column>;
-  };
-
   const getCredits = () => {
     const credits = [
       { name: "graham mcfie", title: "(lead designer)" },
@@ -64,128 +36,82 @@ const SyrupCaseStudy: FunctionComponent = (): VNode => {
     );
   };
 
-  const getSidebarContent = () => {
-    if (isCollapsed) {
-      return (
-        <styles.AvenirText>
-          <button onClick={onReadMore}>read more +</button>
-        </styles.AvenirText>
-      );
-    }
-
-    return (
-      <Fragment>
-        {getProjectInfo()}
-        {getProjectType()}
-        {getTimeline()}
-        {getToolsInfo()}
-        {getCredits()}
-        {getCollapseButton()}
-      </Fragment>
-    );
-  };
-
-  const getSidebar = () => {
-    return (
-      <PageSidebar width={32} widthOffset={115} maxWidth="435" minWidth="300" marginRight={45}>
-        <styles.Title marginBottom="40px">SYRUP</styles.Title>
-        <styles.Text marginBottom="10px">{copy.titleDescription}</styles.Text>
-        {getSidebarContent()}
-      </PageSidebar>
-    );
-  };
-
   const getContextSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="goals" content={copy.context} />
-      </Fragment>
-    );
-  };
+    const sections: SectionNode[] = [{ nodeType: "copy", node: copy.context }];
 
-  const getBulletList = (copyList: string[]) => {
-    const liEls = copyList.map((copyStr) => <styles.ListItem>{copyStr}</styles.ListItem>);
-    return <styles.BulletList>{liEls}</styles.BulletList>;
+    return <ContentSection title="goals" sections={sections} />;
   };
 
   const getDesignSprintSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="design sprint" content={copy.designSprint} />
-        <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.designSprintUrl} modalImageUrl={constants.designSprintUrl2x} />
-        </styles.SpacerDiv>
-        <styles.BigLightText marginBottom="30px">{copy.designSprintCaption}</styles.BigLightText>
-        <styles.SmallHeader marginBottom="15px">insights</styles.SmallHeader>
-        <ParagraphText content={copy.insightsListOneTitle} />
-        {getBulletList(copy.insightsListOne)}
-        <ParagraphText content={copy.insightsListTwoTitle} />
-        {getBulletList(copy.insightsListTwo)}
-      </Fragment>
-    );
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.designSprint, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.designSprintUrl2x },
+      { nodeType: "caption", node: copy.designSprintCaption },
+      { nodeType: "header", node: "insights" },
+      { nodeType: "paragraph", node: copy.insightsListOneTitle },
+      { nodeType: "bulletList", node: copy.insightsListOne },
+      { nodeType: "paragraph", node: copy.insightsListTwoTitle },
+      { nodeType: "bulletList", node: copy.insightsListTwo },
+    ];
+
+    return <ContentSection title="design sprint" sections={sections} />;
   };
 
   const getConceptsSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="concepts" content={copy.concepts} />
-        <ParagraphText content={copy.conceptsParagraph} />
-        <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.f2oUrl} modalImageUrl={constants.f2oUrl2x} />
-        </styles.SpacerDiv>
-        <styles.SmallHeader marginBottom="15px">outcomes</styles.SmallHeader>
-        <ParagraphText content={copy.outcomes} />
-      </Fragment>
-    );
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.concepts },
+      { nodeType: "paragraph", node: copy.conceptsParagraph, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.f2oUrl2x },
+      { nodeType: "header", node: "outcomes" },
+      { nodeType: "paragraph", node: copy.outcomes },
+    ];
+
+    return <ContentSection title="concepts" sections={sections} />;
   };
 
   const getDesignSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="design" content={copy.design} />
-        <styles.SpacerDiv marginTop="30px" marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.conceptsUrl2x} modalImageUrl={constants.conceptsUrl2x} />
-        </styles.SpacerDiv>
-      </Fragment>
-    );
+    const sections: SectionNode[] = [
+      { nodeType: "copy", node: copy.design, customStyle: { paddingBottom: "30px" } },
+      { nodeType: "image", node: constants.conceptsUrl2x },
+    ];
+
+    return <ContentSection title="designs" sections={sections} />;
   };
 
   const getResultsSection = () => {
-    return (
-      <Fragment>
-        <SectionHeader title="results" content={copy.results} />
-      </Fragment>
-    );
+    const sections: SectionNode[] = [{ nodeType: "copy", node: copy.results }];
+
+    return <ContentSection title="results" sections={sections} />;
   };
 
-  const getContent = () => {
-    return (
-      <PageContent width={68} widthOffset={115} maxWidth={725}>
-        <styles.CenteredTable marginTop="30px" marginBottom="30px">
-          <Link to="/">
-            <ArrowlessIcon />
-          </Link>
-          <Link to="/">
-            <styles.BoldText marginLeft="12px">back to all projects</styles.BoldText>
-          </Link>
-        </styles.CenteredTable>
-        <styles.SpacerDiv marginBottom="50px">
-          <MaxWidthImage imageUrl={constants.heroUrl} modalImageUrl={constants.heroUrl2x} />
-        </styles.SpacerDiv>
+  const getTitleSubSection = () => {
+    const roles = ["design sprint", "brainstorming", "prototyping", "visual designs", "visual QA"];
+    const projectTypes = ["web application"];
+    const timeline = ["july - december 2019"];
+    const tools = ["sketch", "abstract", "invision", "miro", "google forms"];
+    const left: SectionNode[] = [
+      { nodeType: "smallSection", node: roles, header: "role" },
+      { nodeType: "smallSection", node: tools, header: "tools" },
+      { nodeType: "smallSection", node: projectTypes, header: "project type" },
+      { nodeType: "smallSection", node: timeline, header: "timeline" },
+    ];
+
+    const right: SectionNode[] = [{ nodeType: "node", node: getCredits() }];
+    return <TitleSubSection leftSections={left} rightSections={right} />;
+  };
+
+  return (
+    <styles.Container>
+      <TitleSection title="SYRUP" titleSubText={copy.titleDescription} heroImgUrl={constants.heroUrl2x} />
+      <styles.PaddedContent>
+        {getTitleSubSection()}
         {getContextSection()}
         {getDesignSprintSection()}
         {getConceptsSection()}
         {getDesignSection()}
         {getResultsSection()}
         <Footer />
-      </PageContent>
-    );
-  };
-
-  return (
-    <styles.Container>
-      {getSidebar()}
-      {getContent()}
+      </styles.PaddedContent>
     </styles.Container>
   );
 };

@@ -16,7 +16,7 @@ export const HeaderContent = styled(MarginDiv)`
 export const HeaderContainer = styled.div`
   position: fixed;
   top: 0;
-  background: #e5e5e5;
+  background: #ebe9e4;
   width: 100%;
   padding-left: 10px;
   padding-top: 30px;
@@ -25,5 +25,5 @@ export const HeaderContainer = styled.div`
 
 export const PushDiv = styled.div`
   margin-bottom: 30px;
-  background: #e5e5e5;
+  background: #ebe9e4;
 `;

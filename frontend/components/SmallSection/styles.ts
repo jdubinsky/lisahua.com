@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  font-family: avenir-roman;
+  font-family: Avenir;
   font-size: 16px;
 `;
 

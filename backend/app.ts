@@ -18,6 +18,14 @@ const FONT_CT_LOOKUP: { [key: string]: string } = {
   woff: "font/woff",
 };
 
+const IS_DEV = process.env.NODE_ENV === "development";
+if (IS_DEV) {
+  const cors = require("cors");
+  const c = cors();
+  app.use(c);
+  app.options("*", c);
+}
+
 async function getStaticObject(key: string) {
   if (!bucketName) {
     return;

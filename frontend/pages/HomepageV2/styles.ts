@@ -252,7 +252,6 @@ export const FooterDogImages = styled.div`
 
 export const FooterRow = styled(ContentRow)`
   align-items: center;
-  padding-top: 50px;
 
   @media only screen and (min-width: ${MIN_WIDTH}) {
     justify-content: space-between;
