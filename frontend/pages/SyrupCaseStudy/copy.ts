@@ -74,7 +74,7 @@ During this time, I was leading a different project and so I was not involved wi
  client feedback, tweaked areas for consistency, and designed new sections of the platform.
 `;
 
-export const results = `Two fully clickable prototypes for both desktop and mobile were delivered to the MLSE team, as well as a beta version of the site was available on a staging link. I created a annotated document that outlined the features of the application and their usage, to ensure that MLSE’s team understood how each element could be interacted with or the type of animation it would have.
+export const results = `Two fully clickable prototypes for both desktop and mobile were delivered to the MLSE team, as well as a beta version of the site was available on a staging link. I created an annotated document that outlined the features of the application and their usage, to ensure that MLSE’s team understood how each element could be interacted with or the type of animation it would have.
 
 MLSE’s team loved the work we had done and presented it to their executive team. They are now in the process of generating content and announced the launch of SYRUP in March 2020, with plans of opening it to the public. Crowdlinker is currently waiting for the greenlight from the MLSE team to move ahead with the next phases of the project.
 `;
