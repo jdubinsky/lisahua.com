@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 const IS_DEV = process.env.NODE_ENV === "development";
+console.log(IS_DEV, process.env.NODE_ENV);
 
 const beauFontUrl = IS_DEV ? "https://lisahua.com/fonts/BeauRegular.ttf" : "../fonts/BeauRegular.ttf";
 const avenirFontUrl = IS_DEV ? "https://lisahua.com/fonts/Avenir-Roman.ttf" : "../fonts/Avenir-Roman.ttf";

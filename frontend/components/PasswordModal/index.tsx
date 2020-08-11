@@ -16,6 +16,8 @@ interface PasswordModalState {
   passwordError: boolean;
 }
 
+const IS_DEV = process.env.NODE_ENV === "development";
+
 export default class PasswordModal extends Component<PasswordModalProps, PasswordModalState> {
   inputRef = createRef<HTMLInputElement>();
 
@@ -32,8 +34,10 @@ export default class PasswordModal extends Component<PasswordModalProps, Passwor
     const { path } = this.props;
     let response: Response;
 
+    const url = IS_DEV ? `http://localhost:9001/auth/${path}` : `/auth/${path}`;
+
     try {
-      response = await fetch(`/auth/${path}`, {
+      response = await fetch(url, {
         method: "POST",
         headers: {
           Accept: "application/json",

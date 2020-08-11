@@ -39,7 +39,7 @@ const SyrupCaseStudy: FunctionComponent = (): VNode => {
   const getContextSection = () => {
     const sections: SectionNode[] = [{ nodeType: "copy", node: copy.context }];
 
-    return <ContentSection title="goals" sections={sections} />;
+    return <ContentSection title="context" sections={sections} />;
   };
 
   const getDesignSprintSection = () => {
