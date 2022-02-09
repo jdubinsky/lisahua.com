@@ -7,10 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./backend
-
     strategy:
       matrix:
         node-version: [14.x, 16.x]
@@ -22,5 +18,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
+        pushd frontend
+        npm install
+        npm run prod
+        popd
+        cp frontend/dist/* backend/
+        pushd backend
         npx tsc
         npm test
