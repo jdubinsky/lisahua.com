@@ -33,8 +33,16 @@ jobs:
         ls
         mkdir infra/build
         mkdir infra/assets
+        pushd frontend
+        npm install
+        npm run prod
+        popd
         cp -rp frontend/assets/* infra/assets/
         cp frontend/dist/app.bundle.js infra/
+        pushd backend
+        npm install
+        npx tsc
+        popd
         cp backend/build/* infra/build/
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
