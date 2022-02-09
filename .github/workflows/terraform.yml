@@ -30,6 +30,7 @@ jobs:
 
     - name: Copy assets
       run: |
+        pwd
         mkdir build
         mkdir assets
         cp -rp ../frontend/assets/* assets/
