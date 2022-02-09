@@ -110,7 +110,7 @@ resource "aws_s3_bucket_object" "static_resume" {
   bucket = aws_s3_bucket.static.id
   key    = "resume.pdf"
   source = "../frontend/assets/resume.pdf"
-  etag   = filemd5("../frontend/assets/resume.pdf")
+  etag   = md5(file("${path.root}/../frontend/assets/resume.pdf"))
 }
 
 resource "aws_s3_bucket_object" "static_js" {
