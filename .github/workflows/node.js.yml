@@ -21,8 +21,11 @@ jobs:
         pushd frontend
         npm install
         npm run prod
+        pwd
         popd
         cp frontend/dist/* backend/
+        pwd
         pushd backend
+        pwd
         npx tsc
         npm test
