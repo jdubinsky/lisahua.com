@@ -16,6 +16,7 @@ const SECRETS_REFRESH_THRESH = 60 * 60 * 1000; // 1hr in ms
 const FONT_CT_LOOKUP: { [key: string]: string } = {
   ttf: "font/ttf",
   woff: "font/woff",
+  woff2: "font/woff2",
 };
 
 const IS_DEV = process.env.NODE_ENV === "development";
