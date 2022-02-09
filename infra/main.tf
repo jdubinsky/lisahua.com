@@ -28,7 +28,7 @@ provider "aws" {
 
 data "archive_file" "zip" {
   type        = "zip"
-  source_dir  = "../backend/build"
+  source_dir  = "${path.module}/build"
   output_path = "lhua-lambda.zip"
 }
 

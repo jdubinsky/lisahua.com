@@ -35,66 +35,66 @@ POLICY
 }
 
 resource "aws_s3_bucket_object" "static_images" {
-  for_each = fileset("../frontend/assets/images/", "*")
+  for_each = fileset("${path.module}/assets/images/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "images/${each.value}"
-  source = "../frontend/assets/images/${each.value}"
-  etag   = filemd5("../frontend/assets/images/${each.value}")
+  source = "${path.module}/assets/images/${each.value}"
+  etag   = filemd5("${path.module}/assets/images/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_magnet_images" {
-  for_each = fileset("../frontend/assets/images/magnet/", "*")
+  for_each = fileset("${path.module}/assets/images/magnet/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "images/magnet/${each.value}"
-  source = "../frontend/assets/images/magnet/${each.value}"
-  etag   = filemd5("../frontend/assets/images/magnet/${each.value}")
+  source = "${path.module}/assets/images/magnet/${each.value}"
+  etag   = filemd5("${path.module}/assets/images/magnet/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_canvass_images" {
-  for_each = fileset("../frontend/assets/images/canvass/", "*")
+  for_each = fileset("${path.module}/assets/images/canvass/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "images/canvass/${each.value}"
-  source = "../frontend/assets/images/canvass/${each.value}"
-  etag   = filemd5("../frontend/assets/images/canvass/${each.value}")
+  source = "${path.module}/assets/images/canvass/${each.value}"
+  etag   = filemd5("${path.module}/assets/images/canvass/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_oncall_images" {
-  for_each = fileset("../frontend/assets/images/oncall/", "*")
+  for_each = fileset("${path.module}/assets/images/oncall/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "images/oncall/${each.value}"
-  source = "../frontend/assets/images/oncall/${each.value}"
-  etag   = filemd5("../frontend/assets/images/oncall/${each.value}")
+  source = "${path.module}/assets/images/oncall/${each.value}"
+  etag   = filemd5("${path.module}/assets/images/oncall/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_esight_images" {
-  for_each = fileset("../frontend/assets/images/esight/", "*")
+  for_each = fileset("${path.module}/assets/images/esight/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "images/esight/${each.value}"
-  source = "../frontend/assets/images/esight/${each.value}"
-  etag   = filemd5("../frontend/assets/images/esight/${each.value}")
+  source = "${path.module}/assets/images/esight/${each.value}"
+  etag   = filemd5("${path.module}/assets/images/esight/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_syrup_images" {
-  for_each = fileset("../frontend/assets/images/syrup/", "*")
+  for_each = fileset("${path.module}/assets/images/syrup/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "images/syrup/${each.value}"
-  source = "../frontend/assets/images/syrup/${each.value}"
-  etag   = filemd5("../frontend/assets/images/syrup/${each.value}")
+  source = "${path.module}/assets/images/syrup/${each.value}"
+  etag   = filemd5("${path.module}/assets/images/syrup/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_homepage_images" {
-  for_each = fileset("../frontend/assets/images/homepage/", "*")
+  for_each = fileset("${path.module}/assets/images/homepage/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "images/homepage/${each.value}"
-  source = "../frontend/assets/images/homepage/${each.value}"
-  etag   = filemd5("../frontend/assets/images/homepage/${each.value}")
+  source = "${path.module}/assets/images/homepage/${each.value}"
+  etag   = filemd5("${path.module}/assets/images/homepage/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_fonts" {
@@ -102,20 +102,20 @@ resource "aws_s3_bucket_object" "static_fonts" {
 
   bucket = aws_s3_bucket.static.id
   key    = "fonts/${each.value}"
-  source = "../frontend/assets/fonts/${each.value}"
-  etag   = filemd5("../frontend/assets/fonts/${each.value}")
+  source = "${path.module}/assets/fonts/${each.value}"
+  etag   = filemd5("${path.module}/assets/fonts/${each.value}")
 }
 
 resource "aws_s3_bucket_object" "static_resume" {
   bucket = aws_s3_bucket.static.id
   key    = "resume.pdf"
-  source = "../frontend/assets/resume.pdf"
-  etag   = md5(file("${path.root}/../frontend/assets/resume.pdf"))
+  source = "${path.module}/assets/resume.pdf"
+  etag   = filemd5("${path.module}/assets/resume.pdf")
 }
 
 resource "aws_s3_bucket_object" "static_js" {
   bucket = aws_s3_bucket.static.id
   key    = "app.bundle.js"
-  source = "../frontend/dist/app.bundle.js"
-  etag   = filemd5("../frontend/dist/app.bundle.js")
+  source = "${path.module}/app.bundle.js"
+  etag   = filemd5("${path.module}/app.bundle.js")
 }
