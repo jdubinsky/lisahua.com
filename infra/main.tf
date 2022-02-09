@@ -109,7 +109,7 @@ data "aws_iam_policy_document" "policy" {
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
-  name               = "iam_for_lambda_lhua"
+  name               = "iam_for_lambda_lhua_2"
   assume_role_policy = data.aws_iam_policy_document.policy.json
 }
 
