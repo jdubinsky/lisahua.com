@@ -6,6 +6,8 @@ const binaryMimeTypes = [
   "font/opentype",
   "font/otf",
   "font/ttf",
+  "font/woff",
+  "font/woff2",
   "image/jpeg",
   "image/png",
   "image/svg+xml",
