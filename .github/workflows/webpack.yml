@@ -1,8 +1,7 @@
 name: NodeJS with Webpack
 
 on:
-  push:
-    branches: [ master ]
+  push
   pull_request:
     types: [opened, reopened]
 
