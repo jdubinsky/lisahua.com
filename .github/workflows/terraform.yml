@@ -42,11 +42,16 @@ jobs:
         popd
         cp -rp frontend/assets/* infra/assets/
         cp frontend/dist/app.bundle.js infra/
+        cp frontend/dist/* infra/build/
+        cp backend/package*.json infra/build/
         pushd backend
         npm install
         npx tsc
         popd
         cp backend/build/* infra/build/
+        pushd infra/build
+        npm install --only=prod
+        popd
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
