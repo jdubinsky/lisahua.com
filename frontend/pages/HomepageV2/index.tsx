@@ -7,7 +7,6 @@ import Footer from "../../components/Footer";
 import ParagraphText from "../../components/ParagraphText";
 import ProjectCard from "../../components/ProjectCard";
 import SidebarMenu, { Sections } from "../../components/SidebarMenu";
-import StatusBadge from "../../components/StatusBadge";
 
 import * as constants from "./constants";
 import * as copy from "./copy";
@@ -29,6 +28,10 @@ function getExperienceEducationSection() {
     <Fragment>
       <styles.Header marginTop="30px">experience & education</styles.Header>
       <styles.TextTable>
+        <styles.Row>
+          <styles.SmallText>Zensurance</styles.SmallText>
+          <styles.SmallText>2021-Present</styles.SmallText>
+        </styles.Row>
         <styles.Row>
           <styles.SmallText>Crowdlinker</styles.SmallText>
           <styles.SmallText>2017-2020</styles.SmallText>
@@ -103,9 +106,6 @@ const HomepageV2: FunctionComponent = (): VNode => {
         <SidebarMenu scrollSection={selectedSection} />
         <styles.Content>
           <a name="about" />
-          <styles.BadgeRow>
-            <StatusBadge status="active" />
-          </styles.BadgeRow>
           <styles.Title>{copy.title}</styles.Title>
           <styles.ContentRow>
             <styles.Column>

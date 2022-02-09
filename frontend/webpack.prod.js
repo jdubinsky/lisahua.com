@@ -43,6 +43,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         API_HOST: JSON.stringify("https://www.lisahua.com/"),
+        NODE_ENV: JSON.stringify("production"),
         STATIC_URL: JSON.stringify("https://lhua-static.s3.amazonaws.com/"),
       },
     }),
