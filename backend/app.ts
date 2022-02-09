@@ -137,7 +137,7 @@ app.get(
       return response.sendStatus(404);
     }
 
-    const fontBuffer = Buffer.from(fontResponse.Body);
+    const fontBuffer = Buffer.from(fontResponse.Body.toString());
     response.contentType(fontContentType);
     response.header("Access-Control-Allow-Origin", "*");
     return response.send(fontBuffer);
