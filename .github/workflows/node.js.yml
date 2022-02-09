@@ -27,5 +27,6 @@ jobs:
         pwd
         pushd backend
         pwd
+        npm install
         npx tsc
         npm test
