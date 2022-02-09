@@ -1,3 +1,22 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+    random = {
+      source = "hashicorp/random"
+    }
+  }
+
+  cloud {
+    organization = "jdubinsky-personal"
+
+    workspaces {
+      name = "lhua-github-workflow"
+    }
+  }
+}
+
 provider "aws" {
   region = "us-east-1"
 }
