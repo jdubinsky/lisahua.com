@@ -29,14 +29,11 @@ jobs:
 
     - name: Copy assets
       run: |
-        pwd
-        pushd infra
-        mkdir build
-        mkdir assets
-        cp -rp ../frontend/assets/* assets/
-        cp ../frontend/dist/app.bundle.js .
-        cp ../backend/build/* build/
-        popd
+        mkdir infra/build
+        mkdir infra/assets
+        cp -rp frontend/assets/* infra/assets/
+        cp frontend/dist/app.bundle.js infra/
+        cp backend/build/* infra/build/
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
