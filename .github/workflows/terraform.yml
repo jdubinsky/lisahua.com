@@ -29,6 +29,8 @@ jobs:
 
     - name: Copy assets
       run: |
+        pwd
+        ls
         mkdir infra/build
         mkdir infra/assets
         cp -rp frontend/assets/* infra/assets/
