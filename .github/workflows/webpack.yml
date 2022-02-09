@@ -1,9 +1,7 @@
 name: NodeJS with Webpack
 
 on:
-  - push
-  - pull_request:
-    types: [opened, reopened]
+  push
 
 jobs:
   build-fe:
