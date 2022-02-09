@@ -98,7 +98,7 @@ resource "aws_s3_bucket_object" "static_homepage_images" {
 }
 
 resource "aws_s3_bucket_object" "static_fonts" {
-  for_each = fileset("../frontend/assets/fonts/", "*")
+  for_each = fileset("${path.module}/assets/fonts/", "*")
 
   bucket = aws_s3_bucket.static.id
   key    = "fonts/${each.value}"
