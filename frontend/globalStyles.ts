@@ -3,8 +3,8 @@ import { createGlobalStyle } from "styled-components";
 const IS_DEV = process.env.NODE_ENV === "development";
 console.log(IS_DEV, process.env.NODE_ENV);
 
-const beauFontUrl = IS_DEV ? "https://lisahua.com/fonts/BeauRegular.woff" : "../fonts/BeauRegular.woff";
-const avenirFontUrl = IS_DEV ? "https://lisahua.com/fonts/Avenir-Roman.woff" : "../fonts/Avenir-Roman.woff";
+const beauFontUrl = IS_DEV ? "https://lisahua.com/fonts/Beau-Regular.woff" : "../fonts/Beau-Regular.woff";
+const avenirFontUrl = IS_DEV ? "https://lisahua.com/fonts/Avenir-Roman.woff2" : "../fonts/Avenir-Roman.woff2";
 
 export default createGlobalStyle`
   html {
