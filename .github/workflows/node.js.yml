@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+        pushd frontend
+        npm install
+        npm run prod
+        pwd
+        popd
+        cp frontend/dist/* backend/
+        pwd
+        pushd backend
+        pwd
+        npm install
+        npx tsc
+        npm test
