@@ -20,9 +20,9 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    historyApiFallback: true,
-    contentBase: path.join(__dirname, "dist"),
-    inline: true,
+    static: {
+        directory: path.join(__dirname, "dist"),
+    },
     compress: true,
     port: 9000,
   },
@@ -51,7 +51,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         API_HOST: JSON.stringify("http://localhost:9001/"),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        NODE_ENV: JSON.stringify("development"),
         STATIC_URL: JSON.stringify("https://lhua-static.s3.amazonaws.com/"),
       },
     }),
