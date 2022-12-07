@@ -13,7 +13,7 @@
   "dependencies": {
     "aws-sdk": "^2.729.0",
     "aws-serverless-express": "^3.3.8",
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
